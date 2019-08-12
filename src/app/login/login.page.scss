@@ -1,0 +1,24 @@
+$title: Roboto, "Helvetica Neue", sans-serif;
+.example-full-width {
+    width: 100%;
+    color: black !important;
+    font-family: $title!important;
+    font-size: 15px;
+  }
+  .mat-fab.mat-primary,
+  .mat-flat-button.mat-primary,
+  .mat-mini-fab.mat-primary,
+  .mat-raised-button.mat-primary {
+    background-color: #17a2b8 !important;
+  }
+  .btn_login {
+    background: #45abe6;
+    color:black;
+    margin-top: 30px;
+    width: 100%;
+    transition: all 1s ease-in-out;
+    &:hover {
+      background: linear-gradient(to left top,#337ab7,#337ab7);
+      color: #dad3d3;
+    }
+}
