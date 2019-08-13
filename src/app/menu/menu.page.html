@@ -14,7 +14,7 @@
             <ion-list *ngFor="let page of pages">
                 <ion-list-header *ngIf="page.section" class="aside-item">{{page.section}}</ion-list-header>
                 <ion-menu-toggle auto-hide="false" *ngFor="let p of page.routes">
-                    <ion-item [href]="p.url" routerDirection="root" class="aside-item">
+                    <ion-item [href]="p.url" routerDirection="root" class="aside-item" lines="none">
                         <ion-icon name="{{p.icon}}" *ngIf="p.icon" color="medium" size="small" class="aside-icon"></ion-icon>
                         <ion-label>
                             {{p.title}}
