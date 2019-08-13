@@ -1,0 +1,31 @@
+<ion-split-pane>
+    <ion-menu contentId="content">
+        <ion-header class="aside">
+            <section class="aside-content">
+                <div class="aside-img">
+                    <img class="img" src="{{imgUser}}" alt="">
+                </div>
+                <p class="info-text">YONATAN VELASQUEZ MIRANDA</p>
+                <p class="info-text">mls.monteria@gmail.com</p>
+            </section>
+        </ion-header>
+
+        <ion-content>
+            <ion-list *ngFor="let page of pages">
+                <ion-list-header *ngIf="page.section" class="aside-item">{{page.section}}</ion-list-header>
+                <ion-menu-toggle auto-hide="false" *ngFor="let p of page.routes">
+                    <ion-item [href]="p.url" routerDirection="root" class="aside-item">
+                        <ion-icon name="{{p.icon}}" *ngIf="p.icon" color="medium" size="small" class="aside-icon"></ion-icon>
+                        <ion-label>
+                            {{p.title}}
+                        </ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="content" main>
+
+    </ion-router-outlet>
+</ion-split-pane>

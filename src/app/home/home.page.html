@@ -1,17 +1,31 @@
 <ion-header>
   <ion-toolbar color="success">
-    <ion-buttons slot="start" menuToggle>
-      <ion-button>
-        <ion-icon slot="icon-only" name="menu"></ion-icon>
-      </ion-button>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
 
     <ion-title text-center class="center">Inicio</ion-title>
 
-    <ion-buttons slot="end" menuToggle>
+    <ion-buttons slot="end">
       <ion-button>
         <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+<ion-content padding>
+  <ion-card class="card" style="background-image: url(https://cdn.pixabay.com/photo/2015/03/26/11/04/graffiti-692364_960_720.jpg)">
+    <ion-card-content class="card-body">
+      <ion-card-subtitle class="card-title">Pendientes</ion-card-subtitle>
+      <ion-card-title class="card-text">0 Órdenes de servicio sin asignar</ion-card-title>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="card" style="background-image: url(https://cdn.pixabay.com/photo/2016/11/21/16/37/loader-1846346_960_720.jpg)">
+    <ion-card-content class="card-body">
+      <ion-card-subtitle class="card-title">Asignadas</ion-card-subtitle>
+      <ion-card-title class="card-text">0 Órdenes de servicio asignadas</ion-card-title>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
