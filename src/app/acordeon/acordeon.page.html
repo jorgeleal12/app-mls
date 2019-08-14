@@ -8,26 +8,59 @@
 </ion-header>
 
 <ion-content>
-    <ion-list *ngFor="let info of informationItems;let i = index" class="accordion-list" no-padding>
-        <section class="acc-section" (click)="toggleSection(i)">
+    <ion-list class="accordion-list" no-padding>
+        <section class="acc-section" (click)="setStep('expanded1')">
             <div class="img">
                 <img src="../../assets/img/29099.png" alt="">
             </div>
             <div class="info">
-                <p class="title">{{info.title}}</p>
-                <p class="subtitle">{{info.subtitle}}</p>
-                <p class="text">{{info.text}}</p>
+                <p class="title">title 1</p>
+                <p class="subtitle">subtitle 1</p>
+                <p class="text">text 1</p>
             </div>
             <div class="icon">
-                <ion-icon name="arrow-forward" color="medium" *ngIf="!info.open"></ion-icon>
-                <ion-icon name="arrow-down" color="medium" *ngIf="info.open"></ion-icon>
+                <ion-icon name="{{getIconName('expanded1')}}" color="medium"></ion-icon>
             </div>
 
         </section>
-        <section *ngIf="info.open">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto culpa impedit iste minus nesciunt
-            pariatur ratione rerum voluptatem. Blanditiis deserunt et illo nobis odio praesentium repellendus
-            voluptates. Alias, consequatur, quasi!
+        <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded1')}">
+            aqui va formulario
+        </section>
+        <section class="acc-section" (click)="setStep('expanded2')">
+            <div class="img">
+                <img src="../../assets/img/29099.png" alt="">
+            </div>
+            <div class="info">
+                <p class="title">title 1</p>
+                <p class="subtitle">subtitle 1</p>
+                <p class="text">text 1</p>
+            </div>
+            <div class="icon">
+                <ion-icon name="{{getIconName('expanded2')}}" color="medium"></ion-icon>
+            </div>
+
+        </section>
+        <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded2')}">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi perferendis sequi tempore ullam voluptatibus!
+            Consequatur deleniti dicta doloremque ea enim explicabo libero minus numquam, optio pariatur perspiciatis
+            repellat sed vel!
+        </section>
+        <section class="acc-section" (click)="setStep('expanded3')">
+            <div class="img">
+                <img src="../../assets/img/29099.png" alt="">
+            </div>
+            <div class="info">
+                <p class="title">title 1</p>
+                <p class="subtitle">subtitle 1</p>
+                <p class="text">text 1</p>
+            </div>
+            <div class="icon">
+                <ion-icon name="{{getIconName('expanded3')}}" color="medium"></ion-icon>
+            </div>
+
+        </section>
+        <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded3')}">
+            otro formulario
         </section>
 
 

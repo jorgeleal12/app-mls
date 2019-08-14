@@ -6,26 +6,7 @@ import {Component, OnInit} from '@angular/core';
     styleUrls: ['./acordeon.page.scss'],
 })
 export class AcordeonPage implements OnInit {
-    informationItems = [
-        {
-            id: 0,
-            img: '',
-            title: 'Servicio',
-            subtitle: 'Información general de la Orden',
-            text: '',
-            open: false
-        },
-        {
-            id: 1,
-            img: '',
-            title: 'Ubicación',
-            subtitle: 'Información general de la Ubicación',
-            text: 'No se ha seleccionado ningun cliente',
-            open: false
-        }
-    ];
-
-    automaticClose = false;
+    step = {sectionName: null};
 
     constructor() {
     }
@@ -33,13 +14,16 @@ export class AcordeonPage implements OnInit {
     ngOnInit(): void {
     }
 
-    toggleSection(index) {
-        this.informationItems[index].open = !this.informationItems[index].open;
+    getNameValid(sectionName) {
+        return this.step.sectionName === sectionName;
+    }
 
-        if (this.automaticClose && this.informationItems[index].open) {
-            this.informationItems.filter((item, itemIndex) => itemIndex !== index)
-                .map(item => item.open = false);
-        }
+    setStep(sectionName) {
+        this.step.sectionName = sectionName !== this.step.sectionName ? sectionName : null;
+    }
+
+    getIconName(sectionName) {
+        return this.getNameValid(sectionName) ? 'arrow-down' : 'arrow-forward';
     }
 
 }
