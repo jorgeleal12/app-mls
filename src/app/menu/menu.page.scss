@@ -34,3 +34,7 @@
 ion-icon.aside-icon{
   margin-right: .5em;
 }
+
+.active-item{
+  border-left: 8px solid var(--ion-color-primary);
+}

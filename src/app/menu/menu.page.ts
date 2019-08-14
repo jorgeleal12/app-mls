@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {Router, RouterEvent} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterEvent } from '@angular/router';
 
 @Component({
     selector: 'app-menu',
@@ -65,6 +65,8 @@ export class MenuPage implements OnInit {
                 }]
         },
     ];
+
+
 
     constructor(private router: Router) {
         this.router.events.subscribe((event: RouterEvent) => {
