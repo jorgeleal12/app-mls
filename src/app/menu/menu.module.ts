@@ -17,6 +17,10 @@ const routes: Routes = [
             }, {
                 path: 'servicio',
                 loadChildren: '../servicio/servicio.module#ServicioPageModule'
+            },
+            {
+                path: 'acordeon',
+                loadChildren: '../acordeon/acordeon.module#AcordeonPageModule'
             }
         ]
     }, {

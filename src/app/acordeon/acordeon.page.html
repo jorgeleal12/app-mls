@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title text-center class="center">Acordeón</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngFor="let info of informationItems;let i = index" class="accordion-list" no-padding>
+        <section class="acc-section" (click)="toggleSection(i)">
+            <div class="img">
+                <img src="../../assets/img/29099.png" alt="">
+            </div>
+            <div class="info">
+                <p class="title">{{info.title}}</p>
+                <p class="subtitle">{{info.subtitle}}</p>
+                <p class="text">{{info.text}}</p>
+            </div>
+            <div class="icon">
+                <ion-icon name="arrow-forward" color="medium" *ngIf="!info.open"></ion-icon>
+                <ion-icon name="arrow-down" color="medium" *ngIf="info.open"></ion-icon>
+            </div>
+
+        </section>
+        <section *ngIf="info.open">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto culpa impedit iste minus nesciunt
+            pariatur ratione rerum voluptatem. Blanditiis deserunt et illo nobis odio praesentium repellendus
+            voluptates. Alias, consequatur, quasi!
+        </section>
+
+
+    </ion-list>
+</ion-content>
