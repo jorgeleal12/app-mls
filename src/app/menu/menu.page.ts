@@ -21,7 +21,7 @@ export class MenuPage implements OnInit {
             routes: [
                 {
                     title: 'Inicio',
-                    url: '/menu/home',
+                    url: './home',
                     icon: 'home'
                 },
             ]
@@ -30,11 +30,6 @@ export class MenuPage implements OnInit {
             icon: 'home',
             section: 'Servicios',
             routes: [
-                {
-                    title: 'Acordeon',
-                    url: '/menu/acordeon',
-                    icon: 'apps'
-                },
                 {
                     title: 'Cuentas',
                     url: '/menu/home',
