@@ -8,6 +8,12 @@ import { Router, RouterEvent } from '@angular/router';
 })
 export class MenuPage implements OnInit {
     selectedPath = '';
+    user
+    mail
+    idusers
+    id
+
+
     imgUser = 'https://lh3.googleusercontent.com/-DaZt67ZiMLo/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rdcKnHPzSdvF_8nGuW5dbdDc18_iw.CMID/s32-c/photo.jpg';
     pages = [
         {
@@ -62,8 +68,14 @@ export class MenuPage implements OnInit {
                     title: 'Constructores',
                     url: '/menu/home',
                     icon: 'apps'
+                }
+                , {
+                    title: 'Cerrar Sesión',
+                    icon: 'apps',
+                    url: ''
+                    ,
                 }]
-        },
+        }
     ];
 
 
@@ -75,6 +87,13 @@ export class MenuPage implements OnInit {
     }
 
     ngOnInit() {
+
+        this.user = localStorage.getItem("nombres")
+        this.mail = localStorage.getItem("email")
+        this.idusers = localStorage.getItem("idusers")
+        this.id = localStorage.getItem("id")
+
+
     }
 
 }

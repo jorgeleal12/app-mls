@@ -2,14 +2,14 @@
     <section class="container-login">
         <div class="login">
             <img src="assets/img/Mg9Em2PYSwuOycb8bh2U_Logo-c4e88dff0b96286ff7c6a17226fd34006f9b99864f25249cdfc05d931ec5886e.png"
-                 alt="" class="login-img">
+                alt="" class="login-img">
             <form class="login-form">
                 <ion-item class="login-input">
                     <ion-label position="floating" class="login-item">
                         <ion-icon name="person" color="medium" size="small" class="aside-icon"></ion-icon>
                         Identificación
                     </ion-label>
-                    <ion-input ngModel type="text" name="user"></ion-input>
+                    <ion-input ngModel type="text" name="user" [(ngModel)]="user"></ion-input>
                 </ion-item>
 
                 <ion-item style="margin-bottom: 2em">
@@ -17,9 +17,9 @@
                         <ion-icon name="unlock" color="medium" size="small" class="aside-icon"></ion-icon>
                         Contraseña
                     </ion-label>
-                    <ion-input ngModel type="password" name="password"></ion-input>
+                    <ion-input ngModel type="password" name="pass" [(ngModel)]="pass"></ion-input>
                 </ion-item>
-                <ion-button type="submit" expand="full" color="success">INICIA SESIÓN</ion-button>
+                <ion-button type="submit" expand="full" color="success" (click)="LoginUser()">INICIA SESIÓN</ion-button>
             </form>
         </div>
     </section>
