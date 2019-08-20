@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginServiceService } from "../Services/login-service.service";
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -9,7 +9,7 @@ import { LoginServiceService } from "../Services/login-service.service";
 export class HomePage implements OnInit {
 
   total
-  constructor(private LoginServiceService: LoginServiceService) {
+  constructor(private LoginServiceService: LoginServiceService, private router: Router) {
 
 
   }
@@ -25,6 +25,11 @@ export class HomePage implements OnInit {
     }, error => {
 
     })
+  }
+
+  asignadas() {
+
+    this.router.navigateByUrl('menu/menu/asignadas');
   }
 
 }

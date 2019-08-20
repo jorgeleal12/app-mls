@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title text-center class="center">Servicios</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let car of cars" (click)="servicio()">
+    <ion-card-header>
+      <ion-card-subtitle>Cliente: {{ car.client}}</ion-card-subtitle>
+      <ion-card-subtitle>Dirección: {{ car.address}}</ion-card-subtitle>
+      <ion-card-subtitle>Dirección: {{ car.phone_contact}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

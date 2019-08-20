@@ -13,15 +13,19 @@ const routes: Routes = [
         children: [
             {
                 path: 'home',
-                loadChildren: '../home/home.module#HomePageModule'
+                loadChildren: './home/home.module#HomePageModule'
             }, {
-                path: 'fotohrafias',
-                loadChildren: '../servicio/servicio.module#ServicioPageModule'
+                path: 'fotografias',
+                loadChildren: './servicio/servicio.module#ServicioPageModule'
             },
-            //{
-            //path: 'servicio',
-            //loadChildren: '../acordeon/acordeon.module#AcordeonPageModule'
-            // }
+            {
+                path: 'asignadas',
+                loadChildren: '../asignadas/asignadas.module#AsignadasPageModule'
+            },
+            {
+                path: 'servicio',
+                loadChildren: '../acordeon/acordeon.module#AcordeonPageModule'
+            }
         ]
     }, {
         path: '',

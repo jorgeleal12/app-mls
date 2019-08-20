@@ -22,4 +22,8 @@ export class LoginServiceService {
   totalasignadas(params): Observable<any> {
     return this.http.post(`${this.api_url}movil/totalasignadas`, params);
   }
+
+  seach_asignadas(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/seach_asignadas`, params);
+  }
 }

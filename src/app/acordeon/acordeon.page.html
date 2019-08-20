@@ -1,9 +1,15 @@
 <ion-header>
     <ion-toolbar color="success">
         <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
+            <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
         </ion-buttons>
-        <ion-title text-center class="center">Acordeón</ion-title>
+        <ion-title text-center class="center">Servicio</ion-title>
+
+        <ion-buttons slot="end">
+            <ion-button>
+                <ion-icon slot="icon-only" name="save"></ion-icon>
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -11,29 +17,97 @@
     <ion-list class="accordion-list" no-padding>
         <section class="acc-section" (click)="setStep('expanded1')">
             <div class="img">
-                <img src="../../assets/img/29099.png" alt="">
+                <img src="../../assets/img/pngocean.com-id-wflsf.png" alt="">
             </div>
             <div class="info">
-                <p class="title">title 1</p>
-                <p class="subtitle">subtitle 1</p>
-                <p class="text">text 1</p>
+                <p class="title">Servicio</p>
+                <p class="subtitle">Información general de la orden</p>
             </div>
             <div class="icon">
                 <ion-icon name="{{getIconName('expanded1')}}" color="medium"></ion-icon>
             </div>
 
         </section>
+
         <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded1')}">
-            aqui va formulario
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Servicio Número" value="TMP-2008201991600" readonly>
+            </mat-form-field>
+
+
+            <ion-item>
+                <ion-label class="example-full-width">Prioridad</ion-label>
+                <ion-select>
+                    <ion-select-option value="1">Alta</ion-select-option>
+                    <ion-select-option value="2">Media</ion-select-option>
+                    <ion-select-option value="3">Baja</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label class="example-full-width">Sede</ion-label>
+                <ion-select>
+                    <ion-select-option value="1">Alta</ion-select-option>
+                    <ion-select-option value="2">Media</ion-select-option>
+                    <ion-select-option value="3">Baja</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label class="example-full-width">Programación</ion-label>
+                <ion-datetime displayFormat="YYYY-MM-DD"></ion-datetime>
+            </ion-item>
+
+            <ion-item>
+                <ion-label class="example-full-width">Franja de Atención</ion-label>
+                <ion-select>
+                    <ion-select-option value="1">Manaña</ion-select-option>
+                    <ion-select-option value="2">Tarde</ion-select-option>
+
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label class="example-full-width">Tipos de Gas</ion-label>
+                <ion-select>
+                    <ion-select-option value="1">Natural</ion-select-option>
+                    <ion-select-option value="2">GLP</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label class="example-full-width">Tipos de Servicio</ion-label>
+                <ion-select>
+                    <ion-select-option value="1">Residencial</ion-select-option>
+                    <ion-select-option value="2">Comercial</ion-select-option>
+                    <ion-select-option value="3">Industrial</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label class="example-full-width">Tipo de Red</ion-label>
+                <ion-select>
+                    <ion-select-option value="1">Nueva</ion-select-option>
+                    <ion-select-option value="2">Existente</ion-select-option>
+                    <ion-select-option value="3">Puesta en Servicio</ion-select-option>
+                    <ion-select-option value="4">Linea Matrix Existente</ion-select-option>
+                    <ion-select-option value="5">Linea Matrix Nueva</ion-select-option>
+                    <ion-select-option value="6">Reforma</ion-select-option>
+                    <ion-select-option value="7">No Usuario</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+
         </section>
+
         <section class="acc-section" (click)="setStep('expanded2')">
             <div class="img">
-                <img src="../../assets/img/29099.png" alt="">
+                <img src="../../assets/img/twotone_add_location_black_48dp.png" alt="">
             </div>
             <div class="info">
-                <p class="title">title 1</p>
-                <p class="subtitle">subtitle 1</p>
-                <p class="text">text 1</p>
+                <p class="title">Ubicación</p>
+                <p class="subtitle">Información general de la Ubicación</p>
+
             </div>
             <div class="icon">
                 <ion-icon name="{{getIconName('expanded2')}}" color="medium"></ion-icon>
@@ -47,12 +121,12 @@
         </section>
         <section class="acc-section" (click)="setStep('expanded3')">
             <div class="img">
-                <img src="../../assets/img/29099.png" alt="">
+                <img src="../../assets/img/twotone_person_black_48dp.png" alt="">
             </div>
             <div class="info">
-                <p class="title">title 1</p>
-                <p class="subtitle">subtitle 1</p>
-                <p class="text">text 1</p>
+                <p class="title">Cliente</p>
+                <p class="subtitle">Información del Cliente</p>
+
             </div>
             <div class="icon">
                 <ion-icon name="{{getIconName('expanded3')}}" color="medium"></ion-icon>
@@ -62,6 +136,60 @@
         <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded3')}">
             otro formulario
         </section>
+
+        <section class="acc-section" (click)="setStep('expanded4')">
+            <div class="img">
+                <img src="../../assets/img/twotone_build_black_48dp.png" alt="">
+            </div>
+            <div class="info">
+                <p class="title">Material</p>
+                <p class="subtitle">Información del Material</p>
+
+            </div>
+            <div class="icon">
+                <ion-icon name="{{getIconName('expanded4')}}" color="medium"></ion-icon>
+            </div>
+
+        </section>
+        <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded4')}">
+            otro formulario
+        </section>
+
+        <section class="acc-section" (click)="setStep('expanded5')">
+            <div class="img">
+                <img src="../../assets/img/1043ea6260755f02bafd6d2fa98072ec-icono-de-casco-de-construccion.png" alt="">
+            </div>
+            <div class="info">
+                <p class="title">Constructor</p>
+                <p class="subtitle">Información del Constructor</p>
+
+            </div>
+            <div class="icon">
+                <ion-icon name="{{getIconName('expanded5')}}" color="medium"></ion-icon>
+            </div>
+
+        </section>
+        <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded5')}">
+            otro formulario
+        </section>
+
+
+        <section class="acc-section" (click)="setStep('expanded6')">
+            <div class="img">
+                <img src="../../assets/img/twotone_insert_photo_black_48dp.png" alt="">
+            </div>
+            <div class="info">
+                <p class="title">Fotografias</p>
+                <p class="subtitle">IFotografias del servicio</p>
+
+            </div>
+            <div class="icon">
+                <ion-icon name="{{getIconName('expanded6')}}" color="medium"></ion-icon>
+            </div>
+
+        </section>
+
+
 
 
     </ion-list>
