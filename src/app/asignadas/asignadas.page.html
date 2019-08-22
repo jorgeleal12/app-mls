@@ -15,7 +15,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let car of cars" (click)="servicio()">
+  <ion-card *ngFor="let car of cars" (click)="servicio(car)">
     <ion-card-header>
       <ion-card-subtitle>Cliente: {{ car.client}}</ion-card-subtitle>
       <ion-card-subtitle>Dirección: {{ car.address}}</ion-card-subtitle>

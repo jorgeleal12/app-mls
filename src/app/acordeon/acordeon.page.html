@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar color="success">
         <ion-buttons slot="start">
-            <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            <ion-icon slot="icon-only" name="arrow-back" (click)="back()"></ion-icon>
         </ion-buttons>
         <ion-title text-center class="center">Servicio</ion-title>
 
@@ -37,10 +37,10 @@
 
             <ion-item>
                 <ion-label class="example-full-width">Prioridad</ion-label>
-                <ion-select>
-                    <ion-select-option value="1">Alta</ion-select-option>
-                    <ion-select-option value="2">Media</ion-select-option>
-                    <ion-select-option value="3">Baja</ion-select-option>
+                <ion-select [(ngModel)]="priority">
+                    <ion-select-option [value]=1>Alta</ion-select-option>
+                    <ion-select-option [value]=2>Media</ion-select-option>
+                    <ion-select-option [value]=3>Baja</ion-select-option>
                 </ion-select>
             </ion-item>
 

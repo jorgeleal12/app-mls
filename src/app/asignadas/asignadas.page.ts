@@ -26,8 +26,9 @@ export class AsignadasPage implements OnInit {
 
   }
 
-  servicio() {
-    this.router.navigateByUrl('menu/menu/servicio');
+  servicio(car) {
+
+    this.router.navigate(['menu/menu/servicio'], car);
   }
 
 }

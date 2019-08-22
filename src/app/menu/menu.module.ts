@@ -13,10 +13,10 @@ const routes: Routes = [
         children: [
             {
                 path: 'home',
-                loadChildren: './home/home.module#HomePageModule'
+                loadChildren: '../home/home.module#HomePageModule'
             }, {
                 path: 'fotografias',
-                loadChildren: './servicio/servicio.module#ServicioPageModule'
+                loadChildren: '../servicio/servicio.module#ServicioPageModule'
             },
             {
                 path: 'asignadas',
