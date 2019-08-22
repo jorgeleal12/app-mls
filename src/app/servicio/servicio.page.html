@@ -17,36 +17,12 @@
 <ion-content padding>
     <!--div-->
     <section class="content-images">
-        <ion-card class="add-img">
+        <ion-card class="add-img" *ngFor="let photo of photos; let i = i; index" (click)="choosePicture(photo)">
             <ion-card-content>
                 <ion-icon name="add-circle" color="light" size="large"></ion-icon>
             </ion-card-content>
         </ion-card>
-        <ion-card class="add-img">
-            <ion-card-content>
-                <ion-icon name="add-circle" color="light" size="large"></ion-icon>
-            </ion-card-content>
-        </ion-card>
-        <ion-card class="add-img">
-            <ion-card-content>
-                <ion-icon name="add-circle" color="light" size="large"></ion-icon>
-            </ion-card-content>
-        </ion-card>
-        <ion-card class="add-img">
-            <ion-card-content>
-                <ion-icon name="add-circle" color="light" size="large"></ion-icon>
-            </ion-card-content>
-        </ion-card>
-        <ion-card class="add-img">
-            <ion-card-content>
-                <ion-icon name="add-circle" color="light" size="large"></ion-icon>
-            </ion-card-content>
-        </ion-card>
-        <ion-card class="add-img">
-            <ion-card-content>
-                <ion-icon name="add-circle" color="light" size="large"></ion-icon>
-            </ion-card-content>
-        </ion-card>
+
         <ion-card class="add-img add-pdf">
             <ion-card-content>
                 <ion-icon name="document" color="light" size="large"></ion-icon>

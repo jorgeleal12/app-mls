@@ -44,11 +44,15 @@ var routes = [
                 path: 'home',
                 loadChildren: '../home/home.module#HomePageModule'
             }, {
-                path: 'servicio',
+                path: 'fotografias',
                 loadChildren: '../servicio/servicio.module#ServicioPageModule'
             },
             {
-                path: 'acordeon',
+                path: 'asignadas',
+                loadChildren: '../asignadas/asignadas.module#AsignadasPageModule'
+            },
+            {
+                path: 'servicio',
                 loadChildren: '../acordeon/acordeon.module#AcordeonPageModule'
             }
         ]
@@ -85,7 +89,7 @@ var MenuPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".aside {\n  background-image: url('bg-aside.jpg');\n  background-size: cover;\n  background-repeat: no-repeat;\n  padding: 1em;\n}\n.aside-content {\n  margin-top: 1em;\n}\n.aside-content .aside-img img {\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  margin-bottom: 0.5em;\n}\n.aside-content .info-text {\n  color: #fff;\n  margin: 0.2em 0;\n  font-size: 0.9em;\n}\n.aside-item {\n  font-size: 0.8em;\n  color: #727279;\n}\nion-icon.aside-icon {\n  margin-right: 0.5em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi92YXIvd3d3L2h0bWwvYXBwLW1scy9zcmMvYXBwL21lbnUvbWVudS5wYWdlLnNjc3MiLCJzcmMvYXBwL21lbnUvbWVudS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxxQ0FBQTtFQUNBLHNCQUFBO0VBQ0EsNEJBQUE7RUFDQSxZQUFBO0FDQ0Y7QURDRTtFQUNFLGVBQUE7QUNDSjtBREVNO0VBQ0UsV0FBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLG9CQUFBO0FDQVI7QURJSTtFQUNFLFdBQUE7RUFDQSxlQUFBO0VBQ0EsZ0JBQUE7QUNGTjtBRE9FO0VBQ0UsZ0JBQUE7RUFDQSxjQUFBO0FDTEo7QURVQTtFQUNFLG1CQUFBO0FDUEYiLCJmaWxlIjoic3JjL2FwcC9tZW51L21lbnUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmFzaWRlIHtcbiAgYmFja2dyb3VuZC1pbWFnZTogdXJsKFwiLi4vLi4vYXNzZXRzL2ltZy9iZy1hc2lkZS5qcGdcIik7XG4gIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XG4gIGJhY2tncm91bmQtcmVwZWF0OiBuby1yZXBlYXQ7XG4gIHBhZGRpbmc6IDFlbTtcblxuICAmLWNvbnRlbnQge1xuICAgIG1hcmdpbi10b3A6IDFlbTtcblxuICAgIC5hc2lkZS1pbWcge1xuICAgICAgJiBpbWcge1xuICAgICAgICB3aWR0aDogNTBweDtcbiAgICAgICAgaGVpZ2h0OiA1MHB4O1xuICAgICAgICBib3JkZXItcmFkaXVzOiA1MCU7XG4gICAgICAgIG1hcmdpbi1ib3R0b206IC41ZW07XG4gICAgICB9XG4gICAgfVxuXG4gICAgLmluZm8tdGV4dCB7XG4gICAgICBjb2xvcjogI2ZmZjtcbiAgICAgIG1hcmdpbjogLjJlbSAwO1xuICAgICAgZm9udC1zaXplOiAuOWVtO1xuXG4gICAgfVxuICB9XG5cbiAgJi1pdGVtIHtcbiAgICBmb250LXNpemU6IC44ZW07XG4gICAgY29sb3I6ICM3MjcyNzk7XG4gIH1cblxufVxuXG5pb24taWNvbi5hc2lkZS1pY29ue1xuICBtYXJnaW4tcmlnaHQ6IC41ZW07XG59XG4iLCIuYXNpZGUge1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIuLi8uLi9hc3NldHMvaW1nL2JnLWFzaWRlLmpwZ1wiKTtcbiAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcbiAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcbiAgcGFkZGluZzogMWVtO1xufVxuLmFzaWRlLWNvbnRlbnQge1xuICBtYXJnaW4tdG9wOiAxZW07XG59XG4uYXNpZGUtY29udGVudCAuYXNpZGUtaW1nIGltZyB7XG4gIHdpZHRoOiA1MHB4O1xuICBoZWlnaHQ6IDUwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgbWFyZ2luLWJvdHRvbTogMC41ZW07XG59XG4uYXNpZGUtY29udGVudCAuaW5mby10ZXh0IHtcbiAgY29sb3I6ICNmZmY7XG4gIG1hcmdpbjogMC4yZW0gMDtcbiAgZm9udC1zaXplOiAwLjllbTtcbn1cbi5hc2lkZS1pdGVtIHtcbiAgZm9udC1zaXplOiAwLjhlbTtcbiAgY29sb3I6ICM3MjcyNzk7XG59XG5cbmlvbi1pY29uLmFzaWRlLWljb24ge1xuICBtYXJnaW4tcmlnaHQ6IDAuNWVtO1xufSJdfQ== */"
+module.exports = ".aside {\n  background-image: url('bg-aside.jpg');\n  background-size: cover;\n  background-repeat: no-repeat;\n  padding: 1em;\n}\n.aside-content {\n  margin-top: 1em;\n}\n.aside-content .aside-img img {\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  margin-bottom: 0.5em;\n}\n.aside-content .info-text {\n  color: #fff;\n  margin: 0.2em 0;\n  font-size: 1em;\n}\n.aside-item {\n  font-size: 1em;\n  color: #727279;\n}\nion-icon.aside-icon {\n  margin-right: 0.5em;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi92YXIvd3d3L2h0bWwvYXBwLW1scy9zcmMvYXBwL21lbnUvbWVudS5wYWdlLnNjc3MiLCJzcmMvYXBwL21lbnUvbWVudS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxxQ0FBQTtFQUNBLHNCQUFBO0VBQ0EsNEJBQUE7RUFDQSxZQUFBO0FDQ0Y7QURDRTtFQUNFLGVBQUE7QUNDSjtBREVNO0VBQ0UsV0FBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLG9CQUFBO0FDQVI7QURJSTtFQUNFLFdBQUE7RUFDQSxlQUFBO0VBQ0EsY0FBQTtBQ0ZOO0FET0U7RUFDRSxjQUFBO0VBQ0EsY0FBQTtBQ0xKO0FEVUE7RUFDRSxtQkFBQTtBQ1BGIiwiZmlsZSI6InNyYy9hcHAvbWVudS9tZW51LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5hc2lkZSB7XG4gIGJhY2tncm91bmQtaW1hZ2U6IHVybChcIi4uLy4uL2Fzc2V0cy9pbWcvYmctYXNpZGUuanBnXCIpO1xuICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xuICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xuICBwYWRkaW5nOiAxZW07XG5cbiAgJi1jb250ZW50IHtcbiAgICBtYXJnaW4tdG9wOiAxZW07XG5cbiAgICAuYXNpZGUtaW1nIHtcbiAgICAgICYgaW1nIHtcbiAgICAgICAgd2lkdGg6IDUwcHg7XG4gICAgICAgIGhlaWdodDogNTBweDtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogNTAlO1xuICAgICAgICBtYXJnaW4tYm90dG9tOiAuNWVtO1xuICAgICAgfVxuICAgIH1cblxuICAgIC5pbmZvLXRleHQge1xuICAgICAgY29sb3I6ICNmZmY7XG4gICAgICBtYXJnaW46IC4yZW0gMDtcbiAgICAgIGZvbnQtc2l6ZTogMWVtO1xuXG4gICAgfVxuICB9XG5cbiAgJi1pdGVtIHtcbiAgICBmb250LXNpemU6IDFlbTtcbiAgICBjb2xvcjogIzcyNzI3OTtcbiAgfVxuXG59XG5cbmlvbi1pY29uLmFzaWRlLWljb257XG4gIG1hcmdpbi1yaWdodDogLjVlbTtcbn1cbiIsIi5hc2lkZSB7XG4gIGJhY2tncm91bmQtaW1hZ2U6IHVybChcIi4uLy4uL2Fzc2V0cy9pbWcvYmctYXNpZGUuanBnXCIpO1xuICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xuICBiYWNrZ3JvdW5kLXJlcGVhdDogbm8tcmVwZWF0O1xuICBwYWRkaW5nOiAxZW07XG59XG4uYXNpZGUtY29udGVudCB7XG4gIG1hcmdpbi10b3A6IDFlbTtcbn1cbi5hc2lkZS1jb250ZW50IC5hc2lkZS1pbWcgaW1nIHtcbiAgd2lkdGg6IDUwcHg7XG4gIGhlaWdodDogNTBweDtcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xuICBtYXJnaW4tYm90dG9tOiAwLjVlbTtcbn1cbi5hc2lkZS1jb250ZW50IC5pbmZvLXRleHQge1xuICBjb2xvcjogI2ZmZjtcbiAgbWFyZ2luOiAwLjJlbSAwO1xuICBmb250LXNpemU6IDFlbTtcbn1cbi5hc2lkZS1pdGVtIHtcbiAgZm9udC1zaXplOiAxZW07XG4gIGNvbG9yOiAjNzI3Mjc5O1xufVxuXG5pb24taWNvbi5hc2lkZS1pY29uIHtcbiAgbWFyZ2luLXJpZ2h0OiAwLjVlbTtcbn0iXX0= */"
 
 /***/ }),
 
@@ -117,7 +121,7 @@ var MenuPage = /** @class */ (function () {
                 routes: [
                     {
                         title: 'Inicio',
-                        url: '/menu/home',
+                        url: './home',
                         icon: 'home'
                     },
                 ]
@@ -126,11 +130,6 @@ var MenuPage = /** @class */ (function () {
                 icon: 'home',
                 section: 'Servicios',
                 routes: [
-                    {
-                        title: 'Acordeon',
-                        url: '/menu/acordeon',
-                        icon: 'apps'
-                    },
                     {
                         title: 'Cuentas',
                         url: '/menu/home',

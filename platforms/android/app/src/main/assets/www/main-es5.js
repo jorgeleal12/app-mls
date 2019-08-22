@@ -10,20 +10,29 @@
 var map = {
 	"../acordeon/acordeon.module": [
 		"./src/app/acordeon/acordeon.module.ts",
+		"default~acordeon-acordeon-module~home-home-module~login-login-module",
 		"acordeon-acordeon-module"
+	],
+	"../asignadas/asignadas.module": [
+		"./src/app/asignadas/asignadas.module.ts",
+		"asignadas-asignadas-module"
 	],
 	"../home/home.module": [
 		"./src/app/home/home.module.ts",
-		"default~home-home-module~login-login-module",
+		"default~acordeon-acordeon-module~home-home-module~login-login-module",
 		"home-home-module"
 	],
 	"../servicio/servicio.module": [
 		"./src/app/servicio/servicio.module.ts",
 		"servicio-servicio-module"
 	],
+	"./asignadas/asignadas.module": [
+		"./src/app/asignadas/asignadas.module.ts",
+		"asignadas-asignadas-module"
+	],
 	"./login/login.module": [
 		"./src/app/login/login.module.ts",
-		"default~home-home-module~login-login-module",
+		"default~acordeon-acordeon-module~home-home-module~login-login-module",
 		"login-login-module"
 	],
 	"./menu/menu.module": [
@@ -508,6 +517,7 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [
     { path: '', loadChildren: './login/login.module#LoginPageModule' },
     { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
+    { path: 'asignadas', loadChildren: './asignadas/asignadas.module#AsignadasPageModule' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -615,6 +625,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _ionic_native_launch_navigator_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic-native/launch-navigator/ngx */ "./node_modules/@ionic-native/launch-navigator/ngx/index.js");
+/* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
+/* harmony import */ var _ionic_native_image_picker_ngx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ionic-native/image-picker/ngx */ "./node_modules/@ionic-native/image-picker/ngx/index.js");
+
+
+
 
 
 
@@ -637,6 +653,9 @@ var AppModule = /** @class */ (function () {
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
+                _ionic_native_launch_navigator_ngx__WEBPACK_IMPORTED_MODULE_11__["LaunchNavigator"],
+                _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_12__["Geolocation"],
+                _ionic_native_image_picker_ngx__WEBPACK_IMPORTED_MODULE_13__["ImagePicker"],
                 { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
             ],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]

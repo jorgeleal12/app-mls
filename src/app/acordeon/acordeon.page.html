@@ -55,14 +55,14 @@
 
             <ion-item>
                 <ion-label class="example-full-width">Programación</ion-label>
-                <ion-datetime displayFormat="YYYY-MM-DD"></ion-datetime>
+                <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="programming"></ion-datetime>
             </ion-item>
 
             <ion-item>
                 <ion-label class="example-full-width">Franja de Atención</ion-label>
-                <ion-select>
-                    <ion-select-option value="1">Manaña</ion-select-option>
-                    <ion-select-option value="2">Tarde</ion-select-option>
+                <ion-select [(ngModel)]="Attention">
+                    <ion-select-option [value]=1>Manaña</ion-select-option>
+                    <ion-select-option [value]=2>Tarde</ion-select-option>
 
                 </ion-select>
             </ion-item>
@@ -77,23 +77,23 @@
 
             <ion-item>
                 <ion-label class="example-full-width">Tipos de Servicio</ion-label>
-                <ion-select>
-                    <ion-select-option value="1">Residencial</ion-select-option>
-                    <ion-select-option value="2">Comercial</ion-select-option>
-                    <ion-select-option value="3">Industrial</ion-select-option>
+                <ion-select [(ngModel)]="type_service">
+                    <ion-select-option [value]=1>Residencial</ion-select-option>
+                    <ion-select-option [value]=2>Comercial</ion-select-option>
+                    <ion-select-option [value]=3>Industrial</ion-select-option>
                 </ion-select>
             </ion-item>
 
             <ion-item>
                 <ion-label class="example-full-width">Tipo de Red</ion-label>
-                <ion-select>
-                    <ion-select-option value="1">Nueva</ion-select-option>
-                    <ion-select-option value="2">Existente</ion-select-option>
-                    <ion-select-option value="3">Puesta en Servicio</ion-select-option>
-                    <ion-select-option value="4">Linea Matrix Existente</ion-select-option>
-                    <ion-select-option value="5">Linea Matrix Nueva</ion-select-option>
-                    <ion-select-option value="6">Reforma</ion-select-option>
-                    <ion-select-option value="7">No Usuario</ion-select-option>
+                <ion-select [(ngModel)]="type_network">
+                    <ion-select-option [value]=1>Nueva</ion-select-option>
+                    <ion-select-option [value]=2>Existente</ion-select-option>
+                    <ion-select-option [value]=3>Puesta en Servicio</ion-select-option>
+                    <ion-select-option [value]=4>Linea Matrix Existente</ion-select-option>
+                    <ion-select-option [value]=5>Linea Matrix Nueva</ion-select-option>
+                    <ion-select-option [value]=6>Reforma</ion-select-option>
+                    <ion-select-option [value]=7>No Usuario</ion-select-option>
                 </ion-select>
             </ion-item>
 
@@ -115,9 +115,12 @@
 
         </section>
         <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded2')}">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi perferendis sequi tempore ullam voluptatibus!
-            Consequatur deleniti dicta doloremque ea enim explicabo libero minus numquam, optio pariatur perspiciatis
-            repellat sed vel!
+            <mat-form-field class="example-full-width">
+                <span matPrefix>Dirección &nbsp;</span>
+                <input type="text" matInput [(ngModel)]="address">
+                <mat-icon matSuffix (click)="send_address()">add_location</mat-icon>
+            </mat-form-field>
+
         </section>
         <section class="acc-section" (click)="setStep('expanded3')">
             <div class="img">
@@ -180,15 +183,22 @@
             </div>
             <div class="info">
                 <p class="title">Fotografias</p>
-                <p class="subtitle">IFotografias del servicio</p>
+                <p class="subtitle">Fotografias del servicio</p>
 
             </div>
             <div class="icon">
-                <ion-icon name="{{getIconName('expanded6')}}" color="medium"></ion-icon>
+                <ion-icon name="{{getIconName('expanded6')}}" color="medium" (click)="photo_service()"></ion-icon>
             </div>
 
         </section>
-
+        <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded6')}">
+            <ion-item detail *ngFor="let photos_service of photos_services; let i = i; index"
+                (click)="photos_add(photos_service)">
+                <ion-label>
+                    {{photos_service.name_photo}}
+                </ion-label>
+            </ion-item>
+        </section>
 
 
 

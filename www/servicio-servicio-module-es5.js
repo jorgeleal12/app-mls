@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar color=\"success\">\n        <ion-buttons slot=\"start\">\n            <ion-menu-button></ion-menu-button>\n        </ion-buttons>\n\n        <ion-title text-center class=\"center\">Fotografias</ion-title>\n\n        <ion-buttons slot=\"end\">\n            <ion-button>\n                <ion-icon slot=\"icon-only\" name=\"cloud-upload\"></ion-icon>\n            </ion-button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n    <!--div-->\n    <section class=\"content-images\">\n        <ion-card class=\"add-img\">\n            <ion-card-content>\n                <ion-icon name=\"add-circle\" color=\"light\" size=\"large\"></ion-icon>\n            </ion-card-content>\n        </ion-card>\n        <ion-card class=\"add-img\">\n            <ion-card-content>\n                <ion-icon name=\"add-circle\" color=\"light\" size=\"large\"></ion-icon>\n            </ion-card-content>\n        </ion-card>\n        <ion-card class=\"add-img\">\n            <ion-card-content>\n                <ion-icon name=\"add-circle\" color=\"light\" size=\"large\"></ion-icon>\n            </ion-card-content>\n        </ion-card>\n        <ion-card class=\"add-img\">\n            <ion-card-content>\n                <ion-icon name=\"add-circle\" color=\"light\" size=\"large\"></ion-icon>\n            </ion-card-content>\n        </ion-card>\n        <ion-card class=\"add-img\">\n            <ion-card-content>\n                <ion-icon name=\"add-circle\" color=\"light\" size=\"large\"></ion-icon>\n            </ion-card-content>\n        </ion-card>\n        <ion-card class=\"add-img\">\n            <ion-card-content>\n                <ion-icon name=\"add-circle\" color=\"light\" size=\"large\"></ion-icon>\n            </ion-card-content>\n        </ion-card>\n        <ion-card class=\"add-img add-pdf\">\n            <ion-card-content>\n                <ion-icon name=\"document\" color=\"light\" size=\"large\"></ion-icon>\n            </ion-card-content>\n        </ion-card>\n    </section>\n\n</ion-content>\n"
+module.exports = "<ion-header>\n    <ion-toolbar color=\"success\">\n        <ion-buttons slot=\"start\">\n            <ion-menu-button></ion-menu-button>\n        </ion-buttons>\n\n        <ion-title text-center class=\"center\">Fotografias</ion-title>\n\n        <ion-buttons slot=\"end\">\n            <ion-button>\n                <ion-icon slot=\"icon-only\" name=\"cloud-upload\"></ion-icon>\n            </ion-button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n    <!--div-->\n    <section class=\"content-images\">\n        <ion-card class=\"add-img\" *ngFor=\"let photo of photos; let i = i; index\" (click)=\"choosePicture(photo)\">\n            <ion-card-content>\n                <ion-icon name=\"add-circle\" color=\"light\" size=\"large\"></ion-icon>\n            </ion-card-content>\n        </ion-card>\n\n        <ion-card class=\"add-img add-pdf\">\n            <ion-card-content>\n                <ion-icon name=\"document\" color=\"light\" size=\"large\"></ion-icon>\n            </ion-card-content>\n        </ion-card>\n    </section>\n\n</ion-content>"
 
 /***/ }),
 
@@ -85,20 +85,65 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ServicioPage", function() { return ServicioPage; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _ionic_native_image_picker_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/image-picker/ngx */ "./node_modules/@ionic-native/image-picker/ngx/index.js");
+
+
 
 
 var ServicioPage = /** @class */ (function () {
-    function ServicioPage() {
+    function ServicioPage(route, router, imagePicker) {
+        var _this = this;
+        this.route = route;
+        this.router = router;
+        this.imagePicker = imagePicker;
+        this.photos = [];
+        this.route.queryParams.subscribe(function (params) {
+            _this.data = _this.router.getCurrentNavigation().extras;
+            for (var index = 0; index < _this.data.quantity; index++) {
+                _this.photos.push({
+                    imagenes: '',
+                    id: index,
+                    state: true
+                });
+            }
+        });
     }
     ServicioPage.prototype.ngOnInit = function () {
     };
+    ServicioPage.prototype.choosePicture = function (photo) {
+        console.log(photo);
+        // this.respuesta = true;
+        // this.falso = true;
+        // this.imagenbotton = false;
+        //this.rowDataHomeForm = [];
+        var options = {
+            title: "selecionar imagen",
+            message: "select 1",
+            maximumImagesCount: 12,
+            outType: 0,
+            width: 1920,
+            height: 1080,
+            quality: 100
+        };
+        this.imagePicker.getPictures(options).then(function (_imagePath) {
+            // this.image = _imagePath;
+            // for (var i = 0; i < this.image.length; i++) {
+            // }
+        }, function (err) { });
+    };
+    ServicioPage.ctorParameters = function () { return [
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+        { type: _ionic_native_image_picker_ngx__WEBPACK_IMPORTED_MODULE_3__["ImagePicker"] }
+    ]; };
     ServicioPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
             selector: 'app-servicio',
             template: __webpack_require__(/*! raw-loader!./servicio.page.html */ "./node_modules/raw-loader/index.js!./src/app/servicio/servicio.page.html"),
             styles: [__webpack_require__(/*! ./servicio.page.scss */ "./src/app/servicio/servicio.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _ionic_native_image_picker_ngx__WEBPACK_IMPORTED_MODULE_3__["ImagePicker"]])
     ], ServicioPage);
     return ServicioPage;
 }());
