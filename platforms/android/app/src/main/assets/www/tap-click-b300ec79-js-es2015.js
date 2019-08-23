@@ -10,7 +10,7 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "startTapClick", function() { return startTapClick; });
-/* harmony import */ var _chunk_c90aaa66_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chunk-c90aaa66.js */ "./node_modules/@ionic/core/dist/esm/chunk-c90aaa66.js");
+/* harmony import */ var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers-c90aaa66.js */ "./node_modules/@ionic/core/dist/esm/helpers-c90aaa66.js");
 
 
 const startTapClick = (config) => {
@@ -27,21 +27,21 @@ const startTapClick = (config) => {
     };
     // Touch Events
     const onTouchStart = (ev) => {
-        lastTouch = Object(_chunk_c90aaa66_js__WEBPACK_IMPORTED_MODULE_0__["n"])(ev);
+        lastTouch = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_0__["n"])(ev);
         pointerDown(ev);
     };
     const onTouchEnd = (ev) => {
-        lastTouch = Object(_chunk_c90aaa66_js__WEBPACK_IMPORTED_MODULE_0__["n"])(ev);
+        lastTouch = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_0__["n"])(ev);
         pointerUp(ev);
     };
     const onMouseDown = (ev) => {
-        const t = Object(_chunk_c90aaa66_js__WEBPACK_IMPORTED_MODULE_0__["n"])(ev) - MOUSE_WAIT;
+        const t = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_0__["n"])(ev) - MOUSE_WAIT;
         if (lastTouch < t) {
             pointerDown(ev);
         }
     };
     const onMouseUp = (ev) => {
-        const t = Object(_chunk_c90aaa66_js__WEBPACK_IMPORTED_MODULE_0__["n"])(ev) - MOUSE_WAIT;
+        const t = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_0__["n"])(ev) - MOUSE_WAIT;
         if (lastTouch < t) {
             pointerUp(ev);
         }
@@ -71,7 +71,7 @@ const startTapClick = (config) => {
         }
         clearTimeout(activeDefer);
         activeDefer = undefined;
-        const { x, y } = Object(_chunk_c90aaa66_js__WEBPACK_IMPORTED_MODULE_0__["p"])(ev);
+        const { x, y } = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_0__["p"])(ev);
         // deactivate selected
         if (activatableEle) {
             if (clearDefers.has(activatableEle)) {

@@ -31,14 +31,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-ionic-webview": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-ionic-webview@^4.0.0"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-ionic-keyboard": {
     "source": {
       "type": "registry",
@@ -109,7 +101,7 @@
   "cordova-plugin-filechooser": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-filechooser"
+      "id": "cordova-plugin-filechooser@^1.2.0"
     },
     "is_top_level": true,
     "variables": {}
@@ -118,6 +110,14 @@
     "source": {
       "type": "registry",
       "id": "cordova-plugin-telerik-imagepicker@^2.3.3"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-ionic-webview": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-ionic-webview@latest"
     },
     "is_top_level": true,
     "variables": {}

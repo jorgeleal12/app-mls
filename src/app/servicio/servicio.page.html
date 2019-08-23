@@ -7,7 +7,7 @@
         <ion-title text-center class="center">Fotografias</ion-title>
 
         <ion-buttons slot="end">
-            <ion-button>
+            <ion-button (click)="send_image()">
                 <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
             </ion-button>
         </ion-buttons>
@@ -19,7 +19,8 @@
     <section class="content-images">
         <ion-card class="add-img" *ngFor="let photo of photos; let i = i; index" (click)="choosePicture(photo)">
             <ion-card-content>
-                <ion-icon name="add-circle" color="light" size="large"></ion-icon>
+                <img [src]="photo.imagenes" class="img" width="200" height="100" />
+                <ion-icon name="add-circle" [hidden]="photo.hidden" color="light" size="large"></ion-icon>
             </ion-card-content>
         </ion-card>
 
@@ -28,6 +29,8 @@
                 <ion-icon name="document" color="light" size="large"></ion-icon>
             </ion-card-content>
         </ion-card>
+
+        <canvas #layout hidden></canvas>
     </section>
 
 </ion-content>

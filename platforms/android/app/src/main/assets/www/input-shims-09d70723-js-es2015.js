@@ -10,7 +10,7 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "startInputShims", function() { return startInputShims; });
-/* harmony import */ var _chunk_c90aaa66_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chunk-c90aaa66.js */ "./node_modules/@ionic/core/dist/esm/chunk-c90aaa66.js");
+/* harmony import */ var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers-c90aaa66.js */ "./node_modules/@ionic/core/dist/esm/helpers-c90aaa66.js");
 
 
 const cloneMap = new WeakMap();
@@ -174,7 +174,7 @@ const calcScrollData = (inputRect, contentRect, keyboardHeight, platformHeight) 
 const enableScrollAssist = (componentEl, inputEl, contentEl, keyboardHeight) => {
     let coord;
     const touchStart = (ev) => {
-        coord = Object(_chunk_c90aaa66_js__WEBPACK_IMPORTED_MODULE_0__["p"])(ev);
+        coord = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_0__["p"])(ev);
     };
     const touchEnd = (ev) => {
         // input cover touchend/mouseup
@@ -182,7 +182,7 @@ const enableScrollAssist = (componentEl, inputEl, contentEl, keyboardHeight) => 
             return;
         }
         // get where the touchend/mouseup ended
-        const endCoord = Object(_chunk_c90aaa66_js__WEBPACK_IMPORTED_MODULE_0__["p"])(ev);
+        const endCoord = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_0__["p"])(ev);
         // focus this input if the pointer hasn't moved XX pixels
         // and the input doesn't already have focus
         if (!hasPointerMoved(6, coord, endCoord) && !isFocused(inputEl)) {

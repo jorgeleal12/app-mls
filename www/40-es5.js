@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[40],{
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/ion-menu_4-ios.entry.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/ion-menu_4-ios.entry.js ***!
-  \***********************************************************************/
+/***/ "./node_modules/@ionic/core/dist/esm-es5/ion-menu_4-md.entry.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm-es5/ion-menu_4-md.entry.js ***!
+  \**********************************************************************/
 /*! exports provided: ion_menu, ion_menu_button, ion_menu_controller, ion_menu_toggle */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -14,11 +14,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_menu_controller", function() { return MenuController; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_menu_toggle", function() { return MenuToggle; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./chunk-d0403a2f.js */ "./node_modules/@ionic/core/dist/esm-es5/chunk-d0403a2f.js");
-/* harmony import */ var _chunk_1074393c_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./chunk-1074393c.js */ "./node_modules/@ionic/core/dist/esm-es5/chunk-1074393c.js");
-/* harmony import */ var _chunk_353a032e_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./chunk-353a032e.js */ "./node_modules/@ionic/core/dist/esm-es5/chunk-353a032e.js");
-/* harmony import */ var _chunk_c90aaa66_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./chunk-c90aaa66.js */ "./node_modules/@ionic/core/dist/esm-es5/chunk-c90aaa66.js");
-/* harmony import */ var _index_f4f18d97_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index-f4f18d97.js */ "./node_modules/@ionic/core/dist/esm-es5/index-f4f18d97.js");
+/* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm-es5/core-13ed1ad7.js");
+/* harmony import */ var _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-bb99b659.js */ "./node_modules/@ionic/core/dist/esm-es5/config-bb99b659.js");
+/* harmony import */ var _animation_22971d74_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./animation-22971d74.js */ "./node_modules/@ionic/core/dist/esm-es5/animation-22971d74.js");
+/* harmony import */ var _index_2c4a5477_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index-2c4a5477.js */ "./node_modules/@ionic/core/dist/esm-es5/index-2c4a5477.js");
+/* harmony import */ var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./theme-353a032e.js */ "./node_modules/@ionic/core/dist/esm-es5/theme-353a032e.js");
+/* harmony import */ var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./helpers-c90aaa66.js */ "./node_modules/@ionic/core/dist/esm-es5/helpers-c90aaa66.js");
+/* harmony import */ var _cubic_bezier_90d0df24_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./cubic-bezier-90d0df24.js */ "./node_modules/@ionic/core/dist/esm-es5/cubic-bezier-90d0df24.js");
 var _this = undefined;
 
 
@@ -26,12 +28,14 @@ var _this = undefined;
 
 
 
+
+
 var Menu = /** @class */ (function () {
-    function Menu(hostRef) {
-        Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+    function class_1(hostRef) {
+        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
         this.lastOnEnd = 0;
-        this.blocker = _index_f4f18d97_js__WEBPACK_IMPORTED_MODULE_5__["GESTURE_CONTROLLER"].createBlocker({ disableScroll: true });
-        this.mode = Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
+        this.blocker = _index_2c4a5477_js__WEBPACK_IMPORTED_MODULE_4__["GESTURE_CONTROLLER"].createBlocker({ disableScroll: true });
+        this.mode = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
         this.isAnimating = false;
         this._isOpen = false;
         this.isPaneVisible = false;
@@ -53,14 +57,14 @@ var Menu = /** @class */ (function () {
          * If a drag/swipe happens over this value, the menu is not triggered.
          */
         this.maxEdgeStart = 50;
-        this.ionWillOpen = Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionWillOpen", 7);
-        this.ionWillClose = Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionWillClose", 7);
-        this.ionDidOpen = Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionDidOpen", 7);
-        this.ionDidClose = Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionDidClose", 7);
-        this.ionMenuChange = Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionMenuChange", 7);
-        this.lazyMenuCtrl = Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["k"])(this, "ion-menu-controller");
+        this.ionWillOpen = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionWillOpen", 7);
+        this.ionWillClose = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionWillClose", 7);
+        this.ionDidOpen = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionDidOpen", 7);
+        this.ionDidClose = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionDidClose", 7);
+        this.ionMenuChange = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionMenuChange", 7);
+        this.lazyMenuCtrl = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["k"])(this, "ion-menu-controller");
     }
-    Menu.prototype.typeChanged = function (type, oldType) {
+    class_1.prototype.typeChanged = function (type, oldType) {
         var contentEl = this.contentEl;
         if (contentEl) {
             if (oldType !== undefined) {
@@ -75,20 +79,20 @@ var Menu = /** @class */ (function () {
         }
         this.animation = undefined;
     };
-    Menu.prototype.disabledChanged = function () {
+    class_1.prototype.disabledChanged = function () {
         this.updateState();
         this.ionMenuChange.emit({
             disabled: this.disabled,
             open: this._isOpen
         });
     };
-    Menu.prototype.sideChanged = function () {
-        this.isEndSide = Object(_chunk_c90aaa66_js__WEBPACK_IMPORTED_MODULE_4__["i"])(this.side);
+    class_1.prototype.sideChanged = function () {
+        this.isEndSide = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__["i"])(this.side);
     };
-    Menu.prototype.swipeGestureChanged = function () {
+    class_1.prototype.swipeGestureChanged = function () {
         this.updateState();
     };
-    Menu.prototype.componentWillLoad = function () {
+    class_1.prototype.componentWillLoad = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var menuCtrl, _a, el, parent, content, _b;
             var _this = this;
@@ -96,7 +100,7 @@ var Menu = /** @class */ (function () {
                 switch (_c.label) {
                     case 0:
                         if (this.type === undefined) {
-                            this.type = _chunk_1074393c_js__WEBPACK_IMPORTED_MODULE_2__["b"].get('menuType', this.mode === 'ios' ? 'reveal' : 'overlay');
+                            this.type = _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_2__["b"].get('menuType', this.mode === 'ios' ? 'reveal' : 'overlay');
                         }
                         _a = this;
                         return [4 /*yield*/, this.lazyMenuCtrl.componentOnReady().then(function (p) { return p._getInstance(); })];
@@ -120,7 +124,7 @@ var Menu = /** @class */ (function () {
                         // register this menu with the app's menu controller
                         menuCtrl._register(this);
                         _b = this;
-                        return [4 /*yield*/, Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./index-f4f18d97.js */ "./node_modules/@ionic/core/dist/esm-es5/index-f4f18d97.js"))];
+                        return [4 /*yield*/, Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./index-2c4a5477.js */ "./node_modules/@ionic/core/dist/esm-es5/index-2c4a5477.js"))];
                     case 2:
                         _b.gesture = (_c.sent()).createGesture({
                             el: document,
@@ -139,10 +143,10 @@ var Menu = /** @class */ (function () {
             });
         });
     };
-    Menu.prototype.componentDidLoad = function () {
+    class_1.prototype.componentDidLoad = function () {
         this.ionMenuChange.emit({ disabled: this.disabled, open: this._isOpen });
     };
-    Menu.prototype.componentDidUnload = function () {
+    class_1.prototype.componentDidUnload = function () {
         this.blocker.destroy();
         this.menuCtrl._unregister(this);
         if (this.animation) {
@@ -155,11 +159,11 @@ var Menu = /** @class */ (function () {
         this.animation = undefined;
         this.contentEl = this.backdropEl = this.menuInnerEl = undefined;
     };
-    Menu.prototype.onSplitPaneChanged = function (ev) {
+    class_1.prototype.onSplitPaneChanged = function (ev) {
         this.isPaneVisible = ev.detail.isPane(this.el);
         this.updateState();
     };
-    Menu.prototype.onBackdropClick = function (ev) {
+    class_1.prototype.onBackdropClick = function (ev) {
         if (this._isOpen && this.lastOnEnd < ev.timeStamp - 100) {
             var shouldClose = (ev.composedPath)
                 ? !ev.composedPath().includes(this.menuInnerEl)
@@ -174,7 +178,7 @@ var Menu = /** @class */ (function () {
     /**
      * Returns `true` is the menu is open.
      */
-    Menu.prototype.isOpen = function () {
+    class_1.prototype.isOpen = function () {
         return Promise.resolve(this._isOpen);
     };
     /**
@@ -183,14 +187,14 @@ var Menu = /** @class */ (function () {
      * A menu is active when it can be opened or closed, meaning it's enabled
      * and it's not part of a `ion-split-pane`.
      */
-    Menu.prototype.isActive = function () {
+    class_1.prototype.isActive = function () {
         return Promise.resolve(this._isActive());
     };
     /**
      * Opens the menu. If the menu is already open or it can't be opened,
      * it returns `false`.
      */
-    Menu.prototype.open = function (animated) {
+    class_1.prototype.open = function (animated) {
         if (animated === void 0) { animated = true; }
         return this.setOpen(true, animated);
     };
@@ -198,7 +202,7 @@ var Menu = /** @class */ (function () {
      * Closes the menu. If the menu is already closed or it can't be closed,
      * it returns `false`.
      */
-    Menu.prototype.close = function (animated) {
+    class_1.prototype.close = function (animated) {
         if (animated === void 0) { animated = true; }
         return this.setOpen(false, animated);
     };
@@ -206,7 +210,7 @@ var Menu = /** @class */ (function () {
      * Toggles the menu. If the menu is already open, it will try to close, otherwise it will try to open it.
      * If the operation can't be completed successfully, it returns `false`.
      */
-    Menu.prototype.toggle = function (animated) {
+    class_1.prototype.toggle = function (animated) {
         if (animated === void 0) { animated = true; }
         return this.setOpen(!this._isOpen, animated);
     };
@@ -214,11 +218,11 @@ var Menu = /** @class */ (function () {
      * Opens or closes the button.
      * If the operation can't be completed successfully, it returns `false`.
      */
-    Menu.prototype.setOpen = function (shouldOpen, animated) {
+    class_1.prototype.setOpen = function (shouldOpen, animated) {
         if (animated === void 0) { animated = true; }
         return this.menuCtrl._setOpen(this, shouldOpen, animated);
     };
-    Menu.prototype._setOpen = function (shouldOpen, animated) {
+    class_1.prototype._setOpen = function (shouldOpen, animated) {
         if (animated === void 0) { animated = true; }
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
@@ -241,7 +245,7 @@ var Menu = /** @class */ (function () {
             });
         });
     };
-    Menu.prototype.loadAnimation = function () {
+    class_1.prototype.loadAnimation = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var width, _a;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
@@ -263,18 +267,22 @@ var Menu = /** @class */ (function () {
                     case 1:
                         // Create new animation
                         _a.animation = _b.sent();
+                        this.animation.fill('both');
                         return [2 /*return*/];
                 }
             });
         });
     };
-    Menu.prototype.startAnimation = function (shouldOpen, animated) {
+    class_1.prototype.startAnimation = function (shouldOpen, animated) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var ani;
+            var isReversed, ani;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        ani = this.animation.reverse(!shouldOpen);
+                        isReversed = !shouldOpen;
+                        ani = this.animation
+                            .direction((isReversed) ? 'reverse' : 'normal')
+                            .easing((isReversed) ? 'cubic-bezier(0.4, 0.0, 0.6, 1)' : 'cubic-bezier(0.0, 0.0, 0.2, 1)');
                         if (!animated) return [3 /*break*/, 2];
                         return [4 /*yield*/, ani.playAsync()];
                     case 1:
@@ -288,13 +296,13 @@ var Menu = /** @class */ (function () {
             });
         });
     };
-    Menu.prototype._isActive = function () {
+    class_1.prototype._isActive = function () {
         return !this.disabled && !this.isPaneVisible;
     };
-    Menu.prototype.canSwipe = function () {
+    class_1.prototype.canSwipe = function () {
         return this.swipeGesture && !this.isAnimating && this._isActive();
     };
-    Menu.prototype.canStart = function (detail) {
+    class_1.prototype.canStart = function (detail) {
         if (!this.canSwipe()) {
             return false;
         }
@@ -307,31 +315,34 @@ var Menu = /** @class */ (function () {
         }
         return checkEdgeSide(window, detail.currentX, this.isEndSide, this.maxEdgeStart);
     };
-    Menu.prototype.onWillStart = function () {
+    class_1.prototype.onWillStart = function () {
         this.beforeAnimation(!this._isOpen);
         return this.loadAnimation();
     };
-    Menu.prototype.onStart = function () {
+    class_1.prototype.onStart = function () {
         if (!this.isAnimating || !this.animation) {
-            Object(_chunk_c90aaa66_js__WEBPACK_IMPORTED_MODULE_4__["b"])(false, 'isAnimating has to be true');
+            Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__["b"])(false, 'isAnimating has to be true');
             return;
         }
         // the cloned animation should not use an easing curve during seek
-        this.animation.reverse(this._isOpen).progressStart();
+        this.animation
+            .direction((this._isOpen) ? 'reverse' : 'normal')
+            .progressStart(true);
     };
-    Menu.prototype.onMove = function (detail) {
+    class_1.prototype.onMove = function (detail) {
         if (!this.isAnimating || !this.animation) {
-            Object(_chunk_c90aaa66_js__WEBPACK_IMPORTED_MODULE_4__["b"])(false, 'isAnimating has to be true');
+            Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__["b"])(false, 'isAnimating has to be true');
             return;
         }
         var delta = computeDelta(detail.deltaX, this._isOpen, this.isEndSide);
         var stepValue = delta / this.width;
-        this.animation.progressStep(stepValue);
+        this.animation
+            .progressStep(stepValue);
     };
-    Menu.prototype.onEnd = function (detail) {
+    class_1.prototype.onEnd = function (detail) {
         var _this = this;
         if (!this.isAnimating || !this.animation) {
-            Object(_chunk_c90aaa66_js__WEBPACK_IMPORTED_MODULE_4__["b"])(false, 'isAnimating has to be true');
+            Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__["b"])(false, 'isAnimating has to be true');
             return;
         }
         var isOpen = this._isOpen;
@@ -350,23 +361,27 @@ var Menu = /** @class */ (function () {
         if (isOpen && !shouldComplete) {
             shouldOpen = true;
         }
-        var missing = shouldComplete ? 1 - stepValue : stepValue;
-        var missingDistance = missing * width;
-        var realDur = 0;
-        if (missingDistance > 5) {
-            var dur = missingDistance / Math.abs(velocity);
-            realDur = Math.min(dur, 300);
-        }
         this.lastOnEnd = detail.timeStamp;
+        // Account for rounding errors in JS
+        var newStepValue = (shouldComplete) ? 0.001 : -0.001;
+        /**
+         * Animation will be reversed here, so need to
+         * reverse the easing curve as well
+         *
+         * Additionally, we need to account for the time relative
+         * to the new easing curve, as `stepValue` is going to be given
+         * in terms of a linear curve.
+         */
+        newStepValue += Object(_cubic_bezier_90d0df24_js__WEBPACK_IMPORTED_MODULE_7__["g"])(new _cubic_bezier_90d0df24_js__WEBPACK_IMPORTED_MODULE_7__["P"](0, 0), new _cubic_bezier_90d0df24_js__WEBPACK_IMPORTED_MODULE_7__["P"](0.4, 0), new _cubic_bezier_90d0df24_js__WEBPACK_IMPORTED_MODULE_7__["P"](0.6, 1), new _cubic_bezier_90d0df24_js__WEBPACK_IMPORTED_MODULE_7__["P"](1, 1), stepValue);
         this.animation
+            .easing('cubic-bezier(0.4, 0.0, 0.6, 1)')
             .onFinish(function () { return _this.afterAnimation(shouldOpen); }, {
-            clearExistingCallbacks: true,
             oneTimeCallback: true
         })
-            .progressEnd(shouldComplete, stepValue, realDur);
+            .progressEnd(shouldComplete, newStepValue, 300);
     };
-    Menu.prototype.beforeAnimation = function (shouldOpen) {
-        Object(_chunk_c90aaa66_js__WEBPACK_IMPORTED_MODULE_4__["b"])(!this.isAnimating, '_before() should not be called while animating');
+    class_1.prototype.beforeAnimation = function (shouldOpen) {
+        Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__["b"])(!this.isAnimating, '_before() should not be called while animating');
         // this places the menu into the correct location before it animates in
         // this css class doesn't actually kick off any animations
         this.el.classList.add(SHOW_MENU);
@@ -382,8 +397,8 @@ var Menu = /** @class */ (function () {
             this.ionWillClose.emit();
         }
     };
-    Menu.prototype.afterAnimation = function (isOpen) {
-        Object(_chunk_c90aaa66_js__WEBPACK_IMPORTED_MODULE_4__["b"])(this.isAnimating, '_before() should be called while animating');
+    class_1.prototype.afterAnimation = function (isOpen) {
+        Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__["b"])(this.isAnimating, '_before() should be called while animating');
         // keep opening/closing the menu disabled for a touch more yet
         // only add listeners/css if it's enabled and isOpen
         // and only remove listeners/css if it's not open
@@ -414,7 +429,7 @@ var Menu = /** @class */ (function () {
             this.ionDidClose.emit();
         }
     };
-    Menu.prototype.updateState = function () {
+    class_1.prototype.updateState = function () {
         var isActive = this._isActive();
         if (this.gesture) {
             this.gesture.setDisabled(!isActive || !this.swipeGesture);
@@ -427,34 +442,34 @@ var Menu = /** @class */ (function () {
         if (!this.disabled && this.menuCtrl) {
             this.menuCtrl._setActiveMenu(this);
         }
-        Object(_chunk_c90aaa66_js__WEBPACK_IMPORTED_MODULE_4__["b"])(!this.isAnimating, 'can not be animating');
+        Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__["b"])(!this.isAnimating, 'can not be animating');
     };
-    Menu.prototype.forceClosing = function () {
-        Object(_chunk_c90aaa66_js__WEBPACK_IMPORTED_MODULE_4__["b"])(this._isOpen, 'menu cannot be closed');
+    class_1.prototype.forceClosing = function () {
+        Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__["b"])(this._isOpen, 'menu cannot be closed');
         this.isAnimating = true;
-        var ani = this.animation.reverse(true);
+        var ani = this.animation.direction('reverse');
         ani.playSync();
         this.afterAnimation(false);
     };
-    Menu.prototype.render = function () {
+    class_1.prototype.render = function () {
         var _a;
         var _this = this;
         var _b = this, isEndSide = _b.isEndSide, type = _b.type, disabled = _b.disabled, mode = _b.mode, isPaneVisible = _b.isPaneVisible;
-        return (Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["H"], { role: "navigation", class: (_a = {},
+        return (Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["H"], { role: "navigation", class: (_a = {},
                 _a[mode] = true,
                 _a["menu-type-" + type] = true,
                 _a['menu-enabled'] = !disabled,
                 _a['menu-side-end'] = isEndSide,
                 _a['menu-side-start'] = !isEndSide,
                 _a['menu-pane-visible'] = isPaneVisible,
-                _a) }, Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "menu-inner", ref: function (el) { return _this.menuInnerEl = el; } }, Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null)), Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-backdrop", { ref: function (el) { return _this.backdropEl = el; }, class: "menu-backdrop", tappable: false, stopPropagation: false })));
+                _a) }, Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "menu-inner", ref: function (el) { return _this.menuInnerEl = el; } }, Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null)), Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-backdrop", { ref: function (el) { return _this.backdropEl = el; }, class: "menu-backdrop", tappable: false, stopPropagation: false })));
     };
-    Object.defineProperty(Menu.prototype, "el", {
-        get: function () { return Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
+    Object.defineProperty(class_1.prototype, "el", {
+        get: function () { return Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(Menu, "watchers", {
+    Object.defineProperty(class_1, "watchers", {
         get: function () {
             return {
                 "type": ["typeChanged"],
@@ -466,12 +481,12 @@ var Menu = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(Menu, "style", {
-        get: function () { return ":host{--width:304px;--min-width:auto;--max-width:auto;--height:100%;--min-height:auto;--max-height:auto;--background:var(--ion-background-color,#fff);left:0;right:0;top:0;bottom:0;display:none;position:absolute;contain:strict}:host(.show-menu){display:block}.menu-inner{left:0;right:auto;top:0;bottom:0;-webkit-transform:translate3d(-9999px,0,0);transform:translate3d(-9999px,0,0);display:-ms-flexbox;display:flex;position:absolute;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:justify;justify-content:space-between;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);background:var(--background);contain:strict}:host-context([dir=rtl]) .menu-inner,[dir=rtl] .menu-inner{left:unset;right:unset;left:auto;right:0;-webkit-transform:translate3d(calc(-1 * -9999px),0,0);transform:translate3d(calc(-1 * -9999px),0,0)}:host(.menu-side-start) .menu-inner{--ion-safe-area-right:0px;right:auto;left:0}:host(.menu-side-end) .menu-inner{--ion-safe-area-left:0px;right:0;left:auto}ion-backdrop{display:none;opacity:.01;z-index:-1}\@media (max-width:340px){.menu-inner{--width:264px}}:host(.menu-type-reveal){z-index:0}:host(.menu-type-reveal.show-menu) .menu-inner{-webkit-transform:translateZ(0);transform:translateZ(0)}:host(.menu-type-overlay){z-index:80}:host(.menu-type-overlay) .show-backdrop{display:block;cursor:pointer}:host(.menu-pane-visible) .menu-inner{left:0;right:0;width:auto;-webkit-transform:none!important;transform:none!important;-webkit-box-shadow:none!important;box-shadow:none!important}:host(.menu-pane-visible) ion-backdrop{display:hidden!important}:host(.menu-type-push){z-index:80}:host(.menu-type-push) .show-backdrop{display:block}"; },
+    Object.defineProperty(class_1, "style", {
+        get: function () { return ":host{--width:304px;--min-width:auto;--max-width:auto;--height:100%;--min-height:auto;--max-height:auto;--background:var(--ion-background-color,#fff);left:0;right:0;top:0;bottom:0;display:none;position:absolute;contain:strict}:host(.show-menu){display:block}.menu-inner{left:0;right:auto;top:0;bottom:0;-webkit-transform:translate3d(-9999px,0,0);transform:translate3d(-9999px,0,0);display:-ms-flexbox;display:flex;position:absolute;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:justify;justify-content:space-between;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);background:var(--background);contain:strict}:host-context([dir=rtl]) .menu-inner,[dir=rtl] .menu-inner{left:unset;right:unset;left:auto;right:0;-webkit-transform:translate3d(calc(-1 * -9999px),0,0);transform:translate3d(calc(-1 * -9999px),0,0)}:host(.menu-side-start) .menu-inner{--ion-safe-area-right:0px;right:auto;left:0}:host(.menu-side-end) .menu-inner{--ion-safe-area-left:0px;right:0;left:auto}ion-backdrop{display:none;opacity:.01;z-index:-1}\@media (max-width:340px){.menu-inner{--width:264px}}:host(.menu-type-reveal){z-index:0}:host(.menu-type-reveal.show-menu) .menu-inner{-webkit-transform:translateZ(0);transform:translateZ(0)}:host(.menu-type-overlay){z-index:80}:host(.menu-type-overlay) .show-backdrop{display:block;cursor:pointer}:host(.menu-pane-visible) .menu-inner{left:0;right:0;width:auto;-webkit-transform:none!important;transform:none!important;-webkit-box-shadow:none!important;box-shadow:none!important}:host(.menu-pane-visible) ion-backdrop{display:hidden!important}:host(.menu-type-overlay) .menu-inner{-webkit-box-shadow:0 2px 22px 0 rgba(0,0,0,.09),4px 0 16px 0 rgba(0,0,0,.18);box-shadow:0 2px 22px 0 rgba(0,0,0,.09),4px 0 16px 0 rgba(0,0,0,.18)}"; },
         enumerable: true,
         configurable: true
     });
-    return Menu;
+    return class_1;
 }());
 var computeDelta = function (deltaX, isOpen, isEndSide) {
     return Math.max(0, isOpen !== isEndSide ? -deltaX : deltaX);
@@ -543,9 +558,9 @@ var updateVisibility = function (menu) { return tslib__WEBPACK_IMPORTED_MODULE_0
     });
 }); };
 var MenuButton = /** @class */ (function () {
-    function MenuButton(hostRef) {
+    function class_2(hostRef) {
         var _this = this;
-        Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
         this.visible = false;
         /**
          * If `true`, the user cannot interact with the menu button.
@@ -583,7 +598,7 @@ var MenuButton = /** @class */ (function () {
             });
         }); };
     }
-    MenuButton.prototype.componentDidLoad = function () {
+    class_2.prototype.componentDidLoad = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
@@ -595,7 +610,7 @@ var MenuButton = /** @class */ (function () {
             });
         });
     };
-    MenuButton.prototype.visibilityChanged = function () {
+    class_2.prototype.visibilityChanged = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
@@ -607,23 +622,23 @@ var MenuButton = /** @class */ (function () {
             });
         });
     };
-    MenuButton.prototype.render = function () {
+    class_2.prototype.render = function () {
         var _a;
         var _b = this, color = _b.color, disabled = _b.disabled;
-        var mode = Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
-        var menuIcon = _chunk_1074393c_js__WEBPACK_IMPORTED_MODULE_2__["b"].get('menuIcon', 'menu');
+        var mode = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
+        var menuIcon = _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_2__["b"].get('menuIcon', 'menu');
         var hidden = this.autoHide && !this.visible;
         var attrs = {
             type: this.type
         };
-        return (Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["H"], { onClick: this.onClick, "aria-disabled": disabled ? 'true' : null, "aria-hidden": hidden ? 'true' : null, class: Object.assign((_a = {}, _a[mode] = true, _a), Object(_chunk_353a032e_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color), { 'button': true, 'menu-button-hidden': hidden, 'menu-button-disabled': disabled, 'ion-activatable': true, 'ion-focusable': true }) }, Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["h"])("button", Object.assign({}, attrs, { disabled: this.disabled, class: "button-native" }), Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null, Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-icon", { icon: menuIcon, mode: mode, lazy: false })), mode === 'md' && Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-ripple-effect", { type: "unbounded" }))));
+        return (Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["H"], { onClick: this.onClick, "aria-disabled": disabled ? 'true' : null, "aria-hidden": hidden ? 'true' : null, class: Object.assign((_a = {}, _a[mode] = true, _a), Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_5__["c"])(color), { 'button': true, 'menu-button-hidden': hidden, 'menu-button-disabled': disabled, 'ion-activatable': true, 'ion-focusable': true }) }, Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("button", Object.assign({}, attrs, { disabled: this.disabled, class: "button-native" }), Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null, Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-icon", { icon: menuIcon, mode: mode, lazy: false })), mode === 'md' && Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-ripple-effect", { type: "unbounded" }))));
     };
-    Object.defineProperty(MenuButton, "style", {
-        get: function () { return ":host{--background:transparent;--color-focused:var(--color);--border-radius:initial;--padding-top:0;--padding-bottom:0;color:var(--color);text-align:center;text-decoration:none;text-overflow:ellipsis;text-transform:none;white-space:nowrap;-webkit-font-kerning:none;font-kerning:none}.button-native{border-radius:var(--border-radius);font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:-ms-flexbox;display:flex;position:relative;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;border:0;outline:none;background:var(--background);line-height:1;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:0;-webkit-appearance:none;-moz-appearance:none;appearance:none}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.button-native{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}ion-icon{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;pointer-events:none}:host(.menu-button-hidden){display:none}:host(.menu-button-disabled){cursor:default;opacity:.5;pointer-events:none}\@media (any-hover:hover){:host(:hover) .button-native{background:var(--background-hover);color:var(--color-hover)}}:host(.ion-focused) .button-native{background:var(--background-focused);color:var(--color-focused)}:host(.ion-color) .button-native{color:var(--ion-color-base)}:host-context(ion-toolbar:not(.ion-color)){color:var(--ion-toolbar-color,var(--color))}:host{--background-focused:rgba(var(--ion-color-primary-rgb,56,128,255),0.1);--border-radius:4px;--color:var(--ion-color-primary,#3880ff);--padding-start:5px;--padding-end:5px;height:32px;font-size:31px}:host(.activated){opacity:.4}\@media (any-hover:hover){:host(:hover){opacity:.6}}:host(.ion-color.ion-focused) .button-native{background:rgba(var(--ion-color-base-rgb),.1)}"; },
+    Object.defineProperty(class_2, "style", {
+        get: function () { return ":host{--background:transparent;--color-focused:var(--color);--border-radius:initial;--padding-top:0;--padding-bottom:0;color:var(--color);text-align:center;text-decoration:none;text-overflow:ellipsis;text-transform:none;white-space:nowrap;-webkit-font-kerning:none;font-kerning:none}.button-native{border-radius:var(--border-radius);font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;display:-ms-flexbox;display:flex;position:relative;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%;border:0;outline:none;background:var(--background);line-height:1;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:0;-webkit-appearance:none;-moz-appearance:none;appearance:none}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.button-native{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}ion-icon{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;pointer-events:none}:host(.menu-button-hidden){display:none}:host(.menu-button-disabled){cursor:default;opacity:.5;pointer-events:none}\@media (any-hover:hover){:host(:hover) .button-native{background:var(--background-hover);color:var(--color-hover)}}:host(.ion-focused) .button-native{background:var(--background-focused);color:var(--color-focused)}:host(.ion-color) .button-native{color:var(--ion-color-base)}:host-context(ion-toolbar:not(.ion-color)){color:var(--ion-toolbar-color,var(--color))}:host{--background-focused:rgba(66,66,66,0.24);--background-hover:rgba(66,66,66,0.08);--border-radius:50%;--color:initial;--padding-start:8px;--padding-end:8px;width:48px;height:48px;font-size:24px}\@media (any-hover:hover){:host(.ion-color:hover) .button-native{background:rgba(var(--ion-color-base-rgb),.08)}}:host(.ion-color.ion-focused) .button-native{background:rgba(var(--ion-color-base-rgb),.24);color:var(--ion-color-base)}"; },
         enumerable: true,
         configurable: true
     });
-    return MenuButton;
+    return class_2;
 }());
 /**
  * baseAnimation
@@ -631,27 +646,28 @@ var MenuButton = /** @class */ (function () {
  * type will provide their own animations for open and close
  * and registers itself with Menu.
  */
-var baseAnimation = function (AnimationC) {
+var baseAnimation = function () {
     // https://material.io/guidelines/motion/movement.html#movement-movement-in-out-of-screen-bounds
     // https://material.io/guidelines/motion/duration-easing.html#duration-easing-natural-easing-curves
     // "Apply the sharp curve to items temporarily leaving the screen that may return
     // from the same exit point. When they return, use the deceleration curve. On mobile,
     // this transition typically occurs over 300ms" -- MD Motion Guide
-    return Promise.resolve(new AnimationC()
+    return Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_3__["c"])()
         .easing('cubic-bezier(0.0, 0.0, 0.2, 1)') // Deceleration curve (Entering the screen)
-        .easingReverse('cubic-bezier(0.4, 0.0, 0.6, 1)') // Sharp curve (Temporarily leaving the screen)
-        .duration(300));
+        .duration(300);
 };
-var BOX_SHADOW_WIDTH = 8;
 /**
  * Menu Overlay Type
  * The menu slides over the content. The content
  * itself, which is under the menu, does not move.
  */
-var menuOverlayAnimation = function (AnimationC, _, menu) {
+var menuOverlayAnimation = function (menu) {
     var closedX;
     var openedX;
+    var BOX_SHADOW_WIDTH = 8;
     var width = menu.width + BOX_SHADOW_WIDTH;
+    var menuAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    var backdropAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
     if (menu.isEndSide) {
         // right side
         closedX = width + 'px';
@@ -662,23 +678,20 @@ var menuOverlayAnimation = function (AnimationC, _, menu) {
         closedX = -width + 'px';
         openedX = '0px';
     }
-    var menuAnimation = new AnimationC()
+    menuAnimation
         .addElement(menu.menuInnerEl)
-        .fromTo('translateX', closedX, openedX);
-    var backdropAnimation = new AnimationC()
+        .fromTo('transform', "translateX(" + closedX + ")", "translateX(" + openedX + ")");
+    backdropAnimation
         .addElement(menu.backdropEl)
         .fromTo('opacity', 0.01, 0.32);
-    return baseAnimation(AnimationC).then(function (animation) {
-        return animation.add(menuAnimation)
-            .add(backdropAnimation);
-    });
+    return baseAnimation().addAnimation([menuAnimation, backdropAnimation]);
 };
 /**
  * Menu Push Type
  * The content slides over to reveal the menu underneath.
  * The menu itself also slides over to reveal its bad self.
  */
-var menuPushAnimation = function (AnimationC, _, menu) {
+var menuPushAnimation = function (menu) {
     var contentOpenedX;
     var menuClosedX;
     var width = menu.width;
@@ -690,38 +703,32 @@ var menuPushAnimation = function (AnimationC, _, menu) {
         contentOpenedX = width + 'px';
         menuClosedX = -width + 'px';
     }
-    var menuAnimation = new AnimationC()
+    var menuAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_3__["c"])()
         .addElement(menu.menuInnerEl)
-        .fromTo('translateX', menuClosedX, '0px');
-    var contentAnimation = new AnimationC()
+        .fromTo('transform', "translateX(" + menuClosedX + ")", 'translateX(0px)');
+    var contentAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_3__["c"])()
         .addElement(menu.contentEl)
-        .fromTo('translateX', '0px', contentOpenedX);
-    var backdropAnimation = new AnimationC()
+        .fromTo('transform', 'translateX(0px)', "translateX(" + contentOpenedX + ")");
+    var backdropAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_3__["c"])()
         .addElement(menu.backdropEl)
         .fromTo('opacity', 0.01, 0.32);
-    return baseAnimation(AnimationC).then(function (animation) {
-        return animation.add(menuAnimation)
-            .add(backdropAnimation)
-            .add(contentAnimation);
-    });
+    return baseAnimation().addAnimation([menuAnimation, backdropAnimation, contentAnimation]);
 };
 /**
  * Menu Reveal Type
  * The content slides over to reveal the menu underneath.
  * The menu itself, which is under the content, does not move.
  */
-var menuRevealAnimation = function (AnimationC, _, menu) {
+var menuRevealAnimation = function (menu) {
     var openedX = (menu.width * (menu.isEndSide ? -1 : 1)) + 'px';
-    var contentOpen = new AnimationC()
+    var contentOpen = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_3__["c"])()
         .addElement(menu.contentEl)
-        .fromTo('translateX', '0px', openedX);
-    return baseAnimation(AnimationC).then(function (animation) {
-        return animation.add(contentOpen);
-    });
+        .fromTo('transform', 'translateX(0px)', "translateX(" + openedX + ")");
+    return baseAnimation().addAnimation(contentOpen);
 };
 var MenuController = /** @class */ (function () {
-    function MenuController(hostRef) {
-        Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+    function class_3(hostRef) {
+        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
         this.menus = [];
         this.menuAnimations = new Map();
         this.registerAnimation('reveal', menuRevealAnimation);
@@ -737,7 +744,7 @@ var MenuController = /** @class */ (function () {
      *
      * @param menu The menuId or side of the menu to open.
      */
-    MenuController.prototype.open = function (menu) {
+    class_3.prototype.open = function (menu) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var menuEl;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
@@ -760,7 +767,7 @@ var MenuController = /** @class */ (function () {
      *
      * @param menu The menuId or side of the menu to close.
      */
-    MenuController.prototype.close = function (menu) {
+    class_3.prototype.close = function (menu) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var menuEl;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
@@ -783,7 +790,7 @@ var MenuController = /** @class */ (function () {
      *
      * @param menu The menuId or side of the menu to toggle.
      */
-    MenuController.prototype.toggle = function (menu) {
+    class_3.prototype.toggle = function (menu) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var menuEl;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
@@ -809,7 +816,7 @@ var MenuController = /** @class */ (function () {
      * @param enable If `true`, the menu should be enabled.
      * @param menu The menuId or side of the menu to enable or disable.
      */
-    MenuController.prototype.enable = function (enable, menu) {
+    class_3.prototype.enable = function (enable, menu) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var menuEl;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
@@ -831,7 +838,7 @@ var MenuController = /** @class */ (function () {
      * @param enable If `true`, the menu swipe gesture should be enabled.
      * @param menu The menuId or side of the menu to enable or disable the swipe gesture on.
      */
-    MenuController.prototype.swipeGesture = function (enable, menu) {
+    class_3.prototype.swipeGesture = function (enable, menu) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var menuEl;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
@@ -854,7 +861,7 @@ var MenuController = /** @class */ (function () {
      *
      * @param menu The menuId or side of the menu that is being checked.
      */
-    MenuController.prototype.isOpen = function (menu) {
+    class_3.prototype.isOpen = function (menu) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var menuEl, menuEl;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
@@ -880,7 +887,7 @@ var MenuController = /** @class */ (function () {
      *
      * @param menu The menuId or side of the menu that is being checked.
      */
-    MenuController.prototype.isEnabled = function (menu) {
+    class_3.prototype.isEnabled = function (menu) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var menuEl;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
@@ -904,7 +911,7 @@ var MenuController = /** @class */ (function () {
      *
      * @param menu The menuId or side of the menu.
      */
-    MenuController.prototype.get = function (menu) {
+    class_3.prototype.get = function (menu) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var menuRef, menuEl;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
@@ -939,7 +946,7 @@ var MenuController = /** @class */ (function () {
     /**
      * Get the instance of the opened menu. Returns `null` if a menu is not found.
      */
-    MenuController.prototype.getOpen = function () {
+    class_3.prototype.getOpen = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
@@ -954,7 +961,7 @@ var MenuController = /** @class */ (function () {
     /**
      * Get all menu instances.
      */
-    MenuController.prototype.getMenus = function () {
+    class_3.prototype.getMenus = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
@@ -970,7 +977,7 @@ var MenuController = /** @class */ (function () {
      * Get whether or not a menu is animating. Returns `true` if any
      * menu is currently animating.
      */
-    MenuController.prototype.isAnimating = function () {
+    class_3.prototype.isAnimating = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
@@ -989,7 +996,7 @@ var MenuController = /** @class */ (function () {
      * @param name The name of the animation to register.
      * @param animation The animation function to register.
      */
-    MenuController.prototype.registerAnimation = function (name, animation) {
+    class_3.prototype.registerAnimation = function (name, animation) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 this.menuAnimations.set(name, animation);
@@ -1000,10 +1007,10 @@ var MenuController = /** @class */ (function () {
     /**
      * @internal
      */
-    MenuController.prototype._getInstance = function () {
+    class_3.prototype._getInstance = function () {
         return Promise.resolve(this);
     };
-    MenuController.prototype._register = function (menu) {
+    class_3.prototype._register = function (menu) {
         var menus = this.menus;
         if (menus.indexOf(menu) < 0) {
             if (!menu.disabled) {
@@ -1012,13 +1019,13 @@ var MenuController = /** @class */ (function () {
             menus.push(menu);
         }
     };
-    MenuController.prototype._unregister = function (menu) {
+    class_3.prototype._unregister = function (menu) {
         var index = this.menus.indexOf(menu);
         if (index > -1) {
             this.menus.splice(index, 1);
         }
     };
-    MenuController.prototype._setActiveMenu = function (menu) {
+    class_3.prototype._setActiveMenu = function (menu) {
         // if this menu should be enabled
         // then find all the other menus on this same side
         // and automatically disable other same side menus
@@ -1027,7 +1034,7 @@ var MenuController = /** @class */ (function () {
             .filter(function (m) { return m.side === side && m !== menu; })
             .forEach(function (m) { return m.disabled = true; });
     };
-    MenuController.prototype._setOpen = function (menu, shouldOpen, animated) {
+    class_3.prototype._setOpen = function (menu, shouldOpen, animated) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var openedMenu;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
@@ -1050,59 +1057,53 @@ var MenuController = /** @class */ (function () {
             });
         });
     };
-    MenuController.prototype._createAnimation = function (type, menuCmp) {
+    class_3.prototype._createAnimation = function (type, menuCmp) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var animationBuilder, animation;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        animationBuilder = this.menuAnimations.get(type);
-                        if (!animationBuilder) {
-                            throw new Error('animation not registered');
-                        }
-                        return [4 /*yield*/, __webpack_require__.e(/*! import() | index-d9adb105-js */ "index-d9adb105-js").then(__webpack_require__.bind(null, /*! ./index-d9adb105.js */ "./node_modules/@ionic/core/dist/esm-es5/index-d9adb105.js"))
-                                .then(function (mod) { return mod.create(animationBuilder, null, menuCmp); })];
-                    case 1:
-                        animation = _a.sent();
-                        if (!_chunk_1074393c_js__WEBPACK_IMPORTED_MODULE_2__["b"].getBoolean('animated', true)) {
-                            animation.duration(0);
-                        }
-                        return [2 /*return*/, animation];
+                animationBuilder = this.menuAnimations.get(type);
+                if (!animationBuilder) {
+                    throw new Error('animation not registered');
                 }
+                animation = animationBuilder(menuCmp);
+                if (!_config_bb99b659_js__WEBPACK_IMPORTED_MODULE_2__["b"].getBoolean('animated', true)) {
+                    animation.duration(0);
+                }
+                return [2 /*return*/, animation];
             });
         });
     };
-    MenuController.prototype.getOpenSync = function () {
+    class_3.prototype.getOpenSync = function () {
         return this.find(function (m) { return m._isOpen; });
     };
-    MenuController.prototype.getMenusSync = function () {
+    class_3.prototype.getMenusSync = function () {
         return this.menus.map(function (menu) { return menu.el; });
     };
-    MenuController.prototype.isAnimatingSync = function () {
+    class_3.prototype.isAnimatingSync = function () {
         return this.menus.some(function (menu) { return menu.isAnimating; });
     };
-    MenuController.prototype.find = function (predicate) {
+    class_3.prototype.find = function (predicate) {
         var instance = this.menus.find(predicate);
         if (instance !== undefined) {
             return instance.el;
         }
         return undefined;
     };
-    MenuController.prototype.waitUntilReady = function () {
+    class_3.prototype.waitUntilReady = function () {
         return Promise.all(Array.from(document.querySelectorAll('ion-menu'))
             .map(function (menu) { return menu.componentOnReady(); }));
     };
-    Object.defineProperty(MenuController, "style", {
+    Object.defineProperty(class_3, "style", {
         get: function () { return ".menu-content{-webkit-transform:translateZ(0);transform:translateZ(0)}.menu-content-open{cursor:pointer;-ms-touch-action:manipulation;touch-action:manipulation;pointer-events:none}.ios .menu-content-reveal{-webkit-box-shadow:-8px 0 42px rgba(0,0,0,.08);box-shadow:-8px 0 42px rgba(0,0,0,.08)}[dir=rtl].ios .menu-content-reveal{-webkit-box-shadow:8px 0 42px rgba(0,0,0,.08);box-shadow:8px 0 42px rgba(0,0,0,.08)}.md .menu-content-push,.md .menu-content-reveal{-webkit-box-shadow:0 2px 22px 0 rgba(0,0,0,.09),4px 0 16px 0 rgba(0,0,0,.18);box-shadow:0 2px 22px 0 rgba(0,0,0,.09),4px 0 16px 0 rgba(0,0,0,.18)}"; },
         enumerable: true,
         configurable: true
     });
-    return MenuController;
+    return class_3;
 }());
 var MenuToggle = /** @class */ (function () {
-    function MenuToggle(hostRef) {
+    function class_4(hostRef) {
         var _this = this;
-        Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
         this.visible = false;
         /**
          * Automatically hides the content when the corresponding menu is not active.
@@ -1135,7 +1136,7 @@ var MenuToggle = /** @class */ (function () {
             });
         }); };
     }
-    MenuToggle.prototype.componentDidLoad = function () {
+    class_4.prototype.componentDidLoad = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
@@ -1147,7 +1148,7 @@ var MenuToggle = /** @class */ (function () {
             });
         });
     };
-    MenuToggle.prototype.visibilityChanged = function () {
+    class_4.prototype.visibilityChanged = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
@@ -1159,21 +1160,21 @@ var MenuToggle = /** @class */ (function () {
             });
         });
     };
-    MenuToggle.prototype.render = function () {
+    class_4.prototype.render = function () {
         var _a;
-        var mode = Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
+        var mode = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
         var hidden = this.autoHide && !this.visible;
-        return (Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["H"], { onClick: this.onClick, "aria-hidden": hidden ? 'true' : null, class: (_a = {},
+        return (Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["H"], { onClick: this.onClick, "aria-hidden": hidden ? 'true' : null, class: (_a = {},
                 _a[mode] = true,
                 _a['menu-toggle-hidden'] = hidden,
-                _a) }, Object(_chunk_d0403a2f_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null)));
+                _a) }, Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null)));
     };
-    Object.defineProperty(MenuToggle, "style", {
+    Object.defineProperty(class_4, "style", {
         get: function () { return ":host(.menu-toggle-hidden){display:none}"; },
         enumerable: true,
         configurable: true
     });
-    return MenuToggle;
+    return class_4;
 }());
 
 

@@ -3034,7 +3034,7 @@ __webpack_require__.r(__webpack_exports__);
  * Current version of the Angular Component Development Kit.
  * @type {?}
  */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('8.1.2');
+const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('8.1.3');
 
 /**
  * @fileoverview added by tsickle
@@ -6700,6 +6700,7 @@ class FlexibleConnectedPositionStrategy {
                 (minWidth != null && minWidth <= availableWidth);
             return verticalFit && horizontalFit;
         }
+        return false;
     }
     /**
      * Gets the point at which the overlay can be "pushed" on-screen. If the overlay is larger than
@@ -10327,10 +10328,7 @@ class CdkVirtualScrollViewport extends CdkScrollable {
          * Emits when the rendered range changes.
          */
         this._renderedRangeSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
-        /**
-         * The direction the viewport scrolls.
-         */
-        this.orientation = 'vertical';
+        this._orientation = 'vertical';
         // Note: we don't use the typical EventEmitter here because we need to subscribe to the scroll
         // strategy lazily (i.e. only if the user is actually listening to the events). We do this because
         // depending on how the strategy calculates the scrolled index, it may come at a cost to
@@ -10358,14 +10356,17 @@ class CdkVirtualScrollViewport extends CdkScrollable {
          */
         this.renderedRangeStream = this._renderedRangeSubject.asObservable();
         /**
-         * The transform used to scale the spacer to the same size as all content, including content that
-         * is not currently rendered.
-         */
-        this._totalContentSizeTransform = '';
-        /**
          * The total size of all content (in pixels), including content that is not currently rendered.
          */
         this._totalContentSize = 0;
+        /**
+         * A string representing the `style.width` property value to be used for the spacer element.
+         */
+        this._totalContentWidth = '';
+        /**
+         * A string representing the `style.height` property value to be used for the spacer element.
+         */
+        this._totalContentHeight = '';
         /**
          * The currently rendered range of indices.
          */
@@ -10397,6 +10398,23 @@ class CdkVirtualScrollViewport extends CdkScrollable {
         this._runAfterChangeDetection = [];
         if (!_scrollStrategy) {
             throw Error('Error: cdk-virtual-scroll-viewport requires the "itemSize" property to be set.');
+        }
+    }
+    /**
+     * The direction the viewport scrolls.
+     * @return {?}
+     */
+    get orientation() {
+        return this._orientation;
+    }
+    /**
+     * @param {?} orientation
+     * @return {?}
+     */
+    set orientation(orientation) {
+        if (this._orientation !== orientation) {
+            this._orientation = orientation;
+            this._calculateSpacerSize();
         }
     }
     /**
@@ -10517,9 +10535,7 @@ class CdkVirtualScrollViewport extends CdkScrollable {
     setTotalContentSize(size) {
         if (this._totalContentSize !== size) {
             this._totalContentSize = size;
-            /** @type {?} */
-            const axis = this.orientation == 'horizontal' ? 'X' : 'Y';
-            this._totalContentSizeTransform = `scale${axis}(${this._totalContentSize})`;
+            this._calculateSpacerSize();
             this._markChangeDetectionNeeded();
         }
     }
@@ -10720,10 +10736,21 @@ class CdkVirtualScrollViewport extends CdkScrollable {
             fn();
         }
     }
+    /**
+     * Calculates the `style.width` and `style.height` for the spacer element.
+     * @private
+     * @return {?}
+     */
+    _calculateSpacerSize() {
+        this._totalContentHeight =
+            this.orientation === 'horizontal' ? '' : `${this._totalContentSize}px`;
+        this._totalContentWidth =
+            this.orientation === 'horizontal' ? `${this._totalContentSize}px` : '';
+    }
 }
 CdkVirtualScrollViewport.decorators = [
     { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"], args: [{selector: 'cdk-virtual-scroll-viewport',
-                template: "<div #contentWrapper class=\"cdk-virtual-scroll-content-wrapper\"><ng-content></ng-content></div><div class=\"cdk-virtual-scroll-spacer\" [style.transform]=\"_totalContentSizeTransform\"></div>",
+                template: "<div #contentWrapper class=\"cdk-virtual-scroll-content-wrapper\"><ng-content></ng-content></div><div class=\"cdk-virtual-scroll-spacer\" [style.width]=\"_totalContentWidth\" [style.height]=\"_totalContentHeight\"></div>",
                 styles: ["cdk-virtual-scroll-viewport{display:block;position:relative;overflow:auto;contain:strict;transform:translateZ(0);will-change:scroll-position;-webkit-overflow-scrolling:touch}.cdk-virtual-scroll-content-wrapper{position:absolute;top:0;left:0;contain:content}[dir=rtl] .cdk-virtual-scroll-content-wrapper{right:0;left:auto}.cdk-virtual-scroll-orientation-horizontal .cdk-virtual-scroll-content-wrapper{min-height:100%}.cdk-virtual-scroll-orientation-horizontal .cdk-virtual-scroll-content-wrapper>dl:not([cdkVirtualFor]),.cdk-virtual-scroll-orientation-horizontal .cdk-virtual-scroll-content-wrapper>ol:not([cdkVirtualFor]),.cdk-virtual-scroll-orientation-horizontal .cdk-virtual-scroll-content-wrapper>table:not([cdkVirtualFor]),.cdk-virtual-scroll-orientation-horizontal .cdk-virtual-scroll-content-wrapper>ul:not([cdkVirtualFor]){padding-left:0;padding-right:0;margin-left:0;margin-right:0;border-left-width:0;border-right-width:0;outline:0}.cdk-virtual-scroll-orientation-vertical .cdk-virtual-scroll-content-wrapper{min-width:100%}.cdk-virtual-scroll-orientation-vertical .cdk-virtual-scroll-content-wrapper>dl:not([cdkVirtualFor]),.cdk-virtual-scroll-orientation-vertical .cdk-virtual-scroll-content-wrapper>ol:not([cdkVirtualFor]),.cdk-virtual-scroll-orientation-vertical .cdk-virtual-scroll-content-wrapper>table:not([cdkVirtualFor]),.cdk-virtual-scroll-orientation-vertical .cdk-virtual-scroll-content-wrapper>ul:not([cdkVirtualFor]){padding-top:0;padding-bottom:0;margin-top:0;margin-bottom:0;border-top-width:0;border-bottom-width:0;outline:0}.cdk-virtual-scroll-spacer{position:absolute;top:0;left:0;height:1px;width:1px;transform-origin:0 0}[dir=rtl] .cdk-virtual-scroll-spacer{right:0;left:auto;transform-origin:100% 0}"],
                 host: {
                     'class': 'cdk-virtual-scroll-viewport',
@@ -16031,15 +16058,13 @@ class CdkNestedTreeNode extends CdkTreeNode {
     _getNodeOutlet() {
         /** @type {?} */
         const outlets = this.nodeOutlet;
-        if (outlets) {
-            // Note that since we use `descendants: true` on the query, we have to ensure
-            // that we don't pick up the outlet of a child node by accident.
-            return outlets.find((/**
-             * @param {?} outlet
-             * @return {?}
-             */
-            outlet => !outlet._node || outlet._node === this));
-        }
+        // Note that since we use `descendants: true` on the query, we have to ensure
+        // that we don't pick up the outlet of a child node by accident.
+        return outlets && outlets.find((/**
+         * @param {?} outlet
+         * @return {?}
+         */
+        outlet => !outlet._node || outlet._node === this));
     }
 }
 CdkNestedTreeNode.decorators = [
@@ -19205,10 +19230,11 @@ class MatButtonToggle extends _MatButtonToggleMixinBase {
     }
     /**
      * Focuses the button.
+     * @param {?=} options
      * @return {?}
      */
-    focus() {
-        this._buttonElement.nativeElement.focus();
+    focus(options) {
+        this._buttonElement.nativeElement.focus(options);
     }
     /**
      * Checks the button toggle due to an interaction with the underlying native button.
@@ -19423,10 +19449,14 @@ class MatButton extends _MatButtonMixinBase {
     }
     /**
      * Focuses the button.
+     * @param {?=} _origin
+     * @param {?=} options
      * @return {?}
      */
-    focus() {
-        this._getHostElement().focus();
+    focus(_origin, options) {
+        // Note that we aren't using `_origin`, but we need to keep it because some internal consumers
+        // use `MatButton` in a `FocusKeyManager` and we need it to match `FocusableOption`.
+        this._getHostElement().focus(options);
     }
     /**
      * @return {?}
@@ -20325,10 +20355,12 @@ class MatCheckbox extends _MatCheckboxMixinBase {
     }
     /**
      * Focuses the checkbox.
+     * @param {?=} origin
+     * @param {?=} options
      * @return {?}
      */
-    focus() {
-        this._focusMonitor.focusVia(this._inputElement, 'keyboard');
+    focus(origin = 'keyboard', options) {
+        this._focusMonitor.focusVia(this._inputElement, origin, options);
     }
     /**
      * @param {?} event
@@ -21492,9 +21524,10 @@ class MatChipList extends _MatChipListMixinBase {
     /**
      * Focuses the first non-disabled chip in this chip list, or the associated input when there
      * are no eligible chips.
+     * @param {?=} options
      * @return {?}
      */
-    focus() {
+    focus(options) {
         if (this.disabled) {
             return;
         }
@@ -21508,17 +21541,18 @@ class MatChipList extends _MatChipListMixinBase {
             this.stateChanges.next();
         }
         else {
-            this._focusInput();
+            this._focusInput(options);
             this.stateChanges.next();
         }
     }
     /**
      * Attempt to focus an input if we have one.
+     * @param {?=} options
      * @return {?}
      */
-    _focusInput() {
+    _focusInput(options) {
         if (this._chipInput) {
-            this._chipInput.focus();
+            this._chipInput.focus(options);
         }
     }
     /**
@@ -22156,10 +22190,11 @@ class MatChipInput {
     }
     /**
      * Focuses the input.
+     * @param {?=} options
      * @return {?}
      */
-    focus() {
-        this._inputElement.focus();
+    focus(options) {
+        this._inputElement.focus(options);
     }
     /**
      * Checks whether a keycode is one of the configured separators.
@@ -22365,7 +22400,7 @@ __webpack_require__.r(__webpack_exports__);
  * Current version of Angular Material.
  * @type {?}
  */
-const VERSION$1 = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('8.1.2');
+const VERSION$1 = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('8.1.3');
 
 /**
  * @fileoverview added by tsickle
@@ -22399,7 +22434,7 @@ AnimationDurations.EXITING = '195ms';
 // Can be removed once the Material primary entry-point no longer
 // re-exports all secondary entry-points
 /** @type {?} */
-const VERSION$2 = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('8.1.2');
+const VERSION$2 = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('8.1.3');
 /**
  * Injection token that configures whether the Material sanity checks are enabled.
  * @type {?}
@@ -24463,13 +24498,17 @@ class MatOption {
     }
     /**
      * Sets focus onto this option.
+     * @param {?=} _origin
+     * @param {?=} options
      * @return {?}
      */
-    focus() {
+    focus(_origin, options) {
+        // Note that we aren't using `_origin`, but we need to keep it because some internal consumers
+        // use `MatOption` in a `FocusKeyManager` and we need it to match `FocusableOption`.
         /** @type {?} */
         const element = this._getHostElement();
         if (typeof element.focus === 'function') {
-            element.focus();
+            element.focus(options);
         }
     }
     /**
@@ -25083,23 +25122,6 @@ class MatMonthView {
         if (!this._dateFormats) {
             throw createMissingDateImplError('MAT_DATE_FORMATS');
         }
-        /** @type {?} */
-        const firstDayOfWeek = this._dateAdapter.getFirstDayOfWeek();
-        /** @type {?} */
-        const narrowWeekdays = this._dateAdapter.getDayOfWeekNames('narrow');
-        /** @type {?} */
-        const longWeekdays = this._dateAdapter.getDayOfWeekNames('long');
-        // Rotate the labels for days of the week based on the configured first day of the week.
-        /** @type {?} */
-        let weekdays = longWeekdays.map((/**
-         * @param {?} long
-         * @param {?} i
-         * @return {?}
-         */
-        (long, i) => {
-            return { long, narrow: narrowWeekdays[i] };
-        }));
-        this._weekdays = weekdays.slice(firstDayOfWeek).concat(weekdays.slice(0, firstDayOfWeek));
         this._activeDate = this._dateAdapter.today();
     }
     /**
@@ -25262,6 +25284,7 @@ class MatMonthView {
         this._firstWeekOffset =
             (DAYS_PER_WEEK + this._dateAdapter.getDayOfWeek(firstOfMonth) -
                 this._dateAdapter.getFirstDayOfWeek()) % DAYS_PER_WEEK;
+        this._initWeekdays();
         this._createWeekCells();
         this._changeDetectorRef.markForCheck();
     }
@@ -25271,6 +25294,30 @@ class MatMonthView {
      */
     _focusActiveCell() {
         this._matCalendarBody._focusActiveCell();
+    }
+    /**
+     * Initializes the weekdays.
+     * @private
+     * @return {?}
+     */
+    _initWeekdays() {
+        /** @type {?} */
+        const firstDayOfWeek = this._dateAdapter.getFirstDayOfWeek();
+        /** @type {?} */
+        const narrowWeekdays = this._dateAdapter.getDayOfWeekNames('narrow');
+        /** @type {?} */
+        const longWeekdays = this._dateAdapter.getDayOfWeekNames('long');
+        // Rotate the labels for days of the week based on the configured first day of the week.
+        /** @type {?} */
+        let weekdays = longWeekdays.map((/**
+         * @param {?} long
+         * @param {?} i
+         * @return {?}
+         */
+        (long, i) => {
+            return { long, narrow: narrowWeekdays[i] };
+        }));
+        this._weekdays = weekdays.slice(firstDayOfWeek).concat(weekdays.slice(0, firstDayOfWeek));
     }
     /**
      * Creates MatCalendarCells for the dates in this month.
@@ -29717,10 +29764,11 @@ class MatExpansionPanelHeader {
      * Focuses the panel header. Implemented as a part of `FocusableOption`.
      * \@docs-private
      * @param {?=} origin Origin of the action that triggered the focus.
+     * @param {?=} options
      * @return {?}
      */
-    focus(origin = 'program') {
-        this._focusMonitor.focusVia(this._element, origin);
+    focus(origin = 'program', options) {
+        this._focusMonitor.focusVia(this._element, origin, options);
     }
     /**
      * @return {?}
@@ -30863,7 +30911,7 @@ MatFormFieldModule.decorators = [
 /*!*************************************************************!*\
   !*** ./node_modules/@angular/material/esm2015/grid-list.js ***!
   \*************************************************************/
-/*! exports provided: MatGridListModule, MatGridList, MatGridTile, MatGridTileText, MatGridAvatarCssMatStyler, MatGridTileHeaderCssMatStyler, MatGridTileFooterCssMatStyler, ɵa3 */
+/*! exports provided: MatGridListModule, MatGridList, MatGridTile, MatGridTileText, MatGridAvatarCssMatStyler, MatGridTileHeaderCssMatStyler, MatGridTileFooterCssMatStyler, ɵa11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -30875,7 +30923,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatGridAvatarCssMatStyler", function() { return MatGridAvatarCssMatStyler; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatGridTileHeaderCssMatStyler", function() { return MatGridTileHeaderCssMatStyler; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatGridTileFooterCssMatStyler", function() { return MatGridTileFooterCssMatStyler; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵa3", function() { return MAT_GRID_LIST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵa11", function() { return MAT_GRID_LIST; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material/core */ "./node_modules/@angular/material/esm2015/core.js");
 /* harmony import */ var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/coercion */ "./node_modules/@angular/cdk/esm2015/coercion.js");
@@ -33428,10 +33476,11 @@ class MatInput extends _MatInputMixinBase {
     }
     /**
      * Focuses the input.
+     * @param {?=} options
      * @return {?}
      */
-    focus() {
-        this._elementRef.nativeElement.focus();
+    focus(options) {
+        this._elementRef.nativeElement.focus(options);
     }
     /**
      * Callback for the cases where the focused state of the input changes.
@@ -34402,10 +34451,11 @@ class MatSelectionList extends _MatSelectionListMixinBase {
     }
     /**
      * Focuses the selection list.
+     * @param {?=} options
      * @return {?}
      */
-    focus() {
-        this._element.nativeElement.focus();
+    focus(options) {
+        this._element.nativeElement.focus(options);
     }
     /**
      * Selects all of the options.
@@ -34769,7 +34819,7 @@ MatListModule.decorators = [
 /*!************************************************************!*\
   !*** ./node_modules/@angular/material/esm2015/material.js ***!
   \************************************************************/
-/*! exports provided: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS_FACTORY, MatAutocompleteSelectedEvent, MAT_AUTOCOMPLETE_DEFAULT_OPTIONS, MatAutocomplete, MatAutocompleteModule, MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY, getMatAutocompleteMissingPanelError, AUTOCOMPLETE_OPTION_HEIGHT, AUTOCOMPLETE_PANEL_HEIGHT, MAT_AUTOCOMPLETE_SCROLL_STRATEGY, MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY_PROVIDER, MAT_AUTOCOMPLETE_VALUE_ACCESSOR, MatAutocompleteTrigger, MatAutocompleteOrigin, MatBadgeModule, MatBadge, MatBottomSheetModule, MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, MatBottomSheet, MAT_BOTTOM_SHEET_DATA, MatBottomSheetConfig, MatBottomSheetContainer, matBottomSheetAnimations, MatBottomSheetRef, MatButtonModule, MatButton, MatAnchor, MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS, MAT_BUTTON_TOGGLE_GROUP_VALUE_ACCESSOR, MatButtonToggleGroupMultiple, MatButtonToggleChange, MatButtonToggleGroup, MatButtonToggle, MatButtonToggleModule, MatCardContent, MatCardTitle, MatCardSubtitle, MatCardActions, MatCardFooter, MatCardImage, MatCardSmImage, MatCardMdImage, MatCardLgImage, MatCardXlImage, MatCardAvatar, MatCard, MatCardHeader, MatCardTitleGroup, MatCardModule, MAT_CHECKBOX_CONTROL_VALUE_ACCESSOR, TransitionCheckState, MatCheckboxChange, MatCheckbox, MAT_CHECKBOX_CLICK_ACTION, _MatCheckboxRequiredValidatorModule, MatCheckboxModule, MAT_CHECKBOX_REQUIRED_VALIDATOR, MatCheckboxRequiredValidator, MatChipsModule, MatChipListChange, MatChipList, MatChipSelectionChange, MatChipAvatar, MatChipTrailingIcon, MatChip, MatChipRemove, MatChipInput, MAT_CHIPS_DEFAULT_OPTIONS, ɵa1, VERSION, AnimationCurves, AnimationDurations, MatCommonModule, MATERIAL_SANITY_CHECKS, mixinDisabled, mixinColor, mixinDisableRipple, mixinTabIndex, mixinErrorState, mixinInitialized, NativeDateModule, MatNativeDateModule, MAT_DATE_LOCALE_FACTORY, MAT_DATE_LOCALE, MAT_DATE_LOCALE_PROVIDER, DateAdapter, MAT_DATE_FORMATS, NativeDateAdapter, MAT_NATIVE_DATE_FORMATS, ShowOnDirtyErrorStateMatcher, ErrorStateMatcher, MAT_HAMMER_OPTIONS, GestureConfig, setLines, MatLine, MatLineSetter, MatLineModule, MatOptionModule, _countGroupLabelsBeforeOption, _getOptionScrollPosition, MatOptionSelectionChange, MAT_OPTION_PARENT_COMPONENT, MatOption, MatOptgroup, MAT_LABEL_GLOBAL_OPTIONS, MatRippleModule, MAT_RIPPLE_GLOBAL_OPTIONS, MatRipple, RippleState, RippleRef, defaultRippleAnimationConfig, RippleRenderer, MatPseudoCheckboxModule, MatPseudoCheckbox, JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, MatMultiYearView, yearsPerPage, yearsPerRow, MatDatepickerModule, MatCalendarHeader, MatCalendar, MatCalendarCell, MatCalendarBody, MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY, MAT_DATEPICKER_SCROLL_STRATEGY, MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER, MatDatepickerContent, MatDatepicker, matDatepickerAnimations, MAT_DATEPICKER_VALUE_ACCESSOR, MAT_DATEPICKER_VALIDATORS, MatDatepickerInputEvent, MatDatepickerInput, MatDatepickerIntl, MatDatepickerToggleIcon, MatDatepickerToggle, MatMonthView, MatYearView, MatDialogModule, MAT_DIALOG_SCROLL_STRATEGY_FACTORY, MAT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY, MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS, MAT_DIALOG_SCROLL_STRATEGY, MAT_DIALOG_SCROLL_STRATEGY_PROVIDER, MatDialog, throwMatDialogContentAlreadyAttachedError, MatDialogContainer, MatDialogClose, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogConfig, MatDialogRef, matDialogAnimations, MatDivider, MatDividerModule, MatExpansionModule, MatAccordion, MAT_ACCORDION, MAT_EXPANSION_PANEL_DEFAULT_OPTIONS, MatExpansionPanel, MatExpansionPanelActionRow, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelTitle, MatExpansionPanelContent, EXPANSION_PANEL_ANIMATION_TIMING, matExpansionAnimations, MatFormFieldModule, MatError, MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormField, MatFormFieldControl, getMatFormFieldPlaceholderConflictError, getMatFormFieldDuplicatedHintError, getMatFormFieldMissingControlError, MatHint, MatPlaceholder, MatPrefix, MatSuffix, MatLabel, matFormFieldAnimations, ɵa3, MatGridListModule, MatGridList, MatGridTile, MatGridTileText, MatGridAvatarCssMatStyler, MatGridTileHeaderCssMatStyler, MatGridTileFooterCssMatStyler, MatIconModule, MAT_ICON_LOCATION_FACTORY, MAT_ICON_LOCATION, MatIcon, getMatIconNameNotFoundError, getMatIconNoHttpProviderError, getMatIconFailedToSanitizeUrlError, getMatIconFailedToSanitizeLiteralError, ICON_REGISTRY_PROVIDER_FACTORY, MatIconRegistry, ICON_REGISTRY_PROVIDER, MatTextareaAutosize, MatInput, getMatInputUnsupportedTypeError, MatInputModule, MAT_INPUT_VALUE_ACCESSOR, MatListModule, MatNavList, MatList, MatListAvatarCssMatStyler, MatListIconCssMatStyler, MatListSubheaderCssMatStyler, MatListItem, MAT_SELECTION_LIST_VALUE_ACCESSOR, MatSelectionListChange, MatListOption, MatSelectionList, ɵa23, ɵb23, ɵc23, MatMenu, MAT_MENU_DEFAULT_OPTIONS, _MatMenu, _MatMenuBase, MatMenuItem, MatMenuTrigger, MAT_MENU_SCROLL_STRATEGY, MAT_MENU_PANEL, _MatMenuDirectivesModule, MatMenuModule, matMenuAnimations, fadeInItems, transformMenu, MatMenuContent, MatPaginatorModule, PageEvent, MatPaginator, MAT_PAGINATOR_INTL_PROVIDER_FACTORY, MatPaginatorIntl, MAT_PAGINATOR_INTL_PROVIDER, MatProgressBarModule, MAT_PROGRESS_BAR_LOCATION_FACTORY, MAT_PROGRESS_BAR_LOCATION, MatProgressBar, MatProgressSpinner, MatSpinner, MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS, MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS_FACTORY, MatProgressSpinnerModule, MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS_FACTORY, MAT_RADIO_DEFAULT_OPTIONS, MAT_RADIO_GROUP_CONTROL_VALUE_ACCESSOR, MatRadioChange, MatRadioGroup, MatRadioButton, MatSelectModule, MAT_SELECT_SCROLL_STRATEGY_PROVIDER_FACTORY, SELECT_PANEL_MAX_HEIGHT, SELECT_PANEL_PADDING_X, SELECT_PANEL_INDENT_PADDING_X, SELECT_ITEM_HEIGHT_EM, SELECT_MULTIPLE_PANEL_PADDING_X, SELECT_PANEL_VIEWPORT_PADDING, MAT_SELECT_SCROLL_STRATEGY, MAT_SELECT_SCROLL_STRATEGY_PROVIDER, MatSelectChange, MatSelectTrigger, MatSelect, matSelectAnimations, transformPanel, fadeInContent, MatSidenavModule, throwMatDuplicatedDrawerError, MAT_DRAWER_DEFAULT_AUTOSIZE_FACTORY, MAT_DRAWER_DEFAULT_AUTOSIZE, MatDrawerContent, MatDrawer, MatDrawerContainer, MatSidenavContent, MatSidenav, MatSidenavContainer, matDrawerAnimations, _MatSlideToggleRequiredValidatorModule, MatSlideToggleModule, MAT_SLIDE_TOGGLE_VALUE_ACCESSOR, MatSlideToggleChange, MatSlideToggle, MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, MAT_SLIDE_TOGGLE_REQUIRED_VALIDATOR, MatSlideToggleRequiredValidator, MatSliderModule, MAT_SLIDER_VALUE_ACCESSOR, MatSliderChange, MatSlider, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS_FACTORY, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBar, MatSnackBarContainer, MAT_SNACK_BAR_DATA, MatSnackBarConfig, MatSnackBarRef, SimpleSnackBar, matSnackBarAnimations, MatSortModule, MatSortHeader, MAT_SORT_HEADER_INTL_PROVIDER_FACTORY, MatSortHeaderIntl, MAT_SORT_HEADER_INTL_PROVIDER, MatSort, matSortAnimations, MatStepperModule, MatStepLabel, MatStep, MatStepper, MatHorizontalStepper, MatVerticalStepper, MatStepperNext, MatStepperPrevious, MatStepHeader, MAT_STEPPER_INTL_PROVIDER_FACTORY, MatStepperIntl, MAT_STEPPER_INTL_PROVIDER, matStepperAnimations, MatStepperIcon, MatTableModule, MatCellDef, MatHeaderCellDef, MatFooterCellDef, MatColumnDef, MatHeaderCell, MatFooterCell, MatCell, MatTable, MatHeaderRowDef, MatFooterRowDef, MatRowDef, MatHeaderRow, MatFooterRow, MatRow, MatTableDataSource, MatTextColumn, ɵa24, ɵb24, MatInkBar, _MAT_INK_BAR_POSITIONER, MatTabBody, MatTabBodyPortal, MatTabHeader, MatTabLabelWrapper, MatTab, MatTabLabel, MatTabNav, MatTabLink, MatTabContent, MatTabsModule, MatTabChangeEvent, MAT_TABS_CONFIG, MatTabGroup, matTabsAnimations, MatToolbarModule, throwToolbarMixedModesError, MatToolbarRow, MatToolbar, MatTooltipModule, getMatTooltipInvalidPositionError, MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY, MAT_TOOLTIP_DEFAULT_OPTIONS_FACTORY, SCROLL_THROTTLE_MS, TOOLTIP_PANEL_CLASS, MAT_TOOLTIP_SCROLL_STRATEGY, MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY_PROVIDER, MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltip, TooltipComponent, matTooltipAnimations, MatTreeNode, MatTreeNodeDef, MatNestedTreeNode, MatTreeNodePadding, MatTree, MatTreeModule, MatTreeNodeToggle, MatTreeNodeOutlet, MatTreeFlattener, MatTreeFlatDataSource, MatTreeNestedDataSource */
+/*! exports provided: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS_FACTORY, MatAutocompleteSelectedEvent, MAT_AUTOCOMPLETE_DEFAULT_OPTIONS, MatAutocomplete, MatAutocompleteModule, MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY, getMatAutocompleteMissingPanelError, AUTOCOMPLETE_OPTION_HEIGHT, AUTOCOMPLETE_PANEL_HEIGHT, MAT_AUTOCOMPLETE_SCROLL_STRATEGY, MAT_AUTOCOMPLETE_SCROLL_STRATEGY_FACTORY_PROVIDER, MAT_AUTOCOMPLETE_VALUE_ACCESSOR, MatAutocompleteTrigger, MatAutocompleteOrigin, MatBadgeModule, MatBadge, MatBottomSheetModule, MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, MatBottomSheet, MAT_BOTTOM_SHEET_DATA, MatBottomSheetConfig, MatBottomSheetContainer, matBottomSheetAnimations, MatBottomSheetRef, MatButtonModule, MatButton, MatAnchor, MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS, MAT_BUTTON_TOGGLE_GROUP_VALUE_ACCESSOR, MatButtonToggleGroupMultiple, MatButtonToggleChange, MatButtonToggleGroup, MatButtonToggle, MatButtonToggleModule, MatCardContent, MatCardTitle, MatCardSubtitle, MatCardActions, MatCardFooter, MatCardImage, MatCardSmImage, MatCardMdImage, MatCardLgImage, MatCardXlImage, MatCardAvatar, MatCard, MatCardHeader, MatCardTitleGroup, MatCardModule, MAT_CHECKBOX_CONTROL_VALUE_ACCESSOR, TransitionCheckState, MatCheckboxChange, MatCheckbox, MAT_CHECKBOX_CLICK_ACTION, _MatCheckboxRequiredValidatorModule, MatCheckboxModule, MAT_CHECKBOX_REQUIRED_VALIDATOR, MatCheckboxRequiredValidator, MatChipsModule, MatChipListChange, MatChipList, MatChipSelectionChange, MatChipAvatar, MatChipTrailingIcon, MatChip, MatChipRemove, MatChipInput, MAT_CHIPS_DEFAULT_OPTIONS, ɵa1, VERSION, AnimationCurves, AnimationDurations, MatCommonModule, MATERIAL_SANITY_CHECKS, mixinDisabled, mixinColor, mixinDisableRipple, mixinTabIndex, mixinErrorState, mixinInitialized, NativeDateModule, MatNativeDateModule, MAT_DATE_LOCALE_FACTORY, MAT_DATE_LOCALE, MAT_DATE_LOCALE_PROVIDER, DateAdapter, MAT_DATE_FORMATS, NativeDateAdapter, MAT_NATIVE_DATE_FORMATS, ShowOnDirtyErrorStateMatcher, ErrorStateMatcher, MAT_HAMMER_OPTIONS, GestureConfig, setLines, MatLine, MatLineSetter, MatLineModule, MatOptionModule, _countGroupLabelsBeforeOption, _getOptionScrollPosition, MatOptionSelectionChange, MAT_OPTION_PARENT_COMPONENT, MatOption, MatOptgroup, MAT_LABEL_GLOBAL_OPTIONS, MatRippleModule, MAT_RIPPLE_GLOBAL_OPTIONS, MatRipple, RippleState, RippleRef, defaultRippleAnimationConfig, RippleRenderer, MatPseudoCheckboxModule, MatPseudoCheckbox, JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, MatMultiYearView, yearsPerPage, yearsPerRow, MatDatepickerModule, MatCalendarHeader, MatCalendar, MatCalendarCell, MatCalendarBody, MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY, MAT_DATEPICKER_SCROLL_STRATEGY, MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER, MatDatepickerContent, MatDatepicker, matDatepickerAnimations, MAT_DATEPICKER_VALUE_ACCESSOR, MAT_DATEPICKER_VALIDATORS, MatDatepickerInputEvent, MatDatepickerInput, MatDatepickerIntl, MatDatepickerToggleIcon, MatDatepickerToggle, MatMonthView, MatYearView, MatDialogModule, MAT_DIALOG_SCROLL_STRATEGY_FACTORY, MAT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY, MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS, MAT_DIALOG_SCROLL_STRATEGY, MAT_DIALOG_SCROLL_STRATEGY_PROVIDER, MatDialog, throwMatDialogContentAlreadyAttachedError, MatDialogContainer, MatDialogClose, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogConfig, MatDialogRef, matDialogAnimations, MatDivider, MatDividerModule, MatExpansionModule, MatAccordion, MAT_ACCORDION, MAT_EXPANSION_PANEL_DEFAULT_OPTIONS, MatExpansionPanel, MatExpansionPanelActionRow, MatExpansionPanelHeader, MatExpansionPanelDescription, MatExpansionPanelTitle, MatExpansionPanelContent, EXPANSION_PANEL_ANIMATION_TIMING, matExpansionAnimations, MatFormFieldModule, MatError, MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormField, MatFormFieldControl, getMatFormFieldPlaceholderConflictError, getMatFormFieldDuplicatedHintError, getMatFormFieldMissingControlError, MatHint, MatPlaceholder, MatPrefix, MatSuffix, MatLabel, matFormFieldAnimations, ɵa11, MatGridListModule, MatGridList, MatGridTile, MatGridTileText, MatGridAvatarCssMatStyler, MatGridTileHeaderCssMatStyler, MatGridTileFooterCssMatStyler, MatIconModule, MAT_ICON_LOCATION_FACTORY, MAT_ICON_LOCATION, MatIcon, getMatIconNameNotFoundError, getMatIconNoHttpProviderError, getMatIconFailedToSanitizeUrlError, getMatIconFailedToSanitizeLiteralError, ICON_REGISTRY_PROVIDER_FACTORY, MatIconRegistry, ICON_REGISTRY_PROVIDER, MatTextareaAutosize, MatInput, getMatInputUnsupportedTypeError, MatInputModule, MAT_INPUT_VALUE_ACCESSOR, MatListModule, MatNavList, MatList, MatListAvatarCssMatStyler, MatListIconCssMatStyler, MatListSubheaderCssMatStyler, MatListItem, MAT_SELECTION_LIST_VALUE_ACCESSOR, MatSelectionListChange, MatListOption, MatSelectionList, ɵa23, ɵb23, ɵc23, MatMenu, MAT_MENU_DEFAULT_OPTIONS, _MatMenu, _MatMenuBase, MatMenuItem, MatMenuTrigger, MAT_MENU_SCROLL_STRATEGY, MAT_MENU_PANEL, _MatMenuDirectivesModule, MatMenuModule, matMenuAnimations, fadeInItems, transformMenu, MatMenuContent, MatPaginatorModule, PageEvent, MatPaginator, MAT_PAGINATOR_INTL_PROVIDER_FACTORY, MatPaginatorIntl, MAT_PAGINATOR_INTL_PROVIDER, MatProgressBarModule, MAT_PROGRESS_BAR_LOCATION_FACTORY, MAT_PROGRESS_BAR_LOCATION, MatProgressBar, MatProgressSpinner, MatSpinner, MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS, MAT_PROGRESS_SPINNER_DEFAULT_OPTIONS_FACTORY, MatProgressSpinnerModule, MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS_FACTORY, MAT_RADIO_DEFAULT_OPTIONS, MAT_RADIO_GROUP_CONTROL_VALUE_ACCESSOR, MatRadioChange, MatRadioGroup, MatRadioButton, MatSelectModule, MAT_SELECT_SCROLL_STRATEGY_PROVIDER_FACTORY, SELECT_PANEL_MAX_HEIGHT, SELECT_PANEL_PADDING_X, SELECT_PANEL_INDENT_PADDING_X, SELECT_ITEM_HEIGHT_EM, SELECT_MULTIPLE_PANEL_PADDING_X, SELECT_PANEL_VIEWPORT_PADDING, MAT_SELECT_SCROLL_STRATEGY, MAT_SELECT_SCROLL_STRATEGY_PROVIDER, MatSelectChange, MatSelectTrigger, MatSelect, matSelectAnimations, transformPanel, fadeInContent, MatSidenavModule, throwMatDuplicatedDrawerError, MAT_DRAWER_DEFAULT_AUTOSIZE_FACTORY, MAT_DRAWER_DEFAULT_AUTOSIZE, MatDrawerContent, MatDrawer, MatDrawerContainer, MatSidenavContent, MatSidenav, MatSidenavContainer, matDrawerAnimations, _MatSlideToggleRequiredValidatorModule, MatSlideToggleModule, MAT_SLIDE_TOGGLE_VALUE_ACCESSOR, MatSlideToggleChange, MatSlideToggle, MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS, MAT_SLIDE_TOGGLE_REQUIRED_VALIDATOR, MatSlideToggleRequiredValidator, MatSliderModule, MAT_SLIDER_VALUE_ACCESSOR, MatSliderChange, MatSlider, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS_FACTORY, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBar, MatSnackBarContainer, MAT_SNACK_BAR_DATA, MatSnackBarConfig, MatSnackBarRef, SimpleSnackBar, matSnackBarAnimations, MatSortModule, MatSortHeader, MAT_SORT_HEADER_INTL_PROVIDER_FACTORY, MatSortHeaderIntl, MAT_SORT_HEADER_INTL_PROVIDER, MatSort, matSortAnimations, MatStepperModule, MatStepLabel, MatStep, MatStepper, MatHorizontalStepper, MatVerticalStepper, MatStepperNext, MatStepperPrevious, MatStepHeader, MAT_STEPPER_INTL_PROVIDER_FACTORY, MatStepperIntl, MAT_STEPPER_INTL_PROVIDER, matStepperAnimations, MatStepperIcon, MatTableModule, MatCellDef, MatHeaderCellDef, MatFooterCellDef, MatColumnDef, MatHeaderCell, MatFooterCell, MatCell, MatTable, MatHeaderRowDef, MatFooterRowDef, MatRowDef, MatHeaderRow, MatFooterRow, MatRow, MatTableDataSource, MatTextColumn, ɵa24, ɵb24, MatInkBar, _MAT_INK_BAR_POSITIONER, MatTabBody, MatTabBodyPortal, MatTabHeader, MatTabLabelWrapper, MatTab, MatTabLabel, MatTabNav, MatTabLink, MatTabContent, MatTabsModule, MatTabChangeEvent, MAT_TABS_CONFIG, MatTabGroup, matTabsAnimations, MatToolbarModule, throwToolbarMixedModesError, MatToolbarRow, MatToolbar, MatTooltipModule, getMatTooltipInvalidPositionError, MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY, MAT_TOOLTIP_DEFAULT_OPTIONS_FACTORY, SCROLL_THROTTLE_MS, TOOLTIP_PANEL_CLASS, MAT_TOOLTIP_SCROLL_STRATEGY, MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY_PROVIDER, MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltip, TooltipComponent, matTooltipAnimations, MatTreeNode, MatTreeNodeDef, MatNestedTreeNode, MatTreeNodePadding, MatTree, MatTreeModule, MatTreeNodeToggle, MatTreeNodeOutlet, MatTreeFlattener, MatTreeFlatDataSource, MatTreeNestedDataSource */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35177,7 +35227,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "matFormFieldAnimations", function() { return _angular_material_form_field__WEBPACK_IMPORTED_MODULE_13__["matFormFieldAnimations"]; });
 
 /* harmony import */ var _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/material/grid-list */ "./node_modules/@angular/material/esm2015/grid-list.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ɵa3", function() { return _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_14__["ɵa3"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ɵa11", function() { return _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_14__["ɵa11"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MatGridListModule", function() { return _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_14__["MatGridListModule"]; });
 
@@ -35981,14 +36031,15 @@ class MatMenuItem extends _MatMenuItemMixinBase {
     /**
      * Focuses the menu item.
      * @param {?=} origin
+     * @param {?=} options
      * @return {?}
      */
-    focus(origin = 'program') {
+    focus(origin = 'program', options) {
         if (this._focusMonitor) {
-            this._focusMonitor.focusVia(this._getHostElement(), origin);
+            this._focusMonitor.focusVia(this._getHostElement(), origin, options);
         }
         else {
-            this._getHostElement().focus();
+            this._getHostElement().focus(options);
         }
     }
     /**
@@ -36316,7 +36367,10 @@ class _MatMenuBase {
      * @return {?}
      */
     _hovered() {
-        return this._directDescendantItems.changes.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["startWith"])(this._directDescendantItems), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["switchMap"])((/**
+        // Coerce the `changes` property because Angular types it as `Observable<any>`
+        /** @type {?} */
+        const itemChanges = (/** @type {?} */ (this._directDescendantItems.changes));
+        return itemChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["startWith"])(this._directDescendantItems), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_9__["switchMap"])((/**
          * @param {?} items
          * @return {?}
          */
@@ -36835,14 +36889,15 @@ class MatMenuTrigger {
     /**
      * Focuses the menu trigger.
      * @param {?=} origin Source of the menu trigger's focus.
+     * @param {?=} options
      * @return {?}
      */
-    focus(origin = 'program') {
+    focus(origin = 'program', options) {
         if (this._focusMonitor) {
-            this._focusMonitor.focusVia(this._element, origin);
+            this._focusMonitor.focusVia(this._element, origin, options);
         }
         else {
-            this._element.nativeElement.focus();
+            this._element.nativeElement.focus(options);
         }
     }
     /**
@@ -37967,6 +38022,7 @@ class MatProgressBar extends _MatProgressBarMixinBase {
             const scale = this.bufferValue / 100;
             return { transform: `scaleX(${scale})` };
         }
+        return undefined;
     }
     /**
      * @return {?}
@@ -39110,10 +39166,11 @@ class MatRadioButton extends _MatRadioButtonMixinBase {
     get inputId() { return `${this.id || this._uniqueId}-input`; }
     /**
      * Focuses the radio button.
+     * @param {?=} options
      * @return {?}
      */
-    focus() {
-        this._focusMonitor.focusVia(this._inputElement, 'keyboard');
+    focus(options) {
+        this._focusMonitor.focusVia(this._inputElement, 'keyboard', options);
     }
     /**
      * Marks the radio button as needing checking for change detection.
@@ -40575,10 +40632,11 @@ class MatSelect extends _MatSelectMixinBase {
     }
     /**
      * Focuses the select element.
+     * @param {?=} options
      * @return {?}
      */
-    focus() {
-        this._elementRef.nativeElement.focus();
+    focus(options) {
+        this._elementRef.nativeElement.focus(options);
     }
     /**
      * Gets the index of the provided option in the option list.
@@ -42623,10 +42681,11 @@ class MatSlideToggle extends _MatSlideToggleMixinBase {
     }
     /**
      * Focuses the slide-toggle.
+     * @param {?=} options
      * @return {?}
      */
-    focus() {
-        this._focusMonitor.focusVia(this._inputElement, 'keyboard');
+    focus(options) {
+        this._focusMonitor.focusVia(this._inputElement, 'keyboard', options);
     }
     /**
      * Toggles the checked state of the slide-toggle.
@@ -43200,10 +43259,11 @@ class MatSlider extends _MatSliderMixinBase {
     }
     /**
      * set focus to the host element
+     * @param {?=} options
      * @return {?}
      */
-    focus() {
-        this._focusHostElement();
+    focus(options) {
+        this._focusHostElement(options);
     }
     /**
      * blur the host element
@@ -43703,10 +43763,11 @@ class MatSlider extends _MatSliderMixinBase {
      * Focuses the native element.
      * Currently only used to allow a blur event to fire but will be used with keyboard input later.
      * @private
+     * @param {?=} options
      * @return {?}
      */
-    _focusHostElement() {
-        this._elementRef.nativeElement.focus();
+    _focusHostElement(options) {
+        this._elementRef.nativeElement.focus(options);
     }
     /**
      * Blurs the native element.
@@ -50512,7 +50573,7 @@ __webpack_require__.r(__webpack_exports__);
 let LoginServiceService = class LoginServiceService {
     constructor(http) {
         this.http = http;
-        this.api_url = 'http://192.168.1.126/laravel-mls/public/api/';
+        this.api_url = 'http://192.168.1.57/laravel-mls/public/api/';
     }
     save_image(params) {
         return this.http.post(`${this.api_url}movil/image`, params);
