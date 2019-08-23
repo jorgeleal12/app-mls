@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar color=\"success\">\n        <ion-buttons slot=\"start\">\n            <ion-menu-button></ion-menu-button>\n        </ion-buttons>\n\n        <ion-title text-center class=\"center\">Fotografias</ion-title>\n\n        <ion-buttons slot=\"end\">\n            <ion-button (click)=\"send_image()\">\n                <ion-icon slot=\"icon-only\" name=\"cloud-upload\"></ion-icon>\n            </ion-button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n    <!--div-->\n    <section class=\"content-images\">\n        <ion-card class=\"add-img\" *ngFor=\"let photo of photos; let i = i; index\" (click)=\"choosePicture(photo)\">\n            <ion-card-content>\n                <img [src]=\"photo.imagenes\" class=\"img\" width=\"200\" height=\"100\" />\n                <ion-icon name=\"add-circle\" [hidden]=\"photo.hidden\" color=\"light\" size=\"large\"></ion-icon>\n            </ion-card-content>\n        </ion-card>\n\n        <ion-card class=\"add-img add-pdf\">\n            <ion-card-content>\n                <ion-icon name=\"document\" color=\"light\" size=\"large\"></ion-icon>\n            </ion-card-content>\n        </ion-card>\n\n        <canvas #layout hidden></canvas>\n    </section>\n\n</ion-content>"
+module.exports = "<ion-header>\n    <ion-toolbar color=\"success\">\n        <ion-buttons slot=\"start\">\n            <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n        </ion-buttons>\n\n        <ion-title text-center class=\"center\">Fotografias</ion-title>\n\n        <ion-buttons slot=\"end\">\n            <ion-button (click)=\"send_image()\">\n                <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n            </ion-button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n    <!--div-->\n    <section class=\"content-images\">\n        <ion-card class=\"add-img\" *ngFor=\"let photo of photos; let i = i; index\" (click)=\"choosePicture(photo)\">\n            <ion-card-content>\n                <img [src]=\"photo.imagenes\" class=\"img\" width=\"200\" height=\"100\" [hidden]=\"photo.hidden_image\" />\n                <ion-icon name=\"add-circle\" [hidden]=\"photo.hidden\" color=\"light\" size=\"large\"></ion-icon>\n\n                <span class=\"span\" [hidden]=\"photo.send\" *ngIf=\"photo.state == true\">\n                    <ion-icon class=\"icono\" name=\"md-checkmark-circle\"></ion-icon>\n                </span>\n\n                <span class=\"span\" [hidden]=\"photo.error\" *ngIf=\"photo.state == false\">\n                    <ion-icon class=\"icono1\" name=\"md-close-circle\"></ion-icon>\n                </span>\n            </ion-card-content>\n        </ion-card>\n\n        <ion-card class=\"add-img add-pdf\">\n            <ion-card-content>\n                <ion-icon name=\"document\" color=\"light\" size=\"large\"></ion-icon>\n            </ion-card-content>\n        </ion-card>\n\n        <canvas #layout hidden></canvas>\n    </section>\n\n</ion-content>"
 
 /***/ }),
 
@@ -69,7 +69,7 @@ var ServicioPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".center {\n  color: rgba(35, 35, 35, 0.65) !important;\n}\n\n.content-images {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n          align-items: center;\n  box-sizing: border-box;\n  flex-wrap: wrap;\n}\n\n.content-images .add-img {\n  width: 30%;\n  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;\n  margin: 0.5em 0.5em;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n  background: -webkit-gradient(linear, left top, right top, from(#7bc228), to(#80c252));\n  background: linear-gradient(to right, #7bc228, #80c252);\n}\n\n.content-images .img {\n  width: 100%;\n  height: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi92YXIvd3d3L2h0bWwvYXBwLW1scy9zcmMvYXBwL3NlcnZpY2lvL3NlcnZpY2lvLnBhZ2Uuc2NzcyIsInNyYy9hcHAvc2VydmljaW8vc2VydmljaW8ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usd0NBQUE7QUNDRjs7QURFQTtFQUNFLG9CQUFBO0VBQUEsYUFBQTtFQUNBLHVCQUFBO1VBQUEsMkJBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0VBQ0Esc0JBQUE7RUFDQSxlQUFBO0FDQ0Y7O0FEQ0U7RUFDRSxVQUFBO0VBQ0EsOERBQUE7RUFDQSxtQkFBQTtFQUNBLG9CQUFBO0VBQUEsYUFBQTtFQUNBLHdCQUFBO1VBQUEsdUJBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0VBQ0EscUZBQUE7RUFBQSx1REFBQTtBQ0NKOztBRENFO0VBQ0UsV0FBQTtFQUNBLFlBQUE7RUFFQSxvQkFBQTtFQUFBLGFBQUE7RUFDQSx3QkFBQTtVQUFBLHVCQUFBO0VBQ0EseUJBQUE7VUFBQSxtQkFBQTtBQ0FKIiwiZmlsZSI6InNyYy9hcHAvc2VydmljaW8vc2VydmljaW8ucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNlbnRlciB7XG4gIGNvbG9yOiByZ2JhKDM1LCAzNSwgMzUsIDAuNjUpICFpbXBvcnRhbnQ7XG59XG5cbi5jb250ZW50LWltYWdlcyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogZmxleC1zdGFydDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgZmxleC13cmFwOiB3cmFwO1xuXG4gICYgLmFkZC1pbWcge1xuICAgIHdpZHRoOiAzMCU7XG4gICAgYm94LXNoYWRvdzogMCAuMTI1cmVtIC4yNXJlbSByZ2JhKDAsIDAsIDAsIC4wNzUpICFpbXBvcnRhbnQ7XG4gICAgbWFyZ2luOiAuNWVtIC41ZW07XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byByaWdodCwgIzdiYzIyOCwgIzgwYzI1Mik7XG4gIH1cbiAgJiAuaW1nIHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBoZWlnaHQ6IDEwMCU7XG4gIC8vICBtYXJnaW46IDFlbSAuNWVtO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgIC8vIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byByaWdodCwgIzdiYzIyOCwgIzgwYzI1Mik7XG4gIH1cbn1cbiIsIi5jZW50ZXIge1xuICBjb2xvcjogcmdiYSgzNSwgMzUsIDM1LCAwLjY1KSAhaW1wb3J0YW50O1xufVxuXG4uY29udGVudC1pbWFnZXMge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtc3RhcnQ7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIGZsZXgtd3JhcDogd3JhcDtcbn1cbi5jb250ZW50LWltYWdlcyAuYWRkLWltZyB7XG4gIHdpZHRoOiAzMCU7XG4gIGJveC1zaGFkb3c6IDAgMC4xMjVyZW0gMC4yNXJlbSByZ2JhKDAsIDAsIDAsIDAuMDc1KSAhaW1wb3J0YW50O1xuICBtYXJnaW46IDAuNWVtIDAuNWVtO1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjN2JjMjI4LCAjODBjMjUyKTtcbn1cbi5jb250ZW50LWltYWdlcyAuaW1nIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59Il19 */"
+module.exports = ".center {\n  color: rgba(255, 255, 255, 0.93) !important;\n}\n\n.content-images {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: start;\n          justify-content: flex-start;\n  -webkit-box-align: center;\n          align-items: center;\n  box-sizing: border-box;\n  flex-wrap: wrap;\n}\n\n.content-images .add-img {\n  width: 28%;\n  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;\n  margin: 0.5em 0.5em;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n  background: -webkit-gradient(linear, left top, right top, from(#7bc228), to(#80c252));\n  background: linear-gradient(to right, #7bc228, #80c252);\n}\n\n.content-images .img {\n  width: 100%;\n  height: 100%;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n}\n\n.icono {\n  color: lime !important;\n}\n\n.icono1 {\n  color: red !important;\n}\n\n.span2 {\n  display: block;\n  width: 20px;\n  height: 20px;\n  position: absolute;\n  bottom: 0;\n  right: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi92YXIvd3d3L2h0bWwvYXBwLW1scy9zcmMvYXBwL3NlcnZpY2lvL3NlcnZpY2lvLnBhZ2Uuc2NzcyIsInNyYy9hcHAvc2VydmljaW8vc2VydmljaW8ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsMkNBQUE7QUNDRjs7QURFQTtFQUNFLG9CQUFBO0VBQUEsYUFBQTtFQUNBLHVCQUFBO1VBQUEsMkJBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0VBQ0Esc0JBQUE7RUFDQSxlQUFBO0FDQ0Y7O0FEQ0U7RUFDRSxVQUFBO0VBQ0EsOERBQUE7RUFDQSxtQkFBQTtFQUNBLG9CQUFBO0VBQUEsYUFBQTtFQUNBLHdCQUFBO1VBQUEsdUJBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0VBQ0EscUZBQUE7RUFBQSx1REFBQTtBQ0NKOztBRENFO0VBQ0UsV0FBQTtFQUNBLFlBQUE7RUFFQSxvQkFBQTtFQUFBLGFBQUE7RUFDQSx3QkFBQTtVQUFBLHVCQUFBO0VBQ0EseUJBQUE7VUFBQSxtQkFBQTtBQ0FKOztBREtBO0VBQ0Usc0JBQUE7QUNGRjs7QURJQTtFQUNFLHFCQUFBO0FDREY7O0FER0E7RUFDRSxjQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxRQUFBO0FDQUYiLCJmaWxlIjoic3JjL2FwcC9zZXJ2aWNpby9zZXJ2aWNpby5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2VudGVyIHtcbiAgY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC45MykgIWltcG9ydGFudFxufVxuXG4uY29udGVudC1pbWFnZXMge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGZsZXgtc3RhcnQ7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIGZsZXgtd3JhcDogd3JhcDtcblxuICAmIC5hZGQtaW1nIHtcbiAgICB3aWR0aDogMjglO1xuICAgIGJveC1zaGFkb3c6IDAgLjEyNXJlbSAuMjVyZW0gcmdiYSgwLCAwLCAwLCAuMDc1KSAhaW1wb3J0YW50O1xuICAgIG1hcmdpbjogLjVlbSAuNWVtO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM3YmMyMjgsICM4MGMyNTIpO1xuICB9XG4gICYgLmltZyB7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAvLyAgbWFyZ2luOiAxZW0gLjVlbTtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAvLyBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM3YmMyMjgsICM4MGMyNTIpO1xuICB9XG59XG5cbi5pY29ubyB7XG4gIGNvbG9yOiBsaW1lIWltcG9ydGFudDtcbn1cbi5pY29ubzEge1xuICBjb2xvcjogcmVkIWltcG9ydGFudDtcbn1cbi5zcGFuMiB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICB3aWR0aDogMjBweDtcbiAgaGVpZ2h0OiAyMHB4O1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGJvdHRvbTogMDtcbiAgcmlnaHQ6IDA7XG59IiwiLmNlbnRlciB7XG4gIGNvbG9yOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuOTMpICFpbXBvcnRhbnQ7XG59XG5cbi5jb250ZW50LWltYWdlcyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogZmxleC1zdGFydDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgZmxleC13cmFwOiB3cmFwO1xufVxuLmNvbnRlbnQtaW1hZ2VzIC5hZGQtaW1nIHtcbiAgd2lkdGg6IDI4JTtcbiAgYm94LXNoYWRvdzogMCAwLjEyNXJlbSAwLjI1cmVtIHJnYmEoMCwgMCwgMCwgMC4wNzUpICFpbXBvcnRhbnQ7XG4gIG1hcmdpbjogMC41ZW0gMC41ZW07XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM3YmMyMjgsICM4MGMyNTIpO1xufVxuLmNvbnRlbnQtaW1hZ2VzIC5pbWcge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuLmljb25vIHtcbiAgY29sb3I6IGxpbWUgIWltcG9ydGFudDtcbn1cblxuLmljb25vMSB7XG4gIGNvbG9yOiByZWQgIWltcG9ydGFudDtcbn1cblxuLnNwYW4yIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIHdpZHRoOiAyMHB4O1xuICBoZWlnaHQ6IDIwcHg7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm90dG9tOiAwO1xuICByaWdodDogMDtcbn0iXX0= */"
 
 /***/ }),
 
@@ -90,6 +90,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/file-transfer/ngx */ "./node_modules/@ionic-native/file-transfer/ngx/index.js");
 /* harmony import */ var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/file/ngx */ "./node_modules/@ionic-native/file/ngx/index.js");
 /* harmony import */ var _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/file-chooser/ngx */ "./node_modules/@ionic-native/file-chooser/ngx/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
 
 
 
@@ -98,27 +100,43 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ServicioPage = /** @class */ (function () {
-    function ServicioPage(route, router, imagePicker, transfer, file, fileChooser) {
+    function ServicioPage(route, router, imagePicker, transfer, file, loadingController, fileChooser) {
         var _this = this;
         this.route = route;
         this.router = router;
         this.imagePicker = imagePicker;
         this.transfer = transfer;
         this.file = file;
+        this.loadingController = loadingController;
         this.fileChooser = fileChooser;
         this.photos = [];
         this.win = window;
+        this.response = true;
+        this.falso = true;
         this.route.queryParams.subscribe(function (params) {
             _this.data = _this.router.getCurrentNavigation().extras;
-            console.log(_this.data);
-            for (var index = 0; index < _this.data.quantity; index++) {
+            for (var index = 0; index < _this.data.queryParams.photos_service.quantity; index++) {
                 _this.photos.push({
                     imagenes: '',
                     id: index,
                     hidden: false,
-                    name_photo: _this.data.name_photo
+                    name_photo: _this.data.queryParams.photos_service.name_photo,
+                    hidden_image: true,
+                    idodi: _this.data.queryParams.data.idodi,
+                    tipe: _this.data.queryParams.photos_service.photos_idphotos,
+                    contract_idcontract: _this.data.queryParams.data.contract_idcontract,
+                    state: true,
+                    state_send: false,
+                    send: true,
+                    error: true,
                 });
             }
+        });
+        this.file.checkDir(this.file.externalRootDirectory, 'MLS').then(function (_) {
+            return console.log('exist');
+        }).catch(function (err) {
+            _this.dir();
+            console.log('no exist');
         });
     }
     ServicioPage.prototype.ngOnInit = function () {
@@ -142,15 +160,21 @@ var ServicioPage = /** @class */ (function () {
             // this.image = _imagePath;
             var path = _this.win.Ionic.WebView.convertFileSrc(_imagePath[0]);
             photo.imagenes = path;
-            console.log(_imagePath[0]);
-            console.log(photo);
+            // console.log(_imagePath[0])
+            // console.log(photo)
             photo.hidden = true;
+            photo.hidden_image = false;
             // for (var i = 0; i < this.image.length; i++) {
             // }
         }, function (err) { });
     };
-    ServicioPage.prototype.onLoadimage = function (img, id, name_photo) {
+    ServicioPage.prototype.onLoadimage = function (img, id, name_photo, idodi, tipe, contract_idcontract) {
         var _this = this;
+        var params = {
+            idodi: idodi,
+            tipe: tipe,
+            contract_idcontract: contract_idcontract
+        };
         var canvas = this.canvasRef.nativeElement;
         var context = canvas.getContext("2d");
         var source = new Image();
@@ -164,7 +188,7 @@ var ServicioPage = /** @class */ (function () {
             context.font = "50px impact";
             context.textAlign = "right";
             context.fillStyle = "white";
-            context.fillText(name_photo, 600, 150);
+            context.fillText(name_photo, 600, 100);
             var quality = [1.0];
             var imagen = canvas.toDataURL("image/jpeg");
             var fileTransfer = _this.transfer.create();
@@ -174,33 +198,42 @@ var ServicioPage = /** @class */ (function () {
                 fileKey: "file",
                 fileName: divisiones[1],
                 headers: {},
-                params: { params: _this.data }
+                params: { params: params }
             };
             fileTransfer
-                .upload(imagen, "http://192.168.1.57/laravel-mls/public/api/odi/send_image_movil", options)
+                .upload(imagen, "http://190.0.33.166:40/laravel-mls/public/api/odi/send_image_movil", options)
                 .then(function (data) {
-                // var json = JSON.parse(data.response);
-                // if (json.response == true) {
-                // this.respuesta = false;
-                // this.rowDataHomeForm[id].state = true;
-                // } else {
-                // this.rowDataHomeForm[id].state = false;
-                // this.writeFile(imagen, "My Picture", divisiones[1]);
-                // this.database
-                //   .CreateConse(
-                //     this.data.consecutive,
-                //     this.file.externalRootDirectory + "SIP/" + divisiones[1],
-                //     this.pedido,
-                //     divisiones[1]
-                //   )
-                //   .then(
-                //     dataset => {
-                //       console.log(dataset);
-                //     },
-                //     error => { }
-                //   );
-                // this.falso = false;
-                // }
+                var json = JSON.parse(data.response);
+                if (json.response == true) {
+                    // this.response = false;
+                    _this.photos[id].state = true;
+                    _this.photos[id].state_send = true;
+                    _this.photos[id].send = false;
+                    // console.log(this.photos[id].state)
+                }
+                else {
+                    // this.falso = false;
+                    _this.photos[id].state = false;
+                    _this.photos[id].state_send = true;
+                    _this.photos[id].error = false;
+                    // console.log(this.file.dataDirectory)
+                    // console.log(this.file.externalDataDirectory)
+                    _this.writeFile(imagen, "My Picture", divisiones[1]);
+                    // this.database
+                    //   .CreateConse(
+                    //     this.data.consecutive,
+                    //     this.file.externalRootDirectory + "SIP/" + divisiones[1],
+                    //     this.pedido,
+                    //     divisiones[1]
+                    //   )
+                    //   .then(
+                    //     dataset => {
+                    //       console.log(dataset);
+                    //     },
+                    //     error => { }
+                    //   );
+                    _this.falso = false;
+                }
             }, function (err) {
                 console.log(err.body);
                 // this.falso = false;
@@ -224,14 +257,22 @@ var ServicioPage = /** @class */ (function () {
         source.src = img;
     };
     ServicioPage.prototype.send_image = function () {
+        this.showLoader();
         // let loader = this.loadingCtrl.create({
         //   content: "Please wait..."
         // });
         // loader.present();
-        console.log(1);
         for (var _i = 0, _a = this.photos; _i < _a.length; _i++) {
             var data = _a[_i];
-            this.onLoadimage(data.imagenes, data.id, data.name_photo);
+            if (data.imagenes == '') {
+                // console.log(1)
+            }
+            else {
+                //console.log(2)
+                if (data.state_send == false) {
+                    this.onLoadimage(data.imagenes, data.id, data.name_photo, data.idodi, data.tipe, data.contract_idcontract);
+                }
+            }
         }
         // loader.dismiss();
         // this.database.GetAllUsers(this.consecutivo).then(
@@ -243,12 +284,88 @@ var ServicioPage = /** @class */ (function () {
         // this.image = [];
         //let reader = new FileReader();
     };
+    ServicioPage.prototype.showLoader = function () {
+        this.loaderToShow = this.loadingController.create({
+            message: 'Enviando'
+        }).then(function (res) {
+            res.present();
+            res.onDidDismiss().then(function (dis) {
+                console.log('Loading');
+            });
+        });
+        this.hideLoader();
+    };
+    ServicioPage.prototype.hideLoader = function () {
+        var _this = this;
+        setTimeout(function () {
+            _this.loadingController.dismiss();
+        }, 4000);
+    };
+    ServicioPage.prototype.back = function () {
+        this.router.navigateByUrl('menu/menu/servicio');
+    };
+    //////////////////////////////////////////////////////base 64 store///////////////////////////////////////////////////////////////////////////////////////////
+    //here is the method is used to write a file in storage
+    ServicioPage.prototype.writeFile = function (base64Data, folderName, fileName) {
+        var content = this.getContentbase64Data(base64Data);
+        var contentType = this.getContentType(base64Data);
+        var DataBlob = this.base64toBlob(content, contentType);
+        // here iam mentioned this line this.file.externalRootDirectory is a native pre-defined file path storage. You can change a file path whatever pre-defined method.
+        var filePath = this.file.externalRootDirectory + "MLS/";
+        this.file
+            .writeFile(filePath, fileName, DataBlob, contentType)
+            .then(function (success) {
+            console.log("File Writed Successfully", success);
+        })
+            .catch(function (err) {
+            console.log("Error Occured While Writing File", err);
+        });
+    };
+    //here is the method is used to get content type of an bas64 data
+    ServicioPage.prototype.getContentType = function (base64Data) {
+        var block = base64Data.split(";");
+        var contentType = block[0].split(":")[1];
+        return contentType;
+    };
+    ServicioPage.prototype.getContentbase64Data = function (base64Data) {
+        var block = base64Data.split(";");
+        var contentType = block[1].split(",")[1];
+        return contentType;
+    };
+    //here is the method is used to convert base64 data to blob data
+    ServicioPage.prototype.base64toBlob = function (b64Data, contentType) {
+        contentType = contentType || "";
+        var sliceSize = 512;
+        var byteCharacters = atob(b64Data);
+        var byteArrays = [];
+        for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            var slice = byteCharacters.slice(offset, offset + sliceSize);
+            var byteNumbers = new Array(slice.length);
+            for (var i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+            var byteArray = new Uint8Array(byteNumbers);
+            byteArrays.push(byteArray);
+        }
+        var blob = new Blob(byteArrays, {
+            type: contentType
+        });
+        return blob;
+    };
+    ServicioPage.prototype.dir = function () {
+        this.file.createDir(this.file.externalRootDirectory, 'MLS', false).then(function (response) {
+            console.log('Directory create' + response);
+        }).catch(function (err) {
+            console.log('Directory no create' + JSON.stringify(err));
+        });
+    };
     ServicioPage.ctorParameters = function () { return [
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
         { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
         { type: _ionic_native_image_picker_ngx__WEBPACK_IMPORTED_MODULE_3__["ImagePicker"] },
         { type: _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_4__["FileTransfer"] },
         { type: _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_5__["File"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["LoadingController"] },
         { type: _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_6__["FileChooser"] }
     ]; };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -264,6 +381,7 @@ var ServicioPage = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _ionic_native_image_picker_ngx__WEBPACK_IMPORTED_MODULE_3__["ImagePicker"],
             _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_4__["FileTransfer"],
             _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_5__["File"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["LoadingController"],
             _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_6__["FileChooser"]])
     ], ServicioPage);
     return ServicioPage;

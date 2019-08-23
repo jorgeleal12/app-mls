@@ -54,13 +54,12 @@
   height: 0;
   overflow: hidden;
   padding: 0 .5em;
-  transition: all .6s;
+  transition: max-height 0.4s ease-in-out;
 
   &.expandable {
+    transition: max-height 0.4s ease-in-out;
+    overflow: hidden;
     height: auto;
-    padding-top: .5em;
-    padding-bottom: .5em;
-    transition: all .6s;
   }
 }
 

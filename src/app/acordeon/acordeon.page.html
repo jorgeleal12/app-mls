@@ -137,7 +137,7 @@
 
         </section>
         <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded3')}">
-            otro formulario
+
         </section>
 
         <section class="acc-section" (click)="setStep('expanded4')">
@@ -155,7 +155,7 @@
 
         </section>
         <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded4')}">
-            otro formulario
+
         </section>
 
         <section class="acc-section" (click)="setStep('expanded5')">
@@ -173,7 +173,7 @@
 
         </section>
         <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded5')}">
-            otro formulario
+
         </section>
 
 
@@ -181,13 +181,13 @@
             <div class="img">
                 <img src="../../assets/img/twotone_insert_photo_black_48dp.png" alt="">
             </div>
-            <div class="info">
+            <div class="info" (click)="photo_service()">
                 <p class="title">Fotografias</p>
                 <p class="subtitle">Fotografias del servicio</p>
 
             </div>
             <div class="icon">
-                <ion-icon name="{{getIconName('expanded6')}}" color="medium" (click)="photo_service()"></ion-icon>
+                <ion-icon name="{{getIconName('expanded6')}}" color="medium"></ion-icon>
             </div>
 
         </section>

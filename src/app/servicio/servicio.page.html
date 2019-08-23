@@ -1,14 +1,14 @@
 <ion-header>
     <ion-toolbar color="success">
         <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
+            <ion-icon slot="icon-only" name="arrow-back" (click)="back()"></ion-icon>
         </ion-buttons>
 
         <ion-title text-center class="center">Fotografias</ion-title>
 
         <ion-buttons slot="end">
             <ion-button (click)="send_image()">
-                <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
+                <ion-icon slot="icon-only" name="save"></ion-icon>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
@@ -19,8 +19,16 @@
     <section class="content-images">
         <ion-card class="add-img" *ngFor="let photo of photos; let i = i; index" (click)="choosePicture(photo)">
             <ion-card-content>
-                <img [src]="photo.imagenes" class="img" width="200" height="100" />
+                <img [src]="photo.imagenes" class="img" width="200" height="100" [hidden]="photo.hidden_image" />
                 <ion-icon name="add-circle" [hidden]="photo.hidden" color="light" size="large"></ion-icon>
+
+                <span class="span" [hidden]="photo.send" *ngIf="photo.state == true">
+                    <ion-icon class="icono" name="md-checkmark-circle"></ion-icon>
+                </span>
+
+                <span class="span" [hidden]="photo.error" *ngIf="photo.state == false">
+                    <ion-icon class="icono1" name="md-close-circle"></ion-icon>
+                </span>
             </ion-card-content>
         </ion-card>
 

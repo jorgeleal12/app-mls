@@ -1,5 +1,5 @@
 .center {
-  color: rgba(35, 35, 35, 0.65) !important;
+  color: rgba(255, 255, 255, 0.93) !important
 }
 
 .content-images {
@@ -10,7 +10,7 @@
   flex-wrap: wrap;
 
   & .add-img {
-    width: 30%;
+    width: 28%;
     box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
     margin: .5em .5em;
     display: flex;
@@ -27,4 +27,19 @@
     align-items: center;
    // background: linear-gradient(to right, #7bc228, #80c252);
   }
+}
+
+.icono {
+  color: lime!important;
+}
+.icono1 {
+  color: red!important;
+}
+.span2 {
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

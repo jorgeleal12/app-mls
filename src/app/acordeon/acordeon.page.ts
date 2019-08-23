@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { LoginServiceService } from '../Services/login-service.service';
@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms'; @Component({
 })
 export class AcordeonPage implements OnInit {
     step = { sectionName: null };
-    data: any;
+    public data: any;
 
     priority
     sede
@@ -42,7 +42,7 @@ export class AcordeonPage implements OnInit {
         });
 
         this.coords();
-        //this.photo_service();
+
     }
 
     ngOnInit(): void {
@@ -103,6 +103,13 @@ export class AcordeonPage implements OnInit {
 
     photos_add(photos_service) {
 
-        this.router.navigate(['menu/menu/fotografias'], photos_service);
+        let navigationExtras: NavigationExtras = {
+            queryParams: {
+                photos_service: photos_service,
+                data: this.data
+            }
+        };
+
+        this.router.navigate(['menu/menu/fotografias'], navigationExtras);
     }
 }

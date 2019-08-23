@@ -5,6 +5,7 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { FileChooser } from '@ionic-native/file-chooser/ngx';
+import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-servicio',
   templateUrl: './servicio.page.html',
@@ -16,33 +17,47 @@ export class ServicioPage implements OnInit {
   photos = [];
   private win: any = window;
   image
-
+  public response = true;
+  public falso = true;
+  loaderToShow: any;
 
 
   @ViewChild('layout', { static: true }) canvasRef;
   constructor(private route: ActivatedRoute, private router: Router, private imagePicker: ImagePicker,
     public transfer: FileTransfer,
     public file: File,
-
+    public loadingController: LoadingController,
     private fileChooser: FileChooser,
   ) {
 
     this.route.queryParams.subscribe(params => {
       this.data = this.router.getCurrentNavigation().extras
-      console.log(this.data)
-      for (let index = 0; index < this.data.quantity; index++) {
+      for (let index = 0; index < this.data.queryParams.photos_service.quantity; index++) {
         this.photos.push({
-          imagenes: '',
+          imagenes: '',//'http://192.168.1.126/laravel-mls/public/public/odi/images/MLS/MEDELLIN/79/VsSuRyL4USikUZE.jpg',
           id: index,
           hidden: false,
-          name_photo: this.data.name_photo
-
+          name_photo: this.data.queryParams.photos_service.name_photo,
+          hidden_image: true,
+          idodi: this.data.queryParams.data.idodi,
+          tipe: this.data.queryParams.photos_service.photos_idphotos,
+          contract_idcontract: this.data.queryParams.data.contract_idcontract,
+          state: true,
+          state_send: false,
+          send: true,
+          error: true
+          ,
         });
       }
     });
 
 
-
+    this.file.checkDir(this.file.externalRootDirectory, 'MLS').then(_ =>
+      console.log('exist')
+    ).catch(err => {
+      this.dir();
+      console.log('no exist');
+    });
 
 
   }
@@ -75,9 +90,10 @@ export class ServicioPage implements OnInit {
 
         let path = this.win.Ionic.WebView.convertFileSrc(_imagePath[0]);
         photo.imagenes = path;
-        console.log(_imagePath[0])
-        console.log(photo)
+        // console.log(_imagePath[0])
+        // console.log(photo)
         photo.hidden = true
+        photo.hidden_image = false
         // for (var i = 0; i < this.image.length; i++) {
 
         // }
@@ -87,7 +103,13 @@ export class ServicioPage implements OnInit {
   }
 
 
-  onLoadimage(img, id, name_photo) {
+  onLoadimage(img, id, name_photo, idodi, tipe, contract_idcontract) {
+
+    let params = {
+      idodi: idodi,
+      tipe: tipe,
+      contract_idcontract: contract_idcontract
+    }
     let canvas = this.canvasRef.nativeElement;
     let context = canvas.getContext("2d");
 
@@ -115,42 +137,51 @@ export class ServicioPage implements OnInit {
         fileKey: "file",
         fileName: divisiones[1],
         headers: {},
-        params: { params: this.data }
+        params: { params: params }
       };
 
       fileTransfer
         .upload(
           imagen,
-          "http://192.168.1.57/laravel-mls/public/api/odi/send_image_movil",
+          "http://190.0.33.166:40/laravel-mls/public/api/odi/send_image_movil",
           options
         )
         .then(
           data => {
-            // var json = JSON.parse(data.response);
+            var json = JSON.parse(data.response);
 
-            // if (json.response == true) {
-            // this.respuesta = false;
-            // this.rowDataHomeForm[id].state = true;
-            // } else {
-            // this.rowDataHomeForm[id].state = false;
-            // this.writeFile(imagen, "My Picture", divisiones[1]);
+            if (json.response == true) {
+              // this.response = false;
+              this.photos[id].state = true;
+              this.photos[id].state_send = true;
+              this.photos[id].send = false;
+              // console.log(this.photos[id].state)
+            } else {
+              // this.falso = false;
+              this.photos[id].state = false;
+              this.photos[id].state_send = true;
+              this.photos[id].error = false;
 
-            // this.database
-            //   .CreateConse(
-            //     this.data.consecutive,
-            //     this.file.externalRootDirectory + "SIP/" + divisiones[1],
-            //     this.pedido,
-            //     divisiones[1]
-            //   )
-            //   .then(
-            //     dataset => {
-            //       console.log(dataset);
-            //     },
-            //     error => { }
-            //   );
+              // console.log(this.file.dataDirectory)
+              // console.log(this.file.externalDataDirectory)
+              this.writeFile(imagen, "My Picture", divisiones[1]);
 
-            // this.falso = false;
-            // }
+              // this.database
+              //   .CreateConse(
+              //     this.data.consecutive,
+              //     this.file.externalRootDirectory + "SIP/" + divisiones[1],
+              //     this.pedido,
+              //     divisiones[1]
+              //   )
+              //   .then(
+              //     dataset => {
+              //       console.log(dataset);
+              //     },
+              //     error => { }
+              //   );
+
+              this.falso = false;
+            }
           },
           err => {
             console.log(err.body);
@@ -179,13 +210,26 @@ export class ServicioPage implements OnInit {
 
 
   send_image() {
+    this.showLoader()
+
     // let loader = this.loadingCtrl.create({
     //   content: "Please wait..."
     // });
     // loader.present();
-    console.log(1)
+
     for (let data of this.photos) {
-      this.onLoadimage(data.imagenes, data.id, data.name_photo);
+
+      if (data.imagenes == '') {
+        // console.log(1)
+
+      } else {
+        //console.log(2)
+        if (data.state_send == false) {
+          this.onLoadimage(data.imagenes, data.id, data.name_photo, data.idodi, data.tipe, data.contract_idcontract);
+        }
+
+      }
+
     }
 
     // loader.dismiss();
@@ -198,5 +242,91 @@ export class ServicioPage implements OnInit {
     // this.image = [];
 
     //let reader = new FileReader();
+  }
+
+
+  showLoader() {
+    this.loaderToShow = this.loadingController.create({
+      message: 'Enviando'
+    }).then((res) => {
+      res.present();
+
+      res.onDidDismiss().then((dis) => {
+        console.log('Loading');
+      });
+    });
+    this.hideLoader();
+  }
+
+  hideLoader() {
+    setTimeout(() => {
+      this.loadingController.dismiss();
+    }, 4000);
+  }
+
+
+  back() {
+    this.router.navigateByUrl('menu/menu/servicio');
+  }
+
+  //////////////////////////////////////////////////////base 64 store///////////////////////////////////////////////////////////////////////////////////////////
+
+
+  //here is the method is used to write a file in storage
+  public writeFile(base64Data: any, folderName: string, fileName: any) {
+    let content = this.getContentbase64Data(base64Data);
+    let contentType = this.getContentType(base64Data);
+    let DataBlob = this.base64toBlob(content, contentType);
+    // here iam mentioned this line this.file.externalRootDirectory is a native pre-defined file path storage. You can change a file path whatever pre-defined method.
+    let filePath = this.file.externalRootDirectory + "MLS/";
+    this.file
+      .writeFile(filePath, fileName, DataBlob, contentType)
+      .then(success => {
+        console.log("File Writed Successfully", success);
+      })
+      .catch(err => {
+        console.log("Error Occured While Writing File", err);
+      });
+  }
+  //here is the method is used to get content type of an bas64 data
+  public getContentType(base64Data: any) {
+    let block = base64Data.split(";");
+    let contentType = block[0].split(":")[1];
+    return contentType;
+  }
+
+  public getContentbase64Data(base64Data: any) {
+    let block = base64Data.split(";");
+    let contentType = block[1].split(",")[1];
+    return contentType;
+  }
+  //here is the method is used to convert base64 data to blob data
+  public base64toBlob(b64Data, contentType) {
+    contentType = contentType || "";
+    let sliceSize = 512;
+    let byteCharacters = atob(b64Data);
+    let byteArrays = [];
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      let slice = byteCharacters.slice(offset, offset + sliceSize);
+      let byteNumbers = new Array(slice.length);
+      for (let i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+      var byteArray = new Uint8Array(byteNumbers);
+      byteArrays.push(byteArray);
+    }
+    let blob = new Blob(byteArrays, {
+      type: contentType
+    });
+    return blob;
+  }
+
+
+  dir() {
+    this.file.createDir(this.file.externalRootDirectory, 'MLS', false).then(response => {
+      console.log('Directory create' + response);
+    }).catch(err => {
+      console.log('Directory no create' + JSON.stringify(err));
+    })
   }
 }

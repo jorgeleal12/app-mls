@@ -30,7 +30,7 @@ __webpack_require__.r(__webpack_exports__);
 var LoginServiceService = /** @class */ (function () {
     function LoginServiceService(http) {
         this.http = http;
-        this.api_url = 'http://192.168.1.57/laravel-mls/public/api/';
+        this.api_url = 'http://190.0.33.166:40/laravel-mls/public/api/';
     }
     LoginServiceService.prototype.save_image = function (params) {
         return this.http.post(this.api_url + "movil/image", params);
