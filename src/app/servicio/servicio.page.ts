@@ -52,12 +52,12 @@ export class ServicioPage implements OnInit {
     });
 
 
-    this.file.checkDir(this.file.externalRootDirectory, 'MLS').then(_ =>
-      console.log('exist')
-    ).catch(err => {
-      this.dir();
-      console.log('no exist');
-    });
+    // this.file.checkDir(this.file.externalRootDirectory, 'MLS').then(_ =>
+    //   console.log('exist')
+    // ).catch(err => {
+    //   this.dir();
+    //   console.log('no exist');
+    // });
 
 
   }
@@ -78,8 +78,8 @@ export class ServicioPage implements OnInit {
       message: "select 1",
       maximumImagesCount: 1,
       outType: 0,
-      width: 1920,
-      height: 1080,
+      width: 1080,
+      height: 720,
       quality: 100
     };
 

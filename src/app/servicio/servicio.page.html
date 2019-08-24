@@ -17,19 +17,25 @@
 <ion-content padding>
     <!--div-->
     <section class="content-images">
-        <ion-card class="add-img" *ngFor="let photo of photos; let i = i; index" (click)="choosePicture(photo)">
-            <ion-card-content>
-                <img [src]="photo.imagenes" class="img" width="200" height="100" [hidden]="photo.hidden_image" />
-                <ion-icon name="add-circle" [hidden]="photo.hidden" color="light" size="large"></ion-icon>
+        <ion-card class="add-img" *ngFor="let photo of photos; let i = i; index" (click)="choosePicture(photo)"
+            [ngStyle]="{background: 'url(' + photo.imagenes + ')no-repeat scroll center center / 100% 100%'}">
 
-                <span class="span" [hidden]="photo.send" *ngIf="photo.state == true">
-                    <ion-icon class="icono" name="md-checkmark-circle"></ion-icon>
-                </span>
+            <!-- <img [src]="photo.imagenes" class="img" width="200" height="100" [hidden]="photo.hidden_image" /> -->
 
-                <span class="span" [hidden]="photo.error" *ngIf="photo.state == false">
-                    <ion-icon class="icono1" name="md-close-circle"></ion-icon>
-                </span>
-            </ion-card-content>
+            <div class="divv">
+                <ion-icon name="md-checkmark-circle" color="light" size="large" [hidden]="photo.send"
+                    *ngIf="photo.state == true"></ion-icon>
+            </div>
+            <div class="divv">
+                <ion-icon name="add-circle" color="light" size="large" [hidden]="photo.hidden"></ion-icon>
+            </div>
+            <div class="divv">
+                <ion-icon name="md-close-circle" color="red" size="large" [hidden]="photo.error"
+                    *ngIf="photo.state == false"></ion-icon>
+            </div>
+
+
+
         </ion-card>
 
         <ion-card class="add-img add-pdf">
