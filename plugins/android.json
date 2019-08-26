@@ -29,6 +29,10 @@
     "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
+    "cordova-plugin-ionic-webview": {
+      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
@@ -44,10 +48,6 @@
     "uk.co.workingedge.phonegap.plugin.launchnavigator": {
       "GOOGLE_API_KEY_FOR_ANDROID": "",
       "OKHTTP_VERSION": "3.12.0",
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-ionic-webview": {
-      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
       "PACKAGE_NAME": "io.ionic.starter"
     }
   },

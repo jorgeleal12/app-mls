@@ -15,15 +15,23 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let car of cars" (click)="servicio(car)">
+  <ion-card class="cards" *ngFor="let car of cars" (click)="servicio(car)">
     <ion-card-header>
-      <ion-card-subtitle>Cliente: {{ car.client}}</ion-card-subtitle>
-      <ion-card-subtitle>Dirección: {{ car.address}}</ion-card-subtitle>
-      <ion-card-subtitle>Dirección: {{ car.phone_contact}}</ion-card-subtitle>
+      <ion-card-subtitle class="id"> {{ car.idodi}}</ion-card-subtitle>
+      <ion-card-subtitle class="title">{{ car.address}}</ion-card-subtitle>
+      <ion-card-subtitle class="subtitle">Prog: {{car.date_programming }} {{ car.identifacation}}</ion-card-subtitle>
     </ion-card-header>
-
-    <ion-card-content>
-
-    </ion-card-content>
   </ion-card>
+
+  <ion-item *ngFor="let car of cars" (click)="servicio(car)">
+    <ion-label text-wrap>
+      <ion-text color="primary">
+        <h3>{{ car.idodi}}</h3>
+      </ion-text>
+      <p>{{ car.address}}</p>
+      <ion-text>
+        <p>Prog: {{car.date_programming }} {{ car.identifacation}}</p>
+      </ion-text>
+    </ion-label>
+  </ion-item>
 </ion-content>

@@ -151,19 +151,17 @@ export class ServicioPage implements OnInit {
             var json = JSON.parse(data.response);
 
             if (json.response == true) {
-              // this.response = false;
+
               this.photos[id].state = true;
               this.photos[id].state_send = true;
               this.photos[id].send = false;
-              // console.log(this.photos[id].state)
+
             } else {
-              // this.falso = false;
+
               this.photos[id].state = false;
               this.photos[id].state_send = true;
               this.photos[id].error = false;
 
-              // console.log(this.file.dataDirectory)
-              // console.log(this.file.externalDataDirectory)
               this.writeFile(imagen, "My Picture", divisiones[1]);
 
               // this.database
