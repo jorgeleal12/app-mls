@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n\n    <ion-title text-center class=\"center\">Servicios</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button>\n        <ion-icon slot=\"icon-only\" name=\"cloud-upload\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-card *ngFor=\"let car of cars\" (click)=\"servicio(car)\">\n    <ion-card-header>\n      <ion-card-subtitle>Cliente: {{ car.client}}</ion-card-subtitle>\n      <ion-card-subtitle>Dirección: {{ car.address}}</ion-card-subtitle>\n      <ion-card-subtitle>Dirección: {{ car.phone_contact}}</ion-card-subtitle>\n    </ion-card-header>\n\n    <ion-card-content>\n\n    </ion-card-content>\n  </ion-card>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n\n    <ion-title text-center class=\"center\">Servicios</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button>\n        <ion-icon slot=\"icon-only\" name=\"cloud-upload\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\n    <ion-refresher-content pullingIcon=\"arrow-dropdown\" pullingText=\"Pull to refresh\" refreshingSpinner=\"circles\"\n      refreshingText=\"Refreshing...\">\n    </ion-refresher-content>\n  </ion-refresher>\n</ion-content>\n<ion-content>\n\n\n  <ion-item lines=\"none\" *ngFor=\"let car of cars\" (click)=\"servicio(car)\">\n    <ion-icon class=\"big1\" src=\"assets/iconos/148965.svg\" item-end></ion-icon>\n    <ion-label text-wrap>\n      <ion-text color=\"primary\">\n        <h3>{{ car.idodi}}</h3>\n      </ion-text>\n      <p class=\"title\">{{ car.address}}</p>\n      <ion-text>\n\n        <p class=\"prog\">Prog: {{car.date_programming }} {{ car.identifacation}}</p>\n      </ion-text>\n    </ion-label>\n    <ion-icon class=\"big\" src=\"assets/iconos/148882.svg\" item-end></ion-icon>\n  </ion-item>\n</ion-content>"
 
 /***/ }),
 
@@ -30,7 +30,7 @@ __webpack_require__.r(__webpack_exports__);
 var LoginServiceService = /** @class */ (function () {
     function LoginServiceService(http) {
         this.http = http;
-        this.api_url = 'http://192.168.1.57/laravel-mls/public/api/';
+        this.api_url = 'http://192.168.1.126/laravel-mls/public/api/';
     }
     LoginServiceService.prototype.save_image = function (params) {
         return this.http.post(this.api_url + "movil/image", params);
@@ -121,7 +121,7 @@ var AsignadasPageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FzaWduYWRhcy9hc2lnbmFkYXMucGFnZS5zY3NzIn0= */"
+module.exports = ".cards {\n  box-shadow: none !important;\n  font-family: Arial, Helvetica, sans-serif !important;\n  margin-top: 0 !important;\n  margin-bottom: 0 !important;\n  padding: 0;\n}\n\n.title {\n  font-size: 1em !important;\n  color: #7f7d7d !important;\n}\n\n.subtitle {\n  font-size: 0.9em !important;\n}\n\n.id {\n  font-size: 1em !important;\n  color: #7fab54;\n}\n\n.prog {\n  font-size: 0.8em !important;\n  color: #7f7d7d !important;\n}\n\nion-icon.big {\n  width: 32px;\n  height: 32px;\n}\n\nion-icon.big1 {\n  width: 38px;\n  height: 38px;\n  margin-right: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi92YXIvd3d3L2h0bWwvYXBwLW1scy9zcmMvYXBwL2FzaWduYWRhcy9hc2lnbmFkYXMucGFnZS5zY3NzIiwic3JjL2FwcC9hc2lnbmFkYXMvYXNpZ25hZGFzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLDJCQUFBO0VBQ0osb0RBQUE7RUFDQSx3QkFBQTtFQUNBLDJCQUFBO0VBQ0EsVUFBQTtBQ0NBOztBRENBO0VBQ0kseUJBQUE7RUFDQSx5QkFBQTtBQ0VKOztBREFBO0VBQ0ksMkJBQUE7QUNHSjs7QURBQTtFQUNJLHlCQUFBO0VBQ0EsY0FBQTtBQ0dKOztBRENBO0VBQ0ksMkJBQUE7RUFDQSx5QkFBQTtBQ0VKOztBRENJO0VBQ0UsV0FBQTtFQUNBLFlBQUE7QUNFTjs7QURBSTtFQUNJLFdBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7QUNFUiIsImZpbGUiOiJzcmMvYXBwL2FzaWduYWRhcy9hc2lnbmFkYXMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNhcmRze1xuICAgIGJveC1zaGFkb3c6IG5vbmUgIWltcG9ydGFudDtcbmZvbnQtZmFtaWx5OiBBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIWltcG9ydGFudDtcbm1hcmdpbi10b3A6IDAhaW1wb3J0YW50O1xubWFyZ2luLWJvdHRvbTogMCFpbXBvcnRhbnQ7XG5wYWRkaW5nOiAwO1xufVxuLnRpdGxle1xuICAgIGZvbnQtc2l6ZTogMWVtICFpbXBvcnRhbnQ7XG4gICAgY29sb3I6ICM3ZjdkN2QgIWltcG9ydGFudDtcbn1cbi5zdWJ0aXRsZXtcbiAgICBmb250LXNpemU6IC45ZW0gIWltcG9ydGFudDtcblxufVxuLmlke1xuICAgIGZvbnQtc2l6ZTogMWVtICFpbXBvcnRhbnQ7XG4gICAgY29sb3I6ICM3ZmFiNTQ7XG5cbn1cblxuLnByb2d7XG4gICAgZm9udC1zaXplOiAuOGVtICFpbXBvcnRhbnQ7XG4gICAgY29sb3I6ICM3ZjdkN2QgIWltcG9ydGFudDtcbn1cbmlvbi1pY29uIHtcbiAgICAmLmJpZyB7XG4gICAgICB3aWR0aDogMzJweDtcbiAgICAgIGhlaWdodDogMzJweDtcbiAgICB9XG4gICAgJi5iaWcxIHtcbiAgICAgICAgd2lkdGg6IDM4cHg7XG4gICAgICAgIGhlaWdodDogMzhweDtcbiAgICAgICAgbWFyZ2luLXJpZ2h0OiAxMHB4O1xuICAgICAgfVxufSIsIi5jYXJkcyB7XG4gIGJveC1zaGFkb3c6IG5vbmUgIWltcG9ydGFudDtcbiAgZm9udC1mYW1pbHk6IEFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYgIWltcG9ydGFudDtcbiAgbWFyZ2luLXRvcDogMCAhaW1wb3J0YW50O1xuICBtYXJnaW4tYm90dG9tOiAwICFpbXBvcnRhbnQ7XG4gIHBhZGRpbmc6IDA7XG59XG5cbi50aXRsZSB7XG4gIGZvbnQtc2l6ZTogMWVtICFpbXBvcnRhbnQ7XG4gIGNvbG9yOiAjN2Y3ZDdkICFpbXBvcnRhbnQ7XG59XG5cbi5zdWJ0aXRsZSB7XG4gIGZvbnQtc2l6ZTogMC45ZW0gIWltcG9ydGFudDtcbn1cblxuLmlkIHtcbiAgZm9udC1zaXplOiAxZW0gIWltcG9ydGFudDtcbiAgY29sb3I6ICM3ZmFiNTQ7XG59XG5cbi5wcm9nIHtcbiAgZm9udC1zaXplOiAwLjhlbSAhaW1wb3J0YW50O1xuICBjb2xvcjogIzdmN2Q3ZCAhaW1wb3J0YW50O1xufVxuXG5pb24taWNvbi5iaWcge1xuICB3aWR0aDogMzJweDtcbiAgaGVpZ2h0OiAzMnB4O1xufVxuaW9uLWljb24uYmlnMSB7XG4gIHdpZHRoOiAzOHB4O1xuICBoZWlnaHQ6IDM4cHg7XG4gIG1hcmdpbi1yaWdodDogMTBweDtcbn0iXX0= */"
 
 /***/ }),
 
@@ -161,6 +161,13 @@ var AsignadasPage = /** @class */ (function () {
     };
     AsignadasPage.prototype.servicio = function (car) {
         this.router.navigate(['menu/menu/servicio'], car);
+    };
+    AsignadasPage.prototype.doRefresh = function (event) {
+        console.log('Begin async operation');
+        setTimeout(function () {
+            console.log('Async operation has ended');
+            event.target.complete();
+        }, 2000);
     };
     AsignadasPage.ctorParameters = function () { return [
         { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"] },

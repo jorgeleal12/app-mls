@@ -14,24 +14,26 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card class="cards" *ngFor="let car of cars" (click)="servicio(car)">
-    <ion-card-header>
-      <ion-card-subtitle class="id"> {{ car.idodi}}</ion-card-subtitle>
-      <ion-card-subtitle class="title">{{ car.address}}</ion-card-subtitle>
-      <ion-card-subtitle class="subtitle">Prog: {{car.date_programming }} {{ car.identifacation}}</ion-card-subtitle>
-    </ion-card-header>
-  </ion-card>
 
-  <ion-item *ngFor="let car of cars" (click)="servicio(car)">
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="lines"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-item lines="none" *ngFor="let car of cars" (click)="servicio(car)">
+    <ion-icon class="big1" src="assets/iconos/148965.svg" item-end></ion-icon>
     <ion-label text-wrap>
       <ion-text color="primary">
         <h3>{{ car.idodi}}</h3>
       </ion-text>
-      <p>{{ car.address}}</p>
+      <p class="title">{{ car.address}}</p>
       <ion-text>
-        <p>Prog: {{car.date_programming }} {{ car.identifacation}}</p>
+
+        <p class="prog">Prog: {{car.date_programming }} {{ car.identifacation}}</p>
       </ion-text>
     </ion-label>
+    <ion-icon class="big" src="assets/iconos/148882.svg" item-end></ion-icon>
   </ion-item>
 </ion-content>

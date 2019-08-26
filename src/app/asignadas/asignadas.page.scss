@@ -18,3 +18,19 @@ padding: 0;
     color: #7fab54;
 
 }
+
+.prog{
+    font-size: .8em !important;
+    color: #7f7d7d !important;
+}
+ion-icon {
+    &.big {
+      width: 32px;
+      height: 32px;
+    }
+    &.big1 {
+        width: 38px;
+        height: 38px;
+        margin-right: 10px;
+      }
+}
