@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n\n    <ion-title text-center class=\"center\">Servicios</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button>\n        <ion-icon slot=\"icon-only\" name=\"cloud-upload\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\n    <ion-refresher-content pullingIcon=\"arrow-dropdown\" pullingText=\"Pull to refresh\" refreshingSpinner=\"circles\"\n      refreshingText=\"Refreshing...\">\n    </ion-refresher-content>\n  </ion-refresher>\n</ion-content>\n<ion-content>\n\n\n  <ion-item lines=\"none\" *ngFor=\"let car of cars\" (click)=\"servicio(car)\">\n    <ion-icon class=\"big1\" src=\"assets/iconos/148965.svg\" item-end></ion-icon>\n    <ion-label text-wrap>\n      <ion-text color=\"primary\">\n        <h3>{{ car.idodi}}</h3>\n      </ion-text>\n      <p class=\"title\">{{ car.address}}</p>\n      <ion-text>\n\n        <p class=\"prog\">Prog: {{car.date_programming }} {{ car.identifacation}}</p>\n      </ion-text>\n    </ion-label>\n    <ion-icon class=\"big\" src=\"assets/iconos/148882.svg\" item-end></ion-icon>\n  </ion-item>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n\n    <ion-title text-center class=\"center\">Servicios</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button>\n        <ion-icon slot=\"icon-only\" name=\"cloud-upload\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\n    <ion-refresher-content pullingIcon=\"arrow-dropdown\" pullingText=\"Pull to refresh\" refreshingSpinner=\"lines\"\n      refreshingText=\"Refreshing...\">\n    </ion-refresher-content>\n  </ion-refresher>\n\n  <ion-item lines=\"none\" *ngFor=\"let car of cars\" (click)=\"servicio(car)\">\n    <ion-icon class=\"big1\" src=\"assets/iconos/148965.svg\" item-end></ion-icon>\n    <ion-label text-wrap>\n      <ion-text color=\"primary\">\n        <h3>{{ car.idodi}}</h3>\n      </ion-text>\n      <p class=\"title\">{{ car.address}}</p>\n      <ion-text>\n\n        <p class=\"prog\">Prog: {{car.date_programming }} {{ car.identifacation}}</p>\n      </ion-text>\n    </ion-label>\n    <ion-icon class=\"big\" src=\"assets/iconos/148882.svg\" item-end></ion-icon>\n  </ion-item>\n</ion-content>"
 
 /***/ }),
 
@@ -46,6 +46,9 @@ let LoginServiceService = class LoginServiceService {
     }
     photos_service(params) {
         return this.http.post(`${this.api_url}movil/photos_service`, params);
+    }
+    registerToken(params) {
+        return this.http.post(`${this.api_url}movil/registerToken`, params);
     }
 };
 LoginServiceService.ctorParameters = () => [

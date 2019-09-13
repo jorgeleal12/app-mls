@@ -94,6 +94,9 @@ ext {
 apply from: "../cordova-android-support-gradle-release/starter-cordova-android-support-gradle-release.gradle"
 apply from: "../cordova-plugin-telerik-imagepicker/starter-ignorelinterrors.gradle"
 apply from: "../cordova-plugin-telerik-imagepicker/starter-androidtarget.gradle"
+apply from: "../cordova-plugin-fcm-with-dependecy-updated/starter-FCMPlugin.gradle"
+apply from: "../cordova-plugin-badge/app_mls-badge.gradle"
+apply from: "../cordova-plugin-local-notification/app_mls-localnotification.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()
@@ -265,6 +268,9 @@ dependencies {
     compile "com.android.support:support-annotations:27.+"
     compile "com.android.support:appcompat-v7:23+"
     compile "com.squareup.okhttp3:okhttp:3.12.0"
+    compile "com.google.firebase:firebase-core:16.0.9"
+    compile "com.google.firebase:firebase-messaging:18.0.0"
+    compile "com.android.support:support-v4:26.+"
     // SUB-PROJECT DEPENDENCIES END
 }
 
