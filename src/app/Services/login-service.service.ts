@@ -30,4 +30,8 @@ export class LoginServiceService {
   photos_service(params): Observable<any> {
     return this.http.post(`${this.api_url}movil/photos_service`, params);
   }
+
+  registerToken(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/registerToken`, params);
+  }
 }

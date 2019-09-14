@@ -91,16 +91,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/fcm/ngx */ "./node_modules/@ionic-native/fcm/ngx/index.js");
+
 
 
 
 
 
 var LoginPage = /** @class */ (function () {
-    function LoginPage(LoginServiceService, toastController, router) {
+    function LoginPage(LoginServiceService, toastController, router, fcm) {
         this.LoginServiceService = LoginServiceService;
         this.toastController = toastController;
         this.router = router;
+        this.fcm = fcm;
     }
     LoginPage.prototype.ngOnInit = function () {
         if (!localStorage.getItem("idusers")) {
@@ -147,6 +150,14 @@ var LoginPage = /** @class */ (function () {
                 localStorage.setItem("email", result.data.email);
                 localStorage.setItem("id", result.data.id);
                 _this.router.navigateByUrl('/menu');
+                _this.iduser = localStorage.getItem("idusers");
+                _this.fcm.getToken().then(function (token) {
+                    return _this.LoginServiceService.registerToken({ token: token, iduser: _this.iduser }).subscribe(function (result) {
+                    }, function (error) {
+                    });
+                }).catch(function (error) {
+                    console.log('error');
+                });
             }
         }, function (error) {
         });
@@ -154,7 +165,8 @@ var LoginPage = /** @class */ (function () {
     LoginPage.ctorParameters = function () { return [
         { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+        { type: _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__["FCM"] }
     ]; };
     LoginPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -162,7 +174,8 @@ var LoginPage = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./login.page.html */ "./node_modules/raw-loader/index.js!./src/app/login/login.page.html"),
             styles: [__webpack_require__(/*! ./login.page.scss */ "./src/app/login/login.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
+            _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__["FCM"]])
     ], LoginPage);
     return LoginPage;
 }());

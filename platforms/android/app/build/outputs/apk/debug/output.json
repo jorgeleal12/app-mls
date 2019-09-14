@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 [{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":1,"versionName":"0.0.1","enabled":true,"outputFile":"app-debug.apk","fullName":"debug","baseName":"debug"},"path":"app-debug.apk","properties":{}}]
+=======
+[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":1},"path":"app-debug.apk","properties":{"packageId":"io.app_mls","split":"","minSdkVersion":"19"}}]
+>>>>>>> 0be61efb7e909d9a0b27a01dc86d30eb9365d512

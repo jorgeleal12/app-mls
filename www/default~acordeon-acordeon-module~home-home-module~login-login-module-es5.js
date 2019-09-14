@@ -63287,6 +63287,9 @@ var LoginServiceService = /** @class */ (function () {
     LoginServiceService.prototype.photos_service = function (params) {
         return this.http.post(this.api_url + "movil/photos_service", params);
     };
+    LoginServiceService.prototype.registerToken = function (params) {
+        return this.http.post(this.api_url + "movil/registerToken", params);
+    };
     LoginServiceService.ctorParameters = function () { return [
         { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
     ]; };

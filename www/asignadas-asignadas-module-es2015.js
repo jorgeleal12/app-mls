@@ -47,6 +47,9 @@ let LoginServiceService = class LoginServiceService {
     photos_service(params) {
         return this.http.post(`${this.api_url}movil/photos_service`, params);
     }
+    registerToken(params) {
+        return this.http.post(`${this.api_url}movil/registerToken`, params);
+    }
 };
 LoginServiceService.ctorParameters = () => [
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
