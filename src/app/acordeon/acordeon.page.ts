@@ -3,6 +3,8 @@ import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { LoginServiceService } from '../Services/login-service.service';
+import { MaterialsPage } from '../materials/materials.page';
+import { ModalController } from '@ionic/angular';
 
 import { NgForm } from '@angular/forms'; @Component({
     selector: 'app-acordeon',
@@ -34,7 +36,13 @@ export class AcordeonPage implements OnInit {
     client
     identifacation
     phone
-    constructor(private route: ActivatedRoute, private router: Router, private launchNavigator: LaunchNavigator, private geolocation: Geolocation, private loginServiceService: LoginServiceService) {
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private launchNavigator: LaunchNavigator,
+        private geolocation: Geolocation,
+        private loginServiceService: LoginServiceService,
+        public modalController: ModalController) {
 
         this.route.queryParams.subscribe(params => {
 
@@ -70,7 +78,12 @@ export class AcordeonPage implements OnInit {
     ngOnInit(): void {
 
     }
-
+    async presentModal() {
+        const modal = await this.modalController.create({
+            component: MaterialsPage
+        });
+        return await modal.present();
+    }
 
     getNameValid(sectionName) {
         return this.step.sectionName === sectionName;

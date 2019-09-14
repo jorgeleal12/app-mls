@@ -2,27 +2,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { AppMaterialModule } from "../app-material.module";
+
 import { IonicModule } from '@ionic/angular';
 
-import { AcordeonPage } from './acordeon.page';
-import { MaterialsPageModule } from '../materials/materials.module';
+import { MaterialsPage } from './materials.page';
+
 const routes: Routes = [
   {
     path: '',
-    component: AcordeonPage
+    component: MaterialsPage
   }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    AppMaterialModule,
     FormsModule,
     IonicModule,
-    MaterialsPageModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AcordeonPage]
+  declarations: [MaterialsPage]
 })
-export class AcordeonPageModule { }
+export class MaterialsPageModule {}
