@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginServiceService } from "../Services/login-service.service"
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { FCM, NotificationData } from '@ionic-native/fcm/ngx';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -11,8 +12,10 @@ export class LoginPage implements OnInit {
 
   user;
   pass;
+  iduser;
 
-  constructor(private LoginServiceService: LoginServiceService, public toastController: ToastController, private router: Router) { }
+  constructor(private LoginServiceService: LoginServiceService, public toastController: ToastController, private router: Router,
+    private fcm: FCM) { }
 
   ngOnInit() {
 
@@ -57,6 +60,19 @@ export class LoginPage implements OnInit {
         localStorage.setItem("email", result.data.email);
         localStorage.setItem("id", result.data.id);
         this.router.navigateByUrl('/menu');
+        this.iduser = localStorage.getItem("idusers")
+        this.fcm.getToken().then((token: String) =>
+
+          this.LoginServiceService.registerToken({ token: token, iduser: this.iduser }).subscribe(result => {
+
+          }, error => {
+
+          })
+        ).catch(error => {
+          console.log('error')
+
+        });
+
       }
 
 
