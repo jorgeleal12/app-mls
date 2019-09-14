@@ -7,7 +7,7 @@ import { Observable } from "rxjs/internal/Observable";
 })
 export class LoginServiceService {
 
-  api_url = 'http://192.168.1.57/laravel-mls/public/api/';
+  api_url = 'http://192.168.1.126/laravel-mls/public/api/';
 
   constructor(private http: HttpClient) { }
 
@@ -33,5 +33,9 @@ export class LoginServiceService {
 
   registerToken(params): Observable<any> {
     return this.http.post(`${this.api_url}movil/registerToken`, params);
+  }
+
+  search_materials(): Observable<any> {
+    return this.http.get(`${this.api_url}movil/search_materials`);
   }
 }

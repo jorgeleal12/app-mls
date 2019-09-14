@@ -36,6 +36,10 @@ export class AcordeonPage implements OnInit {
     client
     identifacation
     phone
+
+    name_material;
+    name_state_material;
+    public idmaterials
     constructor(
         private route: ActivatedRoute,
         private router: Router,
@@ -79,10 +83,48 @@ export class AcordeonPage implements OnInit {
 
     }
     async presentModal() {
-        const modal = await this.modalController.create({
-            component: MaterialsPage
+        console.log(this.idmaterials)
+
+        if (this.idmaterials == undefined) {
+            const modal: HTMLIonModalElement =
+                await this.modalController.create({
+                    component: MaterialsPage
+                });
+
+            modal.onDidDismiss().then((detail) => {
+                if (detail !== null) {
+                    console.log(detail.data.data);
+
+                    this.name_material = detail.data.data.name_materials
+                    this.name_state_material = detail.data.data.name_state
+                    this.idmaterials = detail.data.data.idmaterials
+                    console.log(this.idmaterials)
+                }
+            });
+
+            await modal.present();
+
+        }
+    }
+
+    async  edit_material() {
+        const modal: HTMLIonModalElement =
+            await this.modalController.create({
+                component: MaterialsPage
+            });
+
+        modal.onDidDismiss().then((detail) => {
+            if (detail !== null) {
+                console.log(detail.data.data);
+
+                this.name_material = detail.data.data.name_materials
+                this.name_state_material = detail.data.data.name_state
+                this.idmaterials = detail.data.data.idmaterials
+                console.log(this.idmaterials)
+            }
         });
-        return await modal.present();
+
+        await modal.present();
     }
 
     getNameValid(sectionName) {

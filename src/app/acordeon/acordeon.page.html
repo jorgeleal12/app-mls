@@ -212,7 +212,7 @@
             <ion-list>
 
                 <ion-item>
-                    <ion-label class="ion-text-wrap" (click)="presentModal()">
+                    <ion-label class="ion-text-wrap">
                         <ion-text>
                             <h2>{{client}}</h2>
                         </ion-text>
@@ -244,7 +244,7 @@
             <div class="img">
                 <img src="../../assets/img/twotone_build_black_48dp.png" alt="">
             </div>
-            <div class="info">
+            <div class="info" (click)="presentModal()">
                 <p class="title">Material</p>
                 <p class="subtitle">Información del Material</p>
 
@@ -255,6 +255,29 @@
 
         </section>
         <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded4')}">
+
+            <!-- Sliding item with text options on both sides -->
+            <ion-item-sliding>
+                <ion-item-options side="start">
+                    <ion-item-option (click)="edit_material()">
+                        <ion-icon class="big" src="assets/iconos/61456.svg"></ion-icon>
+                    </ion-item-option>
+                    <ion-item-option color="danger" (click)="share(item)">
+                        <ion-icon class="big" src="assets/iconos/64022.svg"></ion-icon>
+                    </ion-item-option>
+                </ion-item-options>
+
+                <ion-item lines="none">
+                    <ion-label class="ion-text-wrap">
+                        <ion-text>
+                            <h2>{{name_material}}</h2>
+                        </ion-text>
+                        <p>{{name_state_material}}</p>
+                    </ion-label>
+                </ion-item>
+            </ion-item-sliding>
+
+
 
         </section>
 

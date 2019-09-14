@@ -6,7 +6,7 @@ import { AppMaterialModule } from "../app-material.module";
 import { IonicModule } from '@ionic/angular';
 
 import { AcordeonPage } from './acordeon.page';
-import { MaterialsPageModule } from '../materials/materials.module';
+
 const routes: Routes = [
   {
     path: '',
@@ -20,7 +20,7 @@ const routes: Routes = [
     AppMaterialModule,
     FormsModule,
     IonicModule,
-    MaterialsPageModule,
+
     RouterModule.forChild(routes)
   ],
   declarations: [AcordeonPage]
