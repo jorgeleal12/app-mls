@@ -23,21 +23,43 @@ export class AcordeonPage implements OnInit {
     address
     addrees_ini
     photos_services
+    number_service;
+    div_hidden = true;
 
-
+    name_priority
+    name_gas
+    name_type
+    name_network
+    contract_name
+    client
+    identifacation
+    phone
     constructor(private route: ActivatedRoute, private router: Router, private launchNavigator: LaunchNavigator, private geolocation: Geolocation, private loginServiceService: LoginServiceService) {
 
         this.route.queryParams.subscribe(params => {
+
+
             if (this.router.getCurrentNavigation().extras.state) {
+
                 this.data = this.router.getCurrentNavigation().extras
-                this.priority = this.data.Attention
-                //     this.sede = this.data.
+                console.log(this.data)
+                this.name_priority = this.data.name_priority
+
+
                 this.programming = this.data.date_programming
                 this.Attention = this.data.Attention
+                this.name_gas = this.data.name_gas
+                this.name_type = this.data.name_type
+                this.name_network = this.data.name_network
+                this.contract_name = this.data.contract_name
+                this.client = this.data.client
+                this.identifacation = this.data.identifacation
+                this.phone = this.data.phone
                 //                 this.gas_type = this.data.
-                this.type_service = this.data.type
-                this.type_network = this.data.type_network
+                this.type_service = this.data.type_service_idtype_service
+                this.type_network = this.data.type_network_idtype_network
                 this.address = this.data.address
+                this.number_service = this.data.idodi
             }
         });
 
