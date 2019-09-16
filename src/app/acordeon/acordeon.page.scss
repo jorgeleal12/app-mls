@@ -90,3 +90,20 @@
 .acc-content {
   padding: 0em!important;
 }
+
+ion-icon {
+  &.big {
+    width: 52px!important;
+    height: 52px!important;
+  }
+  &.big1 {
+      width: 38px!important;
+      height: 38px!important;
+      margin-right: 10px!important;
+    }
+    &.big2 {
+      width: 52px!important;
+      height: 52px!important;
+      margin-right: 10px!important;
+   }
+}

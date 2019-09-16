@@ -30,6 +30,9 @@ var map = {
 		"./src/app/asignadas/asignadas.module.ts",
 		"asignadas-asignadas-module"
 	],
+	"./builder/builder.module": [
+		"./src/app/builder/builder.module.ts"
+	],
 	"./login/login.module": [
 		"./src/app/login/login.module.ts",
 		"default~acordeon-acordeon-module~home-home-module~login-login-module",
@@ -488,6 +491,88 @@ module.exports = "<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n</ion-ap
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/builder/builder.page.html":
+/*!*********************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/builder/builder.page.html ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\" *ngIf=\"!isSearchbarOpened\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\" *ngIf=\"!isSearchbarOpened\">Constructores</ion-title>\n    <!-- Default Searchbar -->\n    <ion-searchbar *ngIf=\"isSearchbarOpened\" showCancelButton=\"true\" (ionChange)=\"onSearch($event)\"\n      (ionCancel)=\"isSearchbarOpened=false\"></ion-searchbar>\n    <ion-buttons slot=\"end\">\n      <ion-button icon-only *ngIf=\"!isSearchbarOpened\" (click)=\"isSearchbarOpened=true\">\n        <ion-icon slot=\"icon-only\" name=\"search\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let builder of builders | filter:textSearch:'name_builder'\"\n      (click)=\"select(builder)\">\n      <ion-label>\n        <ion-text>\n          <h2>{{builder.name_builder}}</h2>\n        </ion-text>\n        <p>{{builder.name_state}}</p>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n</ion-content>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/materials/materials.page.html":
+/*!*************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/materials/materials.page.html ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\" *ngIf=\"!isSearchbarOpened\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\" *ngIf=\"!isSearchbarOpened\">Materiales</ion-title>\n    <!-- Default Searchbar -->\n    <ion-searchbar *ngIf=\"isSearchbarOpened\" showCancelButton=\"true\" (ionChange)=\"onSearch($event)\"\n      (ionCancel)=\"isSearchbarOpened=false\"></ion-searchbar>\n    <ion-buttons slot=\"end\">\n      <ion-button icon-only *ngIf=\"!isSearchbarOpened\" (click)=\"isSearchbarOpened=true\">\n        <ion-icon slot=\"icon-only\" name=\"search\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let material of materials | filter:textSearch:'name_materials'\"\n      (click)=\"select(material)\">\n      <ion-label>\n        <ion-text>\n          <h2>{{material.name_materials}}</h2>\n        </ion-text>\n        <p>{{material.name_state}}</p>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n</ion-content>"
+
+/***/ }),
+
+/***/ "./src/app/Services/login-service.service.ts":
+/*!***************************************************!*\
+  !*** ./src/app/Services/login-service.service.ts ***!
+  \***************************************************/
+/*! exports provided: LoginServiceService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginServiceService", function() { return LoginServiceService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+
+
+
+let LoginServiceService = class LoginServiceService {
+    constructor(http) {
+        this.http = http;
+        this.api_url = 'http://192.168.1.126/laravel-mls/public/api/';
+    }
+    save_image(params) {
+        return this.http.post(`${this.api_url}movil/image`, params);
+    }
+    login(params) {
+        return this.http.post(`${this.api_url}movil/login`, params);
+    }
+    totalasignadas(params) {
+        return this.http.post(`${this.api_url}movil/totalasignadas`, params);
+    }
+    seach_asignadas(params) {
+        return this.http.post(`${this.api_url}movil/seach_asignadas`, params);
+    }
+    photos_service(params) {
+        return this.http.post(`${this.api_url}movil/photos_service`, params);
+    }
+    registerToken(params) {
+        return this.http.post(`${this.api_url}movil/registerToken`, params);
+    }
+    search_materials() {
+        return this.http.get(`${this.api_url}movil/search_materials`);
+    }
+    search_builder() {
+        return this.http.get(`${this.api_url}movil/search_builder`);
+    }
+};
+LoginServiceService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+LoginServiceService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], LoginServiceService);
+
+
+
+/***/ }),
+
 /***/ "./src/app/app-routing.module.ts":
 /*!***************************************!*\
   !*** ./src/app/app-routing.module.ts ***!
@@ -508,6 +593,7 @@ const routes = [
     { path: '', loadChildren: './login/login.module#LoginPageModule' },
     { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
     { path: 'asignadas', loadChildren: './asignadas/asignadas.module#AsignadasPageModule' },
+    { path: 'builder', loadChildren: './builder/builder.module#BuilderPageModule' },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -653,6 +739,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/file-chooser/ngx */ "./node_modules/@ionic-native/file-chooser/ngx/index.js");
 /* harmony import */ var _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/fcm/ngx */ "./node_modules/@ionic-native/fcm/ngx/index.js");
 /* harmony import */ var _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/local-notifications/ngx */ "./node_modules/@ionic-native/local-notifications/ngx/index.js");
+/* harmony import */ var _materials_materials_module__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./materials/materials.module */ "./src/app/materials/materials.module.ts");
+/* harmony import */ var _app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../app/pipes/pipes.module */ "./src/app/pipes/pipes.module.ts");
+/* harmony import */ var _builder_builder_module__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./builder/builder.module */ "./src/app/builder/builder.module.ts");
+
+
+
 
 
 
@@ -678,7 +770,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         declarations: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]],
         entryComponents: [],
-        imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"]],
+        imports: [_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_20__["PipesModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"], _materials_materials_module__WEBPACK_IMPORTED_MODULE_19__["MaterialsPageModule"], _builder_builder_module__WEBPACK_IMPORTED_MODULE_21__["BuilderPageModule"]],
         providers: [
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
@@ -696,6 +788,334 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
     })
 ], AppModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/builder/builder.module.ts":
+/*!*******************************************!*\
+  !*** ./src/app/builder/builder.module.ts ***!
+  \*******************************************/
+/*! exports provided: BuilderPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BuilderPageModule", function() { return BuilderPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _builder_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./builder.page */ "./src/app/builder/builder.page.ts");
+/* harmony import */ var _pipes_pipes_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../pipes/pipes.module */ "./src/app/pipes/pipes.module.ts");
+
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _builder_page__WEBPACK_IMPORTED_MODULE_6__["BuilderPage"]
+    }
+];
+let BuilderPageModule = class BuilderPageModule {
+};
+BuilderPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _pipes_pipes_module__WEBPACK_IMPORTED_MODULE_7__["PipesModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_builder_page__WEBPACK_IMPORTED_MODULE_6__["BuilderPage"]]
+    })
+], BuilderPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/builder/builder.page.scss":
+/*!*******************************************!*\
+  !*** ./src/app/builder/builder.page.scss ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2J1aWxkZXIvYnVpbGRlci5wYWdlLnNjc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/builder/builder.page.ts":
+/*!*****************************************!*\
+  !*** ./src/app/builder/builder.page.ts ***!
+  \*****************************************/
+/*! exports provided: BuilderPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BuilderPage", function() { return BuilderPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+
+let BuilderPage = class BuilderPage {
+    constructor(LoginServiceService, modalController) {
+        this.LoginServiceService = LoginServiceService;
+        this.modalController = modalController;
+        this.builders = [];
+        this.isSearchbarOpened = false;
+        this.textSearch = '';
+    }
+    ngOnInit() {
+        this.search();
+    }
+    search() {
+        this.LoginServiceService.search_builder().subscribe(result => {
+            this.builders = result.response;
+        }, error => {
+        });
+    }
+    select(builders) {
+        // console.log(material)
+        this.modalController.dismiss({
+            'dismissed': true,
+            data: builders
+        });
+    }
+    back() {
+        this.modalController.dismiss({
+            'dismissed': false,
+        });
+    }
+    onSearch(event) {
+        this.textSearch = event.target.value;
+    }
+};
+BuilderPage.ctorParameters = () => [
+    { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] }
+];
+BuilderPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-builder',
+        template: __webpack_require__(/*! raw-loader!./builder.page.html */ "./node_modules/raw-loader/index.js!./src/app/builder/builder.page.html"),
+        styles: [__webpack_require__(/*! ./builder.page.scss */ "./src/app/builder/builder.page.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]])
+], BuilderPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/materials/materials.module.ts":
+/*!***********************************************!*\
+  !*** ./src/app/materials/materials.module.ts ***!
+  \***********************************************/
+/*! exports provided: MaterialsPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MaterialsPageModule", function() { return MaterialsPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _materials_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./materials.page */ "./src/app/materials/materials.page.ts");
+/* harmony import */ var _pipes_pipes_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../pipes/pipes.module */ "./src/app/pipes/pipes.module.ts");
+
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _materials_page__WEBPACK_IMPORTED_MODULE_6__["MaterialsPage"]
+    }
+];
+let MaterialsPageModule = class MaterialsPageModule {
+};
+MaterialsPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _pipes_pipes_module__WEBPACK_IMPORTED_MODULE_7__["PipesModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_materials_page__WEBPACK_IMPORTED_MODULE_6__["MaterialsPage"]]
+    })
+], MaterialsPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/materials/materials.page.scss":
+/*!***********************************************!*\
+  !*** ./src/app/materials/materials.page.scss ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21hdGVyaWFscy9tYXRlcmlhbHMucGFnZS5zY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/materials/materials.page.ts":
+/*!*********************************************!*\
+  !*** ./src/app/materials/materials.page.ts ***!
+  \*********************************************/
+/*! exports provided: MaterialsPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MaterialsPage", function() { return MaterialsPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+
+let MaterialsPage = class MaterialsPage {
+    constructor(LoginServiceService, modalController) {
+        this.LoginServiceService = LoginServiceService;
+        this.modalController = modalController;
+        this.materials = [];
+        this.isSearchbarOpened = false;
+        this.textSearch = '';
+    }
+    ngOnInit() {
+        this.search();
+    }
+    search() {
+        this.LoginServiceService.search_materials().subscribe(result => {
+            this.materials = result.response;
+        }, error => {
+        });
+    }
+    select(material) {
+        // console.log(material)
+        this.modalController.dismiss({
+            'dismissed': true,
+            data: material
+        });
+    }
+    back() {
+        this.modalController.dismiss({
+            'dismissed': false,
+        });
+    }
+    onSearch(event) {
+        this.textSearch = event.target.value;
+    }
+};
+MaterialsPage.ctorParameters = () => [
+    { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] }
+];
+MaterialsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-materials',
+        template: __webpack_require__(/*! raw-loader!./materials.page.html */ "./node_modules/raw-loader/index.js!./src/app/materials/materials.page.html"),
+        styles: [__webpack_require__(/*! ./materials.page.scss */ "./src/app/materials/materials.page.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]])
+], MaterialsPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pipes/filter.pipe.ts":
+/*!**************************************!*\
+  !*** ./src/app/pipes/filter.pipe.ts ***!
+  \**************************************/
+/*! exports provided: FilterPipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FilterPipe", function() { return FilterPipe; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let FilterPipe = class FilterPipe {
+    transform(arreglo, Texto, columna) {
+        console.log(Texto);
+        Texto = Texto.toLowerCase();
+        if (Texto === '') {
+            return arreglo;
+        }
+        console.log(columna);
+        return arreglo.filter(item => {
+            return item[columna].toLowerCase().includes(Texto);
+        });
+        console.log(arreglo);
+        // return arreglo;
+    }
+};
+FilterPipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
+        name: 'filter'
+    })
+], FilterPipe);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pipes/pipes.module.ts":
+/*!***************************************!*\
+  !*** ./src/app/pipes/pipes.module.ts ***!
+  \***************************************/
+/*! exports provided: PipesModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PipesModule", function() { return PipesModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _filter_pipe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./filter.pipe */ "./src/app/pipes/filter.pipe.ts");
+
+
+
+let PipesModule = class PipesModule {
+};
+PipesModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        declarations: [_filter_pipe__WEBPACK_IMPORTED_MODULE_2__["FilterPipe"]],
+        exports: [_filter_pipe__WEBPACK_IMPORTED_MODULE_2__["FilterPipe"]]
+    })
+], PipesModule);
 
 
 

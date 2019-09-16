@@ -4,19 +4,6 @@
             "outputFile": "/var/www/html/app-mls/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ne/values-ne.xml",
             "map": [
                 {
-<<<<<<< HEAD
-                    "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/b54419c4ef1536f79d6ece8334fc6bd9/res/values-ne/values-ne.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,210,314,422,513,620,747,841,931,1019,1129,1245,1348,1463,1565,1680,1851,1963",
-                        "endColumns": "104,103,107,90,106,126,93,89,87,109,115,102,114,101,114,170,111,85",
-                        "endOffsets": "205,309,417,508,615,742,836,926,1014,1124,1240,1343,1458,1560,1675,1846,1958,2044"
-                    }
-                },
-                {
-                    "source": "/root/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/fa27400905446a11bb12a5fdeed8e5cf/res/values-ne/values-ne.xml",
-=======
                     "source": "/root/.gradle/caches/transforms-1/files-1.1/play-services-base-16.0.1.aar/3f49de8a8cc7d3693c20bef93205c63a/res/values-ne/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
@@ -35,7 +22,6 @@
                 },
                 {
                     "source": "/root/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/43d6a3095fea8a8ca8493fee28cc306b/res/values-ne/values-ne.xml",
->>>>>>> 0be61efb7e909d9a0b27a01dc86d30eb9365d512
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -84,8 +70,6 @@
                         "endColumns": "222",
                         "endOffsets": "3385"
                     }
-<<<<<<< HEAD
-=======
                 },
                 {
                     "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/8795804e95a9d52910e1edd07b722014/res/values-ne/values-ne.xml",
@@ -103,7 +87,6 @@
                         "endColumns": "104,103,107,90,106,126,93,89,87,109,115,102,114,101,114,170,111,85",
                         "endOffsets": "205,309,417,508,615,742,836,926,1014,1124,1240,1343,1458,1560,1675,1846,1958,4976"
                     }
->>>>>>> 0be61efb7e909d9a0b27a01dc86d30eb9365d512
                 }
             ]
         }

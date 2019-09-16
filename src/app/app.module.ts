@@ -18,10 +18,15 @@ import { FileChooser } from '@ionic-native/file-chooser/ngx';
 import { FCM } from '@ionic-native/fcm/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { MaterialsPageModule } from './materials/materials.module';
+import { PipesModule } from '../app/pipes/pipes.module';
+import { BuilderPageModule } from './builder/builder.module';
+import { ImagesPageModule } from './images/images.module';
+import { SendimagesPageModule } from './sendimages/sendimages.module';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, MaterialsPageModule],
+  imports: [PipesModule, BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule,
+    , SendimagesPageModule, MaterialsPageModule, BuilderPageModule, ImagesPageModule],
   providers: [
     StatusBar,
     SplashScreen,

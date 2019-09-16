@@ -38,4 +38,7 @@ export class LoginServiceService {
   search_materials(): Observable<any> {
     return this.http.get(`${this.api_url}movil/search_materials`);
   }
+  search_builder(): Observable<any> {
+    return this.http.get(`${this.api_url}movil/search_builder`);
+  }
 }

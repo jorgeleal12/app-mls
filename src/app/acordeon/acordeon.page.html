@@ -175,6 +175,7 @@
         <section class="acc-section" (click)="setStep('expanded2')">
             <div class="img">
                 <img src="../../assets/img/twotone_add_location_black_48dp.png" alt="">
+
             </div>
             <div class="info">
                 <p class="title">Ubicación</p>
@@ -187,12 +188,18 @@
 
         </section>
         <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded2')}">
-            <mat-form-field class="example-full-width">
-                <span matPrefix>Dirección &nbsp;</span>
-                <input type="text" matInput [(ngModel)]="address">
-                <mat-icon matSuffix (click)="send_address()">add_location</mat-icon>
-            </mat-form-field>
+            <ion-list>
+                <ion-item>
+                    <ion-label class="ion-text-wrap">
+                        <ion-text>
+                            <h2>{{address}}</h2>
+                        </ion-text>
+                        <p>Dirección</p>
+                    </ion-label>
+                    <ion-icon class="big" src="assets/iconos/854878.svg" item-end (click)="send_address()"></ion-icon>
 
+                </ion-item>
+            </ion-list>
         </section>
         <section class="acc-section" (click)="setStep('expanded3')">
             <div class="img">
@@ -250,7 +257,7 @@
 
             </div>
             <div class="icon">
-                <ion-icon name="{{getIconName('expanded4')}}" color="medium"></ion-icon>
+                <ion-icon name="{{getIconName('expanded4')}}" color="medium" (click)="presentModal()"></ion-icon>
             </div>
 
         </section>
@@ -260,10 +267,10 @@
             <ion-item-sliding>
                 <ion-item-options side="start">
                     <ion-item-option (click)="edit_material()">
-                        <ion-icon class="big" src="assets/iconos/61456.svg"></ion-icon>
+                        <ion-icon src="assets/iconos/61456.svg"></ion-icon>
                     </ion-item-option>
                     <ion-item-option color="danger" (click)="share(item)">
-                        <ion-icon class="big" src="assets/iconos/64022.svg"></ion-icon>
+                        <ion-icon src="assets/iconos/64022.svg"></ion-icon>
                     </ion-item-option>
                 </ion-item-options>
 
@@ -285,17 +292,36 @@
             <div class="img">
                 <img src="../../assets/img/1043ea6260755f02bafd6d2fa98072ec-icono-de-casco-de-construccion.png" alt="">
             </div>
-            <div class="info">
+            <div class="info" (click)="ModalBuilder()">
                 <p class="title">Constructor</p>
                 <p class="subtitle">Información del Constructor</p>
 
             </div>
             <div class="icon">
-                <ion-icon name="{{getIconName('expanded5')}}" color="medium"></ion-icon>
+                <ion-icon name="{{getIconName('expanded5')}}" color="medium" (click)="ModalBuilder()"></ion-icon>
             </div>
 
         </section>
         <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded5')}">
+            <ion-item-sliding>
+                <ion-item-options side="start">
+                    <ion-item-option (click)="edit_builder()">
+                        <ion-icon src="assets/iconos/61456.svg"></ion-icon>
+                    </ion-item-option>
+                    <ion-item-option color="danger" (click)="share(item)">
+                        <ion-icon src="assets/iconos/64022.svg"></ion-icon>
+                    </ion-item-option>
+                </ion-item-options>
+
+                <ion-item lines="none">
+                    <ion-label class="ion-text-wrap">
+                        <ion-text>
+                            <h2>{{name_builder}}</h2>
+                        </ion-text>
+                        <p>{{state_builder}}</p>
+                    </ion-label>
+                </ion-item>
+            </ion-item-sliding>
 
         </section>
 
@@ -304,7 +330,7 @@
             <div class="img">
                 <img src="../../assets/img/twotone_insert_photo_black_48dp.png" alt="">
             </div>
-            <div class="info" (click)="photo_service()">
+            <div class="info" (click)="ModalImage()">
                 <p class="title">Fotografias</p>
                 <p class="subtitle">Fotografias del servicio</p>
 

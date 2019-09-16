@@ -5,8 +5,11 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { LoginServiceService } from '../Services/login-service.service';
 import { MaterialsPage } from '../materials/materials.page';
 import { ModalController } from '@ionic/angular';
+import { BuilderPage } from '../builder/builder.page';
+import { ImagesPage } from '../images/images.page';
+import { NgForm } from '@angular/forms';
 
-import { NgForm } from '@angular/forms'; @Component({
+@Component({
     selector: 'app-acordeon',
     templateUrl: './acordeon.page.html',
     styleUrls: ['./acordeon.page.scss'],
@@ -36,10 +39,12 @@ export class AcordeonPage implements OnInit {
     client
     identifacation
     phone
-
     name_material;
     name_state_material;
     public idmaterials
+    idbuilder
+    name_builder
+    state_builder
     constructor(
         private route: ActivatedRoute,
         private router: Router,
@@ -56,7 +61,6 @@ export class AcordeonPage implements OnInit {
                 this.data = this.router.getCurrentNavigation().extras
                 console.log(this.data)
                 this.name_priority = this.data.name_priority
-
 
                 this.programming = this.data.date_programming
                 this.Attention = this.data.Attention
@@ -83,8 +87,6 @@ export class AcordeonPage implements OnInit {
 
     }
     async presentModal() {
-        console.log(this.idmaterials)
-
         if (this.idmaterials == undefined) {
             const modal: HTMLIonModalElement =
                 await this.modalController.create({
@@ -115,17 +117,82 @@ export class AcordeonPage implements OnInit {
 
         modal.onDidDismiss().then((detail) => {
             if (detail !== null) {
-                console.log(detail.data.data);
-
                 this.name_material = detail.data.data.name_materials
                 this.name_state_material = detail.data.data.name_state
                 this.idmaterials = detail.data.data.idmaterials
-                console.log(this.idmaterials)
             }
         });
 
         await modal.present();
     }
+
+
+    async ModalBuilder() {
+        if (this.idbuilder == undefined) {
+            const modal: HTMLIonModalElement =
+                await this.modalController.create({
+                    component: BuilderPage
+                });
+
+            modal.onDidDismiss().then((detail) => {
+
+                if (detail !== null) {
+                    this.idbuilder = detail.data.data.idbuilder
+                    this.name_builder = detail.data.data.name_builder
+                    this.state_builder = detail.data.data.name_state
+                }
+            });
+
+            await modal.present();
+
+        }
+    }
+
+
+    async ModalImage() {
+        if (this.idbuilder == undefined) {
+            const modal: HTMLIonModalElement =
+                await this.modalController.create({
+                    component: ImagesPage,
+                    componentProps: {
+                        'number_service': this.number_service,
+                        'type_network': this.type_network,
+                        'data': this.data
+                    }
+
+                });
+
+            modal.onDidDismiss().then((detail) => {
+
+                // if (detail !== null) {
+                //     this.idbuilder = detail.data.data.idbuilder
+                //     this.name_builder = detail.data.data.name_builder
+                //     this.state_builder = detail.data.data.name_state
+                // }
+            });
+
+            await modal.present();
+
+        }
+    }
+
+    async  edit_builder() {
+        const modal: HTMLIonModalElement =
+            await this.modalController.create({
+                component: BuilderPage
+            });
+        modal.onDidDismiss().then((detail) => {
+
+            if (detail !== null) {
+                this.idbuilder = detail.data.data.idbuilder
+                this.name_builder = detail.data.data.name_builder
+                this.state_builder = detail.data.data.name_state
+            }
+        });
+
+        await modal.present();
+    }
+
 
     getNameValid(sectionName) {
         return this.step.sectionName === sectionName;

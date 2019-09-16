@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginServiceService } from '../Services/login-service.service';
 import { ModalController } from '@ionic/angular';
-import { NavParams } from '@ionic/angular';
+
 @Component({
   selector: 'app-materials',
   templateUrl: './materials.page.html',
@@ -9,7 +9,9 @@ import { NavParams } from '@ionic/angular';
 })
 export class MaterialsPage implements OnInit {
 
-  materials
+  materials: any[] = [];
+  isSearchbarOpened = false;
+  textSearch = '';
   constructor(private LoginServiceService: LoginServiceService, public modalController: ModalController) { }
 
   ngOnInit() {
@@ -38,5 +40,10 @@ export class MaterialsPage implements OnInit {
     this.modalController.dismiss({
       'dismissed': false,
     });
+  }
+
+  onSearch(event) {
+
+    this.textSearch = event.target.value;
   }
 }

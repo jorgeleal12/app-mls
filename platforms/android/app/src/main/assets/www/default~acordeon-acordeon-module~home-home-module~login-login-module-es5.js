@@ -63251,61 +63251,6 @@ MatTreeNestedDataSource = /** @class */ (function (_super) {
 
 /***/ }),
 
-/***/ "./src/app/Services/login-service.service.ts":
-/*!***************************************************!*\
-  !*** ./src/app/Services/login-service.service.ts ***!
-  \***************************************************/
-/*! exports provided: LoginServiceService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginServiceService", function() { return LoginServiceService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-
-
-
-var LoginServiceService = /** @class */ (function () {
-    function LoginServiceService(http) {
-        this.http = http;
-        this.api_url = 'http://192.168.1.57/laravel-mls/public/api/';
-    }
-    LoginServiceService.prototype.save_image = function (params) {
-        return this.http.post(this.api_url + "movil/image", params);
-    };
-    LoginServiceService.prototype.login = function (params) {
-        return this.http.post(this.api_url + "movil/login", params);
-    };
-    LoginServiceService.prototype.totalasignadas = function (params) {
-        return this.http.post(this.api_url + "movil/totalasignadas", params);
-    };
-    LoginServiceService.prototype.seach_asignadas = function (params) {
-        return this.http.post(this.api_url + "movil/seach_asignadas", params);
-    };
-    LoginServiceService.prototype.photos_service = function (params) {
-        return this.http.post(this.api_url + "movil/photos_service", params);
-    };
-    LoginServiceService.prototype.registerToken = function (params) {
-        return this.http.post(this.api_url + "movil/registerToken", params);
-    };
-    LoginServiceService.ctorParameters = function () { return [
-        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-    ]; };
-    LoginServiceService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-    ], LoginServiceService);
-    return LoginServiceService;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/app-material.module.ts":
 /*!****************************************!*\
   !*** ./src/app/app-material.module.ts ***!

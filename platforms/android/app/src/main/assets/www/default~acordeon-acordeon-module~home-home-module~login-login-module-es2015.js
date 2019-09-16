@@ -50554,60 +50554,6 @@ class MatTreeNestedDataSource extends _angular_cdk_collections__WEBPACK_IMPORTED
 
 /***/ }),
 
-/***/ "./src/app/Services/login-service.service.ts":
-/*!***************************************************!*\
-  !*** ./src/app/Services/login-service.service.ts ***!
-  \***************************************************/
-/*! exports provided: LoginServiceService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginServiceService", function() { return LoginServiceService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
-
-
-
-let LoginServiceService = class LoginServiceService {
-    constructor(http) {
-        this.http = http;
-        this.api_url = 'http://192.168.1.57/laravel-mls/public/api/';
-    }
-    save_image(params) {
-        return this.http.post(`${this.api_url}movil/image`, params);
-    }
-    login(params) {
-        return this.http.post(`${this.api_url}movil/login`, params);
-    }
-    totalasignadas(params) {
-        return this.http.post(`${this.api_url}movil/totalasignadas`, params);
-    }
-    seach_asignadas(params) {
-        return this.http.post(`${this.api_url}movil/seach_asignadas`, params);
-    }
-    photos_service(params) {
-        return this.http.post(`${this.api_url}movil/photos_service`, params);
-    }
-    registerToken(params) {
-        return this.http.post(`${this.api_url}movil/registerToken`, params);
-    }
-};
-LoginServiceService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
-];
-LoginServiceService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
-], LoginServiceService);
-
-
-
-/***/ }),
-
 /***/ "./src/app/app-material.module.ts":
 /*!****************************************!*\
   !*** ./src/app/app-material.module.ts ***!

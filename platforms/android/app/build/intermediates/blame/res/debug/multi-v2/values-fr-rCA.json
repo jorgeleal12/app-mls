@@ -4,19 +4,6 @@
             "outputFile": "/var/www/html/app-mls/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-fr-rCA/values-fr-rCA.xml",
             "map": [
                 {
-<<<<<<< HEAD
-                    "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/b54419c4ef1536f79d6ece8334fc6bd9/res/values-fr-rCA/values-fr-rCA.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,216,331,442,529,645,775,858,938,1034,1144,1256,1359,1470,1577,1679,1838,1937",
-                        "endColumns": "110,114,110,86,115,129,82,79,95,109,111,102,110,106,101,158,98,85",
-                        "endOffsets": "211,326,437,524,640,770,853,933,1029,1139,1251,1354,1465,1572,1674,1833,1932,2018"
-                    }
-                },
-                {
-                    "source": "/root/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/fa27400905446a11bb12a5fdeed8e5cf/res/values-fr-rCA/values-fr-rCA.xml",
-=======
                     "source": "/root/.gradle/caches/transforms-1/files-1.1/firebase-messaging-18.0.0.aar/67d8a92030a19b47d1001a015cc66bfe/res/values-fr-rCA/values.xml",
                     "from": {
                         "startLines": "4",
@@ -69,7 +56,6 @@
                 },
                 {
                     "source": "/root/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/43d6a3095fea8a8ca8493fee28cc306b/res/values-fr-rCA/values-fr-rCA.xml",
->>>>>>> 0be61efb7e909d9a0b27a01dc86d30eb9365d512
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -84,8 +70,6 @@
                         "endColumns": "100",
                         "endOffsets": "5125"
                     }
-<<<<<<< HEAD
-=======
                 },
                 {
                     "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/8795804e95a9d52910e1edd07b722014/res/values-fr-rCA/values-fr-rCA.xml",
@@ -103,7 +87,6 @@
                         "endColumns": "110,114,110,86,115,129,82,79,95,109,111,102,110,106,101,158,98,85",
                         "endOffsets": "211,326,437,524,640,770,853,933,1029,1139,1251,1354,1465,1572,1674,1833,1932,5024"
                     }
->>>>>>> 0be61efb7e909d9a0b27a01dc86d30eb9365d512
                 }
             ]
         }
