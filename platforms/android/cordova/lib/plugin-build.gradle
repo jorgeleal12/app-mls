@@ -20,9 +20,13 @@
 
 buildscript {
     repositories {
+<<<<<<< HEAD
         maven {
             url "https://maven.google.com"
         }
+=======
+        google()
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
         jcenter()
     }
 
@@ -38,7 +42,7 @@ buildscript {
 apply plugin: 'com.android.library'
 
 dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
+    implementation fileTree(dir: 'libs', include: '*.jar')
     debugCompile project(path: ":CordovaLib", configuration: "debug")
     releaseCompile project(path: ":CordovaLib", configuration: "release")
 }
@@ -46,7 +50,6 @@ dependencies {
 android {
     compileSdkVersion cdvCompileSdkVersion
     buildToolsVersion cdvBuildToolsVersion
-    publishNonDefault true
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_6

@@ -1,5 +1,9 @@
 // Platform: android
+<<<<<<< HEAD
 // 9e8e1b716252c4a08abcd31a13013b868d6f4141
+=======
+// 74fdba8b327b2a13b4366dd141b52def96d4cb56
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
 /*
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -8,9 +12,9 @@
  to you under the Apache License, Version 2.0 (the
  "License"); you may not use this file except in compliance
  with the License.  You may obtain a copy of the License at
- 
+
      http://www.apache.org/licenses/LICENSE-2.0
- 
+
  Unless required by applicable law or agreed to in writing,
  software distributed under the License is distributed on an
  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -19,12 +23,12 @@
  under the License.
 */
 ;(function() {
+<<<<<<< HEAD
 var PLATFORM_VERSION_BUILD_LABEL = '7.1.4';
+=======
+var PLATFORM_VERSION_BUILD_LABEL = '8.1.0';
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
 // file: src/scripts/require.js
-
-/* jshint -W079 */
-/* jshint -W020 */
-
 var require;
 var define;
 
@@ -73,7 +77,7 @@ var define;
     };
 
     define = function (id, factory) {
-        if (modules[id]) {
+        if (Object.prototype.hasOwnProperty.call(modules, id)) {
             throw 'module ' + id + ' already defined';
         }
 
@@ -208,8 +212,8 @@ var cordova = {
      * @return object
      */
     getOriginalHandlers: function () {
-        return {'document': {'addEventListener': m_document_addEventListener, 'removeEventListener': m_document_removeEventListener},
-            'window': {'addEventListener': m_window_addEventListener, 'removeEventListener': m_window_removeEventListener}};
+        return { 'document': { 'addEventListener': m_document_addEventListener, 'removeEventListener': m_document_removeEventListener },
+            'window': { 'addEventListener': m_window_addEventListener, 'removeEventListener': m_window_removeEventListener } };
     },
     /**
      * Method to fire event from native code
@@ -327,7 +331,11 @@ module.exports = cordova;
 
 });
 
+<<<<<<< HEAD
 // file: /Users/brodybits/Documents/cordova/cordova-android/cordova-js-src/android/nativeapiprovider.js
+=======
+// file: ../cordova-android/cordova-js-src/android/nativeapiprovider.js
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
 define("cordova/android/nativeapiprovider", function(require, exports, module) {
 
 /**
@@ -350,7 +358,11 @@ module.exports = {
 
 });
 
+<<<<<<< HEAD
 // file: /Users/brodybits/Documents/cordova/cordova-android/cordova-js-src/android/promptbasednativeapi.js
+=======
+// file: ../cordova-android/cordova-js-src/android/promptbasednativeapi.js
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
 define("cordova/android/promptbasednativeapi", function(require, exports, module) {
 
 /**
@@ -389,9 +401,38 @@ var typeMap = {
 };
 
 function extractParamName (callee, argIndex) {
-    return (/.*?\((.*?)\)/).exec(callee)[1].split(', ')[argIndex];
+    return (/\(\s*([^)]*?)\s*\)/).exec(callee)[1].split(/\s*,\s*/)[argIndex];
 }
 
+/**
+ * Checks the given arguments' types and throws if they are not as expected.
+ *
+ * `spec` is a string where each character stands for the required type of the
+ * argument at the same position. In other words: the character at `spec[i]`
+ * specifies the required type for `args[i]`. The characters in `spec` are the
+ * first letter of the required type's name. The supported types are:
+ *
+ *     Array, Date, Number, String, Function, Object
+ *
+ * Lowercase characters specify arguments that must not be `null` or `undefined`
+ * while uppercase characters allow those values to be passed.
+ *
+ * Finally, `*` can be used to allow any type at the corresponding position.
+ *
+ * @example
+ * function foo (arr, opts) {
+ *     // require `arr` to be an Array and `opts` an Object, null or undefined
+ *     checkArgs('aO', 'my.package.foo', arguments);
+ *     // ...
+ * }
+ * @param {String} spec - the type specification for `args` as described above
+ * @param {String} functionName - full name of the callee.
+ * Used in the error message
+ * @param {Array|arguments} args - the arguments to be checked against `spec`
+ * @param {Function} [opt_callee=args.callee] - the recipient of `args`.
+ * Used to extract parameter names for the error message
+ * @throws {TypeError} if args do not satisfy spec
+ */
 function checkArgs (spec, functionName, args, opt_callee) {
     if (!moduleExports.enableChecks) {
         return;
@@ -882,7 +923,11 @@ module.exports = channel;
 
 });
 
+<<<<<<< HEAD
 // file: /Users/brodybits/Documents/cordova/cordova-android/cordova-js-src/exec.js
+=======
+// file: ../cordova-android/cordova-js-src/exec.js
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
 define("cordova/exec", function(require, exports, module) {
 
 /**
@@ -975,17 +1020,6 @@ function androidExec(success, fail, service, action, args) {
 }
 
 androidExec.init = function() {
-    //CB-11828
-    //This failsafe checks the version of Android and if it's Jellybean, it switches it to
-    //using the Online Event bridge for communicating from Native to JS
-    //
-    //It's ugly, but it's necessary.
-    var check = navigator.userAgent.toLowerCase().match(/android\s[0-9].[0-9]/);
-    var version_code = check && check[0].match(/4.[0-3].*/);
-    if (version_code != null && nativeToJsBridgeMode == nativeToJsModes.EVAL_BRIDGE) {
-      nativeToJsBridgeMode = nativeToJsModes.ONLINE_EVENT;
-    }
-
     bridgeSecret = +prompt('', 'gap_init:' + nativeToJsBridgeMode);
     channel.onNativeReady.fire();
 };
@@ -1320,130 +1354,6 @@ channel.join(function () {
 
 });
 
-// file: src/common/init_b.js
-define("cordova/init_b", function(require, exports, module) {
-
-var channel = require('cordova/channel');
-var cordova = require('cordova');
-var modulemapper = require('cordova/modulemapper');
-var platform = require('cordova/platform');
-var pluginloader = require('cordova/pluginloader');
-var utils = require('cordova/utils');
-
-var platformInitChannelsArray = [channel.onDOMContentLoaded, channel.onNativeReady, channel.onPluginsReady];
-
-// setting exec
-cordova.exec = require('cordova/exec');
-
-function logUnfiredChannels (arr) {
-    for (var i = 0; i < arr.length; ++i) {
-        if (arr[i].state !== 2) {
-            console.log('Channel not fired: ' + arr[i].type);
-        }
-    }
-}
-
-window.setTimeout(function () {
-    if (channel.onDeviceReady.state !== 2) {
-        console.log('deviceready has not fired after 5 seconds.');
-        logUnfiredChannels(platformInitChannelsArray);
-        logUnfiredChannels(channel.deviceReadyChannelsArray);
-    }
-}, 5000);
-
-// Replace navigator before any modules are required(), to ensure it happens as soon as possible.
-// We replace it so that properties that can't be clobbered can instead be overridden.
-function replaceNavigator (origNavigator) {
-    var CordovaNavigator = function () {};
-    CordovaNavigator.prototype = origNavigator;
-    var newNavigator = new CordovaNavigator();
-    // This work-around really only applies to new APIs that are newer than Function.bind.
-    // Without it, APIs such as getGamepads() break.
-    if (CordovaNavigator.bind) {
-        for (var key in origNavigator) {
-            if (typeof origNavigator[key] === 'function') {
-                newNavigator[key] = origNavigator[key].bind(origNavigator);
-            } else {
-                (function (k) {
-                    utils.defineGetterSetter(newNavigator, key, function () {
-                        return origNavigator[k];
-                    });
-                })(key);
-            }
-        }
-    }
-    return newNavigator;
-}
-if (window.navigator) {
-    window.navigator = replaceNavigator(window.navigator);
-}
-
-if (!window.console) {
-    window.console = {
-        log: function () {}
-    };
-}
-if (!window.console.warn) {
-    window.console.warn = function (msg) {
-        this.log('warn: ' + msg);
-    };
-}
-
-// Register pause, resume and deviceready channels as events on document.
-channel.onPause = cordova.addDocumentEventHandler('pause');
-channel.onResume = cordova.addDocumentEventHandler('resume');
-channel.onActivated = cordova.addDocumentEventHandler('activated');
-channel.onDeviceReady = cordova.addStickyDocumentEventHandler('deviceready');
-
-// Listen for DOMContentLoaded and notify our channel subscribers.
-if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    channel.onDOMContentLoaded.fire();
-} else {
-    document.addEventListener('DOMContentLoaded', function () {
-        channel.onDOMContentLoaded.fire();
-    }, false);
-}
-
-// _nativeReady is global variable that the native side can set
-// to signify that the native code is ready. It is a global since
-// it may be called before any cordova JS is ready.
-if (window._nativeReady) {
-    channel.onNativeReady.fire();
-}
-
-// Call the platform-specific initialization.
-platform.bootstrap && platform.bootstrap();
-
-// Wrap in a setTimeout to support the use-case of having plugin JS appended to cordova.js.
-// The delay allows the attached modules to be defined before the plugin loader looks for them.
-setTimeout(function () {
-    pluginloader.load(function () {
-        channel.onPluginsReady.fire();
-    });
-}, 0);
-
-/**
- * Create all cordova objects once native side is ready.
- */
-channel.join(function () {
-    modulemapper.mapModules(window);
-
-    platform.initialize && platform.initialize();
-
-    // Fire event to notify that all objects are created
-    channel.onCordovaReady.fire();
-
-    // Fire onDeviceReady event once page has fully loaded, all
-    // constructors have run and cordova info has been received from native
-    // side.
-    channel.join(function () {
-        require('cordova').fireDocumentEvent('deviceready');
-    }, channel.deviceReadyChannelsArray);
-
-}, platformInitChannelsArray);
-
-});
-
 // file: src/common/modulemapper.js
 define("cordova/modulemapper", function(require, exports, module) {
 
@@ -1544,6 +1454,7 @@ exports.reset();
 
 });
 
+<<<<<<< HEAD
 // file: src/common/modulemapper_b.js
 define("cordova/modulemapper_b", function(require, exports, module) {
 
@@ -1641,6 +1552,9 @@ exports.reset();
 });
 
 // file: /Users/brodybits/Documents/cordova/cordova-android/cordova-js-src/platform.js
+=======
+// file: ../cordova-android/cordova-js-src/platform.js
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
 define("cordova/platform", function(require, exports, module) {
 
 // The last resume event that was received that had the result of a plugin call.
@@ -1750,7 +1664,11 @@ function onMessageFromNative(msg) {
 
 });
 
+<<<<<<< HEAD
 // file: /Users/brodybits/Documents/cordova/cordova-android/cordova-js-src/plugin/android/app.js
+=======
+// file: ../cordova-android/cordova-js-src/plugin/android/app.js
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
 define("cordova/plugin/android/app", function(require, exports, module) {
 
 var exec = require('cordova/exec');
@@ -1953,53 +1871,6 @@ exports.load = function (callback) {
 
 });
 
-// file: src/common/pluginloader_b.js
-define("cordova/pluginloader_b", function(require, exports, module) {
-
-var modulemapper = require('cordova/modulemapper');
-
-// Handler for the cordova_plugins.js content.
-// See plugman's plugin_loader.js for the details of this object.
-function handlePluginsObject (moduleList) {
-    // if moduleList is not defined or empty, we've nothing to do
-    if (!moduleList || !moduleList.length) {
-        return;
-    }
-
-    // Loop through all the modules and then through their clobbers and merges.
-    for (var i = 0, module; module = moduleList[i]; i++) { // eslint-disable-line no-cond-assign
-        if (module.clobbers && module.clobbers.length) {
-            for (var j = 0; j < module.clobbers.length; j++) {
-                modulemapper.clobbers(module.id, module.clobbers[j]);
-            }
-        }
-
-        if (module.merges && module.merges.length) {
-            for (var k = 0; k < module.merges.length; k++) {
-                modulemapper.merges(module.id, module.merges[k]);
-            }
-        }
-
-        // Finally, if runs is truthy we want to simply require() the module.
-        if (module.runs) {
-            modulemapper.runs(module.id);
-        }
-    }
-}
-
-// Loads all plugins' js-modules. Plugin loading is syncronous in browserified bundle
-// but the method accepts callback to be compatible with non-browserify flow.
-// onDeviceReady is blocked on onPluginsReady. onPluginsReady is fired when there are
-// no plugins to load, or they are all done.
-exports.load = function (callback) {
-    var moduleList = require('cordova/plugin_list');
-    handlePluginsObject(moduleList);
-
-    callback();
-};
-
-});
-
 // file: src/common/urlutil.js
 define("cordova/urlutil", function(require, exports, module) {
 
@@ -2183,7 +2054,6 @@ utils.alert = function (msg) {
 
 window.cordova = require('cordova');
 // file: src/scripts/bootstrap.js
-
 require('cordova/init');
 
 })();

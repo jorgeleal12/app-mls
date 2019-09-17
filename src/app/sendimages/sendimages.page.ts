@@ -310,7 +310,6 @@ export class SendimagesPage implements OnInit {
 
     }
 
-
     // loader.dismiss();
     // this.database.GetAllUsers(this.consecutivo).then(
     //   Response => {
@@ -321,7 +320,6 @@ export class SendimagesPage implements OnInit {
     // this.image = [];
 
     //let reader = new FileReader();
-
   }
 
 
