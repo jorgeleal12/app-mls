@@ -3,6 +3,8 @@ import { ModalController } from '@ionic/angular';
 import { LoginServiceService } from '../Services/login-service.service';
 import { ActivatedRoute, Router, NavigationExtras, } from '@angular/router';
 import { NavParams } from '@ionic/angular';
+import { SendimagesPage } from '../sendimages/sendimages.page';
+
 @Component({
   selector: 'app-images',
   templateUrl: './images.page.html',
@@ -61,15 +63,16 @@ export class ImagesPage implements OnInit {
   }
 
 
-  async ModalImage() {
+  async ModalImage(photos_service) {
 
     const modal: HTMLIonModalElement =
       await this.modalController.create({
-        component: ImagesPage,
+        component: SendimagesPage,
         componentProps: {
           'number_service': this.number_service,
           'type_network': this.type_network,
-          'data': this.data
+          'data': this.data,
+          'photos_service': photos_service
         }
 
       });

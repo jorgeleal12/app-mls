@@ -22,10 +22,11 @@ import { PipesModule } from '../app/pipes/pipes.module';
 import { BuilderPageModule } from './builder/builder.module';
 import { ImagesPageModule } from './images/images.module';
 import { SendimagesPageModule } from './sendimages/sendimages.module';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [PipesModule, BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule,
+  imports: [PipesModule, BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule
     , SendimagesPageModule, MaterialsPageModule, BuilderPageModule, ImagesPageModule],
   providers: [
     StatusBar,
@@ -38,6 +39,7 @@ import { SendimagesPageModule } from './sendimages/sendimages.module';
     FileChooser,
     File,
     FCM,
+    Camera,
     LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

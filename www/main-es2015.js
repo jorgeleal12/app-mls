@@ -33,6 +33,9 @@ var map = {
 	"./builder/builder.module": [
 		"./src/app/builder/builder.module.ts"
 	],
+	"./images/images.module": [
+		"./src/app/images/images.module.ts"
+	],
 	"./login/login.module": [
 		"./src/app/login/login.module.ts",
 		"default~acordeon-acordeon-module~home-home-module~login-login-module",
@@ -41,6 +44,9 @@ var map = {
 	"./menu/menu.module": [
 		"./src/app/menu/menu.module.ts",
 		"menu-menu-module"
+	],
+	"./sendimages/sendimages.module": [
+		"./src/app/sendimages/sendimages.module.ts"
 	]
 };
 function webpackAsyncContext(req) {
@@ -502,6 +508,17 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/images/images.page.html":
+/*!*******************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/images/images.page.html ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Fotografias</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button icon-only>\n        <ion-icon slot=\"icon-only\" name=\"search\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let photos_service of photos_services\" (click)=\"ModalImage(photos_service)\">\n      <ion-label>\n        <ion-text>\n          <h2>{{photos_service.name_photo}}</h2>\n        </ion-text>\n        <ion-text color=\"primary\">\n          <p>Actuales</p>\n        </ion-text>\n        <p>Min: {{photos_service.min}} / Max: {{photos_service.quantity}} </p>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n</ion-content>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/materials/materials.page.html":
 /*!*************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/materials/materials.page.html ***!
@@ -510,6 +527,17 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 /***/ (function(module, exports) {
 
 module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\" *ngIf=\"!isSearchbarOpened\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\" *ngIf=\"!isSearchbarOpened\">Materiales</ion-title>\n    <!-- Default Searchbar -->\n    <ion-searchbar *ngIf=\"isSearchbarOpened\" showCancelButton=\"true\" (ionChange)=\"onSearch($event)\"\n      (ionCancel)=\"isSearchbarOpened=false\"></ion-searchbar>\n    <ion-buttons slot=\"end\">\n      <ion-button icon-only *ngIf=\"!isSearchbarOpened\" (click)=\"isSearchbarOpened=true\">\n        <ion-icon slot=\"icon-only\" name=\"search\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let material of materials | filter:textSearch:'name_materials'\"\n      (click)=\"select(material)\">\n      <ion-label>\n        <ion-text>\n          <h2>{{material.name_materials}}</h2>\n        </ion-text>\n        <p>{{material.name_state}}</p>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n</ion-content>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/sendimages/sendimages.page.html":
+/*!***************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/sendimages/sendimages.page.html ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n\n    <ion-title text-center class=\"center\">Enviar Fotografias</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"send_image()\">\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <!--div-->\n  <section class=\"content-images\">\n    <ion-card class=\"add-img\" *ngFor=\"let photo of photos; let i = i; index\" (click)=\"selectImage(photo)\"\n      [ngStyle]=\"{background: 'url(' + photo.imagenes + ')no-repeat scroll center center / 100% 100%'}\">\n\n      <!-- <img [src]=\"photo.imagenes\" class=\"img\" width=\"200\" height=\"100\" [hidden]=\"photo.hidden_image\" /> -->\n\n      <div class=\"divv\">\n        <ion-icon name=\"md-checkmark-circle\" color=\"light\" size=\"large\" [hidden]=\"photo.send\"\n          *ngIf=\"photo.state == true\"></ion-icon>\n      </div>\n      <div class=\"divv\">\n        <ion-icon name=\"add-circle\" color=\"light\" size=\"large\" [hidden]=\"photo.hidden\"></ion-icon>\n      </div>\n      <div class=\"divv\">\n        <ion-icon name=\"md-close-circle\" color=\"red\" size=\"large\" [hidden]=\"photo.error\" *ngIf=\"photo.state == false\">\n        </ion-icon>\n      </div>\n\n\n\n    </ion-card>\n\n    <ion-card class=\"add-img add-pdf\" (click)=\"selectImage(photo)\">\n      <ion-card-content>\n        <ion-icon name=\"document\" color=\"light\" size=\"large\"></ion-icon>\n      </ion-card-content>\n    </ion-card>\n\n    <canvas #layout hidden></canvas>\n  </section>\n\n</ion-content>"
 
 /***/ }),
 
@@ -594,6 +622,8 @@ const routes = [
     { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
     { path: 'asignadas', loadChildren: './asignadas/asignadas.module#AsignadasPageModule' },
     { path: 'builder', loadChildren: './builder/builder.module#BuilderPageModule' },
+    { path: 'images', loadChildren: './images/images.module#ImagesPageModule' },
+    { path: 'sendimages', loadChildren: './sendimages/sendimages.module#SendimagesPageModule' },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -742,6 +772,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _materials_materials_module__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./materials/materials.module */ "./src/app/materials/materials.module.ts");
 /* harmony import */ var _app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ../app/pipes/pipes.module */ "./src/app/pipes/pipes.module.ts");
 /* harmony import */ var _builder_builder_module__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./builder/builder.module */ "./src/app/builder/builder.module.ts");
+/* harmony import */ var _images_images_module__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./images/images.module */ "./src/app/images/images.module.ts");
+/* harmony import */ var _sendimages_sendimages_module__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./sendimages/sendimages.module */ "./src/app/sendimages/sendimages.module.ts");
+/* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/ngx/index.js");
+
+
+
 
 
 
@@ -770,7 +806,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         declarations: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]],
         entryComponents: [],
-        imports: [_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_20__["PipesModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"], _materials_materials_module__WEBPACK_IMPORTED_MODULE_19__["MaterialsPageModule"], _builder_builder_module__WEBPACK_IMPORTED_MODULE_21__["BuilderPageModule"]],
+        imports: [_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_20__["PipesModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"],
+            _sendimages_sendimages_module__WEBPACK_IMPORTED_MODULE_23__["SendimagesPageModule"], _materials_materials_module__WEBPACK_IMPORTED_MODULE_19__["MaterialsPageModule"], _builder_builder_module__WEBPACK_IMPORTED_MODULE_21__["BuilderPageModule"], _images_images_module__WEBPACK_IMPORTED_MODULE_22__["ImagesPageModule"]],
         providers: [
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
@@ -782,6 +819,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_16__["FileChooser"],
             _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_15__["File"],
             _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_17__["FCM"],
+            _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_24__["Camera"],
             _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_18__["LocalNotifications"],
             { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] }
         ],
@@ -918,6 +956,172 @@ BuilderPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]])
 ], BuilderPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/images/images.module.ts":
+/*!*****************************************!*\
+  !*** ./src/app/images/images.module.ts ***!
+  \*****************************************/
+/*! exports provided: ImagesPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImagesPageModule", function() { return ImagesPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _images_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./images.page */ "./src/app/images/images.page.ts");
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _images_page__WEBPACK_IMPORTED_MODULE_6__["ImagesPage"]
+    }
+];
+let ImagesPageModule = class ImagesPageModule {
+};
+ImagesPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_images_page__WEBPACK_IMPORTED_MODULE_6__["ImagesPage"]]
+    })
+], ImagesPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/images/images.page.scss":
+/*!*****************************************!*\
+  !*** ./src/app/images/images.page.scss ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2ltYWdlcy9pbWFnZXMucGFnZS5zY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/images/images.page.ts":
+/*!***************************************!*\
+  !*** ./src/app/images/images.page.ts ***!
+  \***************************************/
+/*! exports provided: ImagesPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ImagesPage", function() { return ImagesPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _sendimages_sendimages_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../sendimages/sendimages.page */ "./src/app/sendimages/sendimages.page.ts");
+
+
+
+
+
+
+
+let ImagesPage = class ImagesPage {
+    constructor(route, router, LoginServiceService, modalController, navParams) {
+        this.route = route;
+        this.router = router;
+        this.LoginServiceService = LoginServiceService;
+        this.modalController = modalController;
+        this.navParams = navParams;
+        this.number_service = navParams.get('number_service');
+        this.type_network = navParams.get('type_network');
+        this.data = navParams.get('data');
+    }
+    ngOnInit() {
+        this.photo_service();
+    }
+    photo_service() {
+        let params = {
+            type_network: this.type_network
+        };
+        this.LoginServiceService.photos_service(params).subscribe(result => {
+            this.photos_services = result.response;
+        }, error => {
+        });
+    }
+    photos_add(photos_service) {
+        let navigationExtras = {
+            queryParams: {
+                photos_service: photos_service,
+                data: this.data
+            }
+        };
+        this.router.navigate(['menu/menu/fotografias'], navigationExtras);
+        this.modalController.dismiss({
+            'dismissed': false,
+        });
+    }
+    back() {
+        this.modalController.dismiss({
+            'dismissed': false,
+        });
+    }
+    ModalImage(photos_service) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const modal = yield this.modalController.create({
+                component: _sendimages_sendimages_page__WEBPACK_IMPORTED_MODULE_5__["SendimagesPage"],
+                componentProps: {
+                    'number_service': this.number_service,
+                    'type_network': this.type_network,
+                    'data': this.data,
+                    'photos_service': photos_service
+                }
+            });
+            modal.onDidDismiss().then((detail) => {
+                // if (detail !== null) {
+                //     this.idbuilder = detail.data.data.idbuilder
+                //     this.name_builder = detail.data.data.name_builder
+                //     this.state_builder = detail.data.data.name_state
+                // }
+            });
+            yield modal.present();
+        });
+    }
+};
+ImagesPage.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+    { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__["LoginServiceService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"] }
+];
+ImagesPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-images',
+        template: __webpack_require__(/*! raw-loader!./images.page.html */ "./node_modules/raw-loader/index.js!./src/app/images/images.page.html"),
+        styles: [__webpack_require__(/*! ./images.page.scss */ "./src/app/images/images.page.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
+        _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__["LoginServiceService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"]])
+], ImagesPage);
 
 
 
@@ -1116,6 +1320,460 @@ PipesModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         exports: [_filter_pipe__WEBPACK_IMPORTED_MODULE_2__["FilterPipe"]]
     })
 ], PipesModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/sendimages/sendimages.module.ts":
+/*!*************************************************!*\
+  !*** ./src/app/sendimages/sendimages.module.ts ***!
+  \*************************************************/
+/*! exports provided: SendimagesPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SendimagesPageModule", function() { return SendimagesPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _sendimages_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./sendimages.page */ "./src/app/sendimages/sendimages.page.ts");
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _sendimages_page__WEBPACK_IMPORTED_MODULE_6__["SendimagesPage"]
+    }
+];
+let SendimagesPageModule = class SendimagesPageModule {
+};
+SendimagesPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_sendimages_page__WEBPACK_IMPORTED_MODULE_6__["SendimagesPage"]]
+    })
+], SendimagesPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/sendimages/sendimages.page.scss":
+/*!*************************************************!*\
+  !*** ./src/app/sendimages/sendimages.page.scss ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".center {\n  color: rgba(255, 255, 255, 0.93) !important;\n}\n\n.content-images {\n  display: -webkit-box;\n  display: flex;\n  justify-content: space-around;\n  flex-wrap: wrap;\n}\n\n.add-img {\n  width: 40%;\n  height: 170px;\n  display: -webkit-box;\n  display: flex;\n  border-color: #e8e8e8;\n  border-style: solid;\n  border-width: 2px;\n  justify-content: space-around;\n  padding: 2px;\n  z-index: 2;\n}\n\n.imagen {\n  position: relative;\n  background-color: #336699;\n  color: #fff;\n  width: 100px;\n  height: 100px;\n  padding: 3px;\n  text-align: center;\n  z-index: 1;\n}\n\n.padre {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: reverse;\n          flex-direction: row-reverse;\n  height: 100%;\n  width: 100%;\n  background-color: white;\n  border-color: #7bc228;\n  border-style: solid;\n  border-width: 2px;\n}\n\n.add-img .divv:nth-child(2) {\n  -webkit-box-align: center;\n          align-items: center;\n  align-self: center;\n}\n\n.add-img .divv:nth-child(1) {\n  align-self: flex-end;\n  -webkit-box-align: start;\n          align-items: flex-start;\n}\n\n.add-img .divv:nth-child(3) {\n  align-self: flex-end;\n  -webkit-box-align: end;\n          align-items: flex-end;\n}\n\n.icono {\n  color: lime !important;\n}\n\n.icono1 {\n  color: red !important;\n}\n\n.ion-color-light {\n  --ion-color-base: #7bc228 !important;\n  --ion-color-base-rgb: var(--ion-color-light-rgb, 244, 245, 248) !important;\n  --ion-color-contrast: var(--ion-color-light-contrast, #000) !important;\n  --ion-color-contrast-rgb: var(--ion-color-light-contrast-rgb, 0, 0, 0) !important;\n  --ion-color-shade: var(--ion-color-light-shade, #d7d8da) !important;\n  --ion-color-tint: var(--ion-color-light-tint, #f5f6f9) !important;\n}\n\n.ion-color-red {\n  --ion-color-base: #ef0909 !important;\n  --ion-color-base-rgb: var(--ion-color-light-rgb, 244, 245, 248) !important;\n  --ion-color-contrast: var(--ion-color-light-contrast, #000) !important;\n  --ion-color-contrast-rgb: var(--ion-color-light-contrast-rgb, 0, 0, 0) !important;\n  --ion-color-shade: var(--ion-color-light-shade, #d7d8da) !important;\n  --ion-color-tint: var(--ion-color-light-tint, #f5f6f9) !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi92YXIvd3d3L2h0bWwvYXBwLW1scy9zcmMvYXBwL3NlbmRpbWFnZXMvc2VuZGltYWdlcy5wYWdlLnNjc3MiLCJzcmMvYXBwL3NlbmRpbWFnZXMvc2VuZGltYWdlcy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSwyQ0FBQTtBQ0NKOztBREVFO0VBQ0Msb0JBQUE7RUFBQSxhQUFBO0VBQ0MsNkJBQUE7RUFHRCxlQUFBO0FDREg7O0FETUU7RUFDRSxVQUFBO0VBQ0EsYUFBQTtFQUNBLG9CQUFBO0VBQUEsYUFBQTtFQUVBLHFCQUFBO0VBQ0EsbUJBQUE7RUFDQSxpQkFBQTtFQUNBLDZCQUFBO0VBQ0EsWUFBQTtFQUNBLFVBQUE7QUNKSjs7QURrQkU7RUFDRSxrQkFBQTtFQUNBLHlCQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxhQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsVUFBQTtBQ2ZKOztBRGlCRTtFQUVFLG9CQUFBO0VBQUEsYUFBQTtFQUNBLDhCQUFBO0VBQUEsOEJBQUE7VUFBQSwyQkFBQTtFQUNBLFlBQUE7RUFDQSxXQUFBO0VBQ0EsdUJBQUE7RUFDQSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0EsaUJBQUE7QUNmSjs7QURrQkc7RUFDQyx5QkFBQTtVQUFBLG1CQUFBO0VBQ0Msa0JBQUE7QUNmTDs7QURpQkc7RUFDQSxvQkFBQTtFQUNBLHdCQUFBO1VBQUEsdUJBQUE7QUNkSDs7QURpQkc7RUFDQyxvQkFBQTtFQUNBLHNCQUFBO1VBQUEscUJBQUE7QUNkSjs7QURvQkU7RUFDRSxzQkFBQTtBQ2pCSjs7QURtQkU7RUFDRSxxQkFBQTtBQ2hCSjs7QUQyQkU7RUFDRSxvQ0FBQTtFQUNBLDBFQUFBO0VBQ0Esc0VBQUE7RUFDQSxpRkFBQTtFQUNBLG1FQUFBO0VBQ0EsaUVBQUE7QUN4Qko7O0FEMEJFO0VBQ0Usb0NBQUE7RUFDQSwwRUFBQTtFQUNBLHNFQUFBO0VBQ0EsaUZBQUE7RUFDQSxtRUFBQTtFQUNBLGlFQUFBO0FDdkJKIiwiZmlsZSI6InNyYy9hcHAvc2VuZGltYWdlcy9zZW5kaW1hZ2VzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jZW50ZXIge1xuICAgIGNvbG9yOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuOTMpICFpbXBvcnRhbnRcbiAgfVxuICBcbiAgLmNvbnRlbnQtaW1hZ2VzIHtcbiAgIGRpc3BsYXk6IGZsZXg7XG4gICAganVzdGlmeS1jb250ZW50OnNwYWNlLWFyb3VuZDtcbiAgICAvLyAvLyBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIC8vIC8vIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gICBmbGV4LXdyYXA6IHdyYXA7XG4gICAgLy8gZmxleC1kaXJlY3Rpb246IHJvdztcbiAgICBcbiAgfVxuICBcbiAgLmFkZC1pbWcge1xuICAgIHdpZHRoOiA0MCU7XG4gICAgaGVpZ2h0OiAxNzBweDtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIC8vIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICAgIGJvcmRlci1jb2xvcjojZThlOGU4O1xuICAgIGJvcmRlci1zdHlsZTogc29saWQ7XG4gICAgYm9yZGVyLXdpZHRoOiAycHg7XG4gICAganVzdGlmeS1jb250ZW50OnNwYWNlLWFyb3VuZDtcbiAgICBwYWRkaW5nOiAycHg7XG4gICAgei1pbmRleDogMjtcbiAgXG4gICAgLy8gYm94LXNoYWRvdzogMCAuMTI1cmVtIC4yNXJlbSByZ2JhKDAsIDAsIDAsIC4wNzUpICFpbXBvcnRhbnQ7XG4gICAgLy8gbWFyZ2luOiAuNWVtIC41ZW07XG4gIC8vIHBhZGRpbmc6IDA7XG4gICAgLy8ganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICAgIC8vIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgXG4gICAgLy8gYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KHRvIHJpZ2h0LCAjN2JjMjI4LCAjODBjMjUyKTtcbiAgICAvLyBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgICAvLyBib3JkZXItY29sb3I6ICM3YmMyMjg7XG4gICAgLy8gYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgICAvLyBib3JkZXItd2lkdGg6IDJweDtcbiAgfVxuICAuaW1hZ2Vue1xuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzM2Njk5O1xuICAgIGNvbG9yOiAjZmZmO1xuICAgIHdpZHRoOiAxMDBweDtcbiAgICBoZWlnaHQ6IDEwMHB4O1xuICAgIHBhZGRpbmc6IDNweDtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgei1pbmRleDogMTtcbiAgfVxuICAucGFkcmV7XG4gICAgXG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogcm93LXJldmVyc2U7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xuICAgIGJvcmRlci1jb2xvcjogIzdiYzIyODtcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xuICAgIGJvcmRlci13aWR0aDogMnB4O1xuICB9XG4gIFxuICAgLmFkZC1pbWcgLmRpdnY6bnRoLWNoaWxkKDIpe1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgIGFsaWduLXNlbGY6IGNlbnRlcjtcbiAgIH1cbiAgIC5hZGQtaW1nIC5kaXZ2Om50aC1jaGlsZCgxKXtcbiAgIGFsaWduLXNlbGY6ZmxleC1lbmQ7XG4gICBhbGlnbi1pdGVtczogZmxleC1zdGFydDtcbiAgIH1cbiAgXG4gICAuYWRkLWltZyAuZGl2djpudGgtY2hpbGQoMyl7XG4gICAgYWxpZ24tc2VsZjogZmxleC1lbmQ7XG4gICAgYWxpZ24taXRlbXM6IGZsZXgtZW5kO1xuICAgIH1cbiAgLy8gLnBhZHJlIC5zcGFuOm50aC1jaGlsZCgzKXtcbiAgLy8gICBhbGlnbi1zZWxmOiBmbGV4LWVuZDtcbiAgLy8gfVxuICBcbiAgLmljb25vIHtcbiAgICBjb2xvcjogbGltZSFpbXBvcnRhbnQ7XG4gIH1cbiAgLmljb25vMSB7XG4gICAgY29sb3I6IHJlZCFpbXBvcnRhbnQ7XG4gIH1cbiAgLy8gLnNwYW4yIHtcbiAgLy8gICBkaXNwbGF5OiBibG9jaztcbiAgLy8gICB3aWR0aDogMjBweDtcbiAgLy8gICBoZWlnaHQ6IDIwcHg7XG4gIC8vICAgcG9zaXRpb246IGFic29sdXRlO1xuICAvLyAgIGJvdHRvbTogMDtcbiAgLy8gICByaWdodDogMDtcbiAgLy8gfVxuICBcbiAgLmlvbi1jb2xvci1saWdodCB7XG4gICAgLS1pb24tY29sb3ItYmFzZTogIzdiYzIyOCAhaW1wb3J0YW50O1xuICAgIC0taW9uLWNvbG9yLWJhc2UtcmdiOiB2YXIoLS1pb24tY29sb3ItbGlnaHQtcmdiLCAyNDQsIDI0NSwgMjQ4KSAhaW1wb3J0YW50O1xuICAgIC0taW9uLWNvbG9yLWNvbnRyYXN0OiB2YXIoLS1pb24tY29sb3ItbGlnaHQtY29udHJhc3QsICMwMDApICFpbXBvcnRhbnQ7XG4gICAgLS1pb24tY29sb3ItY29udHJhc3QtcmdiOiB2YXIoLS1pb24tY29sb3ItbGlnaHQtY29udHJhc3QtcmdiLCAwLCAwLCAwKSAhaW1wb3J0YW50O1xuICAgIC0taW9uLWNvbG9yLXNoYWRlOiB2YXIoLS1pb24tY29sb3ItbGlnaHQtc2hhZGUsICNkN2Q4ZGEpICFpbXBvcnRhbnQ7XG4gICAgLS1pb24tY29sb3ItdGludDogdmFyKC0taW9uLWNvbG9yLWxpZ2h0LXRpbnQsICNmNWY2ZjkpICFpbXBvcnRhbnQ7XG4gIH1cbiAgLmlvbi1jb2xvci1yZWR7XG4gICAgLS1pb24tY29sb3ItYmFzZTogI2VmMDkwOSAhaW1wb3J0YW50O1xuICAgIC0taW9uLWNvbG9yLWJhc2UtcmdiOiB2YXIoLS1pb24tY29sb3ItbGlnaHQtcmdiLCAyNDQsIDI0NSwgMjQ4KSAhaW1wb3J0YW50O1xuICAgIC0taW9uLWNvbG9yLWNvbnRyYXN0OiB2YXIoLS1pb24tY29sb3ItbGlnaHQtY29udHJhc3QsICMwMDApICFpbXBvcnRhbnQ7XG4gICAgLS1pb24tY29sb3ItY29udHJhc3QtcmdiOiB2YXIoLS1pb24tY29sb3ItbGlnaHQtY29udHJhc3QtcmdiLCAwLCAwLCAwKSAhaW1wb3J0YW50O1xuICAgIC0taW9uLWNvbG9yLXNoYWRlOiB2YXIoLS1pb24tY29sb3ItbGlnaHQtc2hhZGUsICNkN2Q4ZGEpICFpbXBvcnRhbnQ7XG4gICAgLS1pb24tY29sb3ItdGludDogdmFyKC0taW9uLWNvbG9yLWxpZ2h0LXRpbnQsICNmNWY2ZjkpICFpbXBvcnRhbnQ7XG4gIH0iLCIuY2VudGVyIHtcbiAgY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC45MykgIWltcG9ydGFudDtcbn1cblxuLmNvbnRlbnQtaW1hZ2VzIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XG4gIGZsZXgtd3JhcDogd3JhcDtcbn1cblxuLmFkZC1pbWcge1xuICB3aWR0aDogNDAlO1xuICBoZWlnaHQ6IDE3MHB4O1xuICBkaXNwbGF5OiBmbGV4O1xuICBib3JkZXItY29sb3I6ICNlOGU4ZTg7XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIGJvcmRlci13aWR0aDogMnB4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcbiAgcGFkZGluZzogMnB4O1xuICB6LWluZGV4OiAyO1xufVxuXG4uaW1hZ2VuIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzM2Njk5O1xuICBjb2xvcjogI2ZmZjtcbiAgd2lkdGg6IDEwMHB4O1xuICBoZWlnaHQ6IDEwMHB4O1xuICBwYWRkaW5nOiAzcHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgei1pbmRleDogMTtcbn1cblxuLnBhZHJlIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdy1yZXZlcnNlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIHdpZHRoOiAxMDAlO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgYm9yZGVyLWNvbG9yOiAjN2JjMjI4O1xuICBib3JkZXItc3R5bGU6IHNvbGlkO1xuICBib3JkZXItd2lkdGg6IDJweDtcbn1cblxuLmFkZC1pbWcgLmRpdnY6bnRoLWNoaWxkKDIpIHtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgYWxpZ24tc2VsZjogY2VudGVyO1xufVxuXG4uYWRkLWltZyAuZGl2djpudGgtY2hpbGQoMSkge1xuICBhbGlnbi1zZWxmOiBmbGV4LWVuZDtcbiAgYWxpZ24taXRlbXM6IGZsZXgtc3RhcnQ7XG59XG5cbi5hZGQtaW1nIC5kaXZ2Om50aC1jaGlsZCgzKSB7XG4gIGFsaWduLXNlbGY6IGZsZXgtZW5kO1xuICBhbGlnbi1pdGVtczogZmxleC1lbmQ7XG59XG5cbi5pY29ubyB7XG4gIGNvbG9yOiBsaW1lICFpbXBvcnRhbnQ7XG59XG5cbi5pY29ubzEge1xuICBjb2xvcjogcmVkICFpbXBvcnRhbnQ7XG59XG5cbi5pb24tY29sb3ItbGlnaHQge1xuICAtLWlvbi1jb2xvci1iYXNlOiAjN2JjMjI4ICFpbXBvcnRhbnQ7XG4gIC0taW9uLWNvbG9yLWJhc2UtcmdiOiB2YXIoLS1pb24tY29sb3ItbGlnaHQtcmdiLCAyNDQsIDI0NSwgMjQ4KSAhaW1wb3J0YW50O1xuICAtLWlvbi1jb2xvci1jb250cmFzdDogdmFyKC0taW9uLWNvbG9yLWxpZ2h0LWNvbnRyYXN0LCAjMDAwKSAhaW1wb3J0YW50O1xuICAtLWlvbi1jb2xvci1jb250cmFzdC1yZ2I6IHZhcigtLWlvbi1jb2xvci1saWdodC1jb250cmFzdC1yZ2IsIDAsIDAsIDApICFpbXBvcnRhbnQ7XG4gIC0taW9uLWNvbG9yLXNoYWRlOiB2YXIoLS1pb24tY29sb3ItbGlnaHQtc2hhZGUsICNkN2Q4ZGEpICFpbXBvcnRhbnQ7XG4gIC0taW9uLWNvbG9yLXRpbnQ6IHZhcigtLWlvbi1jb2xvci1saWdodC10aW50LCAjZjVmNmY5KSAhaW1wb3J0YW50O1xufVxuXG4uaW9uLWNvbG9yLXJlZCB7XG4gIC0taW9uLWNvbG9yLWJhc2U6ICNlZjA5MDkgIWltcG9ydGFudDtcbiAgLS1pb24tY29sb3ItYmFzZS1yZ2I6IHZhcigtLWlvbi1jb2xvci1saWdodC1yZ2IsIDI0NCwgMjQ1LCAyNDgpICFpbXBvcnRhbnQ7XG4gIC0taW9uLWNvbG9yLWNvbnRyYXN0OiB2YXIoLS1pb24tY29sb3ItbGlnaHQtY29udHJhc3QsICMwMDApICFpbXBvcnRhbnQ7XG4gIC0taW9uLWNvbG9yLWNvbnRyYXN0LXJnYjogdmFyKC0taW9uLWNvbG9yLWxpZ2h0LWNvbnRyYXN0LXJnYiwgMCwgMCwgMCkgIWltcG9ydGFudDtcbiAgLS1pb24tY29sb3Itc2hhZGU6IHZhcigtLWlvbi1jb2xvci1saWdodC1zaGFkZSwgI2Q3ZDhkYSkgIWltcG9ydGFudDtcbiAgLS1pb24tY29sb3ItdGludDogdmFyKC0taW9uLWNvbG9yLWxpZ2h0LXRpbnQsICNmNWY2ZjkpICFpbXBvcnRhbnQ7XG59Il19 */"
+
+/***/ }),
+
+/***/ "./src/app/sendimages/sendimages.page.ts":
+/*!***********************************************!*\
+  !*** ./src/app/sendimages/sendimages.page.ts ***!
+  \***********************************************/
+/*! exports provided: SendimagesPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SendimagesPage", function() { return SendimagesPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_native_image_picker_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/image-picker/ngx */ "./node_modules/@ionic-native/image-picker/ngx/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/file-transfer/ngx */ "./node_modules/@ionic-native/file-transfer/ngx/index.js");
+/* harmony import */ var _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/file/ngx */ "./node_modules/@ionic-native/file/ngx/index.js");
+/* harmony import */ var _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/file-chooser/ngx */ "./node_modules/@ionic-native/file-chooser/ngx/index.js");
+/* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/ngx/index.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+let SendimagesPage = class SendimagesPage {
+    constructor(route, router, imagePicker, transfer, file, loadingController, fileChooser, navParams, modalController, camera, actionSheetController, toastController) {
+        this.route = route;
+        this.router = router;
+        this.imagePicker = imagePicker;
+        this.transfer = transfer;
+        this.file = file;
+        this.loadingController = loadingController;
+        this.fileChooser = fileChooser;
+        this.navParams = navParams;
+        this.modalController = modalController;
+        this.camera = camera;
+        this.actionSheetController = actionSheetController;
+        this.toastController = toastController;
+        this.photos = [];
+        this.win = window;
+        this.response = true;
+        this.falso = true;
+        this.number_service = navParams.get('number_service');
+        this.type_network = navParams.get('type_network');
+        this.data = navParams.get('data');
+        this.photos_service = navParams.get('photos_service');
+        for (let index = 0; index < this.photos_service.quantity; index++) {
+            this.photos.push({
+                imagenes: '',
+                id: index,
+                hidden: false,
+                name_photo: this.photos_service.name_photo,
+                hidden_image: true,
+                idodi: this.data.idodi,
+                tipe: this.photos_service.photos_idphotos,
+                contract_idcontract: this.data.contract_idcontract,
+                state: true,
+                state_send: false,
+                send: true,
+                error: true,
+            });
+        }
+        this.file.checkDir(this.file.externalRootDirectory, 'MLS').then(_ => console.log('exist')).catch(err => {
+            this.dir();
+            console.log('no exist');
+        });
+    }
+    ngOnInit() {
+    }
+    selectImage(photo) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const actionSheet = yield this.actionSheetController.create({
+                header: "Sellecione la Imagen",
+                buttons: [{
+                        text: 'Galería',
+                        handler: () => {
+                            this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY, photo);
+                            //this.choosePicture(photo)
+                        }
+                    },
+                    {
+                        text: 'Camara',
+                        handler: () => {
+                            this.pickImage(this.camera.PictureSourceType.CAMERA, photo);
+                        }
+                    },
+                    {
+                        text: 'Cancel',
+                        role: 'cancel'
+                    }
+                ]
+            });
+            yield actionSheet.present();
+        });
+    }
+    pickImage(sourceType, photo) {
+        const options = {
+            quality: 100,
+            targetWidth: 1920,
+            targetHeight: 1080,
+            sourceType: sourceType,
+            destinationType: this.camera.DestinationType.FILE_URI,
+            encodingType: this.camera.EncodingType.JPEG,
+            mediaType: this.camera.MediaType.PICTURE,
+            correctOrientation: true
+        };
+        this.camera.getPicture(options).then((imageData) => {
+            let path = this.win.Ionic.WebView.convertFileSrc(imageData);
+            photo.imagenes = path;
+            // console.log(_imagePath[0])
+            // console.log(photo)
+            photo.hidden = true;
+            photo.hidden_image = false;
+        }, (err) => {
+            // Handle error
+        });
+    }
+    choosePicture(photo) {
+        // this.respuesta = true;
+        // this.falso = true;
+        // this.imagenbotton = false;
+        //this.rowDataHomeForm = [];
+        let options = {
+            title: "selecionar imagen",
+            message: "select 1",
+            maximumImagesCount: 1,
+            outType: 0,
+            width: 1080,
+            height: 720,
+            quality: 100,
+            sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+        };
+        this.imagePicker.getPictures(options).then(_imagePath => {
+            // this.image = _imagePath;
+            let path = this.win.Ionic.WebView.convertFileSrc(_imagePath[0]);
+            photo.imagenes = path;
+            // console.log(_imagePath[0])
+            // console.log(photo)
+            photo.hidden = true;
+            photo.hidden_image = false;
+            // for (var i = 0; i < this.image.length; i++) {
+            // }
+        }, err => { });
+    }
+    onLoadimage(img, id, name_photo, idodi, tipe, contract_idcontract) {
+        let params = {
+            idodi: idodi,
+            tipe: tipe,
+            contract_idcontract: contract_idcontract
+        };
+        let canvas = this.canvasRef.nativeElement;
+        let context = canvas.getContext("2d");
+        let source = new Image();
+        source.crossOrigin = "Anonymous";
+        source.onload = () => {
+            canvas.height = source.height;
+            canvas.width = source.width;
+            canvas.style.width = "320px";
+            canvas.style.height = "300px";
+            context.drawImage(source, 0, 0);
+            context.font = "16px impact";
+            context.textAlign = "right";
+            context.fillStyle = "white";
+            context.fillText(name_photo, 600, 100);
+            let quality = [1.0];
+            let imagen = canvas.toDataURL("image/jpeg");
+            const fileTransfer = this.transfer.create();
+            let divisiones = img.split("cache/");
+            let divisiones1 = divisiones[1].split("?");
+            let divisiones2 = divisiones[0].split("_app_file_");
+            let options = {
+                fileKey: "file",
+                fileName: divisiones1[0],
+                headers: {},
+                params: { params: params }
+            };
+            fileTransfer
+                .upload(imagen, "http://190.0.33.166:40/laravel-mls/public/api/odi/send_image_movil", options)
+                .then(data => {
+                var json = JSON.parse(data.response);
+                if (json.response == true) {
+                    this.photos[id].state = true;
+                    this.photos[id].state_send = true;
+                    this.photos[id].send = false;
+                    this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
+                }
+                else {
+                    this.photos[id].state = false;
+                    this.photos[id].state_send = true;
+                    this.photos[id].error = false;
+                    this.writeFile(imagen, "My Picture", divisiones1[0]);
+                    // this.database
+                    //   .CreateConse(
+                    //     this.data.consecutive,
+                    //     this.file.externalRootDirectory + "SIP/" + divisiones[1],
+                    //     this.pedido,
+                    //     divisiones[1]
+                    //   )
+                    //   .then(
+                    //     dataset => {
+                    //       console.log(dataset);
+                    //     },
+                    //     error => { }
+                    //   );
+                    this.falso = false;
+                    this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
+                }
+            }, err => {
+                this.photos[id].state = false;
+                this.photos[id].state_send = true;
+                this.photos[id].error = false;
+                this.writeFile(imagen, "My Picture", divisiones1[0]);
+                this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
+                // this.falso = false;
+                // this.writeFile(imagen, "My Picture", divisiones[1]);
+                // this.database
+                //   .CreateConse(
+                //     this.data.consecutive,
+                //     this.file.externalRootDirectory + "SIP/" + divisiones[1],
+                //     this.pedido,
+                //     divisiones[1]
+                //   )
+                //   .then(
+                //     dataset => {
+                //       console.log(dataset);
+                //     },
+                //     error => { }
+                //   );
+                // this.rowDataHomeForm[id].state = false;
+                this.presentToast('Error de Coneción');
+            });
+        };
+        source.src = img;
+    }
+    presentToast(mesajje) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const toast = yield this.toastController.create({
+                message: mesajje,
+                duration: 2000
+            });
+            toast.present();
+        });
+    }
+    send_image() {
+        this.showLoader();
+        // let loader = this.loadingCtrl.create({
+        //   content: "Please wait..."
+        // });
+        // loader.present();
+        for (let data of this.photos) {
+            if (data.imagenes == '') {
+                // console.log(1)
+            }
+            else {
+                //console.log(2)
+                if (data.state_send == false) {
+                    this.onLoadimage(data.imagenes, data.id, data.name_photo, data.idodi, data.tipe, data.contract_idcontract);
+                }
+            }
+        }
+        // loader.dismiss();
+        // this.database.GetAllUsers(this.consecutivo).then(
+        //   Response => {
+        //     console.log(Response);
+        //   },
+        //   error => {}
+        // );
+        // this.image = [];
+        //let reader = new FileReader();
+    }
+    showLoader() {
+        this.loaderToShow = this.loadingController.create({
+            message: 'Enviando'
+        }).then((res) => {
+            res.present();
+            res.onDidDismiss().then((dis) => {
+                console.log('Loading');
+            });
+        });
+        this.hideLoader();
+    }
+    hideLoader() {
+        setTimeout(() => {
+            this.loadingController.dismiss();
+        }, 4000);
+    }
+    back() {
+        this.modalController.dismiss({
+            'dismissed': false,
+        });
+    }
+    //////////////////////////////////////////////////////base 64 store///////////////////////////////////////////////////////////////////////////////////////////
+    //here is the method is used to write a file in storage
+    writeFile(base64Data, folderName, fileName) {
+        let content = this.getContentbase64Data(base64Data);
+        let contentType = this.getContentType(base64Data);
+        let DataBlob = this.base64toBlob(content, contentType);
+        // here iam mentioned this line this.file.externalRootDirectory is a native pre-defined file path storage. You can change a file path whatever pre-defined method.
+        let filePath = this.file.externalRootDirectory + "MLS/";
+        this.file
+            .writeFile(filePath, fileName, DataBlob, contentType)
+            .then(success => {
+            console.log("File Writed Successfully", success);
+        })
+            .catch(err => {
+            console.log("Error Occured While Writing File", err);
+        });
+    }
+    //here is the method is used to get content type of an bas64 data
+    getContentType(base64Data) {
+        let block = base64Data.split(";");
+        let contentType = block[0].split(":")[1];
+        return contentType;
+    }
+    getContentbase64Data(base64Data) {
+        let block = base64Data.split(";");
+        let contentType = block[1].split(",")[1];
+        return contentType;
+    }
+    //here is the method is used to convert base64 data to blob data
+    base64toBlob(b64Data, contentType) {
+        contentType = contentType || "";
+        let sliceSize = 512;
+        let byteCharacters = atob(b64Data);
+        let byteArrays = [];
+        for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            let slice = byteCharacters.slice(offset, offset + sliceSize);
+            let byteNumbers = new Array(slice.length);
+            for (let i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+            var byteArray = new Uint8Array(byteNumbers);
+            byteArrays.push(byteArray);
+        }
+        let blob = new Blob(byteArrays, {
+            type: contentType
+        });
+        return blob;
+    }
+    dir() {
+        this.file.createDir(this.file.externalRootDirectory, 'MLS', false).then(response => {
+            console.log('Directory create' + response);
+        }).catch(err => {
+            console.log('Directory no create' + JSON.stringify(err));
+        });
+    }
+};
+SendimagesPage.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+    { type: _ionic_native_image_picker_ngx__WEBPACK_IMPORTED_MODULE_3__["ImagePicker"] },
+    { type: _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_5__["FileTransfer"] },
+    { type: _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_6__["File"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["LoadingController"] },
+    { type: _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_7__["FileChooser"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavParams"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"] },
+    { type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_8__["Camera"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ActionSheetController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('layout', { static: true }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], SendimagesPage.prototype, "canvasRef", void 0);
+SendimagesPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-sendimages',
+        template: __webpack_require__(/*! raw-loader!./sendimages.page.html */ "./node_modules/raw-loader/index.js!./src/app/sendimages/sendimages.page.html"),
+        styles: [__webpack_require__(/*! ./sendimages.page.scss */ "./src/app/sendimages/sendimages.page.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _ionic_native_image_picker_ngx__WEBPACK_IMPORTED_MODULE_3__["ImagePicker"],
+        _ionic_native_file_transfer_ngx__WEBPACK_IMPORTED_MODULE_5__["FileTransfer"],
+        _ionic_native_file_ngx__WEBPACK_IMPORTED_MODULE_6__["File"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["LoadingController"],
+        _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_7__["FileChooser"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavParams"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"],
+        _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_8__["Camera"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ActionSheetController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"]])
+], SendimagesPage);
 
 
 

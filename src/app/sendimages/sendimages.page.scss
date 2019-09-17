@@ -1,0 +1,108 @@
+.center {
+    color: rgba(255, 255, 255, 0.93) !important
+  }
+  
+  .content-images {
+   display: flex;
+    justify-content:space-around;
+    // // align-items: center;
+    // // box-sizing: border-box;
+   flex-wrap: wrap;
+    // flex-direction: row;
+    
+  }
+  
+  .add-img {
+    width: 40%;
+    height: 170px;
+    display: flex;
+    // background-color: white;
+    border-color:#e8e8e8;
+    border-style: solid;
+    border-width: 2px;
+    justify-content:space-around;
+    padding: 2px;
+    z-index: 2;
+  
+    // box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+    // margin: .5em .5em;
+  // padding: 0;
+    // justify-content: space-between;
+    // align-items: center;
+    
+    // background: linear-gradient(to right, #7bc228, #80c252);
+    // background-color: white;
+    // border-color: #7bc228;
+    // border-style: solid;
+    // border-width: 2px;
+  }
+  .imagen{
+    position: relative;
+    background-color: #336699;
+    color: #fff;
+    width: 100px;
+    height: 100px;
+    padding: 3px;
+    text-align: center;
+    z-index: 1;
+  }
+  .padre{
+    
+    display: flex;
+    flex-direction: row-reverse;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-color: #7bc228;
+    border-style: solid;
+    border-width: 2px;
+  }
+  
+   .add-img .divv:nth-child(2){
+    align-items: center;
+     align-self: center;
+   }
+   .add-img .divv:nth-child(1){
+   align-self:flex-end;
+   align-items: flex-start;
+   }
+  
+   .add-img .divv:nth-child(3){
+    align-self: flex-end;
+    align-items: flex-end;
+    }
+  // .padre .span:nth-child(3){
+  //   align-self: flex-end;
+  // }
+  
+  .icono {
+    color: lime!important;
+  }
+  .icono1 {
+    color: red!important;
+  }
+  // .span2 {
+  //   display: block;
+  //   width: 20px;
+  //   height: 20px;
+  //   position: absolute;
+  //   bottom: 0;
+  //   right: 0;
+  // }
+  
+  .ion-color-light {
+    --ion-color-base: #7bc228 !important;
+    --ion-color-base-rgb: var(--ion-color-light-rgb, 244, 245, 248) !important;
+    --ion-color-contrast: var(--ion-color-light-contrast, #000) !important;
+    --ion-color-contrast-rgb: var(--ion-color-light-contrast-rgb, 0, 0, 0) !important;
+    --ion-color-shade: var(--ion-color-light-shade, #d7d8da) !important;
+    --ion-color-tint: var(--ion-color-light-tint, #f5f6f9) !important;
+  }
+  .ion-color-red{
+    --ion-color-base: #ef0909 !important;
+    --ion-color-base-rgb: var(--ion-color-light-rgb, 244, 245, 248) !important;
+    --ion-color-contrast: var(--ion-color-light-contrast, #000) !important;
+    --ion-color-contrast-rgb: var(--ion-color-light-contrast-rgb, 0, 0, 0) !important;
+    --ion-color-shade: var(--ion-color-light-shade, #d7d8da) !important;
+    --ion-color-tint: var(--ion-color-light-tint, #f5f6f9) !important;
+  }
