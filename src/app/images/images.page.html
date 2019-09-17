@@ -17,7 +17,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item lines="none" *ngFor="let photos_service of photos_services" (click)="photos_add(photos_service)">
+    <ion-item lines="none" *ngFor="let photos_service of photos_services" (click)="ModalImage(photos_service)">
       <ion-label>
         <ion-text>
           <h2>{{photos_service.name_photo}}</h2>

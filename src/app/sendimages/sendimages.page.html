@@ -1,9 +1,50 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>sendimages</ion-title>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-icon slot="icon-only" name="arrow-back" (click)="back()"></ion-icon>
+    </ion-buttons>
+
+    <ion-title text-center class="center">Enviar Fotografias</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="send_image()">
+        <ion-icon slot="icon-only" name="save"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <!--div-->
+  <section class="content-images">
+    <ion-card class="add-img" *ngFor="let photo of photos; let i = i; index" (click)="selectImage(photo)"
+      [ngStyle]="{background: 'url(' + photo.imagenes + ')no-repeat scroll center center / 100% 100%'}">
+
+      <!-- <img [src]="photo.imagenes" class="img" width="200" height="100" [hidden]="photo.hidden_image" /> -->
+
+      <div class="divv">
+        <ion-icon name="md-checkmark-circle" color="light" size="large" [hidden]="photo.send"
+          *ngIf="photo.state == true"></ion-icon>
+      </div>
+      <div class="divv">
+        <ion-icon name="add-circle" color="light" size="large" [hidden]="photo.hidden"></ion-icon>
+      </div>
+      <div class="divv">
+        <ion-icon name="md-close-circle" color="red" size="large" [hidden]="photo.error" *ngIf="photo.state == false">
+        </ion-icon>
+      </div>
+
+
+
+    </ion-card>
+
+    <ion-card class="add-img add-pdf" (click)="selectImage(photo)">
+      <ion-card-content>
+        <ion-icon name="document" color="light" size="large"></ion-icon>
+      </ion-card-content>
+    </ion-card>
+
+    <canvas #layout hidden></canvas>
+  </section>
 
 </ion-content>
