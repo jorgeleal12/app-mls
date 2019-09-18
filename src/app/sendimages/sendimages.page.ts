@@ -9,7 +9,7 @@ import { LoadingController } from '@ionic/angular';
 import { NavParams } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ActionSheetController } from '@ionic/angular';
-
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-sendimages',
   templateUrl: './sendimages.page.html',
@@ -37,6 +37,7 @@ export class SendimagesPage implements OnInit {
     , public modalController: ModalController,
     private camera: Camera,
     public actionSheetController: ActionSheetController,
+    public toastController: ToastController
   ) {
 
 
@@ -82,16 +83,16 @@ export class SendimagesPage implements OnInit {
 
   async selectImage(photo) {
     const actionSheet = await this.actionSheetController.create({
-      header: "Select Image source",
+      header: "Sellecione la Imagen",
       buttons: [{
-        text: 'Load from Library',
+        text: 'Galería',
         handler: () => {
           this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY, photo);
           //this.choosePicture(photo)
         }
       },
       {
-        text: 'Use Camera',
+        text: 'Camara',
         handler: () => {
           this.pickImage(this.camera.PictureSourceType.CAMERA, photo);
         }
@@ -107,17 +108,17 @@ export class SendimagesPage implements OnInit {
   pickImage(sourceType, photo) {
     const options: CameraOptions = {
       quality: 100,
-      targetWidth: 1080,
-      targetHeight: 720,
+      targetWidth: 1920,
+      targetHeight: 1080,
       sourceType: sourceType,
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
+      mediaType: this.camera.MediaType.PICTURE,
+      correctOrientation: true
     }
     this.camera.getPicture(options).then((imageData) => {
-
       let path = this.win.Ionic.WebView.convertFileSrc(imageData);
-      console.log(path)
+
       photo.imagenes = path;
       // console.log(_imagePath[0])
       // console.log(photo)
@@ -129,7 +130,6 @@ export class SendimagesPage implements OnInit {
     });
   }
   choosePicture(photo) {
-    console.log('ppppp')
     // this.respuesta = true;
     // this.falso = true;
     // this.imagenbotton = false;
@@ -168,7 +168,6 @@ export class SendimagesPage implements OnInit {
 
 
   onLoadimage(img, id, name_photo, idodi, tipe, contract_idcontract) {
-    console.log(img)
     let params = {
       idodi: idodi,
       tipe: tipe,
@@ -186,7 +185,7 @@ export class SendimagesPage implements OnInit {
       canvas.style.height = "300px";
       context.drawImage(source, 0, 0);
 
-      context.font = "50px impact";
+      context.font = "16px impact";
       context.textAlign = "right";
       context.fillStyle = "white";
       context.fillText(name_photo, 600, 100);
@@ -194,10 +193,10 @@ export class SendimagesPage implements OnInit {
       let imagen = canvas.toDataURL("image/jpeg");
 
       const fileTransfer: FileTransferObject = this.transfer.create();
-      console.log(img);
       let divisiones = img.split("cache/");
 
       let divisiones1 = divisiones[1].split("?");
+      let divisiones2 = divisiones[0].split("_app_file_");
 
       let options: FileUploadOptions = {
         fileKey: "file",
@@ -205,30 +204,29 @@ export class SendimagesPage implements OnInit {
         headers: {},
         params: { params: params }
       };
-      console.log(imagen)
       fileTransfer
         .upload(
           imagen,
-          "http://192.168.1.57/laravel-mls/public/api/odi/send_image_movil",
+          "http://190.0.33.166:40/laravel-mls/public/api/odi/send_image_movil",
           options
         )
         .then(
           data => {
             var json = JSON.parse(data.response);
-            console.log(json.response)
             if (json.response == true) {
-
               this.photos[id].state = true;
               this.photos[id].state_send = true;
               this.photos[id].send = false;
 
-            } else {
 
+              this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
+
+            } else {
               this.photos[id].state = false;
               this.photos[id].state_send = true;
               this.photos[id].error = false;
 
-              this.writeFile(imagen, "My Picture", divisiones[1]);
+              this.writeFile(imagen, "My Picture", divisiones1[0]);
 
               // this.database
               //   .CreateConse(
@@ -245,10 +243,16 @@ export class SendimagesPage implements OnInit {
               //   );
 
               this.falso = false;
+              this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
             }
           },
           err => {
-            console.log(err.body);
+
+            this.photos[id].state = false;
+            this.photos[id].state_send = true;
+            this.photos[id].error = false;
+            this.writeFile(imagen, "My Picture", divisiones1[0]);
+            this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
             // this.falso = false;
             // this.writeFile(imagen, "My Picture", divisiones[1]);
             // this.database
@@ -265,6 +269,8 @@ export class SendimagesPage implements OnInit {
             //     error => { }
             //   );
             // this.rowDataHomeForm[id].state = false;
+
+            this.presentToast('Error de Coneción')
           }
         );
     };
@@ -272,8 +278,16 @@ export class SendimagesPage implements OnInit {
     source.src = img;
   }
 
+  async presentToast(mesajje) {
+    const toast = await this.toastController.create({
+      message: mesajje,
+      duration: 2000
+    });
+    toast.present();
+  }
 
   send_image() {
+
     this.showLoader()
 
     // let loader = this.loadingCtrl.create({

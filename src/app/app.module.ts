@@ -23,11 +23,12 @@ import { BuilderPageModule } from './builder/builder.module';
 import { ImagesPageModule } from './images/images.module';
 import { SendimagesPageModule } from './sendimages/sendimages.module';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { CertificatePageModule } from './certificate/certificate.module';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [PipesModule, BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule
-    , SendimagesPageModule, MaterialsPageModule, BuilderPageModule, ImagesPageModule],
+    , SendimagesPageModule, MaterialsPageModule, BuilderPageModule, ImagesPageModule, CertificatePageModule],
   providers: [
     StatusBar,
     SplashScreen,

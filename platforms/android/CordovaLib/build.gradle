@@ -24,15 +24,26 @@ ext {
 
 buildscript {
     repositories {
+<<<<<<< HEAD
+        maven {
+            url "https://maven.google.com"
+        }
+=======
         google()
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
         jcenter()
     }
 
     dependencies {
+<<<<<<< HEAD
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+=======
         // The gradle plugin and the maven plugin have to be updated after each version of Android
         // studio comes out
         classpath 'com.android.tools.build:gradle:3.3.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
     }
 }
@@ -49,7 +60,11 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 group = 'org.apache.cordova'
+<<<<<<< HEAD
+version = '7.1.4'
+=======
 version = '8.1.0'
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
 
 android {
     compileSdkVersion cdvCompileSdkVersion
@@ -140,9 +155,15 @@ bintray {
         licenses = ['Apache-2.0']
         labels = ['android', 'cordova', 'phonegap']
         version {
+<<<<<<< HEAD
+            name = '7.1.4'
+            released  = new Date()
+            vcsTag = '7.1.4'
+=======
             name = '8.1.0'
             released  = new Date()
             vcsTag = '8.1.0'
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
         }
     }
 }

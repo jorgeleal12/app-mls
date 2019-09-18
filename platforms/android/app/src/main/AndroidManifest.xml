@@ -32,6 +32,10 @@
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/camera_provider_paths" />
         </provider>
     </application>
+<<<<<<< HEAD
+    <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="27" />
+=======
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />

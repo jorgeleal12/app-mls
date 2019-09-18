@@ -8,6 +8,7 @@ import { ModalController } from '@ionic/angular';
 import { BuilderPage } from '../builder/builder.page';
 import { ImagesPage } from '../images/images.page';
 import { NgForm } from '@angular/forms';
+import { CertificatePage } from '../certificate/certificate.page';
 
 @Component({
     selector: 'app-acordeon',
@@ -95,12 +96,9 @@ export class AcordeonPage implements OnInit {
 
             modal.onDidDismiss().then((detail) => {
                 if (detail !== null) {
-                    console.log(detail.data.data);
-
                     this.name_material = detail.data.data.name_materials
                     this.name_state_material = detail.data.data.name_state
                     this.idmaterials = detail.data.data.idmaterials
-                    console.log(this.idmaterials)
                 }
             });
 
@@ -176,6 +174,38 @@ export class AcordeonPage implements OnInit {
 
 
     }
+
+
+    async ModalCetificate(photos_service) {
+
+        const modal: HTMLIonModalElement =
+            await this.modalController.create({
+                component: CertificatePage,
+                componentProps: {
+                    'number_service': this.number_service,
+                    'type_network': this.type_network,
+                    'data': this.data,
+
+                }
+
+            });
+
+        modal.onDidDismiss().then((detail) => {
+
+            // if (detail !== null) {
+            //     this.idbuilder = detail.data.data.idbuilder
+            //     this.name_builder = detail.data.data.name_builder
+            //     this.state_builder = detail.data.data.name_state
+            // }
+        });
+
+        await modal.present();
+
+
+    }
+
+
+
 
     async  edit_builder() {
         const modal: HTMLIonModalElement =

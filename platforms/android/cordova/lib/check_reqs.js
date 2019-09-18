@@ -203,12 +203,19 @@ module.exports.check_java = function () {
                 return match && match[1];
             }, () => {
                 var msg =
+<<<<<<< HEAD
+                'Failed to run "javac -version", make sure that you have a JDK installed.\n' +
+                'You can get it from: http://www.oracle.com/technetwork/java/javase/downloads.\n';
+                if (process.env['JAVA_HOME']) {
+                    msg += 'Your JAVA_HOME is invalid: ' + process.env['JAVA_HOME'] + '\n';
+=======
                 'Failed to run "javac -version", make sure that you have a JDK version 8 installed.\n' +
                 'You can get it from the following location:\n' +
                 'https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html';
                 if (process.env['JAVA_HOME']) {
                     msg += '\n\n';
                     msg += 'Your JAVA_HOME is invalid: ' + process.env['JAVA_HOME'];
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
                 }
                 throw new CordovaError(msg);
             });
@@ -368,10 +375,14 @@ module.exports.run = function () {
         console.log('ANDROID_HOME=' + process.env['ANDROID_HOME'] + ' (DEPRECATED)');
 
         if (!String(values[0]).startsWith('1.8.')) {
+<<<<<<< HEAD
+            throw new CordovaError('Requirements check failed for JDK 1.8');
+=======
             throw new CordovaError(
                 'Requirements check failed for JDK 8 (\'1.8.*\')! Detected version: ' + values[0] + '\n' +
                 'Check your ANDROID_SDK_ROOT / JAVA_HOME / PATH environment variables.'
             );
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
         }
 
         if (!values[1]) {

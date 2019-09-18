@@ -1,5 +1,9 @@
 // Platform: android
+<<<<<<< HEAD
+// 9e8e1b716252c4a08abcd31a13013b868d6f4141
+=======
 // 74fdba8b327b2a13b4366dd141b52def96d4cb56
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
 /*
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -19,7 +23,11 @@
  under the License.
 */
 ;(function() {
+<<<<<<< HEAD
+var PLATFORM_VERSION_BUILD_LABEL = '7.1.4';
+=======
 var PLATFORM_VERSION_BUILD_LABEL = '8.1.0';
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
 // file: src/scripts/require.js
 var require;
 var define;
@@ -323,7 +331,11 @@ module.exports = cordova;
 
 });
 
+<<<<<<< HEAD
+// file: /Users/brodybits/Documents/cordova/cordova-android/cordova-js-src/android/nativeapiprovider.js
+=======
 // file: ../cordova-android/cordova-js-src/android/nativeapiprovider.js
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
 define("cordova/android/nativeapiprovider", function(require, exports, module) {
 
 /**
@@ -346,7 +358,11 @@ module.exports = {
 
 });
 
+<<<<<<< HEAD
+// file: /Users/brodybits/Documents/cordova/cordova-android/cordova-js-src/android/promptbasednativeapi.js
+=======
 // file: ../cordova-android/cordova-js-src/android/promptbasednativeapi.js
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
 define("cordova/android/promptbasednativeapi", function(require, exports, module) {
 
 /**
@@ -907,7 +923,11 @@ module.exports = channel;
 
 });
 
+<<<<<<< HEAD
+// file: /Users/brodybits/Documents/cordova/cordova-android/cordova-js-src/exec.js
+=======
 // file: ../cordova-android/cordova-js-src/exec.js
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
 define("cordova/exec", function(require, exports, module) {
 
 /**
@@ -1434,7 +1454,107 @@ exports.reset();
 
 });
 
+<<<<<<< HEAD
+// file: src/common/modulemapper_b.js
+define("cordova/modulemapper_b", function(require, exports, module) {
+
+var builder = require('cordova/builder');
+var symbolList = [];
+var deprecationMap;
+
+exports.reset = function () {
+    symbolList = [];
+    deprecationMap = {};
+};
+
+function addEntry (strategy, moduleName, symbolPath, opt_deprecationMessage) {
+    symbolList.push(strategy, moduleName, symbolPath);
+    if (opt_deprecationMessage) {
+        deprecationMap[symbolPath] = opt_deprecationMessage;
+    }
+}
+
+// Note: Android 2.3 does have Function.bind().
+exports.clobbers = function (moduleName, symbolPath, opt_deprecationMessage) {
+    addEntry('c', moduleName, symbolPath, opt_deprecationMessage);
+};
+
+exports.merges = function (moduleName, symbolPath, opt_deprecationMessage) {
+    addEntry('m', moduleName, symbolPath, opt_deprecationMessage);
+};
+
+exports.defaults = function (moduleName, symbolPath, opt_deprecationMessage) {
+    addEntry('d', moduleName, symbolPath, opt_deprecationMessage);
+};
+
+exports.runs = function (moduleName) {
+    addEntry('r', moduleName, null);
+};
+
+function prepareNamespace (symbolPath, context) {
+    if (!symbolPath) {
+        return context;
+    }
+    var parts = symbolPath.split('.');
+    var cur = context;
+    for (var i = 0, part; part = parts[i]; ++i) { // eslint-disable-line no-cond-assign
+        cur = cur[part] = cur[part] || {};
+    }
+    return cur;
+}
+
+exports.mapModules = function (context) {
+    var origSymbols = {};
+    context.CDV_origSymbols = origSymbols;
+    for (var i = 0, len = symbolList.length; i < len; i += 3) {
+        var strategy = symbolList[i];
+        var moduleName = symbolList[i + 1];
+        var module = require(moduleName);
+        // <runs/>
+        if (strategy === 'r') {
+            continue;
+        }
+        var symbolPath = symbolList[i + 2];
+        var lastDot = symbolPath.lastIndexOf('.');
+        var namespace = symbolPath.substr(0, lastDot);
+        var lastName = symbolPath.substr(lastDot + 1);
+
+        var deprecationMsg = symbolPath in deprecationMap ? 'Access made to deprecated symbol: ' + symbolPath + '. ' + deprecationMsg : null;
+        var parentObj = prepareNamespace(namespace, context);
+        var target = parentObj[lastName];
+
+        if (strategy === 'm' && target) {
+            builder.recursiveMerge(target, module);
+        } else if ((strategy === 'd' && !target) || (strategy !== 'd')) {
+            if (!(symbolPath in origSymbols)) {
+                origSymbols[symbolPath] = target;
+            }
+            builder.assignOrWrapInDeprecateGetter(parentObj, lastName, module, deprecationMsg);
+        }
+    }
+};
+
+exports.getOriginalSymbol = function (context, symbolPath) {
+    var origSymbols = context.CDV_origSymbols;
+    if (origSymbols && (symbolPath in origSymbols)) {
+        return origSymbols[symbolPath];
+    }
+    var parts = symbolPath.split('.');
+    var obj = context;
+    for (var i = 0; i < parts.length; ++i) {
+        obj = obj && obj[parts[i]];
+    }
+    return obj;
+};
+
+exports.reset();
+
+});
+
+// file: /Users/brodybits/Documents/cordova/cordova-android/cordova-js-src/platform.js
+=======
 // file: ../cordova-android/cordova-js-src/platform.js
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
 define("cordova/platform", function(require, exports, module) {
 
 // The last resume event that was received that had the result of a plugin call.
@@ -1544,7 +1664,11 @@ function onMessageFromNative(msg) {
 
 });
 
+<<<<<<< HEAD
+// file: /Users/brodybits/Documents/cordova/cordova-android/cordova-js-src/plugin/android/app.js
+=======
 // file: ../cordova-android/cordova-js-src/plugin/android/app.js
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
 define("cordova/plugin/android/app", function(require, exports, module) {
 
 var exec = require('cordova/exec');

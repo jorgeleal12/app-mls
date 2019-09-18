@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'asignadas', loadChildren: './asignadas/asignadas.module#AsignadasPageModule' },  { path: 'builder', loadChildren: './builder/builder.module#BuilderPageModule' },
   { path: 'images', loadChildren: './images/images.module#ImagesPageModule' },
   { path: 'sendimages', loadChildren: './sendimages/sendimages.module#SendimagesPageModule' },
+  { path: 'certificate', loadChildren: './certificate/certificate.module#CertificatePageModule' },
 
   // { path: 'materials', loadChildren: './materials/materials.module#MaterialsPageModule' },
 

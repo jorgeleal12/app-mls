@@ -102,6 +102,13 @@ module.exports.run = function (runOptions) {
             });
         });
     }).then(function (resolvedTarget) {
+<<<<<<< HEAD
+        // Better just call self.build, but we're doing some processing of
+        // build results (according to platformApi spec) so they are in different
+        // format than emulator.install expects.
+        // TODO: Update emulator/device.install to handle this change
+        return build.run.call(self, runOptions, resolvedTarget).then(function (buildResults) {
+=======
         return new Promise((resolve) => {
             const builder = require('./builders/builders').getBuilder();
             const buildOptions = require('./build').parseBuildOptions(runOptions, null, self.root);
@@ -115,6 +122,7 @@ module.exports.run = function (runOptions) {
 
             resolve(builder.fetchBuildResults(buildOptions.buildType, buildOptions.arch));
         }).then(function (buildResults) {
+>>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
             if (resolvedTarget && resolvedTarget.isEmulator) {
                 return emulator.wait_for_boot(resolvedTarget.target).then(function () {
                     return emulator.install(resolvedTarget, buildResults);
