@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'images', loadChildren: './images/images.module#ImagesPageModule' },
   { path: 'sendimages', loadChildren: './sendimages/sendimages.module#SendimagesPageModule' },
   { path: 'certificate', loadChildren: './certificate/certificate.module#CertificatePageModule' },
+  { path: 'new-certificate', loadChildren: './new-certificate/new-certificate.module#NewCertificatePageModule' },
 
   // { path: 'materials', loadChildren: './materials/materials.module#MaterialsPageModule' },
 
