@@ -24,7 +24,6 @@ export class CertificatePage implements OnInit {
     this.number_service = navParams.get('number_service');
     this.type_network = navParams.get('type_network');
     this.data = navParams.get('data');
-    console.log(this.data)
   }
 
   ngOnInit() {
@@ -50,7 +49,7 @@ export class CertificatePage implements OnInit {
     });
   }
 
-  async ModalCertificate(photos_service) {
+  async ModalCertificate() {
 
     const modal: HTMLIonModalElement =
       await this.modalController.create({
@@ -65,12 +64,6 @@ export class CertificatePage implements OnInit {
       });
 
     modal.onDidDismiss().then((detail) => {
-
-      // if (detail !== null) {
-      //     this.idbuilder = detail.data.data.idbuilder
-      //     this.name_builder = detail.data.data.name_builder
-      //     this.state_builder = detail.data.data.name_state
-      // }
     });
 
     await modal.present();

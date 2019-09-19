@@ -164,5 +164,13 @@
     "variables": {
       "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
     }
+  },
+  "cordova-sqlite-storage": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-sqlite-storage@^3.3.0"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

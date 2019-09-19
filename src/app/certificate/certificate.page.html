@@ -16,7 +16,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item lines="none" *ngFor="let certificate of certificates" (click)="ModalImage(photos_service)">
+    <ion-item lines="none" *ngFor="let certificate of certificates">
       <ion-label>
         <ion-text>
           <h2>{{certificate.number}}</h2>
@@ -28,8 +28,8 @@
       </ion-label>
     </ion-item>
   </ion-list>
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button (click)="ModalCertificate(photos_service)">
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed" (click)="ModalCertificate()">
+    <ion-fab-button>
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

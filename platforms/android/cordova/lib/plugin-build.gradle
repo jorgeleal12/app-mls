@@ -20,13 +20,7 @@
 
 buildscript {
     repositories {
-<<<<<<< HEAD
-        maven {
-            url "https://maven.google.com"
-        }
-=======
         google()
->>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
         jcenter()
     }
 

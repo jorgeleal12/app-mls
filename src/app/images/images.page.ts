@@ -4,6 +4,7 @@ import { LoginServiceService } from '../Services/login-service.service';
 import { ActivatedRoute, Router, NavigationExtras, } from '@angular/router';
 import { NavParams } from '@ionic/angular';
 import { SendimagesPage } from '../sendimages/sendimages.page';
+import { TasksService } from '../Services/tasks-service';
 
 @Component({
   selector: 'app-images',
@@ -17,12 +18,12 @@ export class ImagesPage implements OnInit {
   data
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private LoginServiceService: LoginServiceService, public modalController: ModalController, private navParams: NavParams) {
+    private LoginServiceService: LoginServiceService, public modalController: ModalController, private navParams: NavParams, private tasksService: TasksService) {
 
     this.number_service = navParams.get('number_service');
     this.type_network = navParams.get('type_network');
     this.data = navParams.get('data');
-
+    console.log(this.data)
   }
 
   ngOnInit() {
@@ -31,11 +32,37 @@ export class ImagesPage implements OnInit {
 
 
   photo_service() {
+
+
+
+    this.tasksService.SelectImage(this.data.idodi)
+      .then(tasks => {
+        console.log(tasks)
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
     let params = {
       type_network: this.type_network
     }
     this.LoginServiceService.photos_service(params).subscribe(result => {
+
+
       this.photos_services = result.response
+
+      for (const prop in this.photos_services) {
+
+        this.tasksService.InsertImage(this.data.idodi, this.photos_services[prop])
+          .then(tasks => {
+            console.log(tasks)
+          })
+          .catch(error => {
+            console.error(error);
+          });
+
+      }
+
     }, error => {
 
     })

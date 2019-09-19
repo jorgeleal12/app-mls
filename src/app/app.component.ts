@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { FCM, NotificationData } from '@ionic-native/fcm/ngx';
 
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
+import { TasksService } from './Services/tasks-service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -17,7 +19,9 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private fcm: FCM,
-    private localNotifications: LocalNotifications
+    private localNotifications: LocalNotifications,
+    private sqlite: SQLite,
+    private tasksService: TasksService
 
   ) {
 
@@ -47,7 +51,30 @@ export class AppComponent {
     // this.fcm.onTokenRefresh().subscribe(token => {
     //   backend.registerToken(token);
     // });
+
+    this.createDatabase();
+
   }
+
+
+  createDatabase() {
+
+    this.sqlite.create({
+      name: 'data.db',
+      location: 'default' // the location field is required
+    })
+      .then((db) => {
+        this.tasksService.setDatabase(db);
+        return this.tasksService.createTableImage();
+      })
+      .then(() => {
+
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
 
   initializeApp() {
     this.platform.ready().then(() => {

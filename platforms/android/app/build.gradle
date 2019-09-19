@@ -22,22 +22,12 @@ apply plugin: 'com.android.application'
 buildscript {
     repositories {
         mavenCentral()
-<<<<<<< HEAD
-        maven {
-            url "https://maven.google.com"
-        }
-=======
         google()
->>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
         jcenter()
     }
 
     dependencies {
-<<<<<<< HEAD
-        classpath 'com.android.tools.build:gradle:3.0.1'
-=======
         classpath 'com.android.tools.build:gradle:3.3.0'
->>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
     }
 }
 
@@ -109,11 +99,11 @@ ext {
 
 // PLUGIN GRADLE EXTENSIONS START
 apply from: "../cordova-android-support-gradle-release/app_mls-cordova-android-support-gradle-release.gradle"
+apply from: "../cordova-plugin-badge/app_mls-badge.gradle"
+apply from: "../cordova-plugin-fcm-with-dependecy-updated/app_mls-FCMPlugin.gradle"
+apply from: "../cordova-plugin-local-notification/app_mls-localnotification.gradle"
 apply from: "../cordova-plugin-telerik-imagepicker/app_mls-ignorelinterrors.gradle"
 apply from: "../cordova-plugin-telerik-imagepicker/app_mls-androidtarget.gradle"
-apply from: "../cordova-plugin-fcm-with-dependecy-updated/app_mls-FCMPlugin.gradle"
-apply from: "../cordova-plugin-badge/app_mls-badge.gradle"
-apply from: "../cordova-plugin-local-notification/app_mls-localnotification.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras1 = file('build-extras.gradle').exists()
@@ -124,15 +114,6 @@ if (hasBuildExtras1) {
 def hasBuildExtras2 = file('../build-extras.gradle').exists()
 if (hasBuildExtras2) {
     apply from: '../build-extras.gradle'
-<<<<<<< HEAD
-}
-
-// Set property defaults after extension .gradle files.
-if (ext.cdvCompileSdkVersion == null) {
-    ext.cdvCompileSdkVersion = privateHelpers.getProjectTarget()
-    //ext.cdvCompileSdkVersion = project.ext.defaultCompileSdkVersion
-=======
->>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
 }
 
 // Set property defaults after extension .gradle files.
@@ -156,9 +137,6 @@ if (ext.cdvReleaseSigningPropertiesFile == null && file('../release-signing.prop
 // Cast to appropriate types.
 ext.cdvBuildMultipleApks = cdvBuildMultipleApks == null ? false : cdvBuildMultipleApks.toBoolean();
 ext.cdvVersionCodeForceAbiDigit = cdvVersionCodeForceAbiDigit == null ? false : cdvVersionCodeForceAbiDigit.toBoolean();
-<<<<<<< HEAD
-ext.cdvMinSdkVersion = cdvMinSdkVersion == null ? defaultMinSdkVersion : Integer.parseInt('' + cdvMinSdkVersion)
-=======
 
 // minSdkVersion, maxSdkVersion and targetSdkVersion
 ext.cdvMinSdkVersion = cdvMinSdkVersion == null ? defaultMinSdkVersion : Integer.parseInt('' + cdvMinSdkVersion)
@@ -167,7 +145,6 @@ if (cdvMaxSdkVersion != null) {
 }
 ext.cdvTargetSdkVersion = cdvTargetSdkVersion == null ? defaultTargetSdkVersion  : Integer.parseInt('' + cdvTargetSdkVersion)
 
->>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
 ext.cdvVersionCode = cdvVersionCode == null ? null : Integer.parseInt('' + cdvVersionCode)
 
 def computeBuildTargetName(debugBuild) {
@@ -322,23 +299,13 @@ dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
-<<<<<<< HEAD
-    compile "com.squareup.okhttp3:okhttp:3.12.0"
-    compile "com.android.support:appcompat-v7:23+"
-    compile "com.google.firebase:firebase-core:16.0.9"
-    compile "com.google.firebase:firebase-messaging:18.0.0"
-    compile "com.android.support:support-v4:26.+"
-    compile "com.android.support:support-v4:27.+"
-    compile "com.android.support:support-annotations:27.+"
-=======
-    implementation "com.squareup.okhttp3:okhttp:3.12.0"
-    implementation "com.android.support:appcompat-v7:23+"
+    implementation "com.android.support:support-v4:27.+"
     implementation "com.google.firebase:firebase-core:16.0.9"
     implementation "com.google.firebase:firebase-messaging:18.0.0"
-    implementation "com.android.support:support-v4:26.+"
-    implementation "com.android.support:support-v4:27.+"
     implementation "com.android.support:support-annotations:27.+"
->>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
+    implementation "com.android.support:support-v4:26.+"
+    implementation "com.android.support:appcompat-v7:23+"
+    implementation "com.squareup.okhttp3:okhttp:3.12.0"
     // SUB-PROJECT DEPENDENCIES END
 }
 

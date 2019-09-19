@@ -25,6 +25,8 @@ import { SendimagesPageModule } from './sendimages/sendimages.module';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { CertificatePageModule } from './certificate/certificate.module';
 import { NewCertificatePageModule } from './new-certificate/new-certificate.module';
+import { SQLite } from '@ionic-native/sqlite/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -42,6 +44,7 @@ import { NewCertificatePageModule } from './new-certificate/new-certificate.modu
     File,
     FCM,
     Camera,
+    SQLite,
     LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

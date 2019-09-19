@@ -9,8 +9,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <meta-data android:name="launchnavigator.GOOGLE_API_KEY" android:value="" />
-        <activity android:label="@string/multi_app_name" android:name="com.synconset.MultiImageChooserActivity" android:theme="@style/Theme.AppCompat.Light" />
+        <provider android:authorities="${applicationId}.provider" android:exported="false" android:grantUriPermissions="true" android:name="org.apache.cordova.camera.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/camera_provider_paths" />
+        </provider>
         <activity android:exported="true" android:launchMode="singleTop" android:name="com.gae.scaffolder.plugin.FCMPluginActivity">
             <intent-filter>
                 <action android:name="FCM_PLUGIN_ACTIVITY" />
@@ -28,18 +29,13 @@
         <receiver android:exported="false" android:name="de.appplant.cordova.plugin.localnotification.TriggerReceiver" />
         <receiver android:exported="false" android:name="de.appplant.cordova.plugin.localnotification.ClearReceiver" />
         <activity android:exported="false" android:launchMode="singleInstance" android:name="de.appplant.cordova.plugin.localnotification.ClickReceiver" android:theme="@android:style/Theme.Translucent" />
-        <provider android:authorities="${applicationId}.provider" android:exported="false" android:grantUriPermissions="true" android:name="org.apache.cordova.camera.FileProvider">
-            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/camera_provider_paths" />
-        </provider>
+        <activity android:label="@string/multi_app_name" android:name="com.synconset.MultiImageChooserActivity" android:theme="@style/Theme.AppCompat.Light" />
+        <meta-data android:name="launchnavigator.GOOGLE_API_KEY" android:value="" />
     </application>
-<<<<<<< HEAD
-    <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="27" />
-=======
->>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-feature android:name="android.hardware.location.gps" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>

@@ -10,6 +10,7 @@ import { NavParams } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ActionSheetController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { TasksService } from '../Services/tasks-service';
 @Component({
   selector: 'app-sendimages',
   templateUrl: './sendimages.page.html',
@@ -37,7 +38,8 @@ export class SendimagesPage implements OnInit {
     , public modalController: ModalController,
     private camera: Camera,
     public actionSheetController: ActionSheetController,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private tasksService: TasksService
   ) {
 
 
@@ -45,6 +47,8 @@ export class SendimagesPage implements OnInit {
     this.type_network = navParams.get('type_network');
     this.data = navParams.get('data');
     this.photos_service = navParams.get('photos_service');
+
+
 
     for (let index = 0; index < this.photos_service.quantity; index++) {
       this.photos.push({
@@ -219,6 +223,9 @@ export class SendimagesPage implements OnInit {
               this.photos[id].send = false;
 
 
+
+
+
               this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
 
             } else {
@@ -247,7 +254,7 @@ export class SendimagesPage implements OnInit {
             }
           },
           err => {
-
+            console.log(err)
             this.photos[id].state = false;
             this.photos[id].state_send = true;
             this.photos[id].error = false;

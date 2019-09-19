@@ -12,3 +12,70 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+<ion-content>
+  <ion-list class="accordion-list" no-padding>
+    <section class="acc-section" (click)="setStep('expanded1')">
+      <div class="img">
+        <img src="../../assets/img/pngocean.com-id-wflsf.png" alt="">
+      </div>
+      <div class="info">
+        <p class="title">Certificado</p>
+        <p class="subtitle">Información general</p>
+      </div>
+      <div class="icon">
+        <ion-icon name="{{getIconName('expanded1')}}" color="medium"></ion-icon>
+      </div>
+
+    </section>
+
+    <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded1')}">
+      <div [hidden]="div_hidden">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <mat-form-field class="example-full-width" style="margin-top: 10px;">
+                <input matInput placeholder="Número de Certificado" [(ngModel)]="number" readonly>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Observaciones del Inspector">
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Observaciones del Revisor">
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Observaciones para el Cliente">
+              </mat-form-field>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+    </section>
+    <section class="acc-section" (click)="setStep('expanded6')">
+      <div class="img">
+        <img src="../../assets/img/twotone_insert_photo_black_48dp.png" alt="">
+      </div>
+      <div class="info" (click)="ModalImage()">
+        <p class="title">Fotografias</p>
+        <p class="subtitle">Fotografias del servicio</p>
+
+      </div>
+      <div class="icon">
+        <ion-icon name="{{getIconName('expanded6')}}" color="medium"></ion-icon>
+      </div>
+
+    </section>
+    <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded6')}">
+      <ion-item detail *ngFor="let photos_service of photos_services; let i = i; index"
+        (click)="photos_add(photos_service)">
+        <ion-label>
+          {{photos_service.name_photo}}
+        </ion-label>
+      </ion-item>
+    </section>
+  </ion-list>
+</ion-content>

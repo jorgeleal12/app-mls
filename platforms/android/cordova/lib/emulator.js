@@ -340,12 +340,8 @@ module.exports.wait_for_emulator = function (port) {
             if ((error && error.message &&
             (error.message.indexOf('not found') > -1)) ||
             (error.message.indexOf('device offline') > -1) ||
-<<<<<<< HEAD
-            (error.message.indexOf('device still connecting') > -1)) {
-=======
             (error.message.indexOf('device still connecting') > -1) ||
             (error.message.indexOf('device still authorizing') > -1)) {
->>>>>>> 71603dac6d09b3f8f0f5bd9700bfcf3b4cf0e4ab
                 // emulator not yet started, continue waiting
                 return self.wait_for_emulator(port);
             } else {
