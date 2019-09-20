@@ -585,7 +585,7 @@ __webpack_require__.r(__webpack_exports__);
 let LoginServiceService = class LoginServiceService {
     constructor(http) {
         this.http = http;
-        this.api_url = 'http://192.168.1.57/laravel-mls/public/api/';
+        this.api_url = 'http://192.168.1.126/laravel-mls/public/api/';
     }
     save_image(params) {
         return this.http.post(`${this.api_url}movil/image`, params);
@@ -1552,28 +1552,34 @@ let ImagesPage = class ImagesPage {
         this.photo_service();
     }
     photo_service() {
-        this.tasksService.SelectImage(this.data.idodi)
-            .then(tasks => {
-            console.log(tasks);
-        })
-            .catch(error => {
-            console.error(error);
-        });
         let params = {
             type_network: this.type_network
         };
-        this.LoginServiceService.photos_service(params).subscribe(result => {
-            this.photos_services = result.response;
-            for (const prop in this.photos_services) {
-                this.tasksService.InsertImage(this.data.idodi, this.photos_services[prop])
-                    .then(tasks => {
-                    console.log(tasks);
-                })
-                    .catch(error => {
-                    console.error(error);
+        this.tasksService.SelectImage(this.data.idodi)
+            .then(tasks => {
+            this.PhotoServices = tasks;
+            this.propCount = Object.keys(tasks).length;
+            if (this.propCount > 0) {
+                this.photos_services = this.PhotoServices;
+            }
+            else {
+                this.LoginServiceService.photos_service(params).subscribe(result => {
+                    this.photos_services = result.response;
+                    for (const prop in this.photos_services) {
+                        this.tasksService.InsertImage(this.data.idodi, this.photos_services[prop])
+                            .then(tasks => {
+                            console.log(tasks);
+                        })
+                            .catch(error => {
+                            console.error(error);
+                        });
+                    }
+                }, error => {
                 });
             }
-        }, error => {
+        })
+            .catch(error => {
+            console.error(error);
         });
     }
     photos_add(photos_service) {

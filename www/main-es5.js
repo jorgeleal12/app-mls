@@ -591,7 +591,7 @@ __webpack_require__.r(__webpack_exports__);
 var LoginServiceService = /** @class */ (function () {
     function LoginServiceService(http) {
         this.http = http;
-        this.api_url = 'http://192.168.1.57/laravel-mls/public/api/';
+        this.api_url = 'http://192.168.1.126/laravel-mls/public/api/';
     }
     LoginServiceService.prototype.save_image = function (params) {
         return this.http.post(this.api_url + "movil/image", params);
@@ -1597,28 +1597,34 @@ var ImagesPage = /** @class */ (function () {
     };
     ImagesPage.prototype.photo_service = function () {
         var _this = this;
-        this.tasksService.SelectImage(this.data.idodi)
-            .then(function (tasks) {
-            console.log(tasks);
-        })
-            .catch(function (error) {
-            console.error(error);
-        });
         var params = {
             type_network: this.type_network
         };
-        this.LoginServiceService.photos_service(params).subscribe(function (result) {
-            _this.photos_services = result.response;
-            for (var prop in _this.photos_services) {
-                _this.tasksService.InsertImage(_this.data.idodi, _this.photos_services[prop])
-                    .then(function (tasks) {
-                    console.log(tasks);
-                })
-                    .catch(function (error) {
-                    console.error(error);
+        this.tasksService.SelectImage(this.data.idodi)
+            .then(function (tasks) {
+            _this.PhotoServices = tasks;
+            _this.propCount = Object.keys(tasks).length;
+            if (_this.propCount > 0) {
+                _this.photos_services = _this.PhotoServices;
+            }
+            else {
+                _this.LoginServiceService.photos_service(params).subscribe(function (result) {
+                    _this.photos_services = result.response;
+                    for (var prop in _this.photos_services) {
+                        _this.tasksService.InsertImage(_this.data.idodi, _this.photos_services[prop])
+                            .then(function (tasks) {
+                            console.log(tasks);
+                        })
+                            .catch(function (error) {
+                            console.error(error);
+                        });
+                    }
+                }, function (error) {
                 });
             }
-        }, function (error) {
+        })
+            .catch(function (error) {
+            console.error(error);
         });
     };
     ImagesPage.prototype.photos_add = function (photos_service) {

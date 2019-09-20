@@ -16,6 +16,8 @@ export class ImagesPage implements OnInit {
   number_service
   photos_services
   data
+  PhotoServices;
+  propCount
   constructor(private route: ActivatedRoute,
     private router: Router,
     private LoginServiceService: LoginServiceService, public modalController: ModalController, private navParams: NavParams, private tasksService: TasksService) {
@@ -33,39 +35,51 @@ export class ImagesPage implements OnInit {
 
   photo_service() {
 
-
+    let params = {
+      type_network: this.type_network
+    }
 
     this.tasksService.SelectImage(this.data.idodi)
       .then(tasks => {
-        console.log(tasks)
+        this.PhotoServices = tasks
+        this.propCount = Object.keys(tasks).length;
+
+        if (this.propCount > 0) {
+          this.photos_services = this.PhotoServices;
+        } else {
+
+          this.LoginServiceService.photos_service(params).subscribe(result => {
+
+
+            this.photos_services = result.response
+
+            for (const prop in this.photos_services) {
+
+              this.tasksService.InsertImage(this.data.idodi, this.photos_services[prop])
+                .then(tasks => {
+                  console.log(tasks)
+                })
+                .catch(error => {
+                  console.error(error);
+                });
+
+            }
+
+          }, error => {
+
+          })
+        }
+
       })
       .catch(error => {
         console.error(error);
       });
 
-    let params = {
-      type_network: this.type_network
-    }
-    this.LoginServiceService.photos_service(params).subscribe(result => {
 
 
-      this.photos_services = result.response
 
-      for (const prop in this.photos_services) {
 
-        this.tasksService.InsertImage(this.data.idodi, this.photos_services[prop])
-          .then(tasks => {
-            console.log(tasks)
-          })
-          .catch(error => {
-            console.error(error);
-          });
 
-      }
-
-    }, error => {
-
-    })
   }
 
   photos_add(photos_service) {
