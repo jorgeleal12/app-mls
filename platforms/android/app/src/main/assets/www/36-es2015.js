@@ -12,8 +12,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_loading", function() { return Loading; });
 /* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm/core-13ed1ad7.js");
 /* harmony import */ var _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-bb99b659.js */ "./node_modules/@ionic/core/dist/esm/config-bb99b659.js");
-/* harmony import */ var _animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./animation-22971d74.js */ "./node_modules/@ionic/core/dist/esm/animation-22971d74.js");
-/* harmony import */ var _overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./overlays-45908d8d.js */ "./node_modules/@ionic/core/dist/esm/overlays-45908d8d.js");
+/* harmony import */ var _animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./animation-5559213c.js */ "./node_modules/@ionic/core/dist/esm/animation-5559213c.js");
+/* harmony import */ var _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./overlays-10cf2041.js */ "./node_modules/@ionic/core/dist/esm/overlays-10cf2041.js");
 /* harmony import */ var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./theme-353a032e.js */ "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
 /* harmony import */ var _index_cae2ca23_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index-cae2ca23.js */ "./node_modules/@ionic/core/dist/esm/index-cae2ca23.js");
 
@@ -27,9 +27,9 @@ __webpack_require__.r(__webpack_exports__);
  * iOS Loading Enter Animation
  */
 const iosEnterAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const backdropAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const wrapperAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     backdropAnimation
         .addElement(baseEl.querySelector('ion-backdrop'))
         .fromTo('opacity', 0.01, 0.3);
@@ -50,9 +50,9 @@ const iosEnterAnimation = (baseEl) => {
  * iOS Loading Leave Animation
  */
 const iosLeaveAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const backdropAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const wrapperAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     backdropAnimation
         .addElement(baseEl.querySelector('ion-backdrop'))
         .fromTo('opacity', 0.3, 0);
@@ -73,9 +73,9 @@ const iosLeaveAnimation = (baseEl) => {
  * Md Loading Enter Animation
  */
 const mdEnterAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const backdropAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const wrapperAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     backdropAnimation
         .addElement(baseEl.querySelector('ion-backdrop'))
         .fromTo('opacity', 0.01, 0.32);
@@ -96,9 +96,9 @@ const mdEnterAnimation = (baseEl) => {
  * Md Loading Leave Animation
  */
 const mdLeaveAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const backdropAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const wrapperAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     backdropAnimation
         .addElement(baseEl.querySelector('ion-backdrop'))
         .fromTo('opacity', 0.32, 0);
@@ -147,7 +147,7 @@ const Loading = class {
          */
         this.animated = true;
         this.onBackdropTap = () => {
-            this.dismiss(undefined, _overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["B"]);
+            this.dismiss(undefined, _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["B"]);
         };
         this.didPresent = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionLoadingDidPresent", 7);
         this.willPresent = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionLoadingWillPresent", 7);
@@ -164,7 +164,7 @@ const Loading = class {
      * Present the loading overlay after it has been created.
      */
     async present() {
-        await Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["d"])(this, 'loadingEnter', iosEnterAnimation, mdEnterAnimation, undefined);
+        await Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["d"])(this, 'loadingEnter', iosEnterAnimation, mdEnterAnimation, undefined);
         if (this.duration > 0) {
             this.durationTimeout = setTimeout(() => this.dismiss(), this.duration + 10);
         }
@@ -182,19 +182,19 @@ const Loading = class {
         if (this.durationTimeout) {
             clearTimeout(this.durationTimeout);
         }
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["e"])(this, data, role, 'loadingLeave', iosLeaveAnimation, mdLeaveAnimation);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["e"])(this, data, role, 'loadingLeave', iosLeaveAnimation, mdLeaveAnimation);
     }
     /**
      * Returns a promise that resolves when the loading did dismiss.
      */
     onDidDismiss() {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionLoadingDidDismiss');
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionLoadingDidDismiss');
     }
     /**
      * Returns a promise that resolves when the loading will dismiss.
      */
     onWillDismiss() {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionLoadingWillDismiss');
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionLoadingWillDismiss');
     }
     render() {
         const { message, spinner } = this;

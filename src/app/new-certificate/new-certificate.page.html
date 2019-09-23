@@ -6,7 +6,7 @@
     <ion-title text-center class="center">Nuevo Certificado</ion-title>
 
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button (click)="save()">
         <ion-icon slot="icon-only" name="save"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -35,19 +35,19 @@
           <ion-row>
             <ion-col size="12">
               <mat-form-field class="example-full-width" style="margin-top: 10px;">
-                <input matInput placeholder="Número de Certificado" [(ngModel)]="number" readonly>
+                <input matInput placeholder="Número de Certificado" [(ngModel)]="NewCertificate.number" readonly>
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Observaciones del Inspector">
+                <input matInput placeholder="Observaciones del Inspector" [(ngModel)]="NewCertificate.obsins">
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Observaciones del Revisor">
+                <input matInput placeholder="Observaciones del Revisor" [(ngModel)]="NewCertificate.obssuper">
               </mat-form-field>
 
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Observaciones para el Cliente">
+                <input matInput placeholder="Observaciones para el Cliente" [(ngModel)]="NewCertificate.obsclient">
               </mat-form-field>
             </ion-col>
           </ion-row>

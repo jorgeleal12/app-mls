@@ -15,7 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_menu_toggle", function() { return MenuToggle; });
 /* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm/core-13ed1ad7.js");
 /* harmony import */ var _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-bb99b659.js */ "./node_modules/@ionic/core/dist/esm/config-bb99b659.js");
-/* harmony import */ var _animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./animation-22971d74.js */ "./node_modules/@ionic/core/dist/esm/animation-22971d74.js");
+/* harmony import */ var _animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./animation-5559213c.js */ "./node_modules/@ionic/core/dist/esm/animation-5559213c.js");
 /* harmony import */ var _index_2c4a5477_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index-2c4a5477.js */ "./node_modules/@ionic/core/dist/esm/index-2c4a5477.js");
 /* harmony import */ var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./theme-353a032e.js */ "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
 /* harmony import */ var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helpers-c90aaa66.js */ "./node_modules/@ionic/core/dist/esm/helpers-c90aaa66.js");
@@ -513,7 +513,7 @@ const baseAnimation = () => {
     // "Apply the sharp curve to items temporarily leaving the screen that may return
     // from the same exit point. When they return, use the deceleration curve. On mobile,
     // this transition typically occurs over 300ms" -- MD Motion Guide
-    return Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])()
+    return Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])()
         .easing('cubic-bezier(0.0, 0.0, 0.2, 1)') // Deceleration curve (Entering the screen)
         .duration(300);
 };
@@ -528,8 +528,8 @@ const menuOverlayAnimation = (menu) => {
     let openedX;
     const BOX_SHADOW_WIDTH = 8;
     const width = menu.width + BOX_SHADOW_WIDTH;
-    const menuAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const backdropAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const menuAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     if (menu.isEndSide) {
         // right side
         closedX = width + 'px';
@@ -566,13 +566,13 @@ const menuPushAnimation = (menu) => {
         contentOpenedX = width + 'px';
         menuClosedX = -width + 'px';
     }
-    const menuAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])()
+    const menuAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])()
         .addElement(menu.menuInnerEl)
         .fromTo('transform', `translateX(${menuClosedX})`, 'translateX(0px)');
-    const contentAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])()
+    const contentAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])()
         .addElement(menu.contentEl)
         .fromTo('transform', 'translateX(0px)', `translateX(${contentOpenedX})`);
-    const backdropAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])()
+    const backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])()
         .addElement(menu.backdropEl)
         .fromTo('opacity', 0.01, 0.32);
     return baseAnimation().addAnimation([menuAnimation, backdropAnimation, contentAnimation]);
@@ -585,7 +585,7 @@ const menuPushAnimation = (menu) => {
  */
 const menuRevealAnimation = (menu) => {
     const openedX = (menu.width * (menu.isEndSide ? -1 : 1)) + 'px';
-    const contentOpen = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])()
+    const contentOpen = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])()
         .addElement(menu.contentEl)
         .fromTo('transform', 'translateX(0px)', `translateX(${openedX})`);
     return baseAnimation().addAnimation(contentOpen);

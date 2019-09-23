@@ -15,20 +15,26 @@
                 <ion-list-header *ngIf="page.section" class="aside-item">{{page.section}}</ion-list-header>
 
                 <ion-menu-toggle auto-hide="false" *ngFor="let p of page.routes">
-                    <ion-item [routerLink]="p.url" routerDirection="root" [class.active-item]="selectedPath===p.url"
-                        class="aside-item" lines="none">
+                    <ion-item [routerLink]="p.url" routerDirection="forward" class="aside-item" lines="none">
                         <ion-icon name="{{p.icon}}" *ngIf="p.icon" color="medium" size="small" class="aside-icon">
                         </ion-icon>
                         <ion-label>
                             {{p.title}}
                         </ion-label>
                     </ion-item>
+
                 </ion-menu-toggle>
 
             </ion-list>
+            <ion-item class="aside-item" lines="none">
+                <ion-icon name="md-close-circle" color="medium" size="small" class="aside-icon"> </ion-icon>
+                <ion-label>
+                    Cerrar Sesión
+                </ion-label>
+            </ion-item>
+
         </ion-content>
     </ion-menu>
     <ion-router-outlet id="content" main>
-
     </ion-router-outlet>
 </ion-split-pane>

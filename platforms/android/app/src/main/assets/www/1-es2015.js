@@ -12,8 +12,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_action_sheet", function() { return ActionSheet; });
 /* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm/core-13ed1ad7.js");
 /* harmony import */ var _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-bb99b659.js */ "./node_modules/@ionic/core/dist/esm/config-bb99b659.js");
-/* harmony import */ var _animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./animation-22971d74.js */ "./node_modules/@ionic/core/dist/esm/animation-22971d74.js");
-/* harmony import */ var _overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./overlays-45908d8d.js */ "./node_modules/@ionic/core/dist/esm/overlays-45908d8d.js");
+/* harmony import */ var _animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./animation-5559213c.js */ "./node_modules/@ionic/core/dist/esm/animation-5559213c.js");
+/* harmony import */ var _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./overlays-10cf2041.js */ "./node_modules/@ionic/core/dist/esm/overlays-10cf2041.js");
 /* harmony import */ var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./theme-353a032e.js */ "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
 
 
@@ -25,9 +25,9 @@ __webpack_require__.r(__webpack_exports__);
  * iOS Action Sheet Enter Animation
  */
 const iosEnterAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const backdropAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const wrapperAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     backdropAnimation
         .addElement(baseEl.querySelector('ion-backdrop'))
         .fromTo('opacity', 0.01, 0.4);
@@ -45,9 +45,9 @@ const iosEnterAnimation = (baseEl) => {
  * iOS Action Sheet Leave Animation
  */
 const iosLeaveAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const backdropAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const wrapperAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     backdropAnimation
         .addElement(baseEl.querySelector('ion-backdrop'))
         .fromTo('opacity', 0.4, 0);
@@ -65,9 +65,9 @@ const iosLeaveAnimation = (baseEl) => {
  * MD Action Sheet Enter Animation
  */
 const mdEnterAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const backdropAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const wrapperAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     backdropAnimation
         .addElement(baseEl.querySelector('ion-backdrop'))
         .fromTo('opacity', 0.01, 0.32);
@@ -85,9 +85,9 @@ const mdEnterAnimation = (baseEl) => {
  * MD Action Sheet Leave Animation
  */
 const mdLeaveAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const backdropAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const wrapperAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     backdropAnimation
         .addElement(baseEl.querySelector('ion-backdrop'))
         .fromTo('opacity', 0.32, 0);
@@ -129,11 +129,11 @@ const ActionSheet = class {
          */
         this.animated = true;
         this.onBackdropTap = () => {
-            this.dismiss(undefined, _overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["B"]);
+            this.dismiss(undefined, _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["B"]);
         };
         this.dispatchCancelHandler = (ev) => {
             const role = ev.detail.role;
-            if (Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["i"])(role)) {
+            if (Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["i"])(role)) {
                 const cancelButton = this.getButtons().find(b => b.role === 'cancel');
                 this.callButtonHandler(cancelButton);
             }
@@ -147,7 +147,7 @@ const ActionSheet = class {
      * Present the action sheet overlay after it has been created.
      */
     present() {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["d"])(this, 'actionSheetEnter', iosEnterAnimation, mdEnterAnimation);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["d"])(this, 'actionSheetEnter', iosEnterAnimation, mdEnterAnimation);
     }
     /**
      * Dismiss the action sheet overlay after it has been presented.
@@ -159,24 +159,24 @@ const ActionSheet = class {
      * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
      */
     dismiss(data, role) {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["e"])(this, data, role, 'actionSheetLeave', iosLeaveAnimation, mdLeaveAnimation);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["e"])(this, data, role, 'actionSheetLeave', iosLeaveAnimation, mdLeaveAnimation);
     }
     /**
      * Returns a promise that resolves when the action sheet did dismiss.
      */
     onDidDismiss() {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionActionSheetDidDismiss');
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionActionSheetDidDismiss');
     }
     /**
      * Returns a promise that resolves when the action sheet will dismiss.
      *
      */
     onWillDismiss() {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionActionSheetWillDismiss');
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionActionSheetWillDismiss');
     }
     async buttonClick(button) {
         const role = button.role;
-        if (Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["i"])(role)) {
+        if (Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["i"])(role)) {
             return this.dismiss(undefined, role);
         }
         const shouldDismiss = await this.callButtonHandler(button);
@@ -189,7 +189,7 @@ const ActionSheet = class {
         if (button) {
             // a handler has been provided, execute it
             // pass the handler the values from the inputs
-            const rtn = await Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["s"])(button.handler);
+            const rtn = await Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["s"])(button.handler);
             if (rtn === false) {
                 // if the return value of the handler is false then do not dismiss
                 return false;

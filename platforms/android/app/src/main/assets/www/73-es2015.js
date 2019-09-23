@@ -12,8 +12,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_toast", function() { return Toast; });
 /* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm/core-13ed1ad7.js");
 /* harmony import */ var _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-bb99b659.js */ "./node_modules/@ionic/core/dist/esm/config-bb99b659.js");
-/* harmony import */ var _animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./animation-22971d74.js */ "./node_modules/@ionic/core/dist/esm/animation-22971d74.js");
-/* harmony import */ var _overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./overlays-45908d8d.js */ "./node_modules/@ionic/core/dist/esm/overlays-45908d8d.js");
+/* harmony import */ var _animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./animation-5559213c.js */ "./node_modules/@ionic/core/dist/esm/animation-5559213c.js");
+/* harmony import */ var _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./overlays-10cf2041.js */ "./node_modules/@ionic/core/dist/esm/overlays-10cf2041.js");
 /* harmony import */ var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./theme-353a032e.js */ "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
 /* harmony import */ var _index_cae2ca23_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index-cae2ca23.js */ "./node_modules/@ionic/core/dist/esm/index-cae2ca23.js");
 
@@ -27,8 +27,8 @@ __webpack_require__.r(__webpack_exports__);
  * iOS Toast Enter Animation
  */
 const iosEnterAnimation = (baseEl, position) => {
-    const baseAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const wrapperAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     const hostEl = baseEl.host || baseEl;
     const wrapperEl = baseEl.querySelector('.toast-wrapper');
     const bottom = `calc(-10px - var(--ion-safe-area-bottom, 0px))`;
@@ -58,8 +58,8 @@ const iosEnterAnimation = (baseEl, position) => {
  * iOS Toast Leave Animation
  */
 const iosLeaveAnimation = (baseEl, position) => {
-    const baseAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const wrapperAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     const hostEl = baseEl.host || baseEl;
     const wrapperEl = baseEl.querySelector('.toast-wrapper');
     const bottom = `calc(-10px - var(--ion-safe-area-bottom, 0px))`;
@@ -87,8 +87,8 @@ const iosLeaveAnimation = (baseEl, position) => {
  * MD Toast Enter Animation
  */
 const mdEnterAnimation = (baseEl, position) => {
-    const baseAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const wrapperAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     const hostEl = baseEl.host || baseEl;
     const wrapperEl = baseEl.querySelector('.toast-wrapper');
     const bottom = `calc(8px + var(--ion-safe-area-bottom, 0px))`;
@@ -120,8 +120,8 @@ const mdEnterAnimation = (baseEl, position) => {
  * md Toast Leave Animation
  */
 const mdLeaveAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const wrapperAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     const hostEl = baseEl.host || baseEl;
     const wrapperEl = baseEl.querySelector('.toast-wrapper');
     wrapperAnimation
@@ -175,7 +175,7 @@ const Toast = class {
      * Present the toast overlay after it has been created.
      */
     async present() {
-        await Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["d"])(this, 'toastEnter', iosEnterAnimation, mdEnterAnimation, this.position);
+        await Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["d"])(this, 'toastEnter', iosEnterAnimation, mdEnterAnimation, this.position);
         if (this.duration > 0) {
             this.durationTimeout = setTimeout(() => this.dismiss(undefined, 'timeout'), this.duration);
         }
@@ -193,19 +193,19 @@ const Toast = class {
         if (this.durationTimeout) {
             clearTimeout(this.durationTimeout);
         }
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["e"])(this, data, role, 'toastLeave', iosLeaveAnimation, mdLeaveAnimation, this.position);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["e"])(this, data, role, 'toastLeave', iosLeaveAnimation, mdLeaveAnimation, this.position);
     }
     /**
      * Returns a promise that resolves when the toast did dismiss.
      */
     onDidDismiss() {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionToastDidDismiss');
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionToastDidDismiss');
     }
     /**
      * Returns a promise that resolves when the toast will dismiss.
      */
     onWillDismiss() {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionToastWillDismiss');
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionToastWillDismiss');
     }
     getButtons() {
         const buttons = this.buttons
@@ -227,7 +227,7 @@ const Toast = class {
     }
     async buttonClick(button) {
         const role = button.role;
-        if (Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["i"])(role)) {
+        if (Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["i"])(role)) {
             return this.dismiss(undefined, role);
         }
         const shouldDismiss = await this.callButtonHandler(button);
@@ -241,7 +241,7 @@ const Toast = class {
             // a handler has been provided, execute it
             // pass the handler the values from the inputs
             try {
-                const rtn = await Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["s"])(button.handler);
+                const rtn = await Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["s"])(button.handler);
                 if (rtn === false) {
                     // if the return value of the handler is false then do not dismiss
                     return false;

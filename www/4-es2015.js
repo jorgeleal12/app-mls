@@ -12,8 +12,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_alert", function() { return Alert; });
 /* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm/core-13ed1ad7.js");
 /* harmony import */ var _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-bb99b659.js */ "./node_modules/@ionic/core/dist/esm/config-bb99b659.js");
-/* harmony import */ var _animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./animation-22971d74.js */ "./node_modules/@ionic/core/dist/esm/animation-22971d74.js");
-/* harmony import */ var _overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./overlays-45908d8d.js */ "./node_modules/@ionic/core/dist/esm/overlays-45908d8d.js");
+/* harmony import */ var _animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./animation-5559213c.js */ "./node_modules/@ionic/core/dist/esm/animation-5559213c.js");
+/* harmony import */ var _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./overlays-10cf2041.js */ "./node_modules/@ionic/core/dist/esm/overlays-10cf2041.js");
 /* harmony import */ var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./theme-353a032e.js */ "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
 /* harmony import */ var _index_cae2ca23_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index-cae2ca23.js */ "./node_modules/@ionic/core/dist/esm/index-cae2ca23.js");
 
@@ -27,9 +27,9 @@ __webpack_require__.r(__webpack_exports__);
  * iOS Alert Enter Animation
  */
 const iosEnterAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const backdropAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const wrapperAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     backdropAnimation
         .addElement(baseEl.querySelector('ion-backdrop'))
         .fromTo('opacity', 0.01, 0.3);
@@ -50,9 +50,9 @@ const iosEnterAnimation = (baseEl) => {
  * iOS Alert Leave Animation
  */
 const iosLeaveAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const backdropAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const wrapperAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     backdropAnimation
         .addElement(baseEl.querySelector('ion-backdrop'))
         .fromTo('opacity', 0.3, 0);
@@ -73,9 +73,9 @@ const iosLeaveAnimation = (baseEl) => {
  * Md Alert Enter Animation
  */
 const mdEnterAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const backdropAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const wrapperAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     backdropAnimation
         .addElement(baseEl.querySelector('ion-backdrop'))
         .fromTo('opacity', 0.01, 0.32);
@@ -96,9 +96,9 @@ const mdEnterAnimation = (baseEl) => {
  * Md Alert Leave Animation
  */
 const mdLeaveAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const backdropAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const wrapperAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     backdropAnimation
         .addElement(baseEl.querySelector('ion-backdrop'))
         .fromTo('opacity', 0.32, 0);
@@ -146,11 +146,11 @@ const Alert = class {
          */
         this.animated = true;
         this.onBackdropTap = () => {
-            this.dismiss(undefined, _overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["B"]);
+            this.dismiss(undefined, _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["B"]);
         };
         this.dispatchCancelHandler = (ev) => {
             const role = ev.detail.role;
-            if (Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["i"])(role)) {
+            if (Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["i"])(role)) {
                 const cancelButton = this.processedButtons.find(b => b.role === 'cancel');
                 this.callButtonHandler(cancelButton);
             }
@@ -199,7 +199,7 @@ const Alert = class {
      * Present the alert overlay after it has been created.
      */
     present() {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["d"])(this, 'alertEnter', iosEnterAnimation, mdEnterAnimation);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["d"])(this, 'alertEnter', iosEnterAnimation, mdEnterAnimation);
     }
     /**
      * Dismiss the alert overlay after it has been presented.
@@ -211,37 +211,37 @@ const Alert = class {
      * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
      */
     dismiss(data, role) {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["e"])(this, data, role, 'alertLeave', iosLeaveAnimation, mdLeaveAnimation);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["e"])(this, data, role, 'alertLeave', iosLeaveAnimation, mdLeaveAnimation);
     }
     /**
      * Returns a promise that resolves when the alert did dismiss.
      */
     onDidDismiss() {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionAlertDidDismiss');
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionAlertDidDismiss');
     }
     /**
      * Returns a promise that resolves when the alert will dismiss.
      */
     onWillDismiss() {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionAlertWillDismiss');
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionAlertWillDismiss');
     }
     rbClick(selectedInput) {
         for (const input of this.processedInputs) {
             input.checked = input === selectedInput;
         }
         this.activeId = selectedInput.id;
-        Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["s"])(selectedInput.handler, selectedInput);
+        Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["s"])(selectedInput.handler, selectedInput);
         this.el.forceUpdate();
     }
     cbClick(selectedInput) {
         selectedInput.checked = !selectedInput.checked;
-        Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["s"])(selectedInput.handler, selectedInput);
+        Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["s"])(selectedInput.handler, selectedInput);
         this.el.forceUpdate();
     }
     buttonClick(button) {
         const role = button.role;
         const values = this.getValues();
-        if (Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["i"])(role)) {
+        if (Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["i"])(role)) {
             return this.dismiss({ values }, role);
         }
         const returnData = this.callButtonHandler(button, values);
@@ -254,7 +254,7 @@ const Alert = class {
         if (button && button.handler) {
             // a handler has been provided, execute it
             // pass the handler the values from the inputs
-            const returnData = Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["s"])(button.handler, data);
+            const returnData = Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["s"])(button.handler, data);
             if (returnData === false) {
                 // if the return value of the handler is false then do not dismiss
                 return false;

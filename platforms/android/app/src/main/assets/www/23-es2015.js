@@ -14,8 +14,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_picker_column", function() { return PickerColumnCmp; });
 /* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm/core-13ed1ad7.js");
 /* harmony import */ var _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-bb99b659.js */ "./node_modules/@ionic/core/dist/esm/config-bb99b659.js");
-/* harmony import */ var _animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./animation-22971d74.js */ "./node_modules/@ionic/core/dist/esm/animation-22971d74.js");
-/* harmony import */ var _overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./overlays-45908d8d.js */ "./node_modules/@ionic/core/dist/esm/overlays-45908d8d.js");
+/* harmony import */ var _animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./animation-5559213c.js */ "./node_modules/@ionic/core/dist/esm/animation-5559213c.js");
+/* harmony import */ var _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./overlays-10cf2041.js */ "./node_modules/@ionic/core/dist/esm/overlays-10cf2041.js");
 /* harmony import */ var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./theme-353a032e.js */ "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
 /* harmony import */ var _haptic_4e92c885_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./haptic-4e92c885.js */ "./node_modules/@ionic/core/dist/esm/haptic-4e92c885.js");
 /* harmony import */ var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./helpers-c90aaa66.js */ "./node_modules/@ionic/core/dist/esm/helpers-c90aaa66.js");
@@ -650,7 +650,7 @@ const Datetime = class {
             return;
         }
         const pickerOptions = this.generatePickerOptions();
-        const picker = await _overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["p"].create(pickerOptions);
+        const picker = await _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["p"].create(pickerOptions);
         this.isExpanded = true;
         picker.onDidDismiss().then(() => {
             this.isExpanded = false;
@@ -968,9 +968,9 @@ let datetimeIds = 0;
  * iOS Picker Enter Animation
  */
 const iosEnterAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const backdropAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const wrapperAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     backdropAnimation
         .addElement(baseEl.querySelector('ion-backdrop'))
         .fromTo('opacity', 0.01, 0.26);
@@ -988,9 +988,9 @@ const iosEnterAnimation = (baseEl) => {
  * iOS Picker Leave Animation
  */
 const iosLeaveAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const backdropAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-    const wrapperAnimation = Object(_animation_22971d74_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+    const wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
     backdropAnimation
         .addElement(baseEl.querySelector('ion-backdrop'))
         .fromTo('opacity', 0.26, 0.01);
@@ -1055,7 +1055,7 @@ const Picker = class {
      * Present the picker overlay after it has been created.
      */
     async present() {
-        await Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["d"])(this, 'pickerEnter', iosEnterAnimation, iosEnterAnimation, undefined);
+        await Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["d"])(this, 'pickerEnter', iosEnterAnimation, iosEnterAnimation, undefined);
         if (this.duration > 0) {
             this.durationTimeout = setTimeout(() => this.dismiss(), this.duration);
         }
@@ -1073,19 +1073,19 @@ const Picker = class {
         if (this.durationTimeout) {
             clearTimeout(this.durationTimeout);
         }
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["e"])(this, data, role, 'pickerLeave', iosLeaveAnimation, iosLeaveAnimation);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["e"])(this, data, role, 'pickerLeave', iosLeaveAnimation, iosLeaveAnimation);
     }
     /**
      * Returns a promise that resolves when the picker did dismiss.
      */
     onDidDismiss() {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionPickerDidDismiss');
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionPickerDidDismiss');
     }
     /**
      * Returns a promise that resolves when the picker will dismiss.
      */
     onWillDismiss() {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionPickerWillDismiss');
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["f"])(this.el, 'ionPickerWillDismiss');
     }
     /**
      * Get the column that matches the specified name.
@@ -1102,7 +1102,7 @@ const Picker = class {
         // keep the time of the most recent button click
         // a handler has been provided, execute it
         // pass the handler the values from the inputs
-        const shouldDismiss = Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["s"])(button.handler, this.getSelected()) !== false;
+        const shouldDismiss = Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["s"])(button.handler, this.getSelected()) !== false;
         if (shouldDismiss) {
             return this.dismiss();
         }

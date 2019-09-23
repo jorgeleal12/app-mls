@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ɵConsole } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { ModalController } from '@ionic/angular';
@@ -11,6 +11,9 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ActionSheetController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { TasksService } from '../Services/tasks-service';
+
+
+
 @Component({
   selector: 'app-sendimages',
   templateUrl: './sendimages.page.html',
@@ -28,6 +31,9 @@ export class SendimagesPage implements OnInit {
   number_service
   type_network
   photos_service
+  number
+  suma;
+  row_data: any = []
   @ViewChild('layout', { static: true }) canvasRef;
   constructor(private route: ActivatedRoute, private router: Router, private imagePicker: ImagePicker,
     public transfer: FileTransfer,
@@ -49,7 +55,6 @@ export class SendimagesPage implements OnInit {
     this.photos_service = navParams.get('photos_service');
 
 
-
     for (let index = 0; index < this.photos_service.quantity; index++) {
       this.photos.push({
         imagenes: '',//'http://192.168.1.126/laravel-mls/public/public/odi/images/MLS/MEDELLIN/79/VsSuRyL4USikUZE.jpg',
@@ -58,7 +63,7 @@ export class SendimagesPage implements OnInit {
         name_photo: this.photos_service.name_photo,
         hidden_image: true,
         idodi: this.data.idodi,
-        tipe: this.photos_service.photos_idphotos,
+        tipe: this.photos_service.idphotos,
         contract_idcontract: this.data.contract_idcontract,
         state: true,
         state_send: false,
@@ -90,6 +95,7 @@ export class SendimagesPage implements OnInit {
       header: "Sellecione la Imagen",
       buttons: [{
         text: 'Galería',
+        icon: 'photos',
         handler: () => {
           this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY, photo);
           //this.choosePicture(photo)
@@ -97,12 +103,14 @@ export class SendimagesPage implements OnInit {
       },
       {
         text: 'Camara',
+        icon: 'camera',
         handler: () => {
           this.pickImage(this.camera.PictureSourceType.CAMERA, photo);
         }
       },
       {
         text: 'Cancel',
+        icon: 'close',
         role: 'cancel'
       }
       ]
@@ -177,6 +185,15 @@ export class SendimagesPage implements OnInit {
       tipe: tipe,
       contract_idcontract: contract_idcontract
     }
+
+    this.tasksService.SelectImageOne(tipe, idodi, 12).then(tasks => {
+      this.row_data = tasks[0]
+      this.number = this.row_data.actual + 1;
+    })
+      .catch(error => {
+        console.error(error);
+      });
+
     let canvas = this.canvasRef.nativeElement;
     let context = canvas.getContext("2d");
 
@@ -211,7 +228,7 @@ export class SendimagesPage implements OnInit {
       fileTransfer
         .upload(
           imagen,
-          "http://190.0.33.166:40/laravel-mls/public/api/odi/send_image_movil",
+          "http://192.168.1.57/laravel-mls/public/api/odi/send_image_movil",
           options
         )
         .then(
@@ -223,7 +240,13 @@ export class SendimagesPage implements OnInit {
               this.photos[id].send = false;
 
 
-
+              this.tasksService.update(tipe, idodi, 12, this.number)
+                .then(response => {
+                  console.log(response)
+                })
+                .catch(error => {
+                  console.error(error);
+                })
 
 
               this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
@@ -232,23 +255,7 @@ export class SendimagesPage implements OnInit {
               this.photos[id].state = false;
               this.photos[id].state_send = true;
               this.photos[id].error = false;
-
               this.writeFile(imagen, "My Picture", divisiones1[0]);
-
-              // this.database
-              //   .CreateConse(
-              //     this.data.consecutive,
-              //     this.file.externalRootDirectory + "SIP/" + divisiones[1],
-              //     this.pedido,
-              //     divisiones[1]
-              //   )
-              //   .then(
-              //     dataset => {
-              //       console.log(dataset);
-              //     },
-              //     error => { }
-              //   );
-
               this.falso = false;
               this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
             }
@@ -260,23 +267,6 @@ export class SendimagesPage implements OnInit {
             this.photos[id].error = false;
             this.writeFile(imagen, "My Picture", divisiones1[0]);
             this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
-            // this.falso = false;
-            // this.writeFile(imagen, "My Picture", divisiones[1]);
-            // this.database
-            //   .CreateConse(
-            //     this.data.consecutive,
-            //     this.file.externalRootDirectory + "SIP/" + divisiones[1],
-            //     this.pedido,
-            //     divisiones[1]
-            //   )
-            //   .then(
-            //     dataset => {
-            //       console.log(dataset);
-            //     },
-            //     error => { }
-            //   );
-            // this.rowDataHomeForm[id].state = false;
-
             this.presentToast('Error de Coneción')
           }
         );

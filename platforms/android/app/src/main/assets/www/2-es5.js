@@ -20,7 +20,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm-es5/core-13ed1ad7.js");
 /* harmony import */ var _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-bb99b659.js */ "./node_modules/@ionic/core/dist/esm-es5/config-bb99b659.js");
-/* harmony import */ var _overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./overlays-45908d8d.js */ "./node_modules/@ionic/core/dist/esm-es5/overlays-45908d8d.js");
+/* harmony import */ var _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./overlays-10cf2041.js */ "./node_modules/@ionic/core/dist/esm-es5/overlays-10cf2041.js");
 /* harmony import */ var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./theme-353a032e.js */ "./node_modules/@ionic/core/dist/esm-es5/theme-353a032e.js");
 
 
@@ -37,7 +37,7 @@ var ActionSheetController = /** @class */ (function () {
      * @param options The options to use to create the action sheet.
      */
     class_1.prototype.create = function (options) {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["g"])('ion-action-sheet', options);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["g"])('ion-action-sheet', options);
     };
     /**
      * Dismiss the open action sheet overlay.
@@ -50,7 +50,7 @@ var ActionSheetController = /** @class */ (function () {
      * @param id The id of the action sheet to dismiss. If an id is not provided, it will dismiss the most recently opened action sheet.
      */
     class_1.prototype.dismiss = function (data, role, id) {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["h"])(document, data, role, 'ion-action-sheet', id);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["h"])(document, data, role, 'ion-action-sheet', id);
     };
     /**
      * Get the most recently opened action sheet overlay.
@@ -58,7 +58,7 @@ var ActionSheetController = /** @class */ (function () {
     class_1.prototype.getTop = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                return [2 /*return*/, Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, 'ion-action-sheet')];
+                return [2 /*return*/, Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, 'ion-action-sheet')];
             });
         });
     };
@@ -74,7 +74,7 @@ var AlertController = /** @class */ (function () {
      * @param options The options to use to create the alert.
      */
     class_2.prototype.create = function (options) {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["g"])('ion-alert', options);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["g"])('ion-alert', options);
     };
     /**
      * Dismiss the open alert overlay.
@@ -87,7 +87,7 @@ var AlertController = /** @class */ (function () {
      * @param id The id of the alert to dismiss. If an id is not provided, it will dismiss the most recently opened alert.
      */
     class_2.prototype.dismiss = function (data, role, id) {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["h"])(document, data, role, 'ion-alert', id);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["h"])(document, data, role, 'ion-alert', id);
     };
     /**
      * Get the most recently opened alert overlay.
@@ -95,7 +95,7 @@ var AlertController = /** @class */ (function () {
     class_2.prototype.getTop = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                return [2 /*return*/, Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, 'ion-alert')];
+                return [2 /*return*/, Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, 'ion-alert')];
             });
         });
     };
@@ -143,7 +143,7 @@ var LoadingController = /** @class */ (function () {
      * @param options The options to use to create the loading.
      */
     class_4.prototype.create = function (options) {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["g"])('ion-loading', options);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["g"])('ion-loading', options);
     };
     /**
      * Dismiss the open loading overlay.
@@ -156,7 +156,7 @@ var LoadingController = /** @class */ (function () {
      * @param id The id of the loading to dismiss. If an id is not provided, it will dismiss the most recently opened loading.
      */
     class_4.prototype.dismiss = function (data, role, id) {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["h"])(document, data, role, 'ion-loading', id);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["h"])(document, data, role, 'ion-loading', id);
     };
     /**
      * Get the most recently opened loading overlay.
@@ -164,7 +164,7 @@ var LoadingController = /** @class */ (function () {
     class_4.prototype.getTop = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                return [2 /*return*/, Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, 'ion-loading')];
+                return [2 /*return*/, Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, 'ion-loading')];
             });
         });
     };
@@ -180,7 +180,7 @@ var ModalController = /** @class */ (function () {
      * @param options The options to use to create the modal.
      */
     class_5.prototype.create = function (options) {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["g"])('ion-modal', options);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["g"])('ion-modal', options);
     };
     /**
      * Dismiss the open modal overlay.
@@ -193,7 +193,7 @@ var ModalController = /** @class */ (function () {
      * @param id The id of the modal to dismiss. If an id is not provided, it will dismiss the most recently opened modal.
      */
     class_5.prototype.dismiss = function (data, role, id) {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["h"])(document, data, role, 'ion-modal', id);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["h"])(document, data, role, 'ion-modal', id);
     };
     /**
      * Get the most recently opened modal overlay.
@@ -201,7 +201,7 @@ var ModalController = /** @class */ (function () {
     class_5.prototype.getTop = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                return [2 /*return*/, Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, 'ion-modal')];
+                return [2 /*return*/, Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, 'ion-modal')];
             });
         });
     };
@@ -217,7 +217,7 @@ var PickerController = /** @class */ (function () {
      * @param options The options to use to create the picker.
      */
     class_6.prototype.create = function (options) {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["g"])('ion-picker', options);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["g"])('ion-picker', options);
     };
     /**
      * Dismiss the open picker overlay.
@@ -230,7 +230,7 @@ var PickerController = /** @class */ (function () {
      * @param id The id of the picker to dismiss. If an id is not provided, it will dismiss the most recently opened picker.
      */
     class_6.prototype.dismiss = function (data, role, id) {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["h"])(document, data, role, 'ion-picker', id);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["h"])(document, data, role, 'ion-picker', id);
     };
     /**
      * Get the most recently opened picker overlay.
@@ -238,7 +238,7 @@ var PickerController = /** @class */ (function () {
     class_6.prototype.getTop = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                return [2 /*return*/, Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, 'ion-picker')];
+                return [2 /*return*/, Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, 'ion-picker')];
             });
         });
     };
@@ -254,7 +254,7 @@ var PopoverController = /** @class */ (function () {
      * @param options The options to use to create the popover.
      */
     class_7.prototype.create = function (options) {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["g"])('ion-popover', options);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["g"])('ion-popover', options);
     };
     /**
      * Dismiss the open popover overlay.
@@ -267,7 +267,7 @@ var PopoverController = /** @class */ (function () {
      * @param id The id of the popover to dismiss. If an id is not provided, it will dismiss the most recently opened popover.
      */
     class_7.prototype.dismiss = function (data, role, id) {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["h"])(document, data, role, 'ion-popover', id);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["h"])(document, data, role, 'ion-popover', id);
     };
     /**
      * Get the most recently opened popover overlay.
@@ -275,7 +275,7 @@ var PopoverController = /** @class */ (function () {
     class_7.prototype.getTop = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                return [2 /*return*/, Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, 'ion-popover')];
+                return [2 /*return*/, Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, 'ion-popover')];
             });
         });
     };
@@ -291,7 +291,7 @@ var ToastController = /** @class */ (function () {
      * @param options The options to use to create the toast.
      */
     class_8.prototype.create = function (options) {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["g"])('ion-toast', options);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["g"])('ion-toast', options);
     };
     /**
      * Dismiss the open toast overlay.
@@ -301,7 +301,7 @@ var ToastController = /** @class */ (function () {
      * @param id The id of the toast to dismiss. If an id is not provided, it will dismiss the most recently opened toast.
      */
     class_8.prototype.dismiss = function (data, role, id) {
-        return Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["h"])(document, data, role, 'ion-toast', id);
+        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["h"])(document, data, role, 'ion-toast', id);
     };
     /**
      * Get the most recently opened toast overlay.
@@ -309,7 +309,7 @@ var ToastController = /** @class */ (function () {
     class_8.prototype.getTop = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                return [2 /*return*/, Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, 'ion-toast')];
+                return [2 /*return*/, Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["j"])(document, 'ion-toast')];
             });
         });
     };

@@ -3,6 +3,7 @@ import { LoginServiceService } from '../Services/login-service.service';
 import { ModalController } from '@ionic/angular';
 import { NavParams } from '@ionic/angular';
 import { ImagesPage } from '../images/images.page';
+import { NewCertificate } from '../model/NewCertificate.model';
 
 @Component({
   selector: 'app-new-certificate',
@@ -20,16 +21,17 @@ export class NewCertificatePage implements OnInit {
   number
   idemployees
   idNumber_cetificate
+  NewCertificate = new NewCertificate();
 
   constructor(private loginServiceService: LoginServiceService,
     public modalController: ModalController, private navParams: NavParams) {
-
-
     this.number_service = navParams.get('number_service');
     this.type_network = navParams.get('type_network');
     this.data = navParams.get('data');
-
     this.idusers = localStorage.getItem("id")
+
+    this.NewCertificate.odi_idodi = this.data.idodi;
+    this.NewCertificate.idemployees = this.idusers
 
   }
 
@@ -52,7 +54,10 @@ export class NewCertificatePage implements OnInit {
       idusers: this.idusers
     }
     this.loginServiceService.number(params).subscribe(result => {
-      this.number = result.response.number_ + 1;
+      this.NewCertificate.number = result.response.number_ + 1;
+      this.NewCertificate.idemployees = result.response.idemployees;
+      this.NewCertificate.Number_cetificate_idNumber_cetificate = result.response.Number_cetificate_idNumber_cetificate;
+
 
     }, error => { })
   }
@@ -88,6 +93,15 @@ export class NewCertificatePage implements OnInit {
     await modal.present();
 
 
+  }
+
+  save() {
+
+    const params = {
+
+    }
+
+    this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => { }, error => { })
   }
 
 

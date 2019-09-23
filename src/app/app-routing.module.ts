@@ -5,11 +5,12 @@ const routes: Routes = [
 
   { path: '', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
-  { path: 'asignadas', loadChildren: './asignadas/asignadas.module#AsignadasPageModule' },  { path: 'builder', loadChildren: './builder/builder.module#BuilderPageModule' },
-  { path: 'images', loadChildren: './images/images.module#ImagesPageModule' },
-  { path: 'sendimages', loadChildren: './sendimages/sendimages.module#SendimagesPageModule' },
-  { path: 'certificate', loadChildren: './certificate/certificate.module#CertificatePageModule' },
-  { path: 'new-certificate', loadChildren: './new-certificate/new-certificate.module#NewCertificatePageModule' },
+  // { path: 'asignadas', loadChildren: './asignadas/asignadas.module#AsignadasPageModule' },
+  // { path: 'builder', loadChildren: './builder/builder.module#BuilderPageModule' },
+  // { path: 'images', loadChildren: './images/images.module#ImagesPageModule' },
+  // { path: 'sendimages', loadChildren: './sendimages/sendimages.module#SendimagesPageModule' },
+  // { path: 'certificate', loadChildren: './certificate/certificate.module#CertificatePageModule' },
+  // { path: 'new-certificate', loadChildren: './new-certificate/new-certificate.module#NewCertificatePageModule' },
 
   // { path: 'materials', loadChildren: './materials/materials.module#MaterialsPageModule' },
 

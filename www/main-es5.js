@@ -24,19 +24,6 @@ var map = {
 		"./src/app/servicio/servicio.module.ts",
 		"servicio-servicio-module"
 	],
-	"./asignadas/asignadas.module": [
-		"./src/app/asignadas/asignadas.module.ts",
-		"asignadas-asignadas-module"
-	],
-	"./builder/builder.module": [
-		"./src/app/builder/builder.module.ts"
-	],
-	"./certificate/certificate.module": [
-		"./src/app/certificate/certificate.module.ts"
-	],
-	"./images/images.module": [
-		"./src/app/images/images.module.ts"
-	],
 	"./login/login.module": [
 		"./src/app/login/login.module.ts",
 		"login-login-module"
@@ -44,12 +31,6 @@ var map = {
 	"./menu/menu.module": [
 		"./src/app/menu/menu.module.ts",
 		"menu-menu-module"
-	],
-	"./new-certificate/new-certificate.module": [
-		"./src/app/new-certificate/new-certificate.module.ts"
-	],
-	"./sendimages/sendimages.module": [
-		"./src/app/sendimages/sendimages.module.ts"
 	]
 };
 function webpackAsyncContext(req) {
@@ -62,7 +43,7 @@ function webpackAsyncContext(req) {
 	}
 
 	var ids = map[req], id = ids[0];
-	return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(function() {
+	return __webpack_require__.e(ids[1]).then(function() {
 		return __webpack_require__(id);
 	});
 }
@@ -591,7 +572,7 @@ __webpack_require__.r(__webpack_exports__);
 var LoginServiceService = /** @class */ (function () {
     function LoginServiceService(http) {
         this.http = http;
-        this.api_url = 'http://192.168.1.126/laravel-mls/public/api/';
+        this.api_url = 'http://192.168.1.57/laravel-mls/public/api/';
     }
     LoginServiceService.prototype.save_image = function (params) {
         return this.http.post(this.api_url + "movil/image", params);
@@ -666,12 +647,12 @@ var TasksService = /** @class */ (function () {
         }
     };
     TasksService.prototype.createTableImage = function () {
-        var sql = 'CREATE TABLE IF NOT EXISTS image(idphotos INTEGER PRIMARY KEY AUTOINCREMENT, name_photo TEXT, actual INTEGER, quantity INTEGER, min INTEGER,  odi_idodi INTEGER, idservice_certifications INTEGER)';
+        var sql = 'CREATE TABLE IF NOT EXISTS image(id INTEGER PRIMARY KEY AUTOINCREMENT,idphotos INTEGER, name_photo TEXT, actual INTEGER, quantity INTEGER, min INTEGER,  odi_idodi INTEGER, idservice_certifications INTEGER)';
         return this.db.executeSql(sql, []);
     };
     TasksService.prototype.InsertImage = function (odi, image) {
-        var sql = 'INSERT INTO image(name_photo, actual,quantity,min,odi_idodi,idservice_certifications) VALUES(?,?,?,?,?,?)';
-        return this.db.executeSql(sql, [image.name_photo, 0, image.quantity, image.min, odi, 12]);
+        var sql = 'INSERT INTO image(idphotos,name_photo, actual,quantity,min,odi_idodi,idservice_certifications) VALUES(?,?,?,?,?,?,?)';
+        return this.db.executeSql(sql, [image.idphotos, image.name_photo, 0, image.quantity, image.min, odi, 12]);
     };
     TasksService.prototype.SelectImage = function (odi_idodi) {
         var sql = 'SELECT * FROM image WHERE odi_idodi=?';
@@ -684,6 +665,22 @@ var TasksService = /** @class */ (function () {
             return Promise.resolve(tasks);
         })
             .catch(function (error) { return Promise.reject(error); });
+    };
+    TasksService.prototype.SelectImageOne = function (idphotos, odi_idodi, certificate) {
+        var sql = 'SELECT * FROM image WHERE idphotos=? and odi_idodi=? and idservice_certifications=?';
+        return this.db.executeSql(sql, [idphotos, odi_idodi, certificate])
+            .then(function (response) {
+            var tasks = [];
+            for (var index = 0; index < response.rows.length; index++) {
+                tasks.push(response.rows.item(index));
+            }
+            return Promise.resolve(tasks);
+        })
+            .catch(function (error) { return Promise.reject(error); });
+    };
+    TasksService.prototype.update = function (idphotos, odi_idodi, certificate, number) {
+        var sql = 'UPDATE image SET actual=? WHERE idphotos=? and odi_idodi=? and idservice_certifications=?';
+        return this.db.executeSql(sql, [number, idphotos, odi_idodi, certificate]);
     };
     TasksService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -946,12 +943,6 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [
     { path: '', loadChildren: './login/login.module#LoginPageModule' },
     { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
-    { path: 'asignadas', loadChildren: './asignadas/asignadas.module#AsignadasPageModule' },
-    { path: 'builder', loadChildren: './builder/builder.module#BuilderPageModule' },
-    { path: 'images', loadChildren: './images/images.module#ImagesPageModule' },
-    { path: 'sendimages', loadChildren: './sendimages/sendimages.module#SendimagesPageModule' },
-    { path: 'certificate', loadChildren: './certificate/certificate.module#CertificatePageModule' },
-    { path: 'new-certificate', loadChildren: './new-certificate/new-certificate.module#NewCertificatePageModule' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -1603,6 +1594,7 @@ var ImagesPage = /** @class */ (function () {
         this.tasksService.SelectImage(this.data.idodi)
             .then(function (tasks) {
             _this.PhotoServices = tasks;
+            console.log(_this.PhotoServices);
             _this.propCount = Object.keys(tasks).length;
             if (_this.propCount > 0) {
                 _this.photos_services = _this.PhotoServices;
@@ -2194,6 +2186,7 @@ var SendimagesPage = /** @class */ (function () {
         this.win = window;
         this.response = true;
         this.falso = true;
+        this.row_data = [];
         this.number_service = navParams.get('number_service');
         this.type_network = navParams.get('type_network');
         this.data = navParams.get('data');
@@ -2206,7 +2199,7 @@ var SendimagesPage = /** @class */ (function () {
                 name_photo: this.photos_service.name_photo,
                 hidden_image: true,
                 idodi: this.data.idodi,
-                tipe: this.photos_service.photos_idphotos,
+                tipe: this.photos_service.idphotos,
                 contract_idcontract: this.data.contract_idcontract,
                 state: true,
                 state_send: false,
@@ -2233,6 +2226,7 @@ var SendimagesPage = /** @class */ (function () {
                             header: "Sellecione la Imagen",
                             buttons: [{
                                     text: 'Galería',
+                                    icon: 'photos',
                                     handler: function () {
                                         _this.pickImage(_this.camera.PictureSourceType.PHOTOLIBRARY, photo);
                                         //this.choosePicture(photo)
@@ -2240,12 +2234,14 @@ var SendimagesPage = /** @class */ (function () {
                                 },
                                 {
                                     text: 'Camara',
+                                    icon: 'camera',
                                     handler: function () {
                                         _this.pickImage(_this.camera.PictureSourceType.CAMERA, photo);
                                     }
                                 },
                                 {
                                     text: 'Cancel',
+                                    icon: 'close',
                                     role: 'cancel'
                                 }
                             ]
@@ -2318,6 +2314,16 @@ var SendimagesPage = /** @class */ (function () {
             tipe: tipe,
             contract_idcontract: contract_idcontract
         };
+        this.tasksService.SelectImageOne(tipe, idodi, 12).then(function (tasks) {
+            console.log(tasks[0]);
+            _this.row_data = tasks[0];
+            _this.number = _this.row_data.actual + 1;
+            console.log(_this.row_data.actual);
+            console.log(_this.number);
+        })
+            .catch(function (error) {
+            console.error(error);
+        });
         var canvas = this.canvasRef.nativeElement;
         var context = canvas.getContext("2d");
         var source = new Image();
@@ -2345,13 +2351,20 @@ var SendimagesPage = /** @class */ (function () {
                 params: { params: params }
             };
             fileTransfer
-                .upload(imagen, "http://190.0.33.166:40/laravel-mls/public/api/odi/send_image_movil", options)
+                .upload(imagen, "http://192.168.1.57/laravel-mls/public/api/odi/send_image_movil", options)
                 .then(function (data) {
                 var json = JSON.parse(data.response);
                 if (json.response == true) {
                     _this.photos[id].state = true;
                     _this.photos[id].state_send = true;
                     _this.photos[id].send = false;
+                    _this.tasksService.update(tipe, idodi, 12, _this.number)
+                        .then(function (response) {
+                        console.log(response);
+                    })
+                        .catch(function (error) {
+                        console.error(error);
+                    });
                     _this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
                 }
                 else {
@@ -2359,19 +2372,6 @@ var SendimagesPage = /** @class */ (function () {
                     _this.photos[id].state_send = true;
                     _this.photos[id].error = false;
                     _this.writeFile(imagen, "My Picture", divisiones1[0]);
-                    // this.database
-                    //   .CreateConse(
-                    //     this.data.consecutive,
-                    //     this.file.externalRootDirectory + "SIP/" + divisiones[1],
-                    //     this.pedido,
-                    //     divisiones[1]
-                    //   )
-                    //   .then(
-                    //     dataset => {
-                    //       console.log(dataset);
-                    //     },
-                    //     error => { }
-                    //   );
                     _this.falso = false;
                     _this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
                 }
@@ -2382,22 +2382,6 @@ var SendimagesPage = /** @class */ (function () {
                 _this.photos[id].error = false;
                 _this.writeFile(imagen, "My Picture", divisiones1[0]);
                 _this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
-                // this.falso = false;
-                // this.writeFile(imagen, "My Picture", divisiones[1]);
-                // this.database
-                //   .CreateConse(
-                //     this.data.consecutive,
-                //     this.file.externalRootDirectory + "SIP/" + divisiones[1],
-                //     this.pedido,
-                //     divisiones[1]
-                //   )
-                //   .then(
-                //     dataset => {
-                //       console.log(dataset);
-                //     },
-                //     error => { }
-                //   );
-                // this.rowDataHomeForm[id].state = false;
                 _this.presentToast('Error de Coneción');
             });
         };

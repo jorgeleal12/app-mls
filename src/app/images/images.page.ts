@@ -42,6 +42,7 @@ export class ImagesPage implements OnInit {
     this.tasksService.SelectImage(this.data.idodi)
       .then(tasks => {
         this.PhotoServices = tasks
+        console.log(this.PhotoServices)
         this.propCount = Object.keys(tasks).length;
 
         if (this.propCount > 0) {

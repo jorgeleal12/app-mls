@@ -24,7 +24,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./theme-353a032e.js */ "./node_modules/@ionic/core/dist/esm-es5/theme-353a032e.js");
 /* harmony import */ var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helpers-c90aaa66.js */ "./node_modules/@ionic/core/dist/esm-es5/helpers-c90aaa66.js");
 /* harmony import */ var _framework_delegate_00265c49_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./framework-delegate-00265c49.js */ "./node_modules/@ionic/core/dist/esm-es5/framework-delegate-00265c49.js");
-/* harmony import */ var _index_63698b4d_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./index-63698b4d.js */ "./node_modules/@ionic/core/dist/esm-es5/index-63698b4d.js");
+/* harmony import */ var _index_eb64bc48_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./index-eb64bc48.js */ "./node_modules/@ionic/core/dist/esm-es5/index-eb64bc48.js");
 /* harmony import */ var _cubic_bezier_90d0df24_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./cubic-bezier-90d0df24.js */ "./node_modules/@ionic/core/dist/esm-es5/cubic-bezier-90d0df24.js");
 
 
@@ -498,7 +498,7 @@ var RouterOutlet = /** @class */ (function () {
                 switch (_b.label) {
                     case 0:
                         _a = this;
-                        return [4 /*yield*/, __webpack_require__.e(/*! import() | swipe-back-78383f2a-js */ "swipe-back-78383f2a-js").then(__webpack_require__.bind(null, /*! ./swipe-back-78383f2a.js */ "./node_modules/@ionic/core/dist/esm-es5/swipe-back-78383f2a.js"))];
+                        return [4 /*yield*/, __webpack_require__.e(/*! import() | swipe-back-dc1b83c2-js */ "swipe-back-dc1b83c2-js").then(__webpack_require__.bind(null, /*! ./swipe-back-dc1b83c2.js */ "./node_modules/@ionic/core/dist/esm-es5/swipe-back-dc1b83c2.js"))];
                     case 1:
                         _a.gesture = (_b.sent()).createSwipeBackGesture(this.el, function () { return !!_this.swipeHandler && _this.swipeHandler.canStart() && _this.animationEnabled; }, function () { return _this.swipeHandler && _this.swipeHandler.onStart(); }, function (step) { return _this.ani && _this.ani.progressStep(step); }, function (shouldComplete, step, dur) {
                             if (_this.ani) {
@@ -647,7 +647,7 @@ var RouterOutlet = /** @class */ (function () {
                         _a = this, el = _a.el, mode = _a.mode;
                         animated = this.animated && _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_2__["b"].getBoolean('animated', true);
                         animationBuilder = this.animation || opts.animationBuilder || _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_2__["b"].get('navAnimation');
-                        return [4 /*yield*/, Object(_index_63698b4d_js__WEBPACK_IMPORTED_MODULE_7__["t"])(Object.assign({ mode: mode,
+                        return [4 /*yield*/, Object(_index_eb64bc48_js__WEBPACK_IMPORTED_MODULE_7__["t"])(Object.assign({ mode: mode,
                                 animated: animated,
                                 animationBuilder: animationBuilder,
                                 enteringEl: enteringEl,

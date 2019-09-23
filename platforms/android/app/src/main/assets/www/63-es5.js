@@ -15,7 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm-es5/core-13ed1ad7.js");
 /* harmony import */ var _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-bb99b659.js */ "./node_modules/@ionic/core/dist/esm-es5/config-bb99b659.js");
-/* harmony import */ var _overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./overlays-45908d8d.js */ "./node_modules/@ionic/core/dist/esm-es5/overlays-45908d8d.js");
+/* harmony import */ var _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./overlays-10cf2041.js */ "./node_modules/@ionic/core/dist/esm-es5/overlays-10cf2041.js");
 /* harmony import */ var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./theme-353a032e.js */ "./node_modules/@ionic/core/dist/esm-es5/theme-353a032e.js");
 /* harmony import */ var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helpers-c90aaa66.js */ "./node_modules/@ionic/core/dist/esm-es5/helpers-c90aaa66.js");
 
@@ -281,7 +281,7 @@ var Select = /** @class */ (function () {
                         value: this.value,
                         options: this.createPopoverOptions(this.childOpts)
                     } });
-                return [2 /*return*/, _overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["c"].create(popoverOpts)];
+                return [2 /*return*/, _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["c"].create(popoverOpts)];
             });
         });
     };
@@ -292,7 +292,7 @@ var Select = /** @class */ (function () {
                 mode = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
                 interfaceOptions = this.interfaceOptions;
                 actionSheetOpts = Object.assign({ mode: mode }, interfaceOptions, { buttons: this.createActionSheetButtons(this.childOpts), cssClass: ['select-action-sheet', interfaceOptions.cssClass] });
-                return [2 /*return*/, _overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["b"].create(actionSheetOpts)];
+                return [2 /*return*/, _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["b"].create(actionSheetOpts)];
             });
         });
     };
@@ -322,7 +322,7 @@ var Select = /** @class */ (function () {
                         }
                     ], cssClass: ['select-alert', interfaceOptions.cssClass,
                         (this.multiple ? 'multiple-select-alert' : 'single-select-alert')] });
-                return [2 /*return*/, _overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["a"].create(alertOpts)];
+                return [2 /*return*/, _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["a"].create(alertOpts)];
             });
         });
     };
@@ -547,7 +547,7 @@ var SelectPopover = /** @class */ (function () {
     class_3.prototype.onSelect = function (ev) {
         var option = this.options.find(function (o) { return o.value === ev.target.value; });
         if (option) {
-            Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_3__["s"])(option.handler);
+            Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_3__["s"])(option.handler);
         }
     };
     class_3.prototype.render = function () {

@@ -18,7 +18,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants-94c4865f.js */ "./node_modules/@ionic/core/dist/esm/constants-94c4865f.js");
 /* harmony import */ var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers-c90aaa66.js */ "./node_modules/@ionic/core/dist/esm/helpers-c90aaa66.js");
 /* harmony import */ var _framework_delegate_00265c49_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./framework-delegate-00265c49.js */ "./node_modules/@ionic/core/dist/esm/framework-delegate-00265c49.js");
-/* harmony import */ var _index_63698b4d_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index-63698b4d.js */ "./node_modules/@ionic/core/dist/esm/index-63698b4d.js");
+/* harmony import */ var _index_eb64bc48_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index-eb64bc48.js */ "./node_modules/@ionic/core/dist/esm/index-eb64bc48.js");
 /* harmony import */ var _cubic_bezier_90d0df24_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./cubic-bezier-90d0df24.js */ "./node_modules/@ionic/core/dist/esm/cubic-bezier-90d0df24.js");
 
 
@@ -154,12 +154,12 @@ const Nav = class {
     }
     async componentDidLoad() {
         this.rootChanged();
-        this.gesture = (await __webpack_require__.e(/*! import() | swipe-back-78383f2a-js */ "swipe-back-78383f2a-js").then(__webpack_require__.bind(null, /*! ./swipe-back-78383f2a.js */ "./node_modules/@ionic/core/dist/esm/swipe-back-78383f2a.js"))).createSwipeBackGesture(this.el, this.canStart.bind(this), this.onStart.bind(this), this.onMove.bind(this), this.onEnd.bind(this));
+        this.gesture = (await __webpack_require__.e(/*! import() | swipe-back-dc1b83c2-js */ "swipe-back-dc1b83c2-js").then(__webpack_require__.bind(null, /*! ./swipe-back-dc1b83c2.js */ "./node_modules/@ionic/core/dist/esm/swipe-back-dc1b83c2.js"))).createSwipeBackGesture(this.el, this.canStart.bind(this), this.onStart.bind(this), this.onMove.bind(this), this.onEnd.bind(this));
         this.swipeGestureChanged();
     }
     componentDidUnload() {
         for (const view of this.views) {
-            Object(_index_63698b4d_js__WEBPACK_IMPORTED_MODULE_5__["l"])(view.element, _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_2__["d"]);
+            Object(_index_eb64bc48_js__WEBPACK_IMPORTED_MODULE_5__["l"])(view.element, _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_2__["d"]);
             view._destroy();
         }
         if (this.gesture) {
@@ -670,9 +670,9 @@ const Nav = class {
         // let's make sure, callbacks are zoned
         if (destroyQueue && destroyQueue.length > 0) {
             for (const view of destroyQueue) {
-                Object(_index_63698b4d_js__WEBPACK_IMPORTED_MODULE_5__["l"])(view.element, _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_2__["b"]);
-                Object(_index_63698b4d_js__WEBPACK_IMPORTED_MODULE_5__["l"])(view.element, _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_2__["c"]);
-                Object(_index_63698b4d_js__WEBPACK_IMPORTED_MODULE_5__["l"])(view.element, _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_2__["d"]);
+                Object(_index_eb64bc48_js__WEBPACK_IMPORTED_MODULE_5__["l"])(view.element, _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_2__["b"]);
+                Object(_index_eb64bc48_js__WEBPACK_IMPORTED_MODULE_5__["l"])(view.element, _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_2__["c"]);
+                Object(_index_eb64bc48_js__WEBPACK_IMPORTED_MODULE_5__["l"])(view.element, _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_2__["d"]);
             }
             // once all lifecycle events has been delivered, we can safely detroy the views
             for (const view of destroyQueue) {
@@ -692,7 +692,7 @@ const Nav = class {
         const leavingEl = leavingView && leavingView.element;
         const animationOpts = Object.assign({ mode, showGoBack: this.canGoBackSync(enteringView), baseEl: this.el, animationBuilder: this.animation || opts.animationBuilder || _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_1__["b"].get('navAnimation'), progressCallback, animated: this.animated && _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('animated', true), enteringEl,
             leavingEl }, opts);
-        const { hasCompleted } = await Object(_index_63698b4d_js__WEBPACK_IMPORTED_MODULE_5__["t"])(animationOpts);
+        const { hasCompleted } = await Object(_index_eb64bc48_js__WEBPACK_IMPORTED_MODULE_5__["t"])(animationOpts);
         return this.transitionFinish(hasCompleted, enteringView, leavingView, opts);
     }
     transitionFinish(hasCompleted, enteringView, leavingView, opts) {
@@ -757,13 +757,13 @@ const Nav = class {
             if (i > activeViewIndex) {
                 // this view comes after the active view
                 // let's unload it
-                Object(_index_63698b4d_js__WEBPACK_IMPORTED_MODULE_5__["l"])(element, _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_2__["d"]);
+                Object(_index_eb64bc48_js__WEBPACK_IMPORTED_MODULE_5__["l"])(element, _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_2__["d"]);
                 this.destroyView(view);
             }
             else if (i < activeViewIndex) {
                 // this view comes before the active view
                 // and it is not a portal then ensure it is hidden
-                Object(_index_63698b4d_js__WEBPACK_IMPORTED_MODULE_5__["s"])(element, true);
+                Object(_index_eb64bc48_js__WEBPACK_IMPORTED_MODULE_5__["s"])(element, true);
             }
         }
     }

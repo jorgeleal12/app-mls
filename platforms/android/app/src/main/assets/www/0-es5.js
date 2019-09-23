@@ -59,9 +59,9 @@ var detachComponent = function (delegate, element) {
 
 /***/ }),
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/index-63698b4d.js":
+/***/ "./node_modules/@ionic/core/dist/esm-es5/index-eb64bc48.js":
 /*!*****************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/index-63698b4d.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm-es5/index-eb64bc48.js ***!
   \*****************************************************************/
 /*! exports provided: d, l, s, t */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -79,8 +79,8 @@ var _this = undefined;
 
 
 
-var iosTransitionAnimation = function () { return __webpack_require__.e(/*! import() | ios-transition-5c2f00df-js */ "ios-transition-5c2f00df-js").then(__webpack_require__.bind(null, /*! ./ios.transition-5c2f00df.js */ "./node_modules/@ionic/core/dist/esm-es5/ios.transition-5c2f00df.js")); };
-var mdTransitionAnimation = function () { return __webpack_require__.e(/*! import() | md-transition-e0e9d421-js */ "md-transition-e0e9d421-js").then(__webpack_require__.bind(null, /*! ./md.transition-e0e9d421.js */ "./node_modules/@ionic/core/dist/esm-es5/md.transition-e0e9d421.js")); };
+var iosTransitionAnimation = function () { return __webpack_require__.e(/*! import() | ios-transition-21bd4e69-js */ "ios-transition-21bd4e69-js").then(__webpack_require__.bind(null, /*! ./ios.transition-21bd4e69.js */ "./node_modules/@ionic/core/dist/esm-es5/ios.transition-21bd4e69.js")); };
+var mdTransitionAnimation = function () { return __webpack_require__.e(/*! import() | md-transition-1419c53a-js */ "md-transition-1419c53a-js").then(__webpack_require__.bind(null, /*! ./md.transition-1419c53a.js */ "./node_modules/@ionic/core/dist/esm-es5/md.transition-1419c53a.js")); };
 var transition = function (opts) {
     return new Promise(function (resolve, reject) {
         Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () {
@@ -162,7 +162,7 @@ var getAnimationBuilder = function (opts) { return tslib__WEBPACK_IMPORTED_MODUL
     });
 }); };
 var animation = function (animationBuilder, opts) { return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, function () {
-    var trans, err_1, didComplete;
+    var trans, mod, err_1, didComplete;
     return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, waitForReady(opts, true)];
@@ -170,19 +170,22 @@ var animation = function (animationBuilder, opts) { return tslib__WEBPACK_IMPORT
                 _a.sent();
                 _a.label = 2;
             case 2:
-                _a.trys.push([2, 4, , 5]);
-                return [4 /*yield*/, __webpack_require__.e(/*! import() | index-f98adfdd-js */ "index-f98adfdd-js").then(__webpack_require__.bind(null, /*! ./index-f98adfdd.js */ "./node_modules/@ionic/core/dist/esm-es5/index-f98adfdd.js")).then(function (mod) { return mod.create(animationBuilder, opts.baseEl, opts); })];
+                _a.trys.push([2, 5, , 6]);
+                return [4 /*yield*/, __webpack_require__.e(/*! import() | index-ae28cb4b-js */ "index-ae28cb4b-js").then(__webpack_require__.bind(null, /*! ./index-ae28cb4b.js */ "./node_modules/@ionic/core/dist/esm-es5/index-ae28cb4b.js"))];
             case 3:
-                trans = _a.sent();
-                return [3 /*break*/, 5];
+                mod = _a.sent();
+                return [4 /*yield*/, mod.create(animationBuilder, opts.baseEl, opts)];
             case 4:
+                trans = _a.sent();
+                return [3 /*break*/, 6];
+            case 5:
                 err_1 = _a.sent();
                 trans = animationBuilder(opts.baseEl, opts);
-                return [3 /*break*/, 5];
-            case 5:
+                return [3 /*break*/, 6];
+            case 6:
                 fireWillEvents(opts.enteringEl, opts.leavingEl);
                 return [4 /*yield*/, playTransition(trans, opts)];
-            case 6:
+            case 7:
                 didComplete = _a.sent();
                 // TODO: Remove AnimationBuilder
                 trans.hasCompleted = didComplete;

@@ -39,4 +39,8 @@ export class AsignadasPage implements OnInit {
       event.target.complete();
     }, 2000);
   }
+
+  back() {
+    this.router.navigateByUrl('menu/menu/home');
+  }
 }

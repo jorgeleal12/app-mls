@@ -23,7 +23,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./theme-353a032e.js */ "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
 /* harmony import */ var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./helpers-c90aaa66.js */ "./node_modules/@ionic/core/dist/esm/helpers-c90aaa66.js");
 /* harmony import */ var _framework_delegate_00265c49_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./framework-delegate-00265c49.js */ "./node_modules/@ionic/core/dist/esm/framework-delegate-00265c49.js");
-/* harmony import */ var _index_63698b4d_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./index-63698b4d.js */ "./node_modules/@ionic/core/dist/esm/index-63698b4d.js");
+/* harmony import */ var _index_eb64bc48_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./index-eb64bc48.js */ "./node_modules/@ionic/core/dist/esm/index-eb64bc48.js");
 /* harmony import */ var _cubic_bezier_90d0df24_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./cubic-bezier-90d0df24.js */ "./node_modules/@ionic/core/dist/esm/cubic-bezier-90d0df24.js");
 
 
@@ -449,7 +449,7 @@ const RouterOutlet = class {
         this.ionNavWillLoad.emit();
     }
     async componentDidLoad() {
-        this.gesture = (await __webpack_require__.e(/*! import() | swipe-back-78383f2a-js */ "swipe-back-78383f2a-js").then(__webpack_require__.bind(null, /*! ./swipe-back-78383f2a.js */ "./node_modules/@ionic/core/dist/esm/swipe-back-78383f2a.js"))).createSwipeBackGesture(this.el, () => !!this.swipeHandler && this.swipeHandler.canStart() && this.animationEnabled, () => this.swipeHandler && this.swipeHandler.onStart(), step => this.ani && this.ani.progressStep(step), (shouldComplete, step, dur) => {
+        this.gesture = (await __webpack_require__.e(/*! import() | swipe-back-dc1b83c2-js */ "swipe-back-dc1b83c2-js").then(__webpack_require__.bind(null, /*! ./swipe-back-dc1b83c2.js */ "./node_modules/@ionic/core/dist/esm/swipe-back-dc1b83c2.js"))).createSwipeBackGesture(this.el, () => !!this.swipeHandler && this.swipeHandler.canStart() && this.animationEnabled, () => this.swipeHandler && this.swipeHandler.onStart(), step => this.ani && this.ani.progressStep(step), (shouldComplete, step, dur) => {
             if (this.ani) {
                 this.animationEnabled = false;
                 this.ani.onFinish(() => {
@@ -542,7 +542,7 @@ const RouterOutlet = class {
         const { el, mode } = this;
         const animated = this.animated && _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_1__["b"].getBoolean('animated', true);
         const animationBuilder = this.animation || opts.animationBuilder || _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_1__["b"].get('navAnimation');
-        await Object(_index_63698b4d_js__WEBPACK_IMPORTED_MODULE_6__["t"])(Object.assign({ mode,
+        await Object(_index_eb64bc48_js__WEBPACK_IMPORTED_MODULE_6__["t"])(Object.assign({ mode,
             animated,
             animationBuilder,
             enteringEl,

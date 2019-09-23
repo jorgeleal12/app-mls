@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-split-pane>\n    <ion-menu contentId=\"content\">\n        <ion-header class=\"aside\">\n            <section class=\"aside-content\">\n                <div class=\"aside-img\">\n                    <img class=\"img\" src=\"{{imgUser}}\" alt=\"\">\n                </div>\n                <p class=\"info-text\">{{user}}</p>\n                <p class=\"info-text\">{{mail}}</p>\n            </section>\n        </ion-header>\n\n        <ion-content>\n            <ion-list *ngFor=\"let page of pages\">\n                <ion-list-header *ngIf=\"page.section\" class=\"aside-item\">{{page.section}}</ion-list-header>\n\n                <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of page.routes\">\n                    <ion-item [routerLink]=\"p.url\" routerDirection=\"root\" [class.active-item]=\"selectedPath===p.url\"\n                        class=\"aside-item\" lines=\"none\">\n                        <ion-icon name=\"{{p.icon}}\" *ngIf=\"p.icon\" color=\"medium\" size=\"small\" class=\"aside-icon\">\n                        </ion-icon>\n                        <ion-label>\n                            {{p.title}}\n                        </ion-label>\n                    </ion-item>\n                </ion-menu-toggle>\n\n            </ion-list>\n        </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"content\" main>\n\n    </ion-router-outlet>\n</ion-split-pane>"
+module.exports = "<ion-split-pane>\n    <ion-menu contentId=\"content\">\n        <ion-header class=\"aside\">\n            <section class=\"aside-content\">\n                <div class=\"aside-img\">\n                    <img class=\"img\" src=\"{{imgUser}}\" alt=\"\">\n                </div>\n                <p class=\"info-text\">{{user}}</p>\n                <p class=\"info-text\">{{mail}}</p>\n            </section>\n        </ion-header>\n\n        <ion-content>\n            <ion-list *ngFor=\"let page of pages\">\n                <ion-list-header *ngIf=\"page.section\" class=\"aside-item\">{{page.section}}</ion-list-header>\n\n                <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of page.routes\">\n                    <ion-item [routerLink]=\"p.url\" routerDirection=\"forward\" class=\"aside-item\" lines=\"none\">\n                        <ion-icon name=\"{{p.icon}}\" *ngIf=\"p.icon\" color=\"medium\" size=\"small\" class=\"aside-icon\">\n                        </ion-icon>\n                        <ion-label>\n                            {{p.title}}\n                        </ion-label>\n                    </ion-item>\n\n                </ion-menu-toggle>\n\n            </ion-list>\n            <ion-item class=\"aside-item\" lines=\"none\">\n                <ion-icon name=\"md-close-circle\" color=\"medium\" size=\"small\" class=\"aside-icon\"> </ion-icon>\n                <ion-label>\n                    Cerrar Sesión\n                </ion-label>\n            </ion-item>\n\n        </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"content\" main>\n    </ion-router-outlet>\n</ion-split-pane>"
 
 /***/ }),
 
@@ -121,7 +121,7 @@ var MenuPage = /** @class */ (function () {
                 routes: [
                     {
                         title: 'Inicio',
-                        url: './home',
+                        url: '/menu/menu/home',
                         icon: 'home'
                     },
                 ]
@@ -164,11 +164,6 @@ var MenuPage = /** @class */ (function () {
                         title: 'Constructores',
                         url: '/menu/home',
                         icon: 'apps'
-                    },
-                    {
-                        title: 'Cerrar Sesión',
-                        icon: 'apps',
-                        url: '',
                     }
                 ]
             }

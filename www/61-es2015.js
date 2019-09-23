@@ -14,7 +14,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_select_popover", function() { return SelectPopover; });
 /* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm/core-13ed1ad7.js");
 /* harmony import */ var _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-bb99b659.js */ "./node_modules/@ionic/core/dist/esm/config-bb99b659.js");
-/* harmony import */ var _overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./overlays-45908d8d.js */ "./node_modules/@ionic/core/dist/esm/overlays-45908d8d.js");
+/* harmony import */ var _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./overlays-10cf2041.js */ "./node_modules/@ionic/core/dist/esm/overlays-10cf2041.js");
 /* harmony import */ var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./theme-353a032e.js */ "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
 /* harmony import */ var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./helpers-c90aaa66.js */ "./node_modules/@ionic/core/dist/esm/helpers-c90aaa66.js");
 
@@ -243,13 +243,13 @@ const Select = class {
                 value: this.value,
                 options: this.createPopoverOptions(this.childOpts)
             } });
-        return _overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_2__["c"].create(popoverOpts);
+        return _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_2__["c"].create(popoverOpts);
     }
     async openActionSheet() {
         const mode = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
         const interfaceOptions = this.interfaceOptions;
         const actionSheetOpts = Object.assign({ mode }, interfaceOptions, { buttons: this.createActionSheetButtons(this.childOpts), cssClass: ['select-action-sheet', interfaceOptions.cssClass] });
-        return _overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_2__["b"].create(actionSheetOpts);
+        return _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_2__["b"].create(actionSheetOpts);
     }
     async openAlert() {
         const label = this.getLabel();
@@ -273,7 +273,7 @@ const Select = class {
                 }
             ], cssClass: ['select-alert', interfaceOptions.cssClass,
                 (this.multiple ? 'multiple-select-alert' : 'single-select-alert')] });
-        return _overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_2__["a"].create(alertOpts);
+        return _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_2__["a"].create(alertOpts);
     }
     /**
      * Close the select interface.
@@ -459,7 +459,7 @@ const SelectPopover = class {
     onSelect(ev) {
         const option = this.options.find(o => o.value === ev.target.value);
         if (option) {
-            Object(_overlays_45908d8d_js__WEBPACK_IMPORTED_MODULE_2__["s"])(option.handler);
+            Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_2__["s"])(option.handler);
         }
     }
     render() {
