@@ -48,6 +48,7 @@ export class TasksService {
     let sql = 'SELECT * FROM image WHERE idphotos=? and odi_idodi=? and idservice_certifications=?';
     return this.db.executeSql(sql, [idphotos, odi_idodi, certificate])
       .then(response => {
+        console.log(response)
         let tasks = [];
         for (let index = 0; index < response.rows.length; index++) {
           tasks.push(response.rows.item(index));
