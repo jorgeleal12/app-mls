@@ -24,6 +24,9 @@ var map = {
 		"./src/app/servicio/servicio.module.ts",
 		"servicio-servicio-module"
 	],
+	"./alert-image/alert-image.module": [
+		"./src/app/alert-image/alert-image.module.ts"
+	],
 	"./login/login.module": [
 		"./src/app/login/login.module.ts",
 		"login-login-module"
@@ -43,7 +46,7 @@ function webpackAsyncContext(req) {
 	}
 
 	var ids = map[req], id = ids[0];
-	return __webpack_require__.e(ids[1]).then(function() {
+	return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(function() {
 		return __webpack_require__(id);
 	});
 }
@@ -476,6 +479,17 @@ module.exports = webpackAsyncContext;
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/alert-image/alert-image.page.html":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/alert-image/alert-image.page.html ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Fotografias Faltantes</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button icon-only>\n        <ion-icon slot=\"icon-only\" name=\"search\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let photos_service of photos_services\" (click)=\"ModalImage(photos_service)\">\n      <ion-label>\n        <ion-text>\n          <h2>{{photos_service.name_photo}}</h2>\n        </ion-text>\n        <ion-text color=\"primary\">\n          <p>Actuales: {{photos_service.actual}}</p>\n        </ion-text>\n        <p>Min: {{photos_service.min}} / Max: {{photos_service.quantity}} </p>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n</ion-content>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/app.component.html":
 /*!**************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/app.component.html ***!
@@ -516,7 +530,7 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Fotografias</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button icon-only>\n        <ion-icon slot=\"icon-only\" name=\"search\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let photos_service of photos_services\" (click)=\"ModalImage(photos_service)\">\n      <ion-label>\n        <ion-text>\n          <h2>{{photos_service.name_photo}}</h2>\n        </ion-text>\n        <ion-text color=\"primary\">\n          <p>Actuales</p>\n        </ion-text>\n        <p>Min: {{photos_service.min}} / Max: {{photos_service.quantity}} </p>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Fotografias</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button icon-only>\n        <ion-icon slot=\"icon-only\" name=\"search\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let photos_service of photos_services\" (click)=\"ModalImage(photos_service)\">\n      <ion-label>\n        <ion-text>\n          <h2>{{photos_service.name_photo}}</h2>\n        </ion-text>\n        <ion-text color=\"primary\">\n          <p>Actuales: {{photos_service.actual}}</p>\n        </ion-text>\n        <p>Min: {{photos_service.min}} / Max: {{photos_service.quantity}} </p>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n</ion-content>"
 
 /***/ }),
 
@@ -538,7 +552,7 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Nuevo Certificado</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button>\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list class=\"accordion-list\" no-padding>\n    <section class=\"acc-section\" (click)=\"setStep('expanded1')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/pngocean.com-id-wflsf.png\" alt=\"\">\n      </div>\n      <div class=\"info\">\n        <p class=\"title\">Certificado</p>\n        <p class=\"subtitle\">Información general</p>\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded1')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded1')}\">\n      <div [hidden]=\"div_hidden\">\n        <ion-grid>\n          <ion-row>\n            <ion-col size=\"12\">\n              <mat-form-field class=\"example-full-width\" style=\"margin-top: 10px;\">\n                <input matInput placeholder=\"Número de Certificado\" [(ngModel)]=\"number\" readonly>\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Inspector\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Revisor\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones para el Cliente\">\n              </mat-form-field>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </div>\n\n    </section>\n    <section class=\"acc-section\" (click)=\"setStep('expanded6')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/twotone_insert_photo_black_48dp.png\" alt=\"\">\n      </div>\n      <div class=\"info\" (click)=\"ModalImage()\">\n        <p class=\"title\">Fotografias</p>\n        <p class=\"subtitle\">Fotografias del servicio</p>\n\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded6')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded6')}\">\n      <ion-item detail *ngFor=\"let photos_service of photos_services; let i = i; index\"\n        (click)=\"photos_add(photos_service)\">\n        <ion-label>\n          {{photos_service.name_photo}}\n        </ion-label>\n      </ion-item>\n    </section>\n  </ion-list>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Nuevo Certificado</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"save()\">\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list class=\"accordion-list\" no-padding>\n    <section class=\"acc-section\" (click)=\"setStep('expanded1')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/pngocean.com-id-wflsf.png\" alt=\"\">\n      </div>\n      <div class=\"info\">\n        <p class=\"title\">Certificado</p>\n        <p class=\"subtitle\">Información general</p>\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded1')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded1')}\">\n      <div [hidden]=\"div_hidden\">\n        <ion-grid>\n          <ion-row>\n            <ion-col size=\"12\">\n              <mat-form-field class=\"example-full-width\" style=\"margin-top: 10px;\">\n                <input matInput placeholder=\"Número de Certificado\" [(ngModel)]=\"NewCertificate.number\" readonly>\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Inspector\" [(ngModel)]=\"NewCertificate.obsins\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Revisor\" [(ngModel)]=\"NewCertificate.obssuper\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones para el Cliente\" [(ngModel)]=\"NewCertificate.obsclient\">\n              </mat-form-field>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </div>\n\n    </section>\n    <section class=\"acc-section\" (click)=\"setStep('expanded6')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/twotone_insert_photo_black_48dp.png\" alt=\"\">\n      </div>\n      <div class=\"info\" (click)=\"ModalImage()\">\n        <p class=\"title\">Fotografias</p>\n        <p class=\"subtitle\">Fotografias del servicio</p>\n\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded6')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded6')}\">\n      <ion-item detail *ngFor=\"let photos_service of photos_services; let i = i; index\"\n        (click)=\"photos_add(photos_service)\">\n        <ion-label>\n          {{photos_service.name_photo}}\n        </ion-label>\n      </ion-item>\n    </section>\n  </ion-list>\n</ion-content>"
 
 /***/ }),
 
@@ -654,9 +668,9 @@ var TasksService = /** @class */ (function () {
         var sql = 'INSERT INTO image(idphotos,name_photo, actual,quantity,min,odi_idodi,idservice_certifications) VALUES(?,?,?,?,?,?,?)';
         return this.db.executeSql(sql, [image.idphotos, image.name_photo, 0, image.quantity, image.min, odi, 12]);
     };
-    TasksService.prototype.SelectImage = function (odi_idodi) {
-        var sql = 'SELECT * FROM image WHERE odi_idodi=?';
-        return this.db.executeSql(sql, [odi_idodi])
+    TasksService.prototype.SelectImage = function (odi_idodi, idservice) {
+        var sql = 'SELECT * FROM image WHERE odi_idodi=? and idservice_certifications=?';
+        return this.db.executeSql(sql, [odi_idodi, idservice])
             .then(function (response) {
             var tasks = [];
             for (var index = 0; index < response.rows.length; index++) {
@@ -670,6 +684,7 @@ var TasksService = /** @class */ (function () {
         var sql = 'SELECT * FROM image WHERE idphotos=? and odi_idodi=? and idservice_certifications=?';
         return this.db.executeSql(sql, [idphotos, odi_idodi, certificate])
             .then(function (response) {
+            console.log(response);
             var tasks = [];
             for (var index = 0; index < response.rows.length; index++) {
                 tasks.push(response.rows.item(index));
@@ -682,6 +697,10 @@ var TasksService = /** @class */ (function () {
         var sql = 'UPDATE image SET actual=? WHERE idphotos=? and odi_idodi=? and idservice_certifications=?';
         return this.db.executeSql(sql, [number, idphotos, odi_idodi, certificate]);
     };
+    TasksService.prototype.delete = function (odi_idodi, certificate) {
+        var sql = 'DELETE  FROM image WHERE odi_idodi=? and idservice_certifications=?';
+        return this.db.executeSql(sql, [odi_idodi, certificate]);
+    };
     TasksService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
             providedIn: 'root'
@@ -689,6 +708,202 @@ var TasksService = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], TasksService);
     return TasksService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/alert-image/alert-image.module.ts":
+/*!***************************************************!*\
+  !*** ./src/app/alert-image/alert-image.module.ts ***!
+  \***************************************************/
+/*! exports provided: AlertImagePageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlertImagePageModule", function() { return AlertImagePageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _alert_image_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./alert-image.page */ "./src/app/alert-image/alert-image.page.ts");
+
+
+
+
+
+
+
+var routes = [
+    {
+        path: '',
+        component: _alert_image_page__WEBPACK_IMPORTED_MODULE_6__["AlertImagePage"]
+    }
+];
+var AlertImagePageModule = /** @class */ (function () {
+    function AlertImagePageModule() {
+    }
+    AlertImagePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+                _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+                _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+            ],
+            declarations: [_alert_image_page__WEBPACK_IMPORTED_MODULE_6__["AlertImagePage"]]
+        })
+    ], AlertImagePageModule);
+    return AlertImagePageModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/alert-image/alert-image.page.scss":
+/*!***************************************************!*\
+  !*** ./src/app/alert-image/alert-image.page.scss ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FsZXJ0LWltYWdlL2FsZXJ0LWltYWdlLnBhZ2Uuc2NzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/alert-image/alert-image.page.ts":
+/*!*************************************************!*\
+  !*** ./src/app/alert-image/alert-image.page.ts ***!
+  \*************************************************/
+/*! exports provided: AlertImagePage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlertImagePage", function() { return AlertImagePage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _sendimages_sendimages_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../sendimages/sendimages.page */ "./src/app/sendimages/sendimages.page.ts");
+/* harmony import */ var _Services_tasks_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Services/tasks-service */ "./src/app/Services/tasks-service.ts");
+
+
+
+
+
+
+
+
+var AlertImagePage = /** @class */ (function () {
+    function AlertImagePage(route, router, LoginServiceService, modalController, navParams, tasksService) {
+        this.route = route;
+        this.router = router;
+        this.LoginServiceService = LoginServiceService;
+        this.modalController = modalController;
+        this.navParams = navParams;
+        this.tasksService = tasksService;
+        this.number_service = navParams.get('number_service');
+        this.type_network = navParams.get('type_network');
+        this.data = navParams.get('data');
+        this.photos_services = navParams.get('images');
+        this.idservice = navParams.get('idservice');
+        // console.log(this.images)
+        // console.log(this.data)
+    }
+    AlertImagePage.prototype.ngOnInit = function () {
+    };
+    AlertImagePage.prototype.photos_add = function (photos_service) {
+        var navigationExtras = {
+            queryParams: {
+                photos_service: photos_service,
+                data: this.data
+            }
+        };
+        this.router.navigate(['menu/menu/fotografias'], navigationExtras);
+        this.modalController.dismiss({
+            'dismissed': false,
+        });
+    };
+    AlertImagePage.prototype.search = function () {
+        var _this = this;
+        this.tasksService.SelectImage(this.data.idodi, this.idservice)
+            .then(function (tasks) {
+            var actual = 0;
+            var totales = 0;
+            var images = [];
+            for (var prop in tasks) {
+                actual += tasks[prop].actual;
+                totales += tasks[prop].min;
+                if (tasks[prop].actual < tasks[prop].min) {
+                    images.push(tasks[prop]);
+                }
+            }
+            _this.photos_services = images;
+        })
+            .catch(function (error) {
+            console.error(error);
+        });
+    };
+    AlertImagePage.prototype.back = function () {
+        this.modalController.dismiss({
+            'dismissed': false,
+        });
+    };
+    AlertImagePage.prototype.ModalImage = function (photos_service) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var modal;
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.modalController.create({
+                            component: _sendimages_sendimages_page__WEBPACK_IMPORTED_MODULE_5__["SendimagesPage"],
+                            componentProps: {
+                                'number_service': this.number_service,
+                                'type_network': this.type_network,
+                                'data': this.data,
+                                'photos_service': photos_service,
+                                'idservice': this.idservice
+                            }
+                        })];
+                    case 1:
+                        modal = _a.sent();
+                        modal.onDidDismiss().then(function (detail) {
+                            _this.search();
+                        });
+                        return [4 /*yield*/, modal.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    AlertImagePage.ctorParameters = function () { return [
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+        { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__["LoginServiceService"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"] },
+        { type: _Services_tasks_service__WEBPACK_IMPORTED_MODULE_6__["TasksService"] }
+    ]; };
+    AlertImagePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-alert-image',
+            template: __webpack_require__(/*! raw-loader!./alert-image.page.html */ "./node_modules/raw-loader/index.js!./src/app/alert-image/alert-image.page.html"),
+            styles: [__webpack_require__(/*! ./alert-image.page.scss */ "./src/app/alert-image/alert-image.page.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
+            _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__["LoginServiceService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"], _Services_tasks_service__WEBPACK_IMPORTED_MODULE_6__["TasksService"]])
+    ], AlertImagePage);
+    return AlertImagePage;
 }());
 
 
@@ -943,6 +1158,7 @@ __webpack_require__.r(__webpack_exports__);
 var routes = [
     { path: '', loadChildren: './login/login.module#LoginPageModule' },
     { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
+    { path: 'alert-image', loadChildren: './alert-image/alert-image.module#AlertImagePageModule' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -1130,6 +1346,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _certificate_certificate_module__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./certificate/certificate.module */ "./src/app/certificate/certificate.module.ts");
 /* harmony import */ var _new_certificate_new_certificate_module__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./new-certificate/new-certificate.module */ "./src/app/new-certificate/new-certificate.module.ts");
 /* harmony import */ var _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @ionic-native/sqlite/ngx */ "./node_modules/@ionic-native/sqlite/ngx/index.js");
+/* harmony import */ var _alert_image_alert_image_module__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./alert-image/alert-image.module */ "./src/app/alert-image/alert-image.module.ts");
+
 
 
 
@@ -1166,7 +1384,7 @@ var AppModule = /** @class */ (function () {
             declarations: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]],
             entryComponents: [],
             imports: [_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_20__["PipesModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"],
-                _sendimages_sendimages_module__WEBPACK_IMPORTED_MODULE_23__["SendimagesPageModule"], _materials_materials_module__WEBPACK_IMPORTED_MODULE_19__["MaterialsPageModule"], _builder_builder_module__WEBPACK_IMPORTED_MODULE_21__["BuilderPageModule"], _images_images_module__WEBPACK_IMPORTED_MODULE_22__["ImagesPageModule"], _certificate_certificate_module__WEBPACK_IMPORTED_MODULE_25__["CertificatePageModule"], _new_certificate_new_certificate_module__WEBPACK_IMPORTED_MODULE_26__["NewCertificatePageModule"]],
+                _sendimages_sendimages_module__WEBPACK_IMPORTED_MODULE_23__["SendimagesPageModule"], _materials_materials_module__WEBPACK_IMPORTED_MODULE_19__["MaterialsPageModule"], _builder_builder_module__WEBPACK_IMPORTED_MODULE_21__["BuilderPageModule"], _images_images_module__WEBPACK_IMPORTED_MODULE_22__["ImagesPageModule"], _certificate_certificate_module__WEBPACK_IMPORTED_MODULE_25__["CertificatePageModule"], _new_certificate_new_certificate_module__WEBPACK_IMPORTED_MODULE_26__["NewCertificatePageModule"], _alert_image_alert_image_module__WEBPACK_IMPORTED_MODULE_28__["AlertImagePageModule"]],
             providers: [
                 _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
                 _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
@@ -1581,7 +1799,7 @@ var ImagesPage = /** @class */ (function () {
         this.number_service = navParams.get('number_service');
         this.type_network = navParams.get('type_network');
         this.data = navParams.get('data');
-        console.log(this.data);
+        this.idservice = navParams.get('idservice');
     }
     ImagesPage.prototype.ngOnInit = function () {
         this.photo_service();
@@ -1591,10 +1809,10 @@ var ImagesPage = /** @class */ (function () {
         var params = {
             type_network: this.type_network
         };
-        this.tasksService.SelectImage(this.data.idodi)
+        this.tasksService.SelectImage(this.data.idodi, this.idservice)
             .then(function (tasks) {
+            console.log(tasks);
             _this.PhotoServices = tasks;
-            console.log(_this.PhotoServices);
             _this.propCount = Object.keys(tasks).length;
             if (_this.propCount > 0) {
                 _this.photos_services = _this.PhotoServices;
@@ -1647,7 +1865,8 @@ var ImagesPage = /** @class */ (function () {
                                 'number_service': this.number_service,
                                 'type_network': this.type_network,
                                 'data': this.data,
-                                'photos_service': photos_service
+                                'photos_service': photos_service,
+                                'idservice': this.idservice
                             }
                         })];
                     case 1:
@@ -1827,6 +2046,26 @@ var MaterialsPage = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/model/NewCertificate.model.ts":
+/*!***********************************************!*\
+  !*** ./src/app/model/NewCertificate.model.ts ***!
+  \***********************************************/
+/*! exports provided: NewCertificate */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewCertificate", function() { return NewCertificate; });
+var NewCertificate = /** @class */ (function () {
+    function NewCertificate() {
+    }
+    return NewCertificate;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/new-certificate/new-certificate.module.ts":
 /*!***********************************************************!*\
   !*** ./src/app/new-certificate/new-certificate.module.ts ***!
@@ -1907,6 +2146,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _images_images_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../images/images.page */ "./src/app/images/images.page.ts");
+/* harmony import */ var _model_NewCertificate_model__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../model/NewCertificate.model */ "./src/app/model/NewCertificate.model.ts");
+/* harmony import */ var _Services_tasks_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Services/tasks-service */ "./src/app/Services/tasks-service.ts");
+/* harmony import */ var _alert_image_alert_image_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../alert-image/alert-image.page */ "./src/app/alert-image/alert-image.page.ts");
+
+
+
+
+
 
 
 
@@ -1914,15 +2161,22 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var NewCertificatePage = /** @class */ (function () {
-    function NewCertificatePage(loginServiceService, modalController, navParams) {
+    function NewCertificatePage(loginServiceService, modalController, navParams, tasksService, alertController, toastController) {
         this.loginServiceService = loginServiceService;
         this.modalController = modalController;
         this.navParams = navParams;
+        this.tasksService = tasksService;
+        this.alertController = alertController;
+        this.toastController = toastController;
         this.step = { sectionName: null };
+        this.iamges = [];
+        this.NewCertificate = new _model_NewCertificate_model__WEBPACK_IMPORTED_MODULE_5__["NewCertificate"]();
         this.number_service = navParams.get('number_service');
         this.type_network = navParams.get('type_network');
         this.data = navParams.get('data');
         this.idusers = localStorage.getItem("id");
+        this.NewCertificate.odi_idodi = this.data.idodi;
+        this.NewCertificate.idemployees = this.idusers;
     }
     NewCertificatePage.prototype.ngOnInit = function () {
         this.NumberCertificate();
@@ -1938,7 +2192,9 @@ var NewCertificatePage = /** @class */ (function () {
             idusers: this.idusers
         };
         this.loginServiceService.number(params).subscribe(function (result) {
-            _this.number = result.response.number_ + 1;
+            _this.NewCertificate.number = result.response.number_ + 1;
+            _this.NewCertificate.idemployees = result.response.idemployees;
+            _this.NewCertificate.Number_cetificate_idNumber_cetificate = result.response.Number_cetificate_idNumber_cetificate;
         }, function (error) { });
     };
     NewCertificatePage.prototype.getNameValid = function (sectionName) {
@@ -1950,17 +2206,107 @@ var NewCertificatePage = /** @class */ (function () {
     NewCertificatePage.prototype.getIconName = function (sectionName) {
         return this.getNameValid(sectionName) ? 'arrow-down' : 'arrow-forward';
     };
-    NewCertificatePage.prototype.ModalImage = function (photos_service) {
+    NewCertificatePage.prototype.ModalImage = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var modal;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        console.log(this.NewCertificate.idservice_certifications);
+                        if (this.NewCertificate.idservice_certifications == undefined) {
+                            this.presentToast('Primero guarde el Certificado');
+                            return [2 /*return*/];
+                        }
+                        return [4 /*yield*/, this.modalController.create({
+                                component: _images_images_page__WEBPACK_IMPORTED_MODULE_4__["ImagesPage"],
+                                componentProps: {
+                                    'number_service': this.number_service,
+                                    'type_network': this.type_network,
+                                    'data': this.data,
+                                    'idservice': this.NewCertificate.idservice_certifications,
+                                }
+                            })];
+                    case 1:
+                        modal = _a.sent();
+                        modal.onDidDismiss().then(function (detail) {
+                        });
+                        return [4 /*yield*/, modal.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    NewCertificatePage.prototype.save = function () {
+        var _this = this;
+        if (this.NewCertificate.idservice_certifications == undefined) {
+            this.loginServiceService.save_certificate(this.NewCertificate).subscribe(function (result) {
+                // this.tasksService.delete(this.data.idodi,)
+                if (result.response == true) {
+                    _this.NewCertificate.idservice_certifications = result.result;
+                    _this.presentToast('Se guardo el Certificado');
+                }
+            }, function (error) {
+            });
+            return;
+        }
+        else {
+            this.tasksService.SelectImage(this.data.idodi, this.NewCertificate.idservice_certifications)
+                .then(function (tasks) {
+                var actual = 0;
+                var totales = 0;
+                var images = [];
+                for (var prop in tasks) {
+                    actual += tasks[prop].actual;
+                    totales += tasks[prop].min;
+                    if (tasks[prop].actual < tasks[prop].min) {
+                        images.push(tasks[prop]);
+                    }
+                }
+                _this.messages = images;
+                if (actual < totales) {
+                    _this.ModalAlertImage(images);
+                    return;
+                }
+                if (actual == 0) {
+                    _this.ModalImage();
+                    return;
+                }
+            })
+                .catch(function (error) {
+                console.error(error);
+            });
+            this.loginServiceService.save_certificate(this.NewCertificate).subscribe(function (result) {
+                _this.tasksService.delete(_this.data.idodi, _this.NewCertificate.idservice_certifications)
+                    .then(function (tasks) {
+                    console.log('error', tasks);
+                })
+                    .catch(function (error) {
+                    console.error(error);
+                });
+                if (result.response == false) {
+                    _this.presentToast('Se guardo el Certificado');
+                }
+            }, function (error) {
+            });
+        }
+    };
+    NewCertificatePage.prototype.delete = function () {
+    };
+    NewCertificatePage.prototype.ModalAlertImage = function (images) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var modal;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.modalController.create({
-                            component: _images_images_page__WEBPACK_IMPORTED_MODULE_4__["ImagesPage"],
+                            component: _alert_image_alert_image_page__WEBPACK_IMPORTED_MODULE_7__["AlertImagePage"],
                             componentProps: {
                                 'number_service': this.number_service,
                                 'type_network': this.type_network,
                                 'data': this.data,
+                                'images': images,
+                                'idservice': this.NewCertificate.idservice_certifications,
                             }
                         })];
                     case 1:
@@ -1975,10 +2321,30 @@ var NewCertificatePage = /** @class */ (function () {
             });
         });
     };
+    NewCertificatePage.prototype.presentToast = function (message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var toast;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.toastController.create({
+                            message: message,
+                            duration: 2000
+                        })];
+                    case 1:
+                        toast = _a.sent();
+                        toast.present();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     NewCertificatePage.ctorParameters = function () { return [
         { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"] },
         { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] },
-        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"] }
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"] },
+        { type: _Services_tasks_service__WEBPACK_IMPORTED_MODULE_6__["TasksService"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"] }
     ]; };
     NewCertificatePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1987,7 +2353,11 @@ var NewCertificatePage = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./new-certificate.page.scss */ "./src/app/new-certificate/new-certificate.page.scss")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"],
-            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"]])
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"],
+            _Services_tasks_service__WEBPACK_IMPORTED_MODULE_6__["TasksService"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"]])
     ], NewCertificatePage);
     return NewCertificatePage;
 }());
@@ -2191,6 +2561,8 @@ var SendimagesPage = /** @class */ (function () {
         this.type_network = navParams.get('type_network');
         this.data = navParams.get('data');
         this.photos_service = navParams.get('photos_service');
+        this.idservice = navParams.get('idservice');
+        console.log(this.idservice);
         for (var index = 0; index < this.photos_service.quantity; index++) {
             this.photos.push({
                 imagenes: '',
@@ -2312,14 +2684,14 @@ var SendimagesPage = /** @class */ (function () {
         var params = {
             idodi: idodi,
             tipe: tipe,
-            contract_idcontract: contract_idcontract
+            contract_idcontract: contract_idcontract,
+            idservice: this.idservice
         };
-        this.tasksService.SelectImageOne(tipe, idodi, 12).then(function (tasks) {
-            console.log(tasks[0]);
+        this.tasksService.SelectImageOne(tipe, idodi, this.idservice).then(function (tasks) {
+            console.log(tipe, idodi, _this.idservice);
+            console.log(tasks);
             _this.row_data = tasks[0];
             _this.number = _this.row_data.actual + 1;
-            console.log(_this.row_data.actual);
-            console.log(_this.number);
         })
             .catch(function (error) {
             console.error(error);
@@ -2358,7 +2730,7 @@ var SendimagesPage = /** @class */ (function () {
                     _this.photos[id].state = true;
                     _this.photos[id].state_send = true;
                     _this.photos[id].send = false;
-                    _this.tasksService.update(tipe, idodi, 12, _this.number)
+                    _this.tasksService.update(tipe, idodi, _this.idservice, _this.number)
                         .then(function (response) {
                         console.log(response);
                     })
@@ -2376,7 +2748,7 @@ var SendimagesPage = /** @class */ (function () {
                     _this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
                 }
             }, function (err) {
-                console.log(err);
+                console.log(err.body);
                 _this.photos[id].state = false;
                 _this.photos[id].state_send = true;
                 _this.photos[id].error = false;

@@ -18,6 +18,7 @@ export class ImagesPage implements OnInit {
   data
   PhotoServices;
   propCount
+  idservice
   constructor(private route: ActivatedRoute,
     private router: Router,
     private LoginServiceService: LoginServiceService, public modalController: ModalController, private navParams: NavParams, private tasksService: TasksService) {
@@ -25,7 +26,7 @@ export class ImagesPage implements OnInit {
     this.number_service = navParams.get('number_service');
     this.type_network = navParams.get('type_network');
     this.data = navParams.get('data');
-    console.log(this.data)
+    this.idservice = navParams.get('idservice');
   }
 
   ngOnInit() {
@@ -39,10 +40,10 @@ export class ImagesPage implements OnInit {
       type_network: this.type_network
     }
 
-    this.tasksService.SelectImage(this.data.idodi)
+    this.tasksService.SelectImage(this.data.idodi, this.idservice)
       .then(tasks => {
+        console.log(tasks)
         this.PhotoServices = tasks
-        console.log(this.PhotoServices)
         this.propCount = Object.keys(tasks).length;
 
         if (this.propCount > 0) {
@@ -114,7 +115,8 @@ export class ImagesPage implements OnInit {
           'number_service': this.number_service,
           'type_network': this.type_network,
           'data': this.data,
-          'photos_service': photos_service
+          'photos_service': photos_service,
+          'idservice': this.idservice
         }
 
       });

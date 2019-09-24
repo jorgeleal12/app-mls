@@ -52,7 +52,7 @@ export class AppComponent {
     //   backend.registerToken(token);
     // });
 
-    //this.createDatabase();
+    this.createDatabase();
 
   }
 

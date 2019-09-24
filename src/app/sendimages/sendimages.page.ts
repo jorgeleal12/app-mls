@@ -34,6 +34,7 @@ export class SendimagesPage implements OnInit {
   number
   suma;
   row_data: any = []
+  idservice
   @ViewChild('layout', { static: true }) canvasRef;
   constructor(private route: ActivatedRoute, private router: Router, private imagePicker: ImagePicker,
     public transfer: FileTransfer,
@@ -53,7 +54,8 @@ export class SendimagesPage implements OnInit {
     this.type_network = navParams.get('type_network');
     this.data = navParams.get('data');
     this.photos_service = navParams.get('photos_service');
-
+    this.idservice = navParams.get('idservice');
+    console.log(this.idservice)
 
     for (let index = 0; index < this.photos_service.quantity; index++) {
       this.photos.push({
@@ -183,10 +185,13 @@ export class SendimagesPage implements OnInit {
     let params = {
       idodi: idodi,
       tipe: tipe,
-      contract_idcontract: contract_idcontract
+      contract_idcontract: contract_idcontract,
+      idservice: this.idservice
     }
 
-    this.tasksService.SelectImageOne(tipe, idodi, 12).then(tasks => {
+    this.tasksService.SelectImageOne(tipe, idodi, this.idservice).then(tasks => {
+      console.log(tipe, idodi, this.idservice)
+      console.log(tasks)
       this.row_data = tasks[0]
       this.number = this.row_data.actual + 1;
     })
@@ -240,7 +245,7 @@ export class SendimagesPage implements OnInit {
               this.photos[id].send = false;
 
 
-              this.tasksService.update(tipe, idodi, 12, this.number)
+              this.tasksService.update(tipe, idodi, this.idservice, this.number)
                 .then(response => {
                   console.log(response)
                 })
@@ -261,7 +266,7 @@ export class SendimagesPage implements OnInit {
             }
           },
           err => {
-            console.log(err)
+            console.log(err.body)
             this.photos[id].state = false;
             this.photos[id].state_send = true;
             this.photos[id].error = false;

@@ -28,10 +28,10 @@ export class TasksService {
     return this.db.executeSql(sql, [image.idphotos, image.name_photo, 0, image.quantity, image.min, odi, 12]);
   }
 
-  SelectImage(odi_idodi) {
+  SelectImage(odi_idodi, idservice) {
 
-    let sql = 'SELECT * FROM image WHERE odi_idodi=?';
-    return this.db.executeSql(sql, [odi_idodi])
+    let sql = 'SELECT * FROM image WHERE odi_idodi=? and idservice_certifications=?';
+    return this.db.executeSql(sql, [odi_idodi, idservice])
       .then(response => {
         let tasks = [];
         for (let index = 0; index < response.rows.length; index++) {
@@ -61,8 +61,14 @@ export class TasksService {
 
   update(idphotos, odi_idodi, certificate, number) {
 
+
     let sql = 'UPDATE image SET actual=? WHERE idphotos=? and odi_idodi=? and idservice_certifications=?';
     return this.db.executeSql(sql, [number, idphotos, odi_idodi, certificate]);
+  }
+
+  delete(odi_idodi, certificate) {
+    let sql = 'DELETE  FROM image WHERE odi_idodi=? and idservice_certifications=?';
+    return this.db.executeSql(sql, [odi_idodi, certificate]);
   }
 
 }
