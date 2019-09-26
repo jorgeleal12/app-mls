@@ -49,7 +49,7 @@ export class CertificatePage implements OnInit {
     });
   }
 
-  async ModalCertificate() {
+  async ModalNewCertificate() {
 
     const modal: HTMLIonModalElement =
       await this.modalController.create({
@@ -58,6 +58,30 @@ export class CertificatePage implements OnInit {
           'number_service': this.number_service,
           'type_network': this.type_network,
           'data': this.data,
+
+        }
+
+      });
+
+    modal.onDidDismiss().then((detail) => {
+    });
+
+    await modal.present();
+
+
+  }
+
+  async ModalCertificate(certificate) {
+
+    const modal: HTMLIonModalElement =
+      await this.modalController.create({
+        component: NewCertificatePage,
+        componentProps: {
+          'number_service': this.number_service,
+          'type_network': this.type_network,
+          'data': this.data,
+          'certificate': certificate,
+
 
         }
 

@@ -273,8 +273,8 @@ var map = {
 		"common",
 		42
 	],
-	"./ion-nav_4.entry.js": [
-		"./node_modules/@ionic/core/dist/esm-es5/ion-nav_4.entry.js",
+	"./ion-nav_5.entry.js": [
+		"./node_modules/@ionic/core/dist/esm-es5/ion-nav_5.entry.js",
 		0,
 		"common",
 		43
@@ -519,7 +519,7 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Certificados</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button>\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let certificate of certificates\">\n      <ion-label>\n        <ion-text>\n          <h2>{{certificate.number}}</h2>\n        </ion-text>\n        <ion-text>\n          <p>{{certificate.date}}</p>\n        </ion-text>\n        <p>Estado: {{certificate.name_state}}</p>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\" (click)=\"ModalCertificate()\">\n    <ion-fab-button>\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Lista de Certificados</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button>\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let certificate of certificates\" (click)=\"ModalCertificate(certificate)\">\n      <ion-label>\n        <ion-text>\n          <h2>{{certificate.number}}</h2>\n        </ion-text>\n        <ion-text>\n          <p>{{certificate.date}}</p>\n        </ion-text>\n        <p>Estado: {{certificate.name_state}}</p>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\" (click)=\"ModalNewCertificate()\">\n    <ion-fab-button>\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n</ion-content>"
 
 /***/ }),
 
@@ -552,7 +552,7 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Nuevo Certificado</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"save()\">\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list class=\"accordion-list\" no-padding>\n    <section class=\"acc-section\" (click)=\"setStep('expanded1')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/pngocean.com-id-wflsf.png\" alt=\"\">\n      </div>\n      <div class=\"info\">\n        <p class=\"title\">Certificado</p>\n        <p class=\"subtitle\">Información general</p>\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded1')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded1')}\">\n      <div [hidden]=\"div_hidden\">\n        <ion-grid>\n          <ion-row>\n            <ion-col size=\"12\">\n              <mat-form-field class=\"example-full-width\" style=\"margin-top: 10px;\">\n                <input matInput placeholder=\"Número de Certificado\" [(ngModel)]=\"NewCertificate.number\" readonly>\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Inspector\" [(ngModel)]=\"NewCertificate.obsins\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Revisor\" [(ngModel)]=\"NewCertificate.obssuper\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones para el Cliente\" [(ngModel)]=\"NewCertificate.obsclient\">\n              </mat-form-field>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </div>\n\n    </section>\n    <section class=\"acc-section\" (click)=\"setStep('expanded6')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/twotone_insert_photo_black_48dp.png\" alt=\"\">\n      </div>\n      <div class=\"info\" (click)=\"ModalImage()\">\n        <p class=\"title\">Fotografias</p>\n        <p class=\"subtitle\">Fotografias del servicio</p>\n\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded6')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded6')}\">\n      <ion-item detail *ngFor=\"let photos_service of photos_services; let i = i; index\"\n        (click)=\"photos_add(photos_service)\">\n        <ion-label>\n          {{photos_service.name_photo}}\n        </ion-label>\n      </ion-item>\n    </section>\n  </ion-list>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Certificado</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"save()\">\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list class=\"accordion-list\" no-padding>\n    <section class=\"acc-section\" (click)=\"setStep('expanded1')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/pngocean.com-id-wflsf.png\" alt=\"\">\n      </div>\n      <div class=\"info\">\n        <p class=\"title\">Certificado</p>\n        <p class=\"subtitle\">Información general</p>\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded1')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded1')}\">\n      <div [hidden]=\"div_hidden\">\n        <ion-grid>\n          <ion-row>\n            <ion-col size=\"12\">\n              <mat-form-field class=\"example-full-width\" style=\"margin-top: 10px;\">\n                <input matInput placeholder=\"Número de Certificado\" [(ngModel)]=\"NewCertificate.number\" readonly>\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Inspector\" [(ngModel)]=\"NewCertificate.obsins\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Revisor\" [(ngModel)]=\"NewCertificate.obssuper\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones para el Cliente\" [(ngModel)]=\"NewCertificate.obsclient\">\n              </mat-form-field>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </div>\n\n    </section>\n    <section class=\"acc-section\" (click)=\"setStep('expanded6')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/twotone_insert_photo_black_48dp.png\" alt=\"\">\n      </div>\n      <div class=\"info\" (click)=\"ModalImage()\">\n        <p class=\"title\">Fotografias</p>\n        <p class=\"subtitle\">Fotografias del servicio</p>\n\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded6')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded6')}\">\n      <ion-item detail *ngFor=\"let photos_service of photos_services; let i = i; index\"\n        (click)=\"photos_add(photos_service)\">\n        <ion-label>\n          {{photos_service.name_photo}}\n        </ion-label>\n      </ion-item>\n    </section>\n  </ion-list>\n</ion-content>"
 
 /***/ }),
 
@@ -664,9 +664,9 @@ var TasksService = /** @class */ (function () {
         var sql = 'CREATE TABLE IF NOT EXISTS image(id INTEGER PRIMARY KEY AUTOINCREMENT,idphotos INTEGER, name_photo TEXT, actual INTEGER, quantity INTEGER, min INTEGER,  odi_idodi INTEGER, idservice_certifications INTEGER)';
         return this.db.executeSql(sql, []);
     };
-    TasksService.prototype.InsertImage = function (odi, image) {
+    TasksService.prototype.InsertImage = function (odi, image, idservice) {
         var sql = 'INSERT INTO image(idphotos,name_photo, actual,quantity,min,odi_idodi,idservice_certifications) VALUES(?,?,?,?,?,?,?)';
-        return this.db.executeSql(sql, [image.idphotos, image.name_photo, 0, image.quantity, image.min, odi, 12]);
+        return this.db.executeSql(sql, [image.idphotos, image.name_photo, 0, image.quantity, image.min, odi, idservice]);
     };
     TasksService.prototype.SelectImage = function (odi_idodi, idservice) {
         var sql = 'SELECT * FROM image WHERE odi_idodi=? and idservice_certifications=?';
@@ -1655,7 +1655,7 @@ var CertificatePage = /** @class */ (function () {
             'dismissed': false,
         });
     };
-    CertificatePage.prototype.ModalCertificate = function () {
+    CertificatePage.prototype.ModalNewCertificate = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var modal;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
@@ -1666,6 +1666,32 @@ var CertificatePage = /** @class */ (function () {
                                 'number_service': this.number_service,
                                 'type_network': this.type_network,
                                 'data': this.data,
+                            }
+                        })];
+                    case 1:
+                        modal = _a.sent();
+                        modal.onDidDismiss().then(function (detail) {
+                        });
+                        return [4 /*yield*/, modal.present()];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    CertificatePage.prototype.ModalCertificate = function (certificate) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var modal;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.modalController.create({
+                            component: _new_certificate_new_certificate_page__WEBPACK_IMPORTED_MODULE_4__["NewCertificatePage"],
+                            componentProps: {
+                                'number_service': this.number_service,
+                                'type_network': this.type_network,
+                                'data': this.data,
+                                'certificate': certificate,
                             }
                         })];
                     case 1:
@@ -1811,7 +1837,6 @@ var ImagesPage = /** @class */ (function () {
         };
         this.tasksService.SelectImage(this.data.idodi, this.idservice)
             .then(function (tasks) {
-            console.log(tasks);
             _this.PhotoServices = tasks;
             _this.propCount = Object.keys(tasks).length;
             if (_this.propCount > 0) {
@@ -1821,7 +1846,7 @@ var ImagesPage = /** @class */ (function () {
                 _this.LoginServiceService.photos_service(params).subscribe(function (result) {
                     _this.photos_services = result.response;
                     for (var prop in _this.photos_services) {
-                        _this.tasksService.InsertImage(_this.data.idodi, _this.photos_services[prop])
+                        _this.tasksService.InsertImage(_this.data.idodi, _this.photos_services[prop], _this.idservice)
                             .then(function (tasks) {
                             console.log(tasks);
                         })
@@ -1872,11 +1897,6 @@ var ImagesPage = /** @class */ (function () {
                     case 1:
                         modal = _a.sent();
                         modal.onDidDismiss().then(function (detail) {
-                            // if (detail !== null) {
-                            //     this.idbuilder = detail.data.data.idbuilder
-                            //     this.name_builder = detail.data.data.name_builder
-                            //     this.state_builder = detail.data.data.name_state
-                            // }
                         });
                         return [4 /*yield*/, modal.present()];
                     case 2:
@@ -2175,11 +2195,15 @@ var NewCertificatePage = /** @class */ (function () {
         this.type_network = navParams.get('type_network');
         this.data = navParams.get('data');
         this.idusers = localStorage.getItem("id");
-        this.NewCertificate.odi_idodi = this.data.idodi;
-        this.NewCertificate.idemployees = this.idusers;
+        this.NewCertificate = navParams.get('certificate');
+        if (this.NewCertificate == undefined) {
+            this.NewCertificate = new _model_NewCertificate_model__WEBPACK_IMPORTED_MODULE_5__["NewCertificate"]();
+            this.NewCertificate.odi_idodi = this.data.idodi;
+            this.NewCertificate.id_user = this.idusers;
+            this.NumberCertificate();
+        }
     }
     NewCertificatePage.prototype.ngOnInit = function () {
-        this.NumberCertificate();
     };
     NewCertificatePage.prototype.back = function () {
         this.modalController.dismiss({
@@ -2193,7 +2217,7 @@ var NewCertificatePage = /** @class */ (function () {
         };
         this.loginServiceService.number(params).subscribe(function (result) {
             _this.NewCertificate.number = result.response.number_ + 1;
-            _this.NewCertificate.idemployees = result.response.idemployees;
+            _this.NewCertificate.id_user = result.response.idemployees;
             _this.NewCertificate.Number_cetificate_idNumber_cetificate = result.response.Number_cetificate_idNumber_cetificate;
         }, function (error) { });
     };
@@ -2240,6 +2264,7 @@ var NewCertificatePage = /** @class */ (function () {
     };
     NewCertificatePage.prototype.save = function () {
         var _this = this;
+        console.log(this.NewCertificate);
         if (this.NewCertificate.idservice_certifications == undefined) {
             this.loginServiceService.save_certificate(this.NewCertificate).subscribe(function (result) {
                 // this.tasksService.delete(this.data.idodi,)
@@ -2252,44 +2277,60 @@ var NewCertificatePage = /** @class */ (function () {
             return;
         }
         else {
-            this.tasksService.SelectImage(this.data.idodi, this.NewCertificate.idservice_certifications)
-                .then(function (tasks) {
-                var actual = 0;
-                var totales = 0;
-                var images = [];
-                for (var prop in tasks) {
-                    actual += tasks[prop].actual;
-                    totales += tasks[prop].min;
-                    if (tasks[prop].actual < tasks[prop].min) {
-                        images.push(tasks[prop]);
-                    }
-                }
-                _this.messages = images;
-                if (actual < totales) {
-                    _this.ModalAlertImage(images);
-                    return;
-                }
-                if (actual == 0) {
-                    _this.ModalImage();
-                    return;
-                }
-            })
-                .catch(function (error) {
-                console.error(error);
-            });
-            this.loginServiceService.save_certificate(this.NewCertificate).subscribe(function (result) {
-                _this.tasksService.delete(_this.data.idodi, _this.NewCertificate.idservice_certifications)
+            if (this.NewCertificate.state == 1 || this.NewCertificate.state == 3) {
+                this.tasksService.SelectImage(this.data.idodi, this.NewCertificate.idservice_certifications)
                     .then(function (tasks) {
-                    console.log('error', tasks);
+                    var actual = 0;
+                    var totales = 0;
+                    var images = [];
+                    for (var prop in tasks) {
+                        actual += tasks[prop].actual;
+                        totales += tasks[prop].min;
+                        if (tasks[prop].actual < tasks[prop].min) {
+                            images.push(tasks[prop]);
+                        }
+                    }
+                    _this.messages = images;
+                    if (actual < totales) {
+                        _this.ModalAlertImage(images);
+                        return;
+                    }
+                    if (actual == 0 && _this.NewCertificate.state == 1 || actual == 0 && _this.NewCertificate.state == 3) {
+                        _this.ModalImage();
+                        console.log('1');
+                        return;
+                    }
+                    _this.loginServiceService.save_certificate(_this.NewCertificate).subscribe(function (result) {
+                        _this.tasksService.delete(_this.data.idodi, _this.NewCertificate.idservice_certifications)
+                            .then(function (tasks) {
+                        })
+                            .catch(function (error) {
+                            console.error(error);
+                        });
+                        if (result.response == false) {
+                            _this.presentToast('Se guardo el Certificado');
+                        }
+                    }, function (error) {
+                    });
                 })
                     .catch(function (error) {
                     console.error(error);
                 });
-                if (result.response == false) {
-                    _this.presentToast('Se guardo el Certificado');
-                }
-            }, function (error) {
-            });
+            }
+            else {
+                this.loginServiceService.save_certificate(this.NewCertificate).subscribe(function (result) {
+                    _this.tasksService.delete(_this.data.idodi, _this.NewCertificate.idservice_certifications)
+                        .then(function (tasks) {
+                    })
+                        .catch(function (error) {
+                        console.error(error);
+                    });
+                    if (result.response == false) {
+                        _this.presentToast('Se guardo el Certificado1');
+                    }
+                }, function (error) {
+                });
+            }
         }
     };
     NewCertificatePage.prototype.delete = function () {

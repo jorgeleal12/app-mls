@@ -71,8 +71,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_tab", function() { return Tab; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_tabs", function() { return Tabs; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm-es5/core-13ed1ad7.js");
-/* harmony import */ var _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-bb99b659.js */ "./node_modules/@ionic/core/dist/esm-es5/config-bb99b659.js");
+/* harmony import */ var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-c02a05e9.js */ "./node_modules/@ionic/core/dist/esm-es5/core-c02a05e9.js");
+/* harmony import */ var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-503c2549.js */ "./node_modules/@ionic/core/dist/esm-es5/config-503c2549.js");
 /* harmony import */ var _framework_delegate_00265c49_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./framework-delegate-00265c49.js */ "./node_modules/@ionic/core/dist/esm-es5/framework-delegate-00265c49.js");
 
 
@@ -80,7 +80,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var Tab = /** @class */ (function () {
     function class_1(hostRef) {
-        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
         this.loaded = false;
         /** @internal */
         this.active = false;
@@ -119,13 +119,13 @@ var Tab = /** @class */ (function () {
     };
     class_1.prototype.render = function () {
         var _a = this, tab = _a.tab, active = _a.active, component = _a.component;
-        return (Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["H"], { role: "tabpanel", "aria-hidden": !active ? 'true' : null, "aria-labelledby": "tab-button-" + tab, class: {
+        return (Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["H"], { role: "tabpanel", "aria-hidden": !active ? 'true' : null, "aria-labelledby": "tab-button-" + tab, class: {
                 'ion-page': component === undefined,
                 'tab-hidden': !active
-            } }, Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null)));
+            } }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null)));
     };
     Object.defineProperty(class_1.prototype, "el", {
-        get: function () { return Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
+        get: function () { return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
         enumerable: true,
         configurable: true
     });
@@ -139,44 +139,49 @@ var Tab = /** @class */ (function () {
 var Tabs = /** @class */ (function () {
     function class_2(hostRef) {
         var _this = this;
-        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
         this.transitioning = false;
-        this.tabs = [];
         /** @internal */
         this.useRouter = false;
         this.onTabClicked = function (ev) {
             var _a = ev.detail, href = _a.href, tab = _a.tab;
-            var selectedTab = _this.tabs.find(function (t) { return t.tab === tab; });
             if (_this.useRouter && href !== undefined) {
                 var router = document.querySelector('ion-router');
                 if (router) {
                     router.push(href);
                 }
             }
-            else if (selectedTab) {
-                _this.select(selectedTab);
+            else {
+                _this.select(tab);
             }
         };
-        this.ionNavWillLoad = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionNavWillLoad", 7);
-        this.ionTabsWillChange = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionTabsWillChange", 3);
-        this.ionTabsDidChange = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionTabsDidChange", 3);
+        this.ionNavWillLoad = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionNavWillLoad", 7);
+        this.ionTabsWillChange = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionTabsWillChange", 3);
+        this.ionTabsDidChange = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionTabsDidChange", 3);
     }
     class_2.prototype.componentWillLoad = function () {
-        var _this = this;
-        if (!this.useRouter) {
-            this.useRouter = !!document.querySelector('ion-router') && !this.el.closest('[no-router]');
-        }
-        this.tabs = Array.from(this.el.querySelectorAll('ion-tab'));
-        this.initSelect().then(function () {
-            _this.ionNavWillLoad.emit();
-            _this.componentWillUpdate();
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var tabs;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!this.useRouter) {
+                            this.useRouter = !!document.querySelector('ion-router') && !this.el.closest('[no-router]');
+                        }
+                        if (!!this.useRouter) return [3 /*break*/, 2];
+                        tabs = this.tabs;
+                        return [4 /*yield*/, this.select(tabs[0])];
+                    case 1:
+                        _a.sent();
+                        _a.label = 2;
+                    case 2:
+                        this.ionNavWillLoad.emit();
+                        return [2 /*return*/];
+                }
+            });
         });
     };
-    class_2.prototype.componentDidUnload = function () {
-        this.tabs.length = 0;
-        this.selectedTab = this.leavingTab = undefined;
-    };
-    class_2.prototype.componentWillUpdate = function () {
+    class_2.prototype.componentWillRender = function () {
         var tabBar = this.el.querySelector('ion-tab-bar');
         if (tabBar) {
             var tab = this.selectedTab ? this.selectedTab.tab : undefined;
@@ -271,27 +276,6 @@ var Tabs = /** @class */ (function () {
             });
         });
     };
-    class_2.prototype.initSelect = function () {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        if (this.useRouter) {
-                            return [2 /*return*/];
-                        }
-                        // wait for all tabs to be ready
-                        return [4 /*yield*/, Promise.all(this.tabs.map(function (tab) { return tab.componentOnReady(); }))];
-                    case 1:
-                        // wait for all tabs to be ready
-                        _a.sent();
-                        return [4 /*yield*/, this.select(this.tabs[0])];
-                    case 2:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
     class_2.prototype.setActive = function (selectedTab) {
         if (this.transitioning) {
             return Promise.reject('transitioning already happening');
@@ -330,11 +314,18 @@ var Tabs = /** @class */ (function () {
         var leavingTab = this.selectedTab;
         return selectedTab !== undefined && selectedTab !== leavingTab && !this.transitioning;
     };
+    Object.defineProperty(class_2.prototype, "tabs", {
+        get: function () {
+            return Array.from(this.el.querySelectorAll('ion-tab'));
+        },
+        enumerable: true,
+        configurable: true
+    });
     class_2.prototype.render = function () {
-        return (Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["H"], { onIonTabButtonClick: this.onTabClicked }, Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", { name: "top" }), Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "tabs-inner" }, Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null)), Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", { name: "bottom" })));
+        return (Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["H"], { onIonTabButtonClick: this.onTabClicked }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", { name: "top" }), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "tabs-inner" }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null)), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", { name: "bottom" })));
     };
     Object.defineProperty(class_2.prototype, "el", {
-        get: function () { return Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
+        get: function () { return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
         enumerable: true,
         configurable: true
     });

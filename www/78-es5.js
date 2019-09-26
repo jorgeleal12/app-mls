@@ -11,8 +11,8 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_virtual_scroll", function() { return VirtualScroll; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm-es5/core-13ed1ad7.js");
-/* harmony import */ var _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-bb99b659.js */ "./node_modules/@ionic/core/dist/esm-es5/config-bb99b659.js");
+/* harmony import */ var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-c02a05e9.js */ "./node_modules/@ionic/core/dist/esm-es5/core-c02a05e9.js");
+/* harmony import */ var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-503c2549.js */ "./node_modules/@ionic/core/dist/esm-es5/config-503c2549.js");
 
 
 
@@ -276,7 +276,7 @@ var positionForIndex = function (index, cells, heightIndex) {
 var VirtualScroll = /** @class */ (function () {
     function class_1(hostRef) {
         var _this = this;
-        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
         this.range = { offset: 0, length: 0 };
         this.viewportHeight = 0;
         this.cells = [];
@@ -327,7 +327,7 @@ var VirtualScroll = /** @class */ (function () {
         this.calcCells();
         this.updateVirtualScroll();
     };
-    class_1.prototype.componentDidLoad = function () {
+    class_1.prototype.connectedCallback = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var contentEl, _a;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_b) {
@@ -335,17 +335,14 @@ var VirtualScroll = /** @class */ (function () {
                     case 0:
                         contentEl = this.el.closest('ion-content');
                         if (!contentEl) {
-                            console.error('virtual-scroll must be used inside ion-content');
+                            console.error('<ion-virtual-scroll> must be used inside an <ion-content>');
                             return [2 /*return*/];
                         }
-                        return [4 /*yield*/, contentEl.componentOnReady()];
-                    case 1:
-                        _b.sent();
-                        this.contentEl = contentEl;
                         _a = this;
                         return [4 /*yield*/, contentEl.getScrollElement()];
-                    case 2:
+                    case 1:
                         _a.scrollEl = _b.sent();
+                        this.contentEl = contentEl;
                         this.calcCells();
                         this.updateState();
                         return [2 /*return*/];
@@ -356,7 +353,7 @@ var VirtualScroll = /** @class */ (function () {
     class_1.prototype.componentDidUpdate = function () {
         this.updateState();
     };
-    class_1.prototype.componentDidUnload = function () {
+    class_1.prototype.disconnectedCallback = function () {
         this.scrollEl = undefined;
     };
     class_1.prototype.onResize = function () {
@@ -428,8 +425,8 @@ var VirtualScroll = /** @class */ (function () {
             this.timerUpdate = undefined;
         }
         // schedule DOM operations into the stencil queue
-        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["f"])(this.readVS.bind(this));
-        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["w"])(this.writeVS.bind(this));
+        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["f"])(this.readVS.bind(this));
+        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["w"])(this.writeVS.bind(this));
     };
     class_1.prototype.readVS = function () {
         var _a = this, contentEl = _a.contentEl, scrollEl = _a.scrollEl, el = _a.el;
@@ -564,12 +561,12 @@ var VirtualScroll = /** @class */ (function () {
     };
     class_1.prototype.render = function () {
         var _this = this;
-        return (Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["H"], { style: {
+        return (Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["H"], { style: {
                 height: this.totalHeight + "px"
-            } }, this.renderItem && (Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])(VirtualProxy, { dom: this.virtualDom }, this.virtualDom.map(function (node) { return _this.renderVirtualNode(node); })))));
+            } }, this.renderItem && (Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])(VirtualProxy, { dom: this.virtualDom }, this.virtualDom.map(function (node) { return _this.renderVirtualNode(node); })))));
     };
     Object.defineProperty(class_1.prototype, "el", {
-        get: function () { return Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
+        get: function () { return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
         enumerable: true,
         configurable: true
     });

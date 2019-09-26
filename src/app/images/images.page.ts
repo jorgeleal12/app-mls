@@ -35,14 +35,11 @@ export class ImagesPage implements OnInit {
 
 
   photo_service() {
-
     let params = {
       type_network: this.type_network
     }
-
     this.tasksService.SelectImage(this.data.idodi, this.idservice)
       .then(tasks => {
-        console.log(tasks)
         this.PhotoServices = tasks
         this.propCount = Object.keys(tasks).length;
 
@@ -51,13 +48,9 @@ export class ImagesPage implements OnInit {
         } else {
 
           this.LoginServiceService.photos_service(params).subscribe(result => {
-
-
             this.photos_services = result.response
-
             for (const prop in this.photos_services) {
-
-              this.tasksService.InsertImage(this.data.idodi, this.photos_services[prop])
+              this.tasksService.InsertImage(this.data.idodi, this.photos_services[prop], this.idservice)
                 .then(tasks => {
                   console.log(tasks)
                 })
@@ -76,12 +69,6 @@ export class ImagesPage implements OnInit {
       .catch(error => {
         console.error(error);
       });
-
-
-
-
-
-
   }
 
   photos_add(photos_service) {
@@ -122,12 +109,6 @@ export class ImagesPage implements OnInit {
       });
 
     modal.onDidDismiss().then((detail) => {
-
-      // if (detail !== null) {
-      //     this.idbuilder = detail.data.data.idbuilder
-      //     this.name_builder = detail.data.data.name_builder
-      //     this.state_builder = detail.data.data.name_state
-      // }
     });
 
     await modal.present();

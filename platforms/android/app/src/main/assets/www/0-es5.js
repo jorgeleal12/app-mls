@@ -59,9 +59,9 @@ var detachComponent = function (delegate, element) {
 
 /***/ }),
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/index-eb64bc48.js":
+/***/ "./node_modules/@ionic/core/dist/esm-es5/index-a15151df.js":
 /*!*****************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/index-eb64bc48.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm-es5/index-a15151df.js ***!
   \*****************************************************************/
 /*! exports provided: d, l, s, t */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -73,17 +73,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return setPageHidden; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return transition; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm-es5/core-13ed1ad7.js");
+/* harmony import */ var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-c02a05e9.js */ "./node_modules/@ionic/core/dist/esm-es5/core-c02a05e9.js");
 /* harmony import */ var _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants-94c4865f.js */ "./node_modules/@ionic/core/dist/esm-es5/constants-94c4865f.js");
 var _this = undefined;
 
 
 
-var iosTransitionAnimation = function () { return __webpack_require__.e(/*! import() | ios-transition-21bd4e69-js */ "ios-transition-21bd4e69-js").then(__webpack_require__.bind(null, /*! ./ios.transition-21bd4e69.js */ "./node_modules/@ionic/core/dist/esm-es5/ios.transition-21bd4e69.js")); };
-var mdTransitionAnimation = function () { return __webpack_require__.e(/*! import() | md-transition-1419c53a-js */ "md-transition-1419c53a-js").then(__webpack_require__.bind(null, /*! ./md.transition-1419c53a.js */ "./node_modules/@ionic/core/dist/esm-es5/md.transition-1419c53a.js")); };
+var iosTransitionAnimation = function () { return __webpack_require__.e(/*! import() | ios-transition-96fe915f-js */ "ios-transition-96fe915f-js").then(__webpack_require__.bind(null, /*! ./ios.transition-96fe915f.js */ "./node_modules/@ionic/core/dist/esm-es5/ios.transition-96fe915f.js")); };
+var mdTransitionAnimation = function () { return __webpack_require__.e(/*! import() | md-transition-bf76a31e-js */ "md-transition-bf76a31e-js").then(__webpack_require__.bind(null, /*! ./md.transition-bf76a31e.js */ "./node_modules/@ionic/core/dist/esm-es5/md.transition-bf76a31e.js")); };
 var transition = function (opts) {
     return new Promise(function (resolve, reject) {
-        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () {
+        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["w"])(function () {
             beforeTransition(opts);
             runTransition(opts).then(function (result) {
                 if (result.animation) {

@@ -11,14 +11,14 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_popover", function() { return Popover; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm-es5/core-13ed1ad7.js");
-/* harmony import */ var _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-bb99b659.js */ "./node_modules/@ionic/core/dist/esm-es5/config-bb99b659.js");
-/* harmony import */ var _animation_5559213c_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./animation-5559213c.js */ "./node_modules/@ionic/core/dist/esm-es5/animation-5559213c.js");
+/* harmony import */ var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-c02a05e9.js */ "./node_modules/@ionic/core/dist/esm-es5/core-c02a05e9.js");
+/* harmony import */ var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-503c2549.js */ "./node_modules/@ionic/core/dist/esm-es5/config-503c2549.js");
+/* harmony import */ var _animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./animation-d0becaea.js */ "./node_modules/@ionic/core/dist/esm-es5/animation-d0becaea.js");
 /* harmony import */ var _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./constants-94c4865f.js */ "./node_modules/@ionic/core/dist/esm-es5/constants-94c4865f.js");
-/* harmony import */ var _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./overlays-10cf2041.js */ "./node_modules/@ionic/core/dist/esm-es5/overlays-10cf2041.js");
+/* harmony import */ var _overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./overlays-518a98a4.js */ "./node_modules/@ionic/core/dist/esm-es5/overlays-518a98a4.js");
 /* harmony import */ var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./theme-353a032e.js */ "./node_modules/@ionic/core/dist/esm-es5/theme-353a032e.js");
 /* harmony import */ var _framework_delegate_00265c49_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./framework-delegate-00265c49.js */ "./node_modules/@ionic/core/dist/esm-es5/framework-delegate-00265c49.js");
-/* harmony import */ var _index_eb64bc48_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./index-eb64bc48.js */ "./node_modules/@ionic/core/dist/esm-es5/index-eb64bc48.js");
+/* harmony import */ var _index_a15151df_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./index-a15151df.js */ "./node_modules/@ionic/core/dist/esm-es5/index-a15151df.js");
 
 
 
@@ -106,9 +106,9 @@ var iosEnterAnimation = function (baseEl, ev) {
         contentEl.style.left = "calc(" + popoverCSS.left + "px - var(--ion-safe-area-right, 0px))";
     }
     contentEl.style.transformOrigin = originY + ' ' + originX;
-    var baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    var backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    var wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    var baseAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    var backdropAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    var wrapperAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
     backdropAnimation
         .addElement(baseEl.querySelector('ion-backdrop'))
         .fromTo('opacity', 0.01, 0.08);
@@ -126,9 +126,9 @@ var POPOVER_IOS_BODY_PADDING = 5;
  * iOS Popover Leave Animation
  */
 var iosLeaveAnimation = function (baseEl) {
-    var baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    var backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    var wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    var baseAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    var backdropAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    var wrapperAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
     backdropAnimation
         .addElement(baseEl.querySelector('ion-backdrop'))
         .fromTo('opacity', 0.08, 0);
@@ -200,11 +200,11 @@ var mdEnterAnimation = function (baseEl, ev) {
     else if (targetTop + targetHeight + contentHeight > bodyHeight) {
         contentEl.style.bottom = POPOVER_MD_BODY_PADDING + 'px';
     }
-    var baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    var backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    var wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    var contentAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    var viewportAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    var baseAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    var backdropAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    var wrapperAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    var contentAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    var viewportAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
     backdropAnimation
         .addElement(baseEl.querySelector('ion-backdrop'))
         .fromTo('opacity', 0.01, 0.32);
@@ -232,9 +232,9 @@ var mdEnterAnimation = function (baseEl, ev) {
  * Md Popover Leave Animation
  */
 var mdLeaveAnimation = function (baseEl) {
-    var baseAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    var backdropAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    var wrapperAnimation = Object(_animation_5559213c_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    var baseAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    var backdropAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    var wrapperAnimation = Object(_animation_d0becaea_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
     backdropAnimation
         .addElement(baseEl.querySelector('ion-backdrop'))
         .fromTo('opacity', 0.32, 0);
@@ -250,9 +250,9 @@ var mdLeaveAnimation = function (baseEl) {
 var Popover = /** @class */ (function () {
     function class_1(hostRef) {
         var _this = this;
-        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
         this.presented = false;
-        this.mode = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
+        this.mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
         /**
          * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
          */
@@ -281,7 +281,7 @@ var Popover = /** @class */ (function () {
             _this.dismiss();
         };
         this.onBackdropTap = function () {
-            _this.dismiss(undefined, _overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_5__["B"]);
+            _this.dismiss(undefined, _overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_5__["B"]);
         };
         this.onLifecycle = function (modalEvent) {
             var el = _this.usersElement;
@@ -295,10 +295,11 @@ var Popover = /** @class */ (function () {
                 el.dispatchEvent(event);
             }
         };
-        this.didPresent = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionPopoverDidPresent", 7);
-        this.willPresent = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionPopoverWillPresent", 7);
-        this.willDismiss = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionPopoverWillDismiss", 7);
-        this.didDismiss = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionPopoverDidDismiss", 7);
+        Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_5__["d"])(this.el);
+        this.didPresent = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionPopoverDidPresent", 7);
+        this.willPresent = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionPopoverWillPresent", 7);
+        this.willDismiss = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionPopoverWillDismiss", 7);
+        this.didDismiss = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionPopoverDidDismiss", 7);
     }
     /**
      * Present the popover overlay after it has been created.
@@ -321,10 +322,10 @@ var Popover = /** @class */ (function () {
                         return [4 /*yield*/, Object(_framework_delegate_00265c49_js__WEBPACK_IMPORTED_MODULE_7__["a"])(this.delegate, container, this.component, ['popover-viewport', this.el['s-sc']], data)];
                     case 1:
                         _a.usersElement = _b.sent();
-                        return [4 /*yield*/, Object(_index_eb64bc48_js__WEBPACK_IMPORTED_MODULE_8__["d"])(this.usersElement)];
+                        return [4 /*yield*/, Object(_index_a15151df_js__WEBPACK_IMPORTED_MODULE_8__["d"])(this.usersElement)];
                     case 2:
                         _b.sent();
-                        return [2 /*return*/, Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_5__["d"])(this, 'popoverEnter', iosEnterAnimation, mdEnterAnimation, this.event)];
+                        return [2 /*return*/, Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_5__["e"])(this, 'popoverEnter', iosEnterAnimation, mdEnterAnimation, this.event)];
                 }
             });
         });
@@ -340,7 +341,7 @@ var Popover = /** @class */ (function () {
             var shouldDismiss;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_5__["e"])(this, data, role, 'popoverLeave', iosLeaveAnimation, mdLeaveAnimation, this.event)];
+                    case 0: return [4 /*yield*/, Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_5__["f"])(this, data, role, 'popoverLeave', iosLeaveAnimation, mdLeaveAnimation, this.event)];
                     case 1:
                         shouldDismiss = _a.sent();
                         if (!shouldDismiss) return [3 /*break*/, 3];
@@ -357,29 +358,29 @@ var Popover = /** @class */ (function () {
      * Returns a promise that resolves when the popover did dismiss.
      */
     class_1.prototype.onDidDismiss = function () {
-        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_5__["f"])(this.el, 'ionPopoverDidDismiss');
+        return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_5__["g"])(this.el, 'ionPopoverDidDismiss');
     };
     /**
      * Returns a promise that resolves when the popover will dismiss.
      */
     class_1.prototype.onWillDismiss = function () {
-        return Object(_overlays_10cf2041_js__WEBPACK_IMPORTED_MODULE_5__["f"])(this.el, 'ionPopoverWillDismiss');
+        return Object(_overlays_518a98a4_js__WEBPACK_IMPORTED_MODULE_5__["g"])(this.el, 'ionPopoverWillDismiss');
     };
     class_1.prototype.render = function () {
         var _a;
-        var mode = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
+        var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
         var onLifecycle = this.onLifecycle;
-        return (Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["H"], { "aria-modal": "true", "no-router": true, style: {
+        return (Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["H"], { "aria-modal": "true", "no-router": true, style: {
                 zIndex: "" + (20000 + this.overlayIndex),
-            }, class: Object.assign({}, Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_6__["g"])(this.cssClass), (_a = {}, _a[mode] = true, _a['popover-translucent'] = this.translucent, _a)), onIonPopoverDidPresent: onLifecycle, onIonPopoverWillPresent: onLifecycle, onIonPopoverWillDismiss: onLifecycle, onIonPopoverDidDismiss: onLifecycle, onIonDismiss: this.onDismiss, onIonBackdropTap: this.onBackdropTap }, Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-backdrop", { tappable: this.backdropDismiss, visible: this.showBackdrop }), Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "popover-wrapper" }, Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "popover-arrow" }), Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "popover-content" }))));
+            }, class: Object.assign({}, Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_6__["g"])(this.cssClass), (_a = {}, _a[mode] = true, _a['popover-translucent'] = this.translucent, _a)), onIonPopoverDidPresent: onLifecycle, onIonPopoverWillPresent: onLifecycle, onIonPopoverWillDismiss: onLifecycle, onIonPopoverDidDismiss: onLifecycle, onIonDismiss: this.onDismiss, onIonBackdropTap: this.onBackdropTap }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-backdrop", { tappable: this.backdropDismiss, visible: this.showBackdrop }), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "popover-wrapper" }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "popover-arrow" }), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "popover-content" }))));
     };
     Object.defineProperty(class_1.prototype, "el", {
-        get: function () { return Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
+        get: function () { return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(class_1, "style", {
-        get: function () { return ".sc-ion-popover-md-h{--background:var(--ion-background-color,#fff);--min-width:0;--min-height:0;--max-width:auto;--height:auto;left:0;right:0;top:0;bottom:0;display:-ms-flexbox;display:flex;position:fixed;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;color:var(--ion-text-color,#000);z-index:1000}.overlay-hidden.sc-ion-popover-md-h{display:none}.popover-wrapper.sc-ion-popover-md{opacity:0;z-index:10}.popover-content.sc-ion-popover-md{display:-ms-flexbox;display:flex;position:absolute;-ms-flex-direction:column;flex-direction:column;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);background:var(--background);-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow);overflow:auto;z-index:10}.popover-viewport.sc-ion-popover-md{--ion-safe-area-top:0px;--ion-safe-area-right:0px;--ion-safe-area-bottom:0px;--ion-safe-area-left:0px}.sc-ion-popover-md-h{--width:250px;--max-height:90%;--box-shadow:0 5px 5px -3px rgba(0,0,0,0.2),0 8px 10px 1px rgba(0,0,0,0.14),0 3px 14px 2px rgba(0,0,0,0.12)}.popover-content.sc-ion-popover-md{border-radius:4px;-webkit-transform-origin:left top;transform-origin:left top}[dir=rtl].sc-ion-popover-md-h .popover-content.sc-ion-popover-md, [dir=rtl] .sc-ion-popover-md-h .popover-content.sc-ion-popover-md, [dir=rtl].sc-ion-popover-md .popover-content.sc-ion-popover-md{-webkit-transform-origin:right top;transform-origin:right top}.popover-viewport.sc-ion-popover-md{-webkit-transition-delay:.1s;transition-delay:.1s}"; },
+        get: function () { return ".sc-ion-popover-md-h{--background:var(--ion-background-color,#fff);--min-width:0;--min-height:0;--max-width:auto;--height:auto;left:0;right:0;top:0;bottom:0;display:-ms-flexbox;display:flex;position:fixed;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;color:var(--ion-text-color,#000);z-index:1001}.overlay-hidden.sc-ion-popover-md-h{display:none}.popover-wrapper.sc-ion-popover-md{opacity:0;z-index:10}.popover-content.sc-ion-popover-md{display:-ms-flexbox;display:flex;position:absolute;-ms-flex-direction:column;flex-direction:column;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);background:var(--background);-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow);overflow:auto;z-index:10}.popover-viewport.sc-ion-popover-md{--ion-safe-area-top:0px;--ion-safe-area-right:0px;--ion-safe-area-bottom:0px;--ion-safe-area-left:0px}.sc-ion-popover-md-h{--width:250px;--max-height:90%;--box-shadow:0 5px 5px -3px rgba(0,0,0,0.2),0 8px 10px 1px rgba(0,0,0,0.14),0 3px 14px 2px rgba(0,0,0,0.12)}.popover-content.sc-ion-popover-md{border-radius:4px;-webkit-transform-origin:left top;transform-origin:left top}[dir=rtl].sc-ion-popover-md-h .popover-content.sc-ion-popover-md, [dir=rtl] .sc-ion-popover-md-h .popover-content.sc-ion-popover-md, [dir=rtl].sc-ion-popover-md .popover-content.sc-ion-popover-md{-webkit-transform-origin:right top;transform-origin:right top}.popover-viewport.sc-ion-popover-md{-webkit-transition-delay:.1s;transition-delay:.1s}"; },
         enumerable: true,
         configurable: true
     });

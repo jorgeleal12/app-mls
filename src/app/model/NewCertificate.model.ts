@@ -2,7 +2,7 @@ export class NewCertificate {
     public idservice_certifications: any;
     public number: any;
     public id_number: any;
-    public idemployees: any;
+    public id_user: any;
     public data: any;
     public odi_idodi: any;
     public obssuper: any;

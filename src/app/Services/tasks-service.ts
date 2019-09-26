@@ -23,9 +23,9 @@ export class TasksService {
     return this.db.executeSql(sql, []);
   }
 
-  InsertImage(odi, image) {
+  InsertImage(odi, image, idservice) {
     let sql = 'INSERT INTO image(idphotos,name_photo, actual,quantity,min,odi_idodi,idservice_certifications) VALUES(?,?,?,?,?,?,?)';
-    return this.db.executeSql(sql, [image.idphotos, image.name_photo, 0, image.quantity, image.min, odi, 12]);
+    return this.db.executeSql(sql, [image.idphotos, image.name_photo, 0, image.quantity, image.min, odi, idservice]);
   }
 
   SelectImage(odi_idodi, idservice) {

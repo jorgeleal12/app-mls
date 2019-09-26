@@ -11,8 +11,8 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_textarea", function() { return Textarea; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm-es5/core-13ed1ad7.js");
-/* harmony import */ var _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-bb99b659.js */ "./node_modules/@ionic/core/dist/esm-es5/config-bb99b659.js");
+/* harmony import */ var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-c02a05e9.js */ "./node_modules/@ionic/core/dist/esm-es5/core-c02a05e9.js");
+/* harmony import */ var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-503c2549.js */ "./node_modules/@ionic/core/dist/esm-es5/config-503c2549.js");
 /* harmony import */ var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./theme-353a032e.js */ "./node_modules/@ionic/core/dist/esm-es5/theme-353a032e.js");
 /* harmony import */ var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./helpers-c90aaa66.js */ "./node_modules/@ionic/core/dist/esm-es5/helpers-c90aaa66.js");
 
@@ -23,7 +23,7 @@ __webpack_require__.r(__webpack_exports__);
 var Textarea = /** @class */ (function () {
     function class_1(hostRef) {
         var _this = this;
-        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
         this.inputId = "ion-input-" + textareaIds++;
         this.didBlurAfterEdit = false;
         this.hasFocus = false;
@@ -91,13 +91,11 @@ var Textarea = /** @class */ (function () {
         this.onKeyDown = function () {
             _this.checkClearOnEdit();
         };
-        this.ionChange = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionChange", 7);
-        this.ionInput = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionInput", 7);
-        this.ionStyle = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionStyle", 7);
-        this.ionBlur = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionBlur", 7);
-        this.ionFocus = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionFocus", 7);
-        this.ionInputDidLoad = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionInputDidLoad", 7);
-        this.ionInputDidUnload = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionInputDidUnload", 7);
+        this.ionChange = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionChange", 7);
+        this.ionInput = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionInput", 7);
+        this.ionStyle = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionStyle", 7);
+        this.ionBlur = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionBlur", 7);
+        this.ionFocus = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionFocus", 7);
     }
     class_1.prototype.debounceChanged = function () {
         this.ionChange = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_4__["d"])(this.ionChange, this.debounce);
@@ -118,26 +116,34 @@ var Textarea = /** @class */ (function () {
         this.emitStyle();
         this.ionChange.emit({ value: value });
     };
-    class_1.prototype.componentWillLoad = function () {
+    class_1.prototype.connectedCallback = function () {
         this.emitStyle();
+        this.debounceChanged();
+        {
+            this.el.dispatchEvent(new CustomEvent('ionInputDidLoad', {
+                detail: this.el
+            }));
+        }
+    };
+    class_1.prototype.disconnectedCallback = function () {
+        {
+            document.dispatchEvent(new CustomEvent('ionInputDidUnload', {
+                detail: this.el
+            }));
+        }
     };
     class_1.prototype.componentDidLoad = function () {
-        this.debounceChanged();
         this.runAutoGrow();
-        this.ionInputDidLoad.emit();
     };
     // TODO: performance hit, this cause layout thrashing
     class_1.prototype.runAutoGrow = function () {
         var nativeInput = this.nativeInput;
         if (nativeInput && this.autoGrow) {
-            Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["f"])(function () {
+            Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["f"])(function () {
                 nativeInput.style.height = 'inherit';
                 nativeInput.style.height = nativeInput.scrollHeight + 'px';
             });
         }
-    };
-    class_1.prototype.componentDidUnload = function () {
-        this.ionInputDidUnload.emit();
     };
     /**
      * Sets focus on the specified `ion-textarea`. Use this method instead of the global
@@ -201,17 +207,17 @@ var Textarea = /** @class */ (function () {
     class_1.prototype.render = function () {
         var _a;
         var _this = this;
-        var mode = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
+        var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
         var value = this.getValue();
         var labelId = this.inputId + '-lbl';
         var label = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_4__["f"])(this.el);
         if (label) {
             label.id = labelId;
         }
-        return (Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["H"], { "aria-disabled": this.disabled ? 'true' : null, class: Object.assign({}, Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color), (_a = {}, _a[mode] = true, _a)) }, Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("textarea", { class: "native-textarea", ref: function (el) { return _this.nativeInput = el; }, autoCapitalize: this.autocapitalize, autoFocus: this.autofocus, disabled: this.disabled, maxLength: this.maxlength, minLength: this.minlength, name: this.name, placeholder: this.placeholder || '', readOnly: this.readonly, required: this.required, spellCheck: this.spellcheck, cols: this.cols, rows: this.rows, wrap: this.wrap, onInput: this.onInput, onBlur: this.onBlur, onFocus: this.onFocus, onKeyDown: this.onKeyDown }, value)));
+        return (Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["H"], { "aria-disabled": this.disabled ? 'true' : null, class: Object.assign({}, Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color), (_a = {}, _a[mode] = true, _a)) }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])("textarea", { class: "native-textarea", ref: function (el) { return _this.nativeInput = el; }, autoCapitalize: this.autocapitalize, autoFocus: this.autofocus, disabled: this.disabled, maxLength: this.maxlength, minLength: this.minlength, name: this.name, placeholder: this.placeholder || '', readOnly: this.readonly, required: this.required, spellCheck: this.spellcheck, cols: this.cols, rows: this.rows, wrap: this.wrap, onInput: this.onInput, onBlur: this.onBlur, onFocus: this.onFocus, onKeyDown: this.onKeyDown }, value)));
     };
     Object.defineProperty(class_1.prototype, "el", {
-        get: function () { return Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
+        get: function () { return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
         enumerable: true,
         configurable: true
     });

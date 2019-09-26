@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-icon slot="icon-only" name="arrow-back" (click)="back()"></ion-icon>
     </ion-buttons>
-    <ion-title text-center class="center">Certificados</ion-title>
+    <ion-title text-center class="center">Lista de Certificados</ion-title>
 
     <ion-buttons slot="end">
       <ion-button>
@@ -16,7 +16,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item lines="none" *ngFor="let certificate of certificates">
+    <ion-item lines="none" *ngFor="let certificate of certificates" (click)="ModalCertificate(certificate)">
       <ion-label>
         <ion-text>
           <h2>{{certificate.number}}</h2>
@@ -28,7 +28,7 @@
       </ion-label>
     </ion-item>
   </ion-list>
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed" (click)="ModalCertificate()">
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed" (click)="ModalNewCertificate()">
     <ion-fab-button>
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

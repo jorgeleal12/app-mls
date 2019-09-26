@@ -11,10 +11,12 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_radio", function() { return Radio; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_radio_group", function() { return RadioGroup; });
-/* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm/core-13ed1ad7.js");
-/* harmony import */ var _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-bb99b659.js */ "./node_modules/@ionic/core/dist/esm/config-bb99b659.js");
+/* harmony import */ var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-c02a05e9.js */ "./node_modules/@ionic/core/dist/esm/core-c02a05e9.js");
+/* harmony import */ var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-503c2549.js */ "./node_modules/@ionic/core/dist/esm/config-503c2549.js");
 /* harmony import */ var _theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./theme-353a032e.js */ "./node_modules/@ionic/core/dist/esm/theme-353a032e.js");
 /* harmony import */ var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers-c90aaa66.js */ "./node_modules/@ionic/core/dist/esm/helpers-c90aaa66.js");
+/* harmony import */ var _watch_options_56e2e31f_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./watch-options-56e2e31f.js */ "./node_modules/@ionic/core/dist/esm/watch-options-56e2e31f.js");
+
 
 
 
@@ -22,7 +24,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const Radio = class {
     constructor(hostRef) {
-        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.inputId = `ion-rb-${radioButtonIds++}`;
         /**
          * The name of the control, which is submitted with the form data.
@@ -50,13 +52,11 @@ const Radio = class {
                 this.checked = true;
             }
         };
-        this.ionRadioDidLoad = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionRadioDidLoad", 7);
-        this.ionRadioDidUnload = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionRadioDidUnload", 7);
-        this.ionStyle = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionStyle", 7);
-        this.ionSelect = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSelect", 7);
-        this.ionDeselect = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionDeselect", 7);
-        this.ionFocus = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
-        this.ionBlur = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
+        this.ionStyle = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionStyle", 7);
+        this.ionSelect = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSelect", 7);
+        this.ionDeselect = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionDeselect", 7);
+        this.ionFocus = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
+        this.ionBlur = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
     }
     colorChanged() {
         this.emitStyle();
@@ -79,12 +79,6 @@ const Radio = class {
         }
         this.emitStyle();
     }
-    componentDidLoad() {
-        this.ionRadioDidLoad.emit();
-    }
-    componentDidUnload() {
-        this.ionRadioDidUnload.emit();
-    }
     emitStyle() {
         this.ionStyle.emit({
             'radio-checked': this.checked,
@@ -93,15 +87,15 @@ const Radio = class {
     }
     render() {
         const { inputId, disabled, checked, color, el } = this;
-        const mode = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+        const mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
         const labelId = inputId + '-lbl';
         const label = Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__["f"])(el);
         if (label) {
             label.id = labelId;
         }
-        return (Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["H"], { onClick: this.onClick, role: "radio", "aria-disabled": disabled ? 'true' : null, "aria-checked": `${checked}`, "aria-labelledby": labelId, class: Object.assign({}, Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__["c"])(color), { [mode]: true, 'in-item': Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-item', el), 'interactive': true, 'radio-checked': checked, 'radio-disabled': disabled }) }, Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "radio-icon" }, Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "radio-inner" })), Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", { type: "button", onFocus: this.onFocus, onBlur: this.onBlur, disabled: disabled })));
+        return (Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], { onClick: this.onClick, role: "radio", "aria-disabled": disabled ? 'true' : null, "aria-checked": `${checked}`, "aria-labelledby": labelId, class: Object.assign({}, Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__["c"])(color), { [mode]: true, 'in-item': Object(_theme_353a032e_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-item', el), 'interactive': true, 'radio-checked': checked, 'radio-disabled': disabled }) }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "radio-icon" }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "radio-inner" })), Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", { type: "button", onFocus: this.onFocus, onBlur: this.onBlur, disabled: disabled })));
     }
-    get el() { return Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); }
+    get el() { return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); }
     static get watchers() { return {
         "color": ["colorChanged"],
         "checked": ["checkedChanged"],
@@ -113,10 +107,9 @@ let radioButtonIds = 0;
 
 const RadioGroup = class {
     constructor(hostRef) {
-        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.inputId = `ion-rg-${radioGroupIds++}`;
         this.labelId = `${this.inputId}-lbl`;
-        this.radios = [];
         /**
          * If `true`, the radios can be deselected.
          */
@@ -125,67 +118,69 @@ const RadioGroup = class {
          * The name of the control, which is submitted with the form data.
          */
         this.name = this.inputId;
-        this.ionChange = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
-    }
-    valueChanged(value) {
-        this.updateRadios();
-        this.ionChange.emit({ value });
-    }
-    onRadioDidLoad(ev) {
-        const radio = ev.target;
-        radio.name = this.name;
-        // add radio to internal list
-        this.radios.push(radio);
-        // this radio-group does not have a value
-        // but this radio is checked, so let's set the
-        // radio-group's value from the checked radio
-        if (this.value == null && radio.checked) {
-            this.value = radio.value;
-        }
-        else {
-            this.updateRadios();
-        }
-    }
-    onRadioDidUnload(ev) {
-        const index = this.radios.indexOf(ev.target);
-        if (index > -1) {
-            this.radios.splice(index, 1);
-        }
-    }
-    onRadioSelect(ev) {
-        const selectedRadio = ev.target;
-        if (selectedRadio) {
-            this.value = selectedRadio.value;
-        }
-    }
-    onRadioDeselect(ev) {
-        if (this.allowEmptySelection) {
+        this.onSelect = (ev) => {
+            const selectedRadio = ev.target;
+            if (selectedRadio) {
+                this.value = selectedRadio.value;
+            }
+        };
+        this.onDeselect = (ev) => {
             const selectedRadio = ev.target;
             if (selectedRadio) {
                 selectedRadio.checked = false;
                 this.value = undefined;
             }
-        }
+        };
+        this.ionChange = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
     }
-    componentDidLoad() {
+    valueChanged(value) {
+        this.updateRadios();
+        this.ionChange.emit({ value });
+    }
+    async connectedCallback() {
         // Get the list header if it exists and set the id
         // this is used to set aria-labelledby
-        let header = this.el.querySelector('ion-list-header');
-        if (!header) {
-            header = this.el.querySelector('ion-item-divider');
-        }
+        const el = this.el;
+        const header = el.querySelector('ion-list-header') || el.querySelector('ion-item-divider');
         if (header) {
             const label = header.querySelector('ion-label');
             if (label) {
                 this.labelId = label.id = this.name + '-lbl';
             }
         }
+        if (this.value === undefined) {
+            const radio = Object(_watch_options_56e2e31f_js__WEBPACK_IMPORTED_MODULE_4__["f"])(el, 'ion-radio');
+            if (radio !== undefined) {
+                await radio.componentOnReady();
+                if (this.value === undefined) {
+                    this.value = radio.value;
+                }
+            }
+        }
+        this.mutationO = Object(_watch_options_56e2e31f_js__WEBPACK_IMPORTED_MODULE_4__["w"])(el, 'ion-radio', newOption => {
+            if (newOption !== undefined) {
+                newOption.componentOnReady().then(() => {
+                    this.value = newOption.value;
+                });
+            }
+            else {
+                this.updateRadios();
+            }
+        });
         this.updateRadios();
     }
-    updateRadios() {
-        const value = this.value;
+    disconnectedCallback() {
+        if (this.mutationO) {
+            this.mutationO.disconnect();
+            this.mutationO = undefined;
+        }
+    }
+    async updateRadios() {
+        const { value } = this;
+        const radios = await this.getRadios();
         let hasChecked = false;
-        for (const radio of this.radios) {
+        // Walk the DOM in reverse order, since the last selected one wins!
+        for (const radio of radios) {
             if (!hasChecked && radio.value === value) {
                 // correct value for this radio
                 // but this radio isn't checked yet
@@ -199,11 +194,20 @@ const RadioGroup = class {
                 radio.checked = false;
             }
         }
+        // Reset value if
+        if (!hasChecked) {
+            this.value = undefined;
+        }
+    }
+    getRadios() {
+        return Promise.all(Array
+            .from(this.el.querySelectorAll('ion-radio'))
+            .map(r => r.componentOnReady()));
     }
     render() {
-        return (Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["H"], { role: "radiogroup", "aria-labelledby": this.labelId, class: Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this) }));
+        return (Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], { role: "radiogroup", "aria-labelledby": this.labelId, onIonSelect: this.onSelect, onIonDeselect: this.allowEmptySelection ? this.onDeselect : undefined, class: Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this) }));
     }
-    get el() { return Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); }
+    get el() { return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); }
     static get watchers() { return {
         "value": ["valueChanged"]
     }; }

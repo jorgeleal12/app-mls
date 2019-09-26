@@ -12,8 +12,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_slide", function() { return Slide; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_slides", function() { return Slides; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm-es5/core-13ed1ad7.js");
-/* harmony import */ var _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-bb99b659.js */ "./node_modules/@ionic/core/dist/esm-es5/config-bb99b659.js");
+/* harmony import */ var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-c02a05e9.js */ "./node_modules/@ionic/core/dist/esm-es5/core-c02a05e9.js");
+/* harmony import */ var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-503c2549.js */ "./node_modules/@ionic/core/dist/esm-es5/config-503c2549.js");
 /* harmony import */ var _helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers-c90aaa66.js */ "./node_modules/@ionic/core/dist/esm-es5/helpers-c90aaa66.js");
 
 
@@ -21,19 +21,12 @@ __webpack_require__.r(__webpack_exports__);
 
 var Slide = /** @class */ (function () {
     function class_1(hostRef) {
-        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
-        this.ionSlideChanged = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideChanged", 7);
+        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
     }
-    class_1.prototype.componentDidLoad = function () {
-        this.ionSlideChanged.emit();
-    };
-    class_1.prototype.componentDidUnload = function () {
-        this.ionSlideChanged.emit();
-    };
     class_1.prototype.render = function () {
         var _a;
-        var mode = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
-        return (Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["H"], { class: (_a = {},
+        var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
+        return (Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["H"], { class: (_a = {},
                 _a[mode] = true,
                 _a['swiper-slide'] = true,
                 _a['swiper-zoom-container'] = true,
@@ -49,8 +42,8 @@ var Slide = /** @class */ (function () {
 var Slides = /** @class */ (function () {
     function class_2(hostRef) {
         var _this = this;
-        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
-        this.didInit = false;
+        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+        this.swiperReady = false;
         this.swiper = new Promise(function (resolve) { _this.readySwiper = resolve; });
         /**
          * Options to pass to the swiper instance.
@@ -65,22 +58,22 @@ var Slides = /** @class */ (function () {
          * If `true`, show the scrollbar.
          */
         this.scrollbar = false;
-        this.ionSlidesDidLoad = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlidesDidLoad", 7);
-        this.ionSlideTap = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideTap", 7);
-        this.ionSlideDoubleTap = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideDoubleTap", 7);
-        this.ionSlideWillChange = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideWillChange", 7);
-        this.ionSlideDidChange = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideDidChange", 7);
-        this.ionSlideNextStart = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideNextStart", 7);
-        this.ionSlidePrevStart = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlidePrevStart", 7);
-        this.ionSlideNextEnd = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideNextEnd", 7);
-        this.ionSlidePrevEnd = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlidePrevEnd", 7);
-        this.ionSlideTransitionStart = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideTransitionStart", 7);
-        this.ionSlideTransitionEnd = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideTransitionEnd", 7);
-        this.ionSlideDrag = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideDrag", 7);
-        this.ionSlideReachStart = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideReachStart", 7);
-        this.ionSlideReachEnd = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideReachEnd", 7);
-        this.ionSlideTouchStart = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideTouchStart", 7);
-        this.ionSlideTouchEnd = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideTouchEnd", 7);
+        this.ionSlidesDidLoad = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlidesDidLoad", 7);
+        this.ionSlideTap = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideTap", 7);
+        this.ionSlideDoubleTap = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideDoubleTap", 7);
+        this.ionSlideWillChange = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideWillChange", 7);
+        this.ionSlideDidChange = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideDidChange", 7);
+        this.ionSlideNextStart = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideNextStart", 7);
+        this.ionSlidePrevStart = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlidePrevStart", 7);
+        this.ionSlideNextEnd = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideNextEnd", 7);
+        this.ionSlidePrevEnd = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlidePrevEnd", 7);
+        this.ionSlideTransitionStart = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideTransitionStart", 7);
+        this.ionSlideTransitionEnd = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideTransitionEnd", 7);
+        this.ionSlideDrag = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideDrag", 7);
+        this.ionSlideReachStart = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideReachStart", 7);
+        this.ionSlideReachEnd = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideReachEnd", 7);
+        this.ionSlideTouchStart = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideTouchStart", 7);
+        this.ionSlideTouchEnd = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionSlideTouchEnd", 7);
     }
     class_2.prototype.optionsChanged = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
@@ -88,7 +81,7 @@ var Slides = /** @class */ (function () {
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        if (!this.didInit) return [3 /*break*/, 3];
+                        if (!this.swiperReady) return [3 /*break*/, 3];
                         return [4 /*yield*/, this.getSwiper()];
                     case 1:
                         swiper = _a.sent();
@@ -102,28 +95,40 @@ var Slides = /** @class */ (function () {
             });
         });
     };
-    class_2.prototype.componentDidLoad = function () {
+    class_2.prototype.connectedCallback = function () {
         var _this = this;
+        var mut = this.mutationO = new MutationObserver(function () {
+            if (_this.swiperReady) {
+                _this.update();
+            }
+        });
+        mut.observe(this.el, {
+            childList: true,
+            subtree: true
+        });
         Object(_helpers_c90aaa66_js__WEBPACK_IMPORTED_MODULE_3__["a"])(function () { return _this.initSwiper(); });
     };
-    class_2.prototype.componentDidUnload = function () {
+    class_2.prototype.disconnectedCallback = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var swiper;
+            var _this = this;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.getSwiper()];
+                    case 0:
+                        if (this.mutationO) {
+                            this.mutationO.disconnect();
+                            this.mutationO = undefined;
+                        }
+                        return [4 /*yield*/, this.getSwiper()];
                     case 1:
                         swiper = _a.sent();
                         swiper.destroy(true, true);
+                        this.swiper = new Promise(function (resolve) { _this.readySwiper = resolve; });
+                        this.swiperReady = false;
                         return [2 /*return*/];
                 }
             });
         });
-    };
-    class_2.prototype.onSlideChanged = function () {
-        if (this.didInit) {
-            this.update();
-        }
     };
     /**
      * Update the underlying slider implementation. Call this if you've added or removed
@@ -134,9 +139,12 @@ var Slides = /** @class */ (function () {
             var swiper;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.getSwiper()];
+                    case 0: return [4 /*yield*/, Promise.all([
+                            this.getSwiper(),
+                            waitForSlides(this.el)
+                        ])];
                     case 1:
-                        swiper = _a.sent();
+                        swiper = (_a.sent())[0];
                         swiper.update();
                         return [2 /*return*/];
                 }
@@ -401,6 +409,18 @@ var Slides = /** @class */ (function () {
             });
         });
     };
+    /**
+     * Get the Swiper instance.
+     * Use this to access the full Swiper API.
+     * See https://idangero.us/swiper/api/ for all API options.
+     */
+    class_2.prototype.getSwiper = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                return [2 /*return*/, this.swiper];
+            });
+        });
+    };
     class_2.prototype.initSwiper = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var finalOptions, Swiper, swiper;
@@ -411,16 +431,16 @@ var Slides = /** @class */ (function () {
                         return [4 /*yield*/, __webpack_require__.e(/*! import() | swiper-bundle-8d61f7c5-js */ "swiper-bundle-8d61f7c5-js").then(__webpack_require__.bind(null, /*! ./swiper.bundle-8d61f7c5.js */ "./node_modules/@ionic/core/dist/esm-es5/swiper.bundle-8d61f7c5.js"))];
                     case 1:
                         Swiper = (_a.sent()).Swiper;
+                        return [4 /*yield*/, waitForSlides(this.el)];
+                    case 2:
+                        _a.sent();
                         swiper = new Swiper(this.el, finalOptions);
-                        this.didInit = true;
+                        this.swiperReady = true;
                         this.readySwiper(swiper);
                         return [2 /*return*/];
                 }
             });
         });
-    };
-    class_2.prototype.getSwiper = function () {
-        return this.swiper;
     };
     class_2.prototype.normalizeOptions = function () {
         var _this = this;
@@ -558,13 +578,13 @@ var Slides = /** @class */ (function () {
     class_2.prototype.render = function () {
         var _a;
         var _this = this;
-        var mode = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
-        return (Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["H"], { class: (_a = {},
+        var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
+        return (Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["H"], { class: (_a = {},
                 _a["" + mode] = true,
                 // Used internally for styling
                 _a["slides-" + mode] = true,
                 _a['swiper-container'] = true,
-                _a) }, Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "swiper-wrapper" }, Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null)), this.pager && Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "swiper-pagination", ref: function (el) { return _this.paginationEl = el; } }), this.scrollbar && Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "swiper-scrollbar", ref: function (el) { return _this.scrollbarEl = el; } })));
+                _a) }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "swiper-wrapper" }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null)), this.pager && Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "swiper-pagination", ref: function (el) { return _this.paginationEl = el; } }), this.scrollbar && Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])("div", { class: "swiper-scrollbar", ref: function (el) { return _this.scrollbarEl = el; } })));
     };
     Object.defineProperty(class_2, "assetsDirs", {
         get: function () { return ["swiper"]; },
@@ -572,7 +592,7 @@ var Slides = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(class_2.prototype, "el", {
-        get: function () { return Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
+        get: function () { return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
         enumerable: true,
         configurable: true
     });
@@ -592,6 +612,9 @@ var Slides = /** @class */ (function () {
     });
     return class_2;
 }());
+var waitForSlides = function (el) {
+    return Promise.all(Array.from(el.querySelectorAll('ion-slide')).map(function (s) { return s.componentOnReady(); }));
+};
 
 
 

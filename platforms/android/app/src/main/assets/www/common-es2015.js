@@ -332,9 +332,9 @@ const debounce = (func, wait = 0) => {
 
 /***/ }),
 
-/***/ "./node_modules/@ionic/core/dist/esm/index-cae2ca23.js":
+/***/ "./node_modules/@ionic/core/dist/esm/index-064a03a9.js":
 /*!*************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/index-cae2ca23.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm/index-064a03a9.js ***!
   \*************************************************************/
 /*! exports provided: s */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -419,7 +419,7 @@ const sanitizeElement = (element) => {
         return;
     }
     for (let i = element.attributes.length - 1; i >= 0; i--) {
-        const attribute = element.attributes[i];
+        const attribute = element.attributes.item(i);
         const attributeName = attribute.name;
         // remove non-allowed attribs
         if (!allowedAttributes.includes(attributeName.toLowerCase())) {
@@ -458,9 +458,9 @@ const blockedTags = ['script', 'style', 'iframe', 'meta', 'link', 'object', 'emb
 
 /***/ }),
 
-/***/ "./node_modules/@ionic/core/dist/esm/index-eb64bc48.js":
+/***/ "./node_modules/@ionic/core/dist/esm/index-a15151df.js":
 /*!*************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/index-eb64bc48.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm/index-a15151df.js ***!
   \*************************************************************/
 /*! exports provided: d, l, s, t */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -471,16 +471,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return lifecycle; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return setPageHidden; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return transition; });
-/* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm/core-13ed1ad7.js");
+/* harmony import */ var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-c02a05e9.js */ "./node_modules/@ionic/core/dist/esm/core-c02a05e9.js");
 /* harmony import */ var _constants_94c4865f_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants-94c4865f.js */ "./node_modules/@ionic/core/dist/esm/constants-94c4865f.js");
 
 
 
-const iosTransitionAnimation = () => __webpack_require__.e(/*! import() | ios-transition-21bd4e69-js */ "ios-transition-21bd4e69-js").then(__webpack_require__.bind(null, /*! ./ios.transition-21bd4e69.js */ "./node_modules/@ionic/core/dist/esm/ios.transition-21bd4e69.js"));
-const mdTransitionAnimation = () => __webpack_require__.e(/*! import() | md-transition-1419c53a-js */ "md-transition-1419c53a-js").then(__webpack_require__.bind(null, /*! ./md.transition-1419c53a.js */ "./node_modules/@ionic/core/dist/esm/md.transition-1419c53a.js"));
+const iosTransitionAnimation = () => __webpack_require__.e(/*! import() | ios-transition-96fe915f-js */ "ios-transition-96fe915f-js").then(__webpack_require__.bind(null, /*! ./ios.transition-96fe915f.js */ "./node_modules/@ionic/core/dist/esm/ios.transition-96fe915f.js"));
+const mdTransitionAnimation = () => __webpack_require__.e(/*! import() | md-transition-bf76a31e-js */ "md-transition-bf76a31e-js").then(__webpack_require__.bind(null, /*! ./md.transition-bf76a31e.js */ "./node_modules/@ionic/core/dist/esm/md.transition-bf76a31e.js"));
 const transition = (opts) => {
     return new Promise((resolve, reject) => {
-        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["w"])(() => {
+        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["w"])(() => {
             beforeTransition(opts);
             runTransition(opts).then(result => {
                 if (result.animation) {
@@ -723,6 +723,52 @@ const openURL = async (url, ev, direction) => {
         }
     }
     return false;
+};
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@ionic/core/dist/esm/watch-options-56e2e31f.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm/watch-options-56e2e31f.js ***!
+  \*********************************************************************/
+/*! exports provided: f, w */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return findCheckedOption; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return watchForOptions; });
+const watchForOptions = (containerEl, tagName, onChange) => {
+    const mutation = new MutationObserver(mutationList => {
+        onChange(getSelectedOption(mutationList, tagName));
+    });
+    mutation.observe(containerEl, {
+        childList: true,
+        subtree: true
+    });
+    return mutation;
+};
+const getSelectedOption = (mutationList, tagName) => {
+    let newOption;
+    mutationList.forEach(mut => {
+        // tslint:disable-next-line: prefer-for-of
+        for (let i = 0; i < mut.addedNodes.length; i++) {
+            newOption = findCheckedOption(mut.addedNodes[i], tagName) || newOption;
+        }
+    });
+    return newOption;
+};
+const findCheckedOption = (el, tagName) => {
+    if (el.nodeType !== 1) {
+        return undefined;
+    }
+    const options = (el.tagName === tagName.toUpperCase())
+        ? [el]
+        : Array.from(el.querySelectorAll(tagName));
+    return options.find((o) => o.checked === true);
 };
 
 

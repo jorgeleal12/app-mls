@@ -10,8 +10,8 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_virtual_scroll", function() { return VirtualScroll; });
-/* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm/core-13ed1ad7.js");
-/* harmony import */ var _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-bb99b659.js */ "./node_modules/@ionic/core/dist/esm/config-bb99b659.js");
+/* harmony import */ var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-c02a05e9.js */ "./node_modules/@ionic/core/dist/esm/core-c02a05e9.js");
+/* harmony import */ var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-503c2549.js */ "./node_modules/@ionic/core/dist/esm/config-503c2549.js");
 
 
 
@@ -268,7 +268,7 @@ const positionForIndex = (index, cells, heightIndex) => {
 
 const VirtualScroll = class {
     constructor(hostRef) {
-        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         this.range = { offset: 0, length: 0 };
         this.viewportHeight = 0;
         this.cells = [];
@@ -319,22 +319,21 @@ const VirtualScroll = class {
         this.calcCells();
         this.updateVirtualScroll();
     }
-    async componentDidLoad() {
+    async connectedCallback() {
         const contentEl = this.el.closest('ion-content');
         if (!contentEl) {
-            console.error('virtual-scroll must be used inside ion-content');
+            console.error('<ion-virtual-scroll> must be used inside an <ion-content>');
             return;
         }
-        await contentEl.componentOnReady();
-        this.contentEl = contentEl;
         this.scrollEl = await contentEl.getScrollElement();
+        this.contentEl = contentEl;
         this.calcCells();
         this.updateState();
     }
     componentDidUpdate() {
         this.updateState();
     }
-    componentDidUnload() {
+    disconnectedCallback() {
         this.scrollEl = undefined;
     }
     onResize() {
@@ -394,8 +393,8 @@ const VirtualScroll = class {
             this.timerUpdate = undefined;
         }
         // schedule DOM operations into the stencil queue
-        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["f"])(this.readVS.bind(this));
-        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["w"])(this.writeVS.bind(this));
+        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["f"])(this.readVS.bind(this));
+        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["w"])(this.writeVS.bind(this));
     }
     readVS() {
         const { contentEl, scrollEl, el } = this;
@@ -525,11 +524,11 @@ const VirtualScroll = class {
         }
     }
     render() {
-        return (Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["H"], { style: {
+        return (Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["H"], { style: {
                 height: `${this.totalHeight}px`
-            } }, this.renderItem && (Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["h"])(VirtualProxy, { dom: this.virtualDom }, this.virtualDom.map(node => this.renderVirtualNode(node))))));
+            } }, this.renderItem && (Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["h"])(VirtualProxy, { dom: this.virtualDom }, this.virtualDom.map(node => this.renderVirtualNode(node))))));
     }
-    get el() { return Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); }
+    get el() { return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); }
     static get watchers() { return {
         "itemHeight": ["itemsChanged"],
         "headerHeight": ["itemsChanged"],

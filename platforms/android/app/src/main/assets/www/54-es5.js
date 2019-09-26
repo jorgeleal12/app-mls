@@ -12,8 +12,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_reorder", function() { return Reorder; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_reorder_group", function() { return ReorderGroup; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-13ed1ad7.js */ "./node_modules/@ionic/core/dist/esm-es5/core-13ed1ad7.js");
-/* harmony import */ var _config_bb99b659_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-bb99b659.js */ "./node_modules/@ionic/core/dist/esm-es5/config-bb99b659.js");
+/* harmony import */ var _core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./core-c02a05e9.js */ "./node_modules/@ionic/core/dist/esm-es5/core-c02a05e9.js");
+/* harmony import */ var _config_503c2549_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config-503c2549.js */ "./node_modules/@ionic/core/dist/esm-es5/config-503c2549.js");
 /* harmony import */ var _haptic_4e92c885_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./haptic-4e92c885.js */ "./node_modules/@ionic/core/dist/esm-es5/haptic-4e92c885.js");
 
 
@@ -21,14 +21,14 @@ __webpack_require__.r(__webpack_exports__);
 
 var Reorder = /** @class */ (function () {
     function class_1(hostRef) {
-        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
     }
     class_1.prototype.onClick = function (ev) {
         ev.preventDefault();
         ev.stopImmediatePropagation();
     };
     class_1.prototype.render = function () {
-        return (Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["H"], { class: Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this) }, Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null, Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-icon", { name: "reorder", lazy: false, class: "reorder-icon" }))));
+        return (Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["H"], { class: Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this) }, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])("slot", null, Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])("ion-icon", { name: "reorder", lazy: false, class: "reorder-icon" }))));
     };
     Object.defineProperty(class_1, "style", {
         get: function () { return ":host([slot]){display:none;line-height:0;z-index:100}.reorder-icon{display:block;font-size:22px;font-size:34px;opacity:.4}"; },
@@ -39,7 +39,7 @@ var Reorder = /** @class */ (function () {
 }());
 var ReorderGroup = /** @class */ (function () {
     function class_2(hostRef) {
-        Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
+        Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["r"])(this, hostRef);
         this.lastToIndex = -1;
         this.cachedHeights = [];
         this.scrollElTop = 0;
@@ -52,14 +52,14 @@ var ReorderGroup = /** @class */ (function () {
          * If `true`, the reorder will be hidden.
          */
         this.disabled = true;
-        this.ionItemReorder = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionItemReorder", 7);
+        this.ionItemReorder = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["c"])(this, "ionItemReorder", 7);
     }
     class_2.prototype.disabledChanged = function () {
         if (this.gesture) {
             this.gesture.setDisabled(this.disabled);
         }
     };
-    class_2.prototype.componentDidLoad = function () {
+    class_2.prototype.connectedCallback = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
             var contentEl, _a, _b;
             var _this = this;
@@ -95,7 +95,7 @@ var ReorderGroup = /** @class */ (function () {
             });
         });
     };
-    class_2.prototype.componentDidUnload = function () {
+    class_2.prototype.disconnectedCallback = function () {
         this.onEnd();
         if (this.gesture) {
             this.gesture.destroy();
@@ -195,7 +195,6 @@ var ReorderGroup = /** @class */ (function () {
         selectedItem.style.transform = "translateY(" + deltaY + "px)";
     };
     class_2.prototype.onEnd = function () {
-        var _this = this;
         var selectedItemEl = this.selectedItemEl;
         this.state = 2 /* Complete */;
         if (!selectedItemEl) {
@@ -205,10 +204,7 @@ var ReorderGroup = /** @class */ (function () {
         var toIndex = this.lastToIndex;
         var fromIndex = indexForItem(selectedItemEl);
         if (toIndex === fromIndex) {
-            selectedItemEl.style.transition = 'transform 200ms ease-in-out';
-            selectedItemEl.style.transform = '';
-            selectedItemEl.classList.remove(ITEM_REORDER_SELECTED);
-            setTimeout(function () { return _this.completeSync(); }, 200);
+            this.completeSync();
         }
         else {
             this.ionItemReorder.emit({
@@ -292,15 +288,15 @@ var ReorderGroup = /** @class */ (function () {
     };
     class_2.prototype.render = function () {
         var _a;
-        var mode = Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
-        return (Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["H"], { class: (_a = {},
+        var mode = Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["d"])(this);
+        return (Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["h"])(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["H"], { class: (_a = {},
                 _a[mode] = true,
                 _a['reorder-enabled'] = !this.disabled,
                 _a['reorder-list-active'] = this.state !== 0 /* Idle */,
                 _a) }));
     };
     Object.defineProperty(class_2.prototype, "el", {
-        get: function () { return Object(_core_13ed1ad7_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
+        get: function () { return Object(_core_c02a05e9_js__WEBPACK_IMPORTED_MODULE_1__["e"])(this); },
         enumerable: true,
         configurable: true
     });

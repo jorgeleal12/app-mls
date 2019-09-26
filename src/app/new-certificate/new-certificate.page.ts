@@ -41,13 +41,18 @@ export class NewCertificatePage implements OnInit {
     this.data = navParams.get('data');
     this.idusers = localStorage.getItem("id")
 
-    this.NewCertificate.odi_idodi = this.data.idodi;
-    this.NewCertificate.idemployees = this.idusers
+    this.NewCertificate = navParams.get('certificate');
 
+    if (this.NewCertificate == undefined) {
+      this.NewCertificate = new NewCertificate();
+      this.NewCertificate.odi_idodi = this.data.idodi;
+      this.NewCertificate.id_user = this.idusers
+      this.NumberCertificate();
+    }
   }
 
   ngOnInit() {
-    this.NumberCertificate();
+
 
   }
 
@@ -66,7 +71,7 @@ export class NewCertificatePage implements OnInit {
     }
     this.loginServiceService.number(params).subscribe(result => {
       this.NewCertificate.number = result.response.number_ + 1;
-      this.NewCertificate.idemployees = result.response.idemployees;
+      this.NewCertificate.id_user = result.response.idemployees;
       this.NewCertificate.Number_cetificate_idNumber_cetificate = result.response.Number_cetificate_idNumber_cetificate;
 
 
@@ -114,7 +119,7 @@ export class NewCertificatePage implements OnInit {
   }
 
   save() {
-
+    console.log(this.NewCertificate)
     if (this.NewCertificate.idservice_certifications == undefined) {
 
       this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
@@ -133,61 +138,79 @@ export class NewCertificatePage implements OnInit {
 
     } else {
 
-      this.tasksService.SelectImage(this.data.idodi, this.NewCertificate.idservice_certifications)
-        .then(tasks => {
-          let actual = 0;
-          let totales = 0;
-          let images = [];
-          for (const prop in tasks) {
+      if (this.NewCertificate.state == 1 || this.NewCertificate.state == 3) {
 
-            actual += tasks[prop].actual;
-            totales += tasks[prop].min;
+        this.tasksService.SelectImage(this.data.idodi, this.NewCertificate.idservice_certifications)
+          .then(tasks => {
+            let actual = 0;
+            let totales = 0;
+            let images = [];
+            for (const prop in tasks) {
 
-            if (tasks[prop].actual < tasks[prop].min) {
+              actual += tasks[prop].actual;
+              totales += tasks[prop].min;
 
-              images.push(tasks[prop]);
+              if (tasks[prop].actual < tasks[prop].min) {
+                images.push(tasks[prop]);
+              }
+            }
+            this.messages = images;
+            if (actual < totales) {
+              this.ModalAlertImage(images)
+              return;
+            }
+            if (actual == 0 && this.NewCertificate.state == 1 || actual == 0 && this.NewCertificate.state == 3) {
+              this.ModalImage();
+              console.log('1')
+              return;
             }
 
-          }
+            this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
 
-          this.messages = images;
-          if (actual < totales) {
-            this.ModalAlertImage(images)
-            return;
-          }
-          if (actual == 0) {
-            this.ModalImage();
-            return;
-          }
-        })
-        .catch(error => {
-          console.error(error);
-        });
+              this.tasksService.delete(this.data.idodi, this.NewCertificate.idservice_certifications)
+                .then(tasks => {
+                })
+                .catch(error => {
+                  console.error(error);
+                });
 
-      this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
+              if (result.response == false) {
 
-        this.tasksService.delete(this.data.idodi, this.NewCertificate.idservice_certifications)
-          .then(tasks => {
-            console.log('error', tasks)
+                this.presentToast('Se guardo el Certificado')
+              }
+
+            }, error => {
+
+            })
+
           })
           .catch(error => {
             console.error(error);
           });
 
-        if (result.response == false) {
+      } else {
 
-          this.presentToast('Se guardo el Certificado')
-        }
+        this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
 
-      }, error => {
+          this.tasksService.delete(this.data.idodi, this.NewCertificate.idservice_certifications)
+            .then(tasks => {
+            })
+            .catch(error => {
+              console.error(error);
+            });
 
-      })
+          if (result.response == false) {
+
+            this.presentToast('Se guardo el Certificado1')
+          }
+
+        }, error => {
+
+        })
+      }
+
 
     }
-
-
-
-
   }
 
   delete() {

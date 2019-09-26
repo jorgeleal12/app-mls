@@ -269,8 +269,8 @@ var map = {
 		"common",
 		40
 	],
-	"./ion-nav_4.entry.js": [
-		"./node_modules/@ionic/core/dist/esm/ion-nav_4.entry.js",
+	"./ion-nav_5.entry.js": [
+		"./node_modules/@ionic/core/dist/esm/ion-nav_5.entry.js",
 		"common",
 		41
 	],
@@ -513,7 +513,7 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Certificados</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button>\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let certificate of certificates\">\n      <ion-label>\n        <ion-text>\n          <h2>{{certificate.number}}</h2>\n        </ion-text>\n        <ion-text>\n          <p>{{certificate.date}}</p>\n        </ion-text>\n        <p>Estado: {{certificate.name_state}}</p>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\" (click)=\"ModalCertificate()\">\n    <ion-fab-button>\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Lista de Certificados</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button>\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let certificate of certificates\" (click)=\"ModalCertificate(certificate)\">\n      <ion-label>\n        <ion-text>\n          <h2>{{certificate.number}}</h2>\n        </ion-text>\n        <ion-text>\n          <p>{{certificate.date}}</p>\n        </ion-text>\n        <p>Estado: {{certificate.name_state}}</p>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\" (click)=\"ModalNewCertificate()\">\n    <ion-fab-button>\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n</ion-content>"
 
 /***/ }),
 
@@ -546,7 +546,7 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Nuevo Certificado</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"save()\">\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list class=\"accordion-list\" no-padding>\n    <section class=\"acc-section\" (click)=\"setStep('expanded1')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/pngocean.com-id-wflsf.png\" alt=\"\">\n      </div>\n      <div class=\"info\">\n        <p class=\"title\">Certificado</p>\n        <p class=\"subtitle\">Información general</p>\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded1')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded1')}\">\n      <div [hidden]=\"div_hidden\">\n        <ion-grid>\n          <ion-row>\n            <ion-col size=\"12\">\n              <mat-form-field class=\"example-full-width\" style=\"margin-top: 10px;\">\n                <input matInput placeholder=\"Número de Certificado\" [(ngModel)]=\"NewCertificate.number\" readonly>\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Inspector\" [(ngModel)]=\"NewCertificate.obsins\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Revisor\" [(ngModel)]=\"NewCertificate.obssuper\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones para el Cliente\" [(ngModel)]=\"NewCertificate.obsclient\">\n              </mat-form-field>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </div>\n\n    </section>\n    <section class=\"acc-section\" (click)=\"setStep('expanded6')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/twotone_insert_photo_black_48dp.png\" alt=\"\">\n      </div>\n      <div class=\"info\" (click)=\"ModalImage()\">\n        <p class=\"title\">Fotografias</p>\n        <p class=\"subtitle\">Fotografias del servicio</p>\n\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded6')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded6')}\">\n      <ion-item detail *ngFor=\"let photos_service of photos_services; let i = i; index\"\n        (click)=\"photos_add(photos_service)\">\n        <ion-label>\n          {{photos_service.name_photo}}\n        </ion-label>\n      </ion-item>\n    </section>\n  </ion-list>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Certificado</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"save()\">\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list class=\"accordion-list\" no-padding>\n    <section class=\"acc-section\" (click)=\"setStep('expanded1')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/pngocean.com-id-wflsf.png\" alt=\"\">\n      </div>\n      <div class=\"info\">\n        <p class=\"title\">Certificado</p>\n        <p class=\"subtitle\">Información general</p>\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded1')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded1')}\">\n      <div [hidden]=\"div_hidden\">\n        <ion-grid>\n          <ion-row>\n            <ion-col size=\"12\">\n              <mat-form-field class=\"example-full-width\" style=\"margin-top: 10px;\">\n                <input matInput placeholder=\"Número de Certificado\" [(ngModel)]=\"NewCertificate.number\" readonly>\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Inspector\" [(ngModel)]=\"NewCertificate.obsins\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Revisor\" [(ngModel)]=\"NewCertificate.obssuper\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones para el Cliente\" [(ngModel)]=\"NewCertificate.obsclient\">\n              </mat-form-field>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </div>\n\n    </section>\n    <section class=\"acc-section\" (click)=\"setStep('expanded6')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/twotone_insert_photo_black_48dp.png\" alt=\"\">\n      </div>\n      <div class=\"info\" (click)=\"ModalImage()\">\n        <p class=\"title\">Fotografias</p>\n        <p class=\"subtitle\">Fotografias del servicio</p>\n\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded6')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded6')}\">\n      <ion-item detail *ngFor=\"let photos_service of photos_services; let i = i; index\"\n        (click)=\"photos_add(photos_service)\">\n        <ion-label>\n          {{photos_service.name_photo}}\n        </ion-label>\n      </ion-item>\n    </section>\n  </ion-list>\n</ion-content>"
 
 /***/ }),
 
@@ -657,9 +657,9 @@ let TasksService = class TasksService {
         let sql = 'CREATE TABLE IF NOT EXISTS image(id INTEGER PRIMARY KEY AUTOINCREMENT,idphotos INTEGER, name_photo TEXT, actual INTEGER, quantity INTEGER, min INTEGER,  odi_idodi INTEGER, idservice_certifications INTEGER)';
         return this.db.executeSql(sql, []);
     }
-    InsertImage(odi, image) {
+    InsertImage(odi, image, idservice) {
         let sql = 'INSERT INTO image(idphotos,name_photo, actual,quantity,min,odi_idodi,idservice_certifications) VALUES(?,?,?,?,?,?,?)';
-        return this.db.executeSql(sql, [image.idphotos, image.name_photo, 0, image.quantity, image.min, odi, 12]);
+        return this.db.executeSql(sql, [image.idphotos, image.name_photo, 0, image.quantity, image.min, odi, idservice]);
     }
     SelectImage(odi_idodi, idservice) {
         let sql = 'SELECT * FROM image WHERE odi_idodi=? and idservice_certifications=?';
@@ -1609,7 +1609,7 @@ let CertificatePage = class CertificatePage {
             'dismissed': false,
         });
     }
-    ModalCertificate() {
+    ModalNewCertificate() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             const modal = yield this.modalController.create({
                 component: _new_certificate_new_certificate_page__WEBPACK_IMPORTED_MODULE_4__["NewCertificatePage"],
@@ -1617,6 +1617,22 @@ let CertificatePage = class CertificatePage {
                     'number_service': this.number_service,
                     'type_network': this.type_network,
                     'data': this.data,
+                }
+            });
+            modal.onDidDismiss().then((detail) => {
+            });
+            yield modal.present();
+        });
+    }
+    ModalCertificate(certificate) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const modal = yield this.modalController.create({
+                component: _new_certificate_new_certificate_page__WEBPACK_IMPORTED_MODULE_4__["NewCertificatePage"],
+                componentProps: {
+                    'number_service': this.number_service,
+                    'type_network': this.type_network,
+                    'data': this.data,
+                    'certificate': certificate,
                 }
             });
             modal.onDidDismiss().then((detail) => {
@@ -1750,7 +1766,6 @@ let ImagesPage = class ImagesPage {
         };
         this.tasksService.SelectImage(this.data.idodi, this.idservice)
             .then(tasks => {
-            console.log(tasks);
             this.PhotoServices = tasks;
             this.propCount = Object.keys(tasks).length;
             if (this.propCount > 0) {
@@ -1760,7 +1775,7 @@ let ImagesPage = class ImagesPage {
                 this.LoginServiceService.photos_service(params).subscribe(result => {
                     this.photos_services = result.response;
                     for (const prop in this.photos_services) {
-                        this.tasksService.InsertImage(this.data.idodi, this.photos_services[prop])
+                        this.tasksService.InsertImage(this.data.idodi, this.photos_services[prop], this.idservice)
                             .then(tasks => {
                             console.log(tasks);
                         })
@@ -1806,11 +1821,6 @@ let ImagesPage = class ImagesPage {
                 }
             });
             modal.onDidDismiss().then((detail) => {
-                // if (detail !== null) {
-                //     this.idbuilder = detail.data.data.idbuilder
-                //     this.name_builder = detail.data.data.name_builder
-                //     this.state_builder = detail.data.data.name_state
-                // }
             });
             yield modal.present();
         });
@@ -2091,11 +2101,15 @@ let NewCertificatePage = class NewCertificatePage {
         this.type_network = navParams.get('type_network');
         this.data = navParams.get('data');
         this.idusers = localStorage.getItem("id");
-        this.NewCertificate.odi_idodi = this.data.idodi;
-        this.NewCertificate.idemployees = this.idusers;
+        this.NewCertificate = navParams.get('certificate');
+        if (this.NewCertificate == undefined) {
+            this.NewCertificate = new _model_NewCertificate_model__WEBPACK_IMPORTED_MODULE_5__["NewCertificate"]();
+            this.NewCertificate.odi_idodi = this.data.idodi;
+            this.NewCertificate.id_user = this.idusers;
+            this.NumberCertificate();
+        }
     }
     ngOnInit() {
-        this.NumberCertificate();
     }
     back() {
         this.modalController.dismiss({
@@ -2108,7 +2122,7 @@ let NewCertificatePage = class NewCertificatePage {
         };
         this.loginServiceService.number(params).subscribe(result => {
             this.NewCertificate.number = result.response.number_ + 1;
-            this.NewCertificate.idemployees = result.response.idemployees;
+            this.NewCertificate.id_user = result.response.idemployees;
             this.NewCertificate.Number_cetificate_idNumber_cetificate = result.response.Number_cetificate_idNumber_cetificate;
         }, error => { });
     }
@@ -2143,6 +2157,7 @@ let NewCertificatePage = class NewCertificatePage {
         });
     }
     save() {
+        console.log(this.NewCertificate);
         if (this.NewCertificate.idservice_certifications == undefined) {
             this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
                 // this.tasksService.delete(this.data.idodi,)
@@ -2155,44 +2170,60 @@ let NewCertificatePage = class NewCertificatePage {
             return;
         }
         else {
-            this.tasksService.SelectImage(this.data.idodi, this.NewCertificate.idservice_certifications)
-                .then(tasks => {
-                let actual = 0;
-                let totales = 0;
-                let images = [];
-                for (const prop in tasks) {
-                    actual += tasks[prop].actual;
-                    totales += tasks[prop].min;
-                    if (tasks[prop].actual < tasks[prop].min) {
-                        images.push(tasks[prop]);
-                    }
-                }
-                this.messages = images;
-                if (actual < totales) {
-                    this.ModalAlertImage(images);
-                    return;
-                }
-                if (actual == 0) {
-                    this.ModalImage();
-                    return;
-                }
-            })
-                .catch(error => {
-                console.error(error);
-            });
-            this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
-                this.tasksService.delete(this.data.idodi, this.NewCertificate.idservice_certifications)
+            if (this.NewCertificate.state == 1 || this.NewCertificate.state == 3) {
+                this.tasksService.SelectImage(this.data.idodi, this.NewCertificate.idservice_certifications)
                     .then(tasks => {
-                    console.log('error', tasks);
+                    let actual = 0;
+                    let totales = 0;
+                    let images = [];
+                    for (const prop in tasks) {
+                        actual += tasks[prop].actual;
+                        totales += tasks[prop].min;
+                        if (tasks[prop].actual < tasks[prop].min) {
+                            images.push(tasks[prop]);
+                        }
+                    }
+                    this.messages = images;
+                    if (actual < totales) {
+                        this.ModalAlertImage(images);
+                        return;
+                    }
+                    if (actual == 0 && this.NewCertificate.state == 1 || actual == 0 && this.NewCertificate.state == 3) {
+                        this.ModalImage();
+                        console.log('1');
+                        return;
+                    }
+                    this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
+                        this.tasksService.delete(this.data.idodi, this.NewCertificate.idservice_certifications)
+                            .then(tasks => {
+                        })
+                            .catch(error => {
+                            console.error(error);
+                        });
+                        if (result.response == false) {
+                            this.presentToast('Se guardo el Certificado');
+                        }
+                    }, error => {
+                    });
                 })
                     .catch(error => {
                     console.error(error);
                 });
-                if (result.response == false) {
-                    this.presentToast('Se guardo el Certificado');
-                }
-            }, error => {
-            });
+            }
+            else {
+                this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
+                    this.tasksService.delete(this.data.idodi, this.NewCertificate.idservice_certifications)
+                        .then(tasks => {
+                    })
+                        .catch(error => {
+                        console.error(error);
+                    });
+                    if (result.response == false) {
+                        this.presentToast('Se guardo el Certificado1');
+                    }
+                }, error => {
+                });
+            }
         }
     }
     delete() {

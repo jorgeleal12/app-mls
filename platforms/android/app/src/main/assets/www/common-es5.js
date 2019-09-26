@@ -286,9 +286,9 @@ var debounce = function (func, wait) {
 
 /***/ }),
 
-/***/ "./node_modules/@ionic/core/dist/esm-es5/index-cae2ca23.js":
+/***/ "./node_modules/@ionic/core/dist/esm-es5/index-064a03a9.js":
 /*!*****************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm-es5/index-cae2ca23.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm-es5/index-064a03a9.js ***!
   \*****************************************************************/
 /*! exports provided: s */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -373,7 +373,7 @@ var sanitizeElement = function (element) {
         return;
     }
     for (var i = element.attributes.length - 1; i >= 0; i--) {
-        var attribute = element.attributes[i];
+        var attribute = element.attributes.item(i);
         var attributeName = attribute.name;
         // remove non-allowed attribs
         if (!allowedAttributes.includes(attributeName.toLowerCase())) {
@@ -472,6 +472,51 @@ var openURL = function (url, ev, direction) { return tslib__WEBPACK_IMPORTED_MOD
         return [2 /*return*/, false];
     });
 }); };
+
+
+
+/***/ }),
+
+/***/ "./node_modules/@ionic/core/dist/esm-es5/watch-options-56e2e31f.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm-es5/watch-options-56e2e31f.js ***!
+  \*************************************************************************/
+/*! exports provided: f, w */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return findCheckedOption; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return watchForOptions; });
+var watchForOptions = function (containerEl, tagName, onChange) {
+    var mutation = new MutationObserver(function (mutationList) {
+        onChange(getSelectedOption(mutationList, tagName));
+    });
+    mutation.observe(containerEl, {
+        childList: true,
+        subtree: true
+    });
+    return mutation;
+};
+var getSelectedOption = function (mutationList, tagName) {
+    var newOption;
+    mutationList.forEach(function (mut) {
+        // tslint:disable-next-line: prefer-for-of
+        for (var i = 0; i < mut.addedNodes.length; i++) {
+            newOption = findCheckedOption(mut.addedNodes[i], tagName) || newOption;
+        }
+    });
+    return newOption;
+};
+var findCheckedOption = function (el, tagName) {
+    if (el.nodeType !== 1) {
+        return undefined;
+    }
+    var options = (el.tagName === tagName.toUpperCase())
+        ? [el]
+        : Array.from(el.querySelectorAll(tagName));
+    return options.find(function (o) { return o.checked === true; });
+};
 
 
 
