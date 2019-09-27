@@ -53,4 +53,7 @@ export class LoginServiceService {
   save_certificate(params): Observable<any> {
     return this.http.post(`${this.api_url}movil/save_certificate`, params);
   }
+  ViewImage(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/ViewImage`, params);
+  }
 }

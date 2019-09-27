@@ -8,6 +8,7 @@ import { TasksService } from '../Services/tasks-service';
 import { AlertController } from '@ionic/angular';
 import { AlertImagePage } from '../alert-image/alert-image.page';
 import { ToastController } from '@ionic/angular';
+import { ViewImagePage } from '../view-image/view-image.page';
 @Component({
   selector: 'app-new-certificate',
   templateUrl: './new-certificate.page.html',
@@ -127,7 +128,7 @@ export class NewCertificatePage implements OnInit {
         // this.tasksService.delete(this.data.idodi,)
         if (result.response == true) {
           this.NewCertificate.idservice_certifications = result.result
-          this.presentToast('Se guardo el Certificado')
+          this.presentToast('Se guardo el Certificado1')
         }
 
       }, error => {
@@ -138,7 +139,7 @@ export class NewCertificatePage implements OnInit {
 
     } else {
 
-      if (this.NewCertificate.state == 1 || this.NewCertificate.state == 3) {
+      if (this.NewCertificate.state == 1 || this.NewCertificate.state == 3 || this.NewCertificate.state == undefined) {
 
         this.tasksService.SelectImage(this.data.idodi, this.NewCertificate.idservice_certifications)
           .then(tasks => {
@@ -159,9 +160,8 @@ export class NewCertificatePage implements OnInit {
               this.ModalAlertImage(images)
               return;
             }
-            if (actual == 0 && this.NewCertificate.state == 1 || actual == 0 && this.NewCertificate.state == 3) {
+            if (actual == 0 && this.NewCertificate.state == 1 || actual == 0 && this.NewCertificate.state == undefined) {
               this.ModalImage();
-              console.log('1')
               return;
             }
 
@@ -176,7 +176,7 @@ export class NewCertificatePage implements OnInit {
 
               if (result.response == false) {
 
-                this.presentToast('Se guardo el Certificado')
+                this.presentToast('Se guardo el Certificado2')
               }
 
             }, error => {
@@ -201,7 +201,7 @@ export class NewCertificatePage implements OnInit {
 
           if (result.response == false) {
 
-            this.presentToast('Se guardo el Certificado1')
+            this.presentToast('Se guardo el Certificado')
           }
 
         }, error => {
@@ -213,8 +213,21 @@ export class NewCertificatePage implements OnInit {
     }
   }
 
-  delete() {
+  async  ModalViewImage() {
+    const modal: HTMLIonModalElement =
+      await this.modalController.create({
+        component: ViewImagePage,
+        componentProps: {
+          'data': this.data,
+          'idservice': this.NewCertificate.idservice_certifications,
+        }
+      });
 
+    modal.onDidDismiss().then((detail) => {
+
+    });
+
+    await modal.present();
   }
 
   async ModalAlertImage(images) {

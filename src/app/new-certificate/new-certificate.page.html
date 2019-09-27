@@ -77,5 +77,23 @@
         </ion-label>
       </ion-item>
     </section>
+
+    <section class="acc-section" (click)="setStep('expanded7')">
+      <div class="img">
+        <img src="../../assets/img/twotone_insert_photo_black_48dp.png" alt="">
+      </div>
+      <div class="info" (click)="ModalViewImage()">
+        <p class="title">Ver Fotografias</p>
+        <p class="subtitle">Ver las Fotografias del Servicio</p>
+
+      </div>
+      <div class="icon">
+        <ion-icon name="{{getIconName('expanded7')}}" color="medium"></ion-icon>
+      </div>
+
+    </section>
+    <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded7')}">
+
+    </section>
   </ion-list>
 </ion-content>

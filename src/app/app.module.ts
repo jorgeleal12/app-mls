@@ -27,12 +27,13 @@ import { CertificatePageModule } from './certificate/certificate.module';
 import { NewCertificatePageModule } from './new-certificate/new-certificate.module';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 import { AlertImagePageModule } from './alert-image/alert-image.module';
+import { ViewImagePageModule } from './view-image/view-image.module';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [PipesModule, BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule
-    , SendimagesPageModule, MaterialsPageModule, BuilderPageModule, ImagesPageModule, CertificatePageModule, NewCertificatePageModule, AlertImagePageModule],
+    , SendimagesPageModule, MaterialsPageModule, BuilderPageModule, ImagesPageModule, ViewImagePageModule, CertificatePageModule, NewCertificatePageModule, AlertImagePageModule],
   providers: [
     StatusBar,
     SplashScreen,

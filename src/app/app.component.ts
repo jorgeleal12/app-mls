@@ -27,32 +27,7 @@ export class AppComponent {
 
     this.initializeApp();
 
-    this.fcm.getToken().then((token: String) => console.log('este es el token' + token)).catch(error => {
-      console.log('error')
-    });
 
-
-    this.fcm.onNotification().subscribe(data => {
-      if (data.wasTapped) {
-        console.log('segundo plano' + JSON.stringify(data))
-      } else {
-        console.log('primer plano' + JSON.stringify(data))
-        this.localNotifications.schedule({
-          id: Math.floor((Math.random() * 100) + 1),
-          title: 'Programación',
-          text: 'Hay servicios Nuevos',
-
-        })
-      }
-    }, error => {
-      console.log('error' + error)
-    })
-
-    // this.fcm.onTokenRefresh().subscribe(token => {
-    //   backend.registerToken(token);
-    // });
-
-    this.createDatabase();
 
   }
 
@@ -85,6 +60,31 @@ export class AppComponent {
         this.statusBar.overlaysWebView(false);
         this.statusBar.backgroundColorByHexString('#000000');
       }
+
+      this.fcm.getToken().then((token: String) => console.log('este es el token' + token)).catch(error => {
+        console.log('error')
+      });
+
+
+      this.fcm.onNotification().subscribe(data => {
+        if (data.wasTapped) {
+          console.log('segundo plano' + JSON.stringify(data))
+        } else {
+          console.log('primer plano' + JSON.stringify(data))
+          this.localNotifications.schedule({
+            id: Math.floor((Math.random() * 100) + 1),
+            title: 'Programación',
+            text: 'Hay servicios Nuevos',
+
+          })
+        }
+      }, error => {
+        console.log('error' + error)
+      })
+
+
+      this.createDatabase();
+
     });
   }
 }
