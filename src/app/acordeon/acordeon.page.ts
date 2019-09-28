@@ -22,8 +22,10 @@ export class AcordeonPage implements OnInit {
 
     addrees_ini
     div_hidden = true;
+    div_service = true;
     Service = new Service();
     photos_services
+    networks
     constructor(
         private route: ActivatedRoute,
         private router: Router,
@@ -36,8 +38,15 @@ export class AcordeonPage implements OnInit {
         this.route.queryParams.subscribe(params => {
 
             if (this.router.getCurrentNavigation().extras.state) {
+
                 this.data = this.router.getCurrentNavigation().extras
+                this.div_service = false;
+                this.div_hidden = true;
                 this.Service = this.data
+            } else {
+                this.div_hidden = false;
+                this.div_service = true;
+                this.Service = new Service();
             }
         });
 
@@ -223,5 +232,17 @@ export class AcordeonPage implements OnInit {
     DeleteConstructor() {
         this.Service.name_construtor = '';
         this.Service.construtor = null;
+    }
+
+    type_red() {
+        console.log('1')
+        const params = {
+            type: this.Service.type_service_idtype_service
+        }
+        this.loginServiceService.type_red(params).subscribe(result => {
+            this.networks = result.response
+        }, error => {
+
+        })
     }
 }

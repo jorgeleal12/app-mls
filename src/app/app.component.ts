@@ -3,10 +3,10 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { FCM, NotificationData } from '@ionic-native/fcm/ngx';
-
+import { FCM, } from '@ionic-native/fcm/ngx';
+import { timer } from 'rxjs'
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
+import { SQLite, } from '@ionic-native/sqlite/ngx';
 import { TasksService } from './Services/tasks-service';
 @Component({
   selector: 'app-root',
@@ -14,6 +14,7 @@ import { TasksService } from './Services/tasks-service';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  showSplash = true;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -55,6 +56,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      timer(3000).subscribe(() => this.showSplash = false)
 
       if (this.platform.is('android')) {
         this.statusBar.overlaysWebView(false);

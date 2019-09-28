@@ -32,8 +32,20 @@ import { ViewImagePageModule } from './view-image/view-image.module';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [PipesModule, BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule
-    , SendimagesPageModule, MaterialsPageModule, BuilderPageModule, ImagesPageModule, ViewImagePageModule, CertificatePageModule, NewCertificatePageModule, AlertImagePageModule],
+  imports: [PipesModule,
+    BrowserModule,
+    HttpClientModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    SendimagesPageModule,
+    MaterialsPageModule,
+    BuilderPageModule,
+    ImagesPageModule,
+    ViewImagePageModule,
+    CertificatePageModule,
+    NewCertificatePageModule,
+    AlertImagePageModule],
   providers: [
     StatusBar,
     SplashScreen,

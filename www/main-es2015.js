@@ -34,6 +34,9 @@ var map = {
 	"./menu/menu.module": [
 		"./src/app/menu/menu.module.ts",
 		"menu-menu-module"
+	],
+	"./view-image/view-image.module": [
+		"./src/app/view-image/view-image.module.ts"
 	]
 };
 function webpackAsyncContext(req) {
@@ -491,7 +494,7 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n</ion-app>"
+module.exports = "<div *ngIf=\"showSplash\" class=\"splash\">\n  <div class=\"sk-cube-grid\">\n    <div class=\"sk-cube sk-cube1\"></div>\n    <div class=\"sk-cube sk-cube2\"></div>\n    <div class=\"sk-cube sk-cube3\"></div>\n    <div class=\"sk-cube sk-cube4\"></div>\n    <div class=\"sk-cube sk-cube5\"></div>\n    <div class=\"sk-cube sk-cube6\"></div>\n    <div class=\"sk-cube sk-cube7\"></div>\n    <div class=\"sk-cube sk-cube8\"></div>\n    <div class=\"sk-cube sk-cube9\"></div>\n  </div>\n\n</div>\n\n<ion-app>\n  <ion-router-outlet></ion-router-outlet>\n</ion-app>"
 
 /***/ }),
 
@@ -513,7 +516,7 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Lista de Certificados</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button>\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let certificate of certificates\" (click)=\"ModalCertificate(certificate)\">\n      <ion-label>\n        <ion-text>\n          <h2>{{certificate.number}}</h2>\n        </ion-text>\n        <ion-text>\n          <p>{{certificate.date}}</p>\n        </ion-text>\n        <p>Estado: {{certificate.name_state}}</p>\n      </ion-label>\n    </ion-item>\n  </ion-list>\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\" (click)=\"ModalNewCertificate()\">\n    <ion-fab-button>\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Lista de Certificados</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button>\n        <ion-icon slot=\"icon-only\" name=\"save\" [hidden]=\"true\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let certificate of certificates\" (click)=\"ModalCertificate(certificate)\">\n      <ion-label>\n        <ion-text>\n          <h2>{{certificate.number}}</h2>\n        </ion-text>\n        <ion-text>\n          <p>{{certificate.date}}</p>\n        </ion-text>\n        <p>Estado: {{certificate.name_state}}</p>\n      </ion-label>\n      <ion-icon class=\"big\" src=\"assets/iconos/148882.svg\" item-end *ngIf=\"certificate.state==1\"></ion-icon>\n      <ion-icon class=\"big\" src=\"assets/iconos/226972.svg\" item-end *ngIf=\"certificate.state==2\"></ion-icon>\n    </ion-item>\n  </ion-list>\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\" (click)=\"ModalNewCertificate()\">\n    <ion-fab-button>\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n</ion-content>"
 
 /***/ }),
 
@@ -546,7 +549,7 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Certificado</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"save()\">\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list class=\"accordion-list\" no-padding>\n    <section class=\"acc-section\" (click)=\"setStep('expanded1')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/pngocean.com-id-wflsf.png\" alt=\"\">\n      </div>\n      <div class=\"info\">\n        <p class=\"title\">Certificado</p>\n        <p class=\"subtitle\">Información general</p>\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded1')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded1')}\">\n      <div [hidden]=\"div_hidden\">\n        <ion-grid>\n          <ion-row>\n            <ion-col size=\"12\">\n              <mat-form-field class=\"example-full-width\" style=\"margin-top: 10px;\">\n                <input matInput placeholder=\"Número de Certificado\" [(ngModel)]=\"NewCertificate.number\" readonly>\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Inspector\" [(ngModel)]=\"NewCertificate.obsins\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Revisor\" [(ngModel)]=\"NewCertificate.obssuper\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones para el Cliente\" [(ngModel)]=\"NewCertificate.obsclient\">\n              </mat-form-field>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </div>\n\n    </section>\n    <section class=\"acc-section\" (click)=\"setStep('expanded6')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/twotone_insert_photo_black_48dp.png\" alt=\"\">\n      </div>\n      <div class=\"info\" (click)=\"ModalImage()\">\n        <p class=\"title\">Fotografias</p>\n        <p class=\"subtitle\">Fotografias del servicio</p>\n\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded6')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded6')}\">\n      <ion-item detail *ngFor=\"let photos_service of photos_services; let i = i; index\"\n        (click)=\"photos_add(photos_service)\">\n        <ion-label>\n          {{photos_service.name_photo}}\n        </ion-label>\n      </ion-item>\n    </section>\n  </ion-list>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Certificado</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"save()\">\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list class=\"accordion-list\" no-padding>\n    <section class=\"acc-section\" (click)=\"setStep('expanded1')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/pngocean.com-id-wflsf.png\" alt=\"\">\n      </div>\n      <div class=\"info\">\n        <p class=\"title\">Certificado</p>\n        <p class=\"subtitle\">Información general</p>\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded1')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded1')}\">\n      <div [hidden]=\"div_hidden\">\n        <ion-grid>\n          <ion-row>\n            <ion-col size=\"12\">\n              <mat-form-field class=\"example-full-width\" style=\"margin-top: 10px;\">\n                <input matInput placeholder=\"Número de Certificado\" [(ngModel)]=\"NewCertificate.number\" readonly>\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Inspector\" [(ngModel)]=\"NewCertificate.obsins\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Revisor\" [(ngModel)]=\"NewCertificate.obssuper\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones para el Cliente\" [(ngModel)]=\"NewCertificate.obsclient\">\n              </mat-form-field>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </div>\n\n    </section>\n    <section class=\"acc-section\" (click)=\"setStep('expanded6')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/twotone_insert_photo_black_48dp.png\" alt=\"\">\n      </div>\n      <div class=\"info\" (click)=\"ModalImage()\">\n        <p class=\"title\">Fotografias</p>\n        <p class=\"subtitle\">Fotografias del servicio</p>\n\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded6')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded6')}\">\n      <ion-item detail *ngFor=\"let photos_service of photos_services; let i = i; index\"\n        (click)=\"photos_add(photos_service)\">\n        <ion-label>\n          {{photos_service.name_photo}}\n        </ion-label>\n      </ion-item>\n    </section>\n\n    <section class=\"acc-section\" (click)=\"setStep('expanded7')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/twotone_insert_photo_black_48dp.png\" alt=\"\">\n      </div>\n      <div class=\"info\" (click)=\"ModalViewImage()\">\n        <p class=\"title\">Ver Fotografias</p>\n        <p class=\"subtitle\">Ver las Fotografias del Servicio</p>\n\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded7')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded7')}\">\n\n    </section>\n  </ion-list>\n</ion-content>"
 
 /***/ }),
 
@@ -558,6 +561,17 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 /***/ (function(module, exports) {
 
 module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n\n    <ion-title text-center class=\"center\">Enviar Fotografias</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"send_image()\">\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <!--div-->\n  <section class=\"content-images\">\n    <ion-card class=\"add-img\" *ngFor=\"let photo of photos; let i = i; index\" (click)=\"selectImage(photo)\"\n      [ngStyle]=\"{background: 'url(' + photo.imagenes + ')no-repeat scroll center center / 100% 100%'}\">\n\n      <!-- <img [src]=\"photo.imagenes\" class=\"img\" width=\"200\" height=\"100\" [hidden]=\"photo.hidden_image\" /> -->\n\n      <div class=\"divv\">\n        <ion-icon name=\"md-checkmark-circle\" color=\"light\" size=\"large\" [hidden]=\"photo.send\"\n          *ngIf=\"photo.state == true\"></ion-icon>\n      </div>\n      <div class=\"divv\">\n        <ion-icon name=\"add-circle\" color=\"light\" size=\"large\" [hidden]=\"photo.hidden\"></ion-icon>\n      </div>\n      <div class=\"divv\">\n        <ion-icon name=\"md-close-circle\" color=\"red\" size=\"large\" [hidden]=\"photo.error\" *ngIf=\"photo.state == false\">\n        </ion-icon>\n      </div>\n\n\n\n    </ion-card>\n\n    <ion-card class=\"add-img add-pdf\" (click)=\"selectImage(photo)\">\n      <ion-card-content>\n        <ion-icon name=\"document\" color=\"light\" size=\"large\"></ion-icon>\n      </ion-card-content>\n    </ion-card>\n\n    <canvas #layout hidden></canvas>\n  </section>\n\n</ion-content>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/view-image/view-image.page.html":
+/*!***************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/view-image/view-image.page.html ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Fotografias</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"save()\">\n        <ion-icon slot=\"icon-only\" name=\"save\" [hidden]=\"true\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <!--div-->\n  <section class=\"content-images\">\n\n    <ion-card class=\"add-img\" *ngFor=\"let photo of photos; let i = i; index\"\n      (click)=\"ModalImage(url+photo.url+photo.name_image)\"\n      [ngStyle]=\"{background: 'url(' + url+photo.url+photo.name_image + ')no-repeat scroll center center / 100% 100%'}\">\n      <!-- <img [src]=\" url+photo.url+photo.name_image\" class=\"img\" width=\"200\" height=\"100\" [hidden]=\"photo.hidden_image\" /> -->\n    </ion-card>\n\n  </section>\n\n</ion-content>"
 
 /***/ }),
 
@@ -580,7 +594,7 @@ __webpack_require__.r(__webpack_exports__);
 let LoginServiceService = class LoginServiceService {
     constructor(http) {
         this.http = http;
-        this.api_url = 'http://192.168.1.57/laravel-mls/public/api/';
+        this.api_url = 'http://190.0.33.166:90/laravel-mls/public/api/';
     }
     save_image(params) {
         return this.http.post(`${this.api_url}movil/image`, params);
@@ -614,6 +628,15 @@ let LoginServiceService = class LoginServiceService {
     }
     save_certificate(params) {
         return this.http.post(`${this.api_url}movil/save_certificate`, params);
+    }
+    ViewImage(params) {
+        return this.http.post(`${this.api_url}movil/ViewImage`, params);
+    }
+    SaveService(params) {
+        return this.http.post(`${this.api_url}movil/SaveService`, params);
+    }
+    type_red(params) {
+        return this.http.post(`${this.api_url}list/list_type_network`, params);
     }
 };
 LoginServiceService.ctorParameters = () => [
@@ -1132,6 +1155,7 @@ const routes = [
     { path: '', loadChildren: './login/login.module#LoginPageModule' },
     { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
     { path: 'alert-image', loadChildren: './alert-image/alert-image.module#AlertImagePageModule' },
+    { path: 'view-image', loadChildren: './view-image/view-image.module#ViewImagePageModule' },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -1155,7 +1179,7 @@ AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJ9 */"
+module.exports = ".splash {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  z-index: 1000;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  background: #ffffff;\n}\n\n.sk-cube-grid {\n  width: 40px;\n  height: 40px;\n  margin: 100px auto;\n}\n\n.sk-cube-grid .sk-cube {\n  width: 33%;\n  height: 33%;\n  background-color: #2aa9e2;\n  float: left;\n  -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;\n  animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;\n}\n\n.sk-cube-grid .sk-cube1 {\n  -webkit-animation-delay: 0.2s;\n  animation-delay: 0.2s;\n}\n\n.sk-cube-grid .sk-cube2 {\n  -webkit-animation-delay: 0.3s;\n  animation-delay: 0.3s;\n}\n\n.sk-cube-grid .sk-cube3 {\n  -webkit-animation-delay: 0.4s;\n  animation-delay: 0.4s;\n}\n\n.sk-cube-grid .sk-cube4 {\n  -webkit-animation-delay: 0.1s;\n  animation-delay: 0.1s;\n}\n\n.sk-cube-grid .sk-cube5 {\n  -webkit-animation-delay: 0.2s;\n  animation-delay: 0.2s;\n}\n\n.sk-cube-grid .sk-cube6 {\n  -webkit-animation-delay: 0.3s;\n  animation-delay: 0.3s;\n}\n\n.sk-cube-grid .sk-cube7 {\n  -webkit-animation-delay: 0s;\n  animation-delay: 0s;\n}\n\n.sk-cube-grid .sk-cube8 {\n  -webkit-animation-delay: 0.1s;\n  animation-delay: 0.1s;\n}\n\n.sk-cube-grid .sk-cube9 {\n  -webkit-animation-delay: 0.2s;\n  animation-delay: 0.2s;\n}\n\n@-webkit-keyframes sk-cubeGridScaleDelay {\n  0%, 70%, 100% {\n    -webkit-transform: scale3D(1, 1, 1);\n    transform: scale3D(1, 1, 1);\n  }\n  35% {\n    -webkit-transform: scale3D(0, 0, 1);\n    transform: scale3D(0, 0, 1);\n  }\n}\n\n@keyframes sk-cubeGridScaleDelay {\n  0%, 70%, 100% {\n    -webkit-transform: scale3D(1, 1, 1);\n    transform: scale3D(1, 1, 1);\n  }\n  35% {\n    -webkit-transform: scale3D(0, 0, 1);\n    transform: scale3D(0, 0, 1);\n  }\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi92YXIvd3d3L2h0bWwvYXBwLW1scy9zcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvYXBwLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGFBQUE7RUFDQSxvQkFBQTtFQUFBLGFBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0VBQ0Esd0JBQUE7VUFBQSx1QkFBQTtFQUNBLG1CQUFBO0FDQ0o7O0FESUE7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0FDREY7O0FESUE7RUFDRSxVQUFBO0VBQ0EsV0FBQTtFQUNBLHlCQUFBO0VBQ0EsV0FBQTtFQUNBLGtFQUFBO0VBQ1EsMERBQUE7QUNEVjs7QURHQTtFQUNFLDZCQUFBO0VBQ1EscUJBQUE7QUNBVjs7QURDQTtFQUNFLDZCQUFBO0VBQ1EscUJBQUE7QUNFVjs7QUREQTtFQUNFLDZCQUFBO0VBQ1EscUJBQUE7QUNJVjs7QURIQTtFQUNFLDZCQUFBO0VBQ1EscUJBQUE7QUNNVjs7QURMQTtFQUNFLDZCQUFBO0VBQ1EscUJBQUE7QUNRVjs7QURQQTtFQUNFLDZCQUFBO0VBQ1EscUJBQUE7QUNVVjs7QURUQTtFQUNFLDJCQUFBO0VBQ1EsbUJBQUE7QUNZVjs7QURYQTtFQUNFLDZCQUFBO0VBQ1EscUJBQUE7QUNjVjs7QURiQTtFQUNFLDZCQUFBO0VBQ1EscUJBQUE7QUNnQlY7O0FEZEE7RUFDRTtJQUNFLG1DQUFBO0lBQ1EsMkJBQUE7RUNpQlY7RURoQkU7SUFDQSxtQ0FBQTtJQUNRLDJCQUFBO0VDa0JWO0FBQ0Y7O0FEZkE7RUFDRTtJQUNFLG1DQUFBO0lBQ1EsMkJBQUE7RUNpQlY7RURoQkU7SUFDQSxtQ0FBQTtJQUNRLDJCQUFBO0VDa0JWO0FBQ0YiLCJmaWxlIjoic3JjL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc3BsYXNoe1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBoZWlnaHQ6IDEwMCU7XG4gICAgei1pbmRleDogMTAwMDtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgYmFja2dyb3VuZDogI2ZmZmZmZjtcblxuXG59XG5cbi5zay1jdWJlLWdyaWQge1xuICB3aWR0aDogNDBweDtcbiAgaGVpZ2h0OiA0MHB4O1xuICBtYXJnaW46IDEwMHB4IGF1dG87XG59XG5cbi5zay1jdWJlLWdyaWQgLnNrLWN1YmUge1xuICB3aWR0aDogMzMlO1xuICBoZWlnaHQ6IDMzJTtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzJhYTllMjtcbiAgZmxvYXQ6IGxlZnQ7XG4gIC13ZWJraXQtYW5pbWF0aW9uOiBzay1jdWJlR3JpZFNjYWxlRGVsYXkgMS4zcyBpbmZpbml0ZSBlYXNlLWluLW91dDtcbiAgICAgICAgICBhbmltYXRpb246IHNrLWN1YmVHcmlkU2NhbGVEZWxheSAxLjNzIGluZmluaXRlIGVhc2UtaW4tb3V0OyBcbn1cbi5zay1jdWJlLWdyaWQgLnNrLWN1YmUxIHtcbiAgLXdlYmtpdC1hbmltYXRpb24tZGVsYXk6IDAuMnM7XG4gICAgICAgICAgYW5pbWF0aW9uLWRlbGF5OiAwLjJzOyB9XG4uc2stY3ViZS1ncmlkIC5zay1jdWJlMiB7XG4gIC13ZWJraXQtYW5pbWF0aW9uLWRlbGF5OiAwLjNzO1xuICAgICAgICAgIGFuaW1hdGlvbi1kZWxheTogMC4zczsgfVxuLnNrLWN1YmUtZ3JpZCAuc2stY3ViZTMge1xuICAtd2Via2l0LWFuaW1hdGlvbi1kZWxheTogMC40cztcbiAgICAgICAgICBhbmltYXRpb24tZGVsYXk6IDAuNHM7IH1cbi5zay1jdWJlLWdyaWQgLnNrLWN1YmU0IHtcbiAgLXdlYmtpdC1hbmltYXRpb24tZGVsYXk6IDAuMXM7XG4gICAgICAgICAgYW5pbWF0aW9uLWRlbGF5OiAwLjFzOyB9XG4uc2stY3ViZS1ncmlkIC5zay1jdWJlNSB7XG4gIC13ZWJraXQtYW5pbWF0aW9uLWRlbGF5OiAwLjJzO1xuICAgICAgICAgIGFuaW1hdGlvbi1kZWxheTogMC4yczsgfVxuLnNrLWN1YmUtZ3JpZCAuc2stY3ViZTYge1xuICAtd2Via2l0LWFuaW1hdGlvbi1kZWxheTogMC4zcztcbiAgICAgICAgICBhbmltYXRpb24tZGVsYXk6IDAuM3M7IH1cbi5zay1jdWJlLWdyaWQgLnNrLWN1YmU3IHtcbiAgLXdlYmtpdC1hbmltYXRpb24tZGVsYXk6IDBzO1xuICAgICAgICAgIGFuaW1hdGlvbi1kZWxheTogMHM7IH1cbi5zay1jdWJlLWdyaWQgLnNrLWN1YmU4IHtcbiAgLXdlYmtpdC1hbmltYXRpb24tZGVsYXk6IDAuMXM7XG4gICAgICAgICAgYW5pbWF0aW9uLWRlbGF5OiAwLjFzOyB9XG4uc2stY3ViZS1ncmlkIC5zay1jdWJlOSB7XG4gIC13ZWJraXQtYW5pbWF0aW9uLWRlbGF5OiAwLjJzO1xuICAgICAgICAgIGFuaW1hdGlvbi1kZWxheTogMC4yczsgfVxuXG5ALXdlYmtpdC1rZXlmcmFtZXMgc2stY3ViZUdyaWRTY2FsZURlbGF5IHtcbiAgMCUsIDcwJSwgMTAwJSB7XG4gICAgLXdlYmtpdC10cmFuc2Zvcm06IHNjYWxlM0QoMSwgMSwgMSk7XG4gICAgICAgICAgICB0cmFuc2Zvcm06IHNjYWxlM0QoMSwgMSwgMSk7XG4gIH0gMzUlIHtcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogc2NhbGUzRCgwLCAwLCAxKTtcbiAgICAgICAgICAgIHRyYW5zZm9ybTogc2NhbGUzRCgwLCAwLCAxKTsgXG4gIH1cbn1cblxuQGtleWZyYW1lcyBzay1jdWJlR3JpZFNjYWxlRGVsYXkge1xuICAwJSwgNzAlLCAxMDAlIHtcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogc2NhbGUzRCgxLCAxLCAxKTtcbiAgICAgICAgICAgIHRyYW5zZm9ybTogc2NhbGUzRCgxLCAxLCAxKTtcbiAgfSAzNSUge1xuICAgIC13ZWJraXQtdHJhbnNmb3JtOiBzY2FsZTNEKDAsIDAsIDEpO1xuICAgICAgICAgICAgdHJhbnNmb3JtOiBzY2FsZTNEKDAsIDAsIDEpO1xuICB9IFxufSIsIi5zcGxhc2gge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIHotaW5kZXg6IDEwMDA7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBiYWNrZ3JvdW5kOiAjZmZmZmZmO1xufVxuXG4uc2stY3ViZS1ncmlkIHtcbiAgd2lkdGg6IDQwcHg7XG4gIGhlaWdodDogNDBweDtcbiAgbWFyZ2luOiAxMDBweCBhdXRvO1xufVxuXG4uc2stY3ViZS1ncmlkIC5zay1jdWJlIHtcbiAgd2lkdGg6IDMzJTtcbiAgaGVpZ2h0OiAzMyU7XG4gIGJhY2tncm91bmQtY29sb3I6ICMyYWE5ZTI7XG4gIGZsb2F0OiBsZWZ0O1xuICAtd2Via2l0LWFuaW1hdGlvbjogc2stY3ViZUdyaWRTY2FsZURlbGF5IDEuM3MgaW5maW5pdGUgZWFzZS1pbi1vdXQ7XG4gIGFuaW1hdGlvbjogc2stY3ViZUdyaWRTY2FsZURlbGF5IDEuM3MgaW5maW5pdGUgZWFzZS1pbi1vdXQ7XG59XG5cbi5zay1jdWJlLWdyaWQgLnNrLWN1YmUxIHtcbiAgLXdlYmtpdC1hbmltYXRpb24tZGVsYXk6IDAuMnM7XG4gIGFuaW1hdGlvbi1kZWxheTogMC4ycztcbn1cblxuLnNrLWN1YmUtZ3JpZCAuc2stY3ViZTIge1xuICAtd2Via2l0LWFuaW1hdGlvbi1kZWxheTogMC4zcztcbiAgYW5pbWF0aW9uLWRlbGF5OiAwLjNzO1xufVxuXG4uc2stY3ViZS1ncmlkIC5zay1jdWJlMyB7XG4gIC13ZWJraXQtYW5pbWF0aW9uLWRlbGF5OiAwLjRzO1xuICBhbmltYXRpb24tZGVsYXk6IDAuNHM7XG59XG5cbi5zay1jdWJlLWdyaWQgLnNrLWN1YmU0IHtcbiAgLXdlYmtpdC1hbmltYXRpb24tZGVsYXk6IDAuMXM7XG4gIGFuaW1hdGlvbi1kZWxheTogMC4xcztcbn1cblxuLnNrLWN1YmUtZ3JpZCAuc2stY3ViZTUge1xuICAtd2Via2l0LWFuaW1hdGlvbi1kZWxheTogMC4ycztcbiAgYW5pbWF0aW9uLWRlbGF5OiAwLjJzO1xufVxuXG4uc2stY3ViZS1ncmlkIC5zay1jdWJlNiB7XG4gIC13ZWJraXQtYW5pbWF0aW9uLWRlbGF5OiAwLjNzO1xuICBhbmltYXRpb24tZGVsYXk6IDAuM3M7XG59XG5cbi5zay1jdWJlLWdyaWQgLnNrLWN1YmU3IHtcbiAgLXdlYmtpdC1hbmltYXRpb24tZGVsYXk6IDBzO1xuICBhbmltYXRpb24tZGVsYXk6IDBzO1xufVxuXG4uc2stY3ViZS1ncmlkIC5zay1jdWJlOCB7XG4gIC13ZWJraXQtYW5pbWF0aW9uLWRlbGF5OiAwLjFzO1xuICBhbmltYXRpb24tZGVsYXk6IDAuMXM7XG59XG5cbi5zay1jdWJlLWdyaWQgLnNrLWN1YmU5IHtcbiAgLXdlYmtpdC1hbmltYXRpb24tZGVsYXk6IDAuMnM7XG4gIGFuaW1hdGlvbi1kZWxheTogMC4ycztcbn1cblxuQC13ZWJraXQta2V5ZnJhbWVzIHNrLWN1YmVHcmlkU2NhbGVEZWxheSB7XG4gIDAlLCA3MCUsIDEwMCUge1xuICAgIC13ZWJraXQtdHJhbnNmb3JtOiBzY2FsZTNEKDEsIDEsIDEpO1xuICAgIHRyYW5zZm9ybTogc2NhbGUzRCgxLCAxLCAxKTtcbiAgfVxuICAzNSUge1xuICAgIC13ZWJraXQtdHJhbnNmb3JtOiBzY2FsZTNEKDAsIDAsIDEpO1xuICAgIHRyYW5zZm9ybTogc2NhbGUzRCgwLCAwLCAxKTtcbiAgfVxufVxuQGtleWZyYW1lcyBzay1jdWJlR3JpZFNjYWxlRGVsYXkge1xuICAwJSwgNzAlLCAxMDAlIHtcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogc2NhbGUzRCgxLCAxLCAxKTtcbiAgICB0cmFuc2Zvcm06IHNjYWxlM0QoMSwgMSwgMSk7XG4gIH1cbiAgMzUlIHtcbiAgICAtd2Via2l0LXRyYW5zZm9ybTogc2NhbGUzRCgwLCAwLCAxKTtcbiAgICB0cmFuc2Zvcm06IHNjYWxlM0QoMCwgMCwgMSk7XG4gIH1cbn0iXX0= */"
 
 /***/ }),
 
@@ -1175,9 +1199,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/splash-screen/ngx */ "./node_modules/@ionic-native/splash-screen/ngx/index.js");
 /* harmony import */ var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/status-bar/ngx */ "./node_modules/@ionic-native/status-bar/ngx/index.js");
 /* harmony import */ var _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/fcm/ngx */ "./node_modules/@ionic-native/fcm/ngx/index.js");
-/* harmony import */ var _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/local-notifications/ngx */ "./node_modules/@ionic-native/local-notifications/ngx/index.js");
-/* harmony import */ var _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/sqlite/ngx */ "./node_modules/@ionic-native/sqlite/ngx/index.js");
-/* harmony import */ var _Services_tasks_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Services/tasks-service */ "./src/app/Services/tasks-service.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/local-notifications/ngx */ "./node_modules/@ionic-native/local-notifications/ngx/index.js");
+/* harmony import */ var _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/sqlite/ngx */ "./node_modules/@ionic-native/sqlite/ngx/index.js");
+/* harmony import */ var _Services_tasks_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Services/tasks-service */ "./src/app/Services/tasks-service.ts");
+
 
 
 
@@ -1196,29 +1222,8 @@ let AppComponent = class AppComponent {
         this.localNotifications = localNotifications;
         this.sqlite = sqlite;
         this.tasksService = tasksService;
+        this.showSplash = true;
         this.initializeApp();
-        this.fcm.getToken().then((token) => console.log('este es el token' + token)).catch(error => {
-            console.log('error');
-        });
-        this.fcm.onNotification().subscribe(data => {
-            if (data.wasTapped) {
-                console.log('segundo plano' + JSON.stringify(data));
-            }
-            else {
-                console.log('primer plano' + JSON.stringify(data));
-                this.localNotifications.schedule({
-                    id: Math.floor((Math.random() * 100) + 1),
-                    title: 'Programación',
-                    text: 'Hay servicios Nuevos',
-                });
-            }
-        }, error => {
-            console.log('error' + error);
-        });
-        // this.fcm.onTokenRefresh().subscribe(token => {
-        //   backend.registerToken(token);
-        // });
-        this.createDatabase();
     }
     createDatabase() {
         this.sqlite.create({
@@ -1239,10 +1244,30 @@ let AppComponent = class AppComponent {
         this.platform.ready().then(() => {
             this.statusBar.styleDefault();
             this.splashScreen.hide();
+            Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["timer"])(3000).subscribe(() => this.showSplash = false);
             if (this.platform.is('android')) {
                 this.statusBar.overlaysWebView(false);
                 this.statusBar.backgroundColorByHexString('#000000');
             }
+            this.fcm.getToken().then((token) => console.log('este es el token' + token)).catch(error => {
+                console.log('error');
+            });
+            this.fcm.onNotification().subscribe(data => {
+                if (data.wasTapped) {
+                    console.log('segundo plano' + JSON.stringify(data));
+                }
+                else {
+                    console.log('primer plano' + JSON.stringify(data));
+                    this.localNotifications.schedule({
+                        id: Math.floor((Math.random() * 100) + 1),
+                        title: 'Programación',
+                        text: 'Hay servicios Nuevos',
+                    });
+                }
+            }, error => {
+                console.log('error' + error);
+            });
+            this.createDatabase();
         });
     }
 };
@@ -1251,9 +1276,9 @@ AppComponent.ctorParameters = () => [
     { type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"] },
     { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"] },
     { type: _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__["FCM"] },
-    { type: _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_6__["LocalNotifications"] },
-    { type: _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_7__["SQLite"] },
-    { type: _Services_tasks_service__WEBPACK_IMPORTED_MODULE_8__["TasksService"] }
+    { type: _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_7__["LocalNotifications"] },
+    { type: _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_8__["SQLite"] },
+    { type: _Services_tasks_service__WEBPACK_IMPORTED_MODULE_9__["TasksService"] }
 ];
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1265,9 +1290,9 @@ AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"],
         _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"],
         _ionic_native_fcm_ngx__WEBPACK_IMPORTED_MODULE_5__["FCM"],
-        _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_6__["LocalNotifications"],
-        _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_7__["SQLite"],
-        _Services_tasks_service__WEBPACK_IMPORTED_MODULE_8__["TasksService"]])
+        _ionic_native_local_notifications_ngx__WEBPACK_IMPORTED_MODULE_7__["LocalNotifications"],
+        _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_8__["SQLite"],
+        _Services_tasks_service__WEBPACK_IMPORTED_MODULE_9__["TasksService"]])
 ], AppComponent);
 
 
@@ -1313,6 +1338,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _new_certificate_new_certificate_module__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./new-certificate/new-certificate.module */ "./src/app/new-certificate/new-certificate.module.ts");
 /* harmony import */ var _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @ionic-native/sqlite/ngx */ "./node_modules/@ionic-native/sqlite/ngx/index.js");
 /* harmony import */ var _alert_image_alert_image_module__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./alert-image/alert-image.module */ "./src/app/alert-image/alert-image.module.ts");
+/* harmony import */ var _view_image_view_image_module__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./view-image/view-image.module */ "./src/app/view-image/view-image.module.ts");
+
 
 
 
@@ -1348,8 +1375,20 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         declarations: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]],
         entryComponents: [],
-        imports: [_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_20__["PipesModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"],
-            _sendimages_sendimages_module__WEBPACK_IMPORTED_MODULE_23__["SendimagesPageModule"], _materials_materials_module__WEBPACK_IMPORTED_MODULE_19__["MaterialsPageModule"], _builder_builder_module__WEBPACK_IMPORTED_MODULE_21__["BuilderPageModule"], _images_images_module__WEBPACK_IMPORTED_MODULE_22__["ImagesPageModule"], _certificate_certificate_module__WEBPACK_IMPORTED_MODULE_25__["CertificatePageModule"], _new_certificate_new_certificate_module__WEBPACK_IMPORTED_MODULE_26__["NewCertificatePageModule"], _alert_image_alert_image_module__WEBPACK_IMPORTED_MODULE_28__["AlertImagePageModule"]],
+        imports: [_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_20__["PipesModule"],
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(),
+            _app_routing_module__WEBPACK_IMPORTED_MODULE_9__["AppRoutingModule"],
+            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"],
+            _sendimages_sendimages_module__WEBPACK_IMPORTED_MODULE_23__["SendimagesPageModule"],
+            _materials_materials_module__WEBPACK_IMPORTED_MODULE_19__["MaterialsPageModule"],
+            _builder_builder_module__WEBPACK_IMPORTED_MODULE_21__["BuilderPageModule"],
+            _images_images_module__WEBPACK_IMPORTED_MODULE_22__["ImagesPageModule"],
+            _view_image_view_image_module__WEBPACK_IMPORTED_MODULE_29__["ViewImagePageModule"],
+            _certificate_certificate_module__WEBPACK_IMPORTED_MODULE_25__["CertificatePageModule"],
+            _new_certificate_new_certificate_module__WEBPACK_IMPORTED_MODULE_26__["NewCertificatePageModule"],
+            _alert_image_alert_image_module__WEBPACK_IMPORTED_MODULE_28__["AlertImagePageModule"]],
         providers: [
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
@@ -1620,6 +1659,7 @@ let CertificatePage = class CertificatePage {
                 }
             });
             modal.onDidDismiss().then((detail) => {
+                this.search();
             });
             yield modal.present();
         });
@@ -2075,6 +2115,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _model_NewCertificate_model__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../model/NewCertificate.model */ "./src/app/model/NewCertificate.model.ts");
 /* harmony import */ var _Services_tasks_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Services/tasks-service */ "./src/app/Services/tasks-service.ts");
 /* harmony import */ var _alert_image_alert_image_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../alert-image/alert-image.page */ "./src/app/alert-image/alert-image.page.ts");
+/* harmony import */ var _view_image_view_image_page__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../view-image/view-image.page */ "./src/app/view-image/view-image.page.ts");
+
 
 
 
@@ -2137,7 +2179,10 @@ let NewCertificatePage = class NewCertificatePage {
     }
     ModalImage() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            console.log(this.NewCertificate.idservice_certifications);
+            if (this.NewCertificate.state == 2) {
+                this.presentToast('El certificado se encuentra Aprobado');
+                return;
+            }
             if (this.NewCertificate.idservice_certifications == undefined) {
                 this.presentToast('Primero guarde el Certificado');
                 return;
@@ -2157,20 +2202,23 @@ let NewCertificatePage = class NewCertificatePage {
         });
     }
     save() {
-        console.log(this.NewCertificate);
+        if (this.NewCertificate.state == 2) {
+            this.presentToast('El certificado se encuentra Aprobado');
+            return;
+        }
         if (this.NewCertificate.idservice_certifications == undefined) {
             this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
-                // this.tasksService.delete(this.data.idodi,)
                 if (result.response == true) {
                     this.NewCertificate.idservice_certifications = result.result;
-                    this.presentToast('Se guardo el Certificado');
+                    this.presentToast('Se guardo el Certificado1');
                 }
             }, error => {
             });
             return;
         }
         else {
-            if (this.NewCertificate.state == 1 || this.NewCertificate.state == 3) {
+            // || this.NewCertificate.state == 3
+            if (this.NewCertificate.state == 1 || this.NewCertificate.state == undefined) {
                 this.tasksService.SelectImage(this.data.idodi, this.NewCertificate.idservice_certifications)
                     .then(tasks => {
                     let actual = 0;
@@ -2188,9 +2236,8 @@ let NewCertificatePage = class NewCertificatePage {
                         this.ModalAlertImage(images);
                         return;
                     }
-                    if (actual == 0 && this.NewCertificate.state == 1 || actual == 0 && this.NewCertificate.state == 3) {
+                    if (actual == 0 && this.NewCertificate.state == 1 || actual == 0 && this.NewCertificate.state == undefined) {
                         this.ModalImage();
-                        console.log('1');
                         return;
                     }
                     this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
@@ -2201,7 +2248,7 @@ let NewCertificatePage = class NewCertificatePage {
                             console.error(error);
                         });
                         if (result.response == false) {
-                            this.presentToast('Se guardo el Certificado');
+                            this.presentToast('Se guardo el Certificado2');
                         }
                     }, error => {
                     });
@@ -2219,14 +2266,26 @@ let NewCertificatePage = class NewCertificatePage {
                         console.error(error);
                     });
                     if (result.response == false) {
-                        this.presentToast('Se guardo el Certificado1');
+                        this.presentToast('Se guardo el Certificado');
                     }
                 }, error => {
                 });
             }
         }
     }
-    delete() {
+    ModalViewImage() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const modal = yield this.modalController.create({
+                component: _view_image_view_image_page__WEBPACK_IMPORTED_MODULE_8__["ViewImagePage"],
+                componentProps: {
+                    'data': this.data,
+                    'idservice': this.NewCertificate.idservice_certifications,
+                }
+            });
+            modal.onDidDismiss().then((detail) => {
+            });
+            yield modal.present();
+        });
     }
     ModalAlertImage(images) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
@@ -2467,7 +2526,6 @@ let SendimagesPage = class SendimagesPage {
         this.data = navParams.get('data');
         this.photos_service = navParams.get('photos_service');
         this.idservice = navParams.get('idservice');
-        console.log(this.idservice);
         for (let index = 0; index < this.photos_service.quantity; index++) {
             this.photos.push({
                 imagenes: '',
@@ -2577,8 +2635,6 @@ let SendimagesPage = class SendimagesPage {
             idservice: this.idservice
         };
         this.tasksService.SelectImageOne(tipe, idodi, this.idservice).then(tasks => {
-            console.log(tipe, idodi, this.idservice);
-            console.log(tasks);
             this.row_data = tasks[0];
             this.number = this.row_data.actual + 1;
         })
@@ -2612,7 +2668,7 @@ let SendimagesPage = class SendimagesPage {
                 params: { params: params }
             };
             fileTransfer
-                .upload(imagen, "http://192.168.1.57/laravel-mls/public/api/odi/send_image_movil", options)
+                .upload(imagen, "http://190.0.33.166:90/laravel-mls/public/api/odi/send_image_movil", options)
                 .then(data => {
                 var json = JSON.parse(data.response);
                 if (json.response == true) {
@@ -2659,30 +2715,15 @@ let SendimagesPage = class SendimagesPage {
     }
     send_image() {
         this.showLoader();
-        // let loader = this.loadingCtrl.create({
-        //   content: "Please wait..."
-        // });
-        // loader.present();
         for (let data of this.photos) {
             if (data.imagenes == '') {
-                // console.log(1)
             }
             else {
-                //console.log(2)
                 if (data.state_send == false) {
                     this.onLoadimage(data.imagenes, data.id, data.name_photo, data.idodi, data.tipe, data.contract_idcontract);
                 }
             }
         }
-        // loader.dismiss();
-        // this.database.GetAllUsers(this.consecutivo).then(
-        //   Response => {
-        //     console.log(Response);
-        //   },
-        //   error => {}
-        // );
-        // this.image = [];
-        //let reader = new FileReader();
     }
     showLoader() {
         this.loaderToShow = this.loadingController.create({
@@ -2798,6 +2839,129 @@ SendimagesPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"],
         _Services_tasks_service__WEBPACK_IMPORTED_MODULE_9__["TasksService"]])
 ], SendimagesPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/view-image/view-image.module.ts":
+/*!*************************************************!*\
+  !*** ./src/app/view-image/view-image.module.ts ***!
+  \*************************************************/
+/*! exports provided: ViewImagePageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewImagePageModule", function() { return ViewImagePageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _view_image_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./view-image.page */ "./src/app/view-image/view-image.page.ts");
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _view_image_page__WEBPACK_IMPORTED_MODULE_6__["ViewImagePage"]
+    }
+];
+let ViewImagePageModule = class ViewImagePageModule {
+};
+ViewImagePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_view_image_page__WEBPACK_IMPORTED_MODULE_6__["ViewImagePage"]]
+    })
+], ViewImagePageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/view-image/view-image.page.scss":
+/*!*************************************************!*\
+  !*** ./src/app/view-image/view-image.page.scss ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".center {\n  color: rgba(255, 255, 255, 0.93) !important;\n}\n\n.content-images {\n  display: -webkit-box;\n  display: flex;\n  justify-content: space-around;\n  flex-wrap: wrap;\n}\n\n.add-img {\n  width: 40%;\n  height: 170px;\n  display: -webkit-box;\n  display: flex;\n  border-color: #e8e8e8;\n  border-style: solid;\n  border-width: 2px;\n  justify-content: space-around;\n  padding: 2px;\n  z-index: 2;\n}\n\n.imagen {\n  position: relative;\n  background-color: #336699;\n  color: #fff;\n  width: 100px;\n  height: 100px;\n  padding: 3px;\n  text-align: center;\n  z-index: 1;\n}\n\n.padre {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: reverse;\n          flex-direction: row-reverse;\n  height: 100%;\n  width: 100%;\n  background-color: white;\n  border-color: #7bc228;\n  border-style: solid;\n  border-width: 2px;\n}\n\n.ion-color-light {\n  --ion-color-base: #7bc228 !important;\n  --ion-color-base-rgb: var(--ion-color-light-rgb, 244, 245, 248) !important;\n  --ion-color-contrast: var(--ion-color-light-contrast, #000) !important;\n  --ion-color-contrast-rgb: var(--ion-color-light-contrast-rgb, 0, 0, 0) !important;\n  --ion-color-shade: var(--ion-color-light-shade, #d7d8da) !important;\n  --ion-color-tint: var(--ion-color-light-tint, #f5f6f9) !important;\n}\n\n.ion-color-red {\n  --ion-color-base: #ef0909 !important;\n  --ion-color-base-rgb: var(--ion-color-light-rgb, 244, 245, 248) !important;\n  --ion-color-contrast: var(--ion-color-light-contrast, #000) !important;\n  --ion-color-contrast-rgb: var(--ion-color-light-contrast-rgb, 0, 0, 0) !important;\n  --ion-color-shade: var(--ion-color-light-shade, #d7d8da) !important;\n  --ion-color-tint: var(--ion-color-light-tint, #f5f6f9) !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi92YXIvd3d3L2h0bWwvYXBwLW1scy9zcmMvYXBwL3ZpZXctaW1hZ2Uvdmlldy1pbWFnZS5wYWdlLnNjc3MiLCJzcmMvYXBwL3ZpZXctaW1hZ2Uvdmlldy1pbWFnZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSwyQ0FBQTtBQ0NKOztBREVFO0VBQ0Msb0JBQUE7RUFBQSxhQUFBO0VBQ0MsNkJBQUE7RUFFRCxlQUFBO0FDQUg7O0FER0U7RUFDRSxVQUFBO0VBQ0EsYUFBQTtFQUNBLG9CQUFBO0VBQUEsYUFBQTtFQUVBLHFCQUFBO0VBQ0EsbUJBQUE7RUFDQSxpQkFBQTtFQUNBLDZCQUFBO0VBQ0EsWUFBQTtFQUNBLFVBQUE7QUNESjs7QURJRTtFQUNFLGtCQUFBO0VBQ0EseUJBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGFBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxVQUFBO0FDREo7O0FER0U7RUFFRSxvQkFBQTtFQUFBLGFBQUE7RUFDQSw4QkFBQTtFQUFBLDhCQUFBO1VBQUEsMkJBQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtFQUNBLHVCQUFBO0VBQ0EscUJBQUE7RUFDQSxtQkFBQTtFQUNBLGlCQUFBO0FDREo7O0FES0U7RUFDRSxvQ0FBQTtFQUNBLDBFQUFBO0VBQ0Esc0VBQUE7RUFDQSxpRkFBQTtFQUNBLG1FQUFBO0VBQ0EsaUVBQUE7QUNGSjs7QURJRTtFQUNFLG9DQUFBO0VBQ0EsMEVBQUE7RUFDQSxzRUFBQTtFQUNBLGlGQUFBO0VBQ0EsbUVBQUE7RUFDQSxpRUFBQTtBQ0RKIiwiZmlsZSI6InNyYy9hcHAvdmlldy1pbWFnZS92aWV3LWltYWdlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jZW50ZXIge1xuICAgIGNvbG9yOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuOTMpICFpbXBvcnRhbnRcbiAgfVxuICBcbiAgLmNvbnRlbnQtaW1hZ2VzIHtcbiAgIGRpc3BsYXk6IGZsZXg7XG4gICAganVzdGlmeS1jb250ZW50OnNwYWNlLWFyb3VuZDtcblxuICAgZmxleC13cmFwOiB3cmFwO1xuICB9XG4gIFxuICAuYWRkLWltZyB7XG4gICAgd2lkdGg6IDQwJTtcbiAgICBoZWlnaHQ6IDE3MHB4O1xuICAgIGRpc3BsYXk6IGZsZXg7XG5cbiAgICBib3JkZXItY29sb3I6I2U4ZThlODtcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xuICAgIGJvcmRlci13aWR0aDogMnB4O1xuICAgIGp1c3RpZnktY29udGVudDpzcGFjZS1hcm91bmQ7XG4gICAgcGFkZGluZzogMnB4O1xuICAgIHotaW5kZXg6IDI7XG4gIFxuICB9XG4gIC5pbWFnZW57XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIGJhY2tncm91bmQtY29sb3I6ICMzMzY2OTk7XG4gICAgY29sb3I6ICNmZmY7XG4gICAgd2lkdGg6IDEwMHB4O1xuICAgIGhlaWdodDogMTAwcHg7XG4gICAgcGFkZGluZzogM3B4O1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICB6LWluZGV4OiAxO1xuICB9XG4gIC5wYWRyZXtcbiAgICBcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiByb3ctcmV2ZXJzZTtcbiAgICBoZWlnaHQ6IDEwMCU7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gICAgYm9yZGVyLWNvbG9yOiAjN2JjMjI4O1xuICAgIGJvcmRlci1zdHlsZTogc29saWQ7XG4gICAgYm9yZGVyLXdpZHRoOiAycHg7XG4gIH1cbiAgXG5cbiAgLmlvbi1jb2xvci1saWdodCB7XG4gICAgLS1pb24tY29sb3ItYmFzZTogIzdiYzIyOCAhaW1wb3J0YW50O1xuICAgIC0taW9uLWNvbG9yLWJhc2UtcmdiOiB2YXIoLS1pb24tY29sb3ItbGlnaHQtcmdiLCAyNDQsIDI0NSwgMjQ4KSAhaW1wb3J0YW50O1xuICAgIC0taW9uLWNvbG9yLWNvbnRyYXN0OiB2YXIoLS1pb24tY29sb3ItbGlnaHQtY29udHJhc3QsICMwMDApICFpbXBvcnRhbnQ7XG4gICAgLS1pb24tY29sb3ItY29udHJhc3QtcmdiOiB2YXIoLS1pb24tY29sb3ItbGlnaHQtY29udHJhc3QtcmdiLCAwLCAwLCAwKSAhaW1wb3J0YW50O1xuICAgIC0taW9uLWNvbG9yLXNoYWRlOiB2YXIoLS1pb24tY29sb3ItbGlnaHQtc2hhZGUsICNkN2Q4ZGEpICFpbXBvcnRhbnQ7XG4gICAgLS1pb24tY29sb3ItdGludDogdmFyKC0taW9uLWNvbG9yLWxpZ2h0LXRpbnQsICNmNWY2ZjkpICFpbXBvcnRhbnQ7XG4gIH1cbiAgLmlvbi1jb2xvci1yZWR7XG4gICAgLS1pb24tY29sb3ItYmFzZTogI2VmMDkwOSAhaW1wb3J0YW50O1xuICAgIC0taW9uLWNvbG9yLWJhc2UtcmdiOiB2YXIoLS1pb24tY29sb3ItbGlnaHQtcmdiLCAyNDQsIDI0NSwgMjQ4KSAhaW1wb3J0YW50O1xuICAgIC0taW9uLWNvbG9yLWNvbnRyYXN0OiB2YXIoLS1pb24tY29sb3ItbGlnaHQtY29udHJhc3QsICMwMDApICFpbXBvcnRhbnQ7XG4gICAgLS1pb24tY29sb3ItY29udHJhc3QtcmdiOiB2YXIoLS1pb24tY29sb3ItbGlnaHQtY29udHJhc3QtcmdiLCAwLCAwLCAwKSAhaW1wb3J0YW50O1xuICAgIC0taW9uLWNvbG9yLXNoYWRlOiB2YXIoLS1pb24tY29sb3ItbGlnaHQtc2hhZGUsICNkN2Q4ZGEpICFpbXBvcnRhbnQ7XG4gICAgLS1pb24tY29sb3ItdGludDogdmFyKC0taW9uLWNvbG9yLWxpZ2h0LXRpbnQsICNmNWY2ZjkpICFpbXBvcnRhbnQ7XG4gIH0iLCIuY2VudGVyIHtcbiAgY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC45MykgIWltcG9ydGFudDtcbn1cblxuLmNvbnRlbnQtaW1hZ2VzIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7XG4gIGZsZXgtd3JhcDogd3JhcDtcbn1cblxuLmFkZC1pbWcge1xuICB3aWR0aDogNDAlO1xuICBoZWlnaHQ6IDE3MHB4O1xuICBkaXNwbGF5OiBmbGV4O1xuICBib3JkZXItY29sb3I6ICNlOGU4ZTg7XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIGJvcmRlci13aWR0aDogMnB4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcbiAgcGFkZGluZzogMnB4O1xuICB6LWluZGV4OiAyO1xufVxuXG4uaW1hZ2VuIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzM2Njk5O1xuICBjb2xvcjogI2ZmZjtcbiAgd2lkdGg6IDEwMHB4O1xuICBoZWlnaHQ6IDEwMHB4O1xuICBwYWRkaW5nOiAzcHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgei1pbmRleDogMTtcbn1cblxuLnBhZHJlIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdy1yZXZlcnNlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIHdpZHRoOiAxMDAlO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB3aGl0ZTtcbiAgYm9yZGVyLWNvbG9yOiAjN2JjMjI4O1xuICBib3JkZXItc3R5bGU6IHNvbGlkO1xuICBib3JkZXItd2lkdGg6IDJweDtcbn1cblxuLmlvbi1jb2xvci1saWdodCB7XG4gIC0taW9uLWNvbG9yLWJhc2U6ICM3YmMyMjggIWltcG9ydGFudDtcbiAgLS1pb24tY29sb3ItYmFzZS1yZ2I6IHZhcigtLWlvbi1jb2xvci1saWdodC1yZ2IsIDI0NCwgMjQ1LCAyNDgpICFpbXBvcnRhbnQ7XG4gIC0taW9uLWNvbG9yLWNvbnRyYXN0OiB2YXIoLS1pb24tY29sb3ItbGlnaHQtY29udHJhc3QsICMwMDApICFpbXBvcnRhbnQ7XG4gIC0taW9uLWNvbG9yLWNvbnRyYXN0LXJnYjogdmFyKC0taW9uLWNvbG9yLWxpZ2h0LWNvbnRyYXN0LXJnYiwgMCwgMCwgMCkgIWltcG9ydGFudDtcbiAgLS1pb24tY29sb3Itc2hhZGU6IHZhcigtLWlvbi1jb2xvci1saWdodC1zaGFkZSwgI2Q3ZDhkYSkgIWltcG9ydGFudDtcbiAgLS1pb24tY29sb3ItdGludDogdmFyKC0taW9uLWNvbG9yLWxpZ2h0LXRpbnQsICNmNWY2ZjkpICFpbXBvcnRhbnQ7XG59XG5cbi5pb24tY29sb3ItcmVkIHtcbiAgLS1pb24tY29sb3ItYmFzZTogI2VmMDkwOSAhaW1wb3J0YW50O1xuICAtLWlvbi1jb2xvci1iYXNlLXJnYjogdmFyKC0taW9uLWNvbG9yLWxpZ2h0LXJnYiwgMjQ0LCAyNDUsIDI0OCkgIWltcG9ydGFudDtcbiAgLS1pb24tY29sb3ItY29udHJhc3Q6IHZhcigtLWlvbi1jb2xvci1saWdodC1jb250cmFzdCwgIzAwMCkgIWltcG9ydGFudDtcbiAgLS1pb24tY29sb3ItY29udHJhc3QtcmdiOiB2YXIoLS1pb24tY29sb3ItbGlnaHQtY29udHJhc3QtcmdiLCAwLCAwLCAwKSAhaW1wb3J0YW50O1xuICAtLWlvbi1jb2xvci1zaGFkZTogdmFyKC0taW9uLWNvbG9yLWxpZ2h0LXNoYWRlLCAjZDdkOGRhKSAhaW1wb3J0YW50O1xuICAtLWlvbi1jb2xvci10aW50OiB2YXIoLS1pb24tY29sb3ItbGlnaHQtdGludCwgI2Y1ZjZmOSkgIWltcG9ydGFudDtcbn0iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/view-image/view-image.page.ts":
+/*!***********************************************!*\
+  !*** ./src/app/view-image/view-image.page.ts ***!
+  \***********************************************/
+/*! exports provided: ViewImagePage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewImagePage", function() { return ViewImagePage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
+
+
+
+
+
+let ViewImagePage = class ViewImagePage {
+    constructor(modalController, navParams, loginServiceService) {
+        this.modalController = modalController;
+        this.navParams = navParams;
+        this.loginServiceService = loginServiceService;
+        this.url = 'http://192.168.1.57/laravel-mls/public/public/';
+        this.data = navParams.get('data');
+        this.idservice = navParams.get('idservice');
+    }
+    ngOnInit() {
+        this.search();
+    }
+    back() {
+        this.modalController.dismiss({
+            'dismissed': false,
+        });
+    }
+    search() {
+        const params = {
+            idservice: this.idservice,
+            id_odi: this.data.idodi
+        };
+        this.loginServiceService.ViewImage(params).subscribe(result => {
+            this.photos = result.response;
+        }, error => { });
+    }
+};
+ViewImagePage.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"] },
+    { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__["LoginServiceService"] }
+];
+ViewImagePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-view-image',
+        template: __webpack_require__(/*! raw-loader!./view-image.page.html */ "./node_modules/raw-loader/index.js!./src/app/view-image/view-image.page.html"),
+        styles: [__webpack_require__(/*! ./view-image.page.scss */ "./src/app/view-image/view-image.page.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"], _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__["LoginServiceService"]])
+], ViewImagePage);
 
 
 

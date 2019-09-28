@@ -40,4 +40,9 @@
     <ion-icon class="big" src="assets/iconos/226972.svg" item-end *ngIf="car.state==3">
     </ion-icon>
   </ion-item>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed" (click)="servicio()">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

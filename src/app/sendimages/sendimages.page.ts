@@ -230,7 +230,7 @@ export class SendimagesPage implements OnInit {
       fileTransfer
         .upload(
           imagen,
-          "http://192.168.1.57/laravel-mls/public/api/odi/send_image_movil",
+          "http://190.0.33.166:90/laravel-mls/public/api/odi/send_image_movil",
           options
         )
         .then(

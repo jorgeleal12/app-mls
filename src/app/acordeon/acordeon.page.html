@@ -31,157 +31,154 @@
 
         <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded1')}">
             <div [hidden]="div_hidden">
-                <mat-form-field class="example-full-width" style="margin-top: 5px;">
-                    <input matInput placeholder="Servicio Número" [(ngModel)]="number_service" readonly>
-                </mat-form-field>
+                <ion-row>
+                    <ion-col size="12">
+                        <mat-form-field class="example-full-width" style="margin-top: 5px;">
+                            <input matInput placeholder="Servicio Número" [(ngModel)]="number_service" readonly>
+                        </mat-form-field>
 
 
 
-                <ion-item>
-                    <ion-label class="example-full-width">Prioridad</ion-label>
-                    <ion-select [(ngModel)]="priority">
-                        <ion-select-option [value]=1>Alta</ion-select-option>
-                        <ion-select-option [value]=2>Media</ion-select-option>
-                        <ion-select-option [value]=3>Baja</ion-select-option>
-                    </ion-select>
-                </ion-item>
+                        <ion-item>
+                            <ion-label class="example-full-width">Prioridad</ion-label>
+                            <ion-select [(ngModel)]="Service.priority">
+                                <ion-select-option [value]=1>Alta</ion-select-option>
+                                <ion-select-option [value]=2>Media</ion-select-option>
+                                <ion-select-option [value]=3>Baja</ion-select-option>
+                            </ion-select>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label class="example-full-width">Programación</ion-label>
+                            <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="Service.date_programming">
+                            </ion-datetime>
+                        </ion-item>
 
-                <ion-item>
-                    <ion-label class="example-full-width">Sede</ion-label>
-                    <ion-select>
-                        <ion-select-option value="1">Alta</ion-select-option>
-                        <ion-select-option value="2">Media</ion-select-option>
-                        <ion-select-option value="3">Baja</ion-select-option>
-                    </ion-select>
-                </ion-item>
+                        <ion-item>
+                            <ion-label class="example-full-width">Franja de Atención</ion-label>
+                            <ion-select [(ngModel)]="Service.Attention">
+                                <ion-select-option [value]=1>Manaña</ion-select-option>
+                                <ion-select-option [value]=2>Tarde</ion-select-option>
 
-                <ion-item>
-                    <ion-label class="example-full-width">Programación</ion-label>
-                    <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="programming"></ion-datetime>
-                </ion-item>
+                            </ion-select>
+                        </ion-item>
 
-                <ion-item>
-                    <ion-label class="example-full-width">Franja de Atención</ion-label>
-                    <ion-select [(ngModel)]="Attention">
-                        <ion-select-option [value]=1>Manaña</ion-select-option>
-                        <ion-select-option [value]=2>Tarde</ion-select-option>
+                        <ion-item>
+                            <ion-label class="example-full-width">Tipos de Gas</ion-label>
+                            <ion-select>
+                                <ion-select-option value="1">Natural</ion-select-option>
+                                <ion-select-option value="2">GLP</ion-select-option>
+                            </ion-select>
+                        </ion-item>
 
-                    </ion-select>
-                </ion-item>
+                        <ion-item>
+                            <ion-label class="example-full-width">Tipos de Servicio</ion-label>
+                            <ion-select [(ngModel)]="Service.type_service_idtype_service" (ionChange)="type_red()">
+                                <ion-select-option [value]=1>Residencial</ion-select-option>
+                                <ion-select-option [value]=2>Comercial</ion-select-option>
+                                <ion-select-option [value]=3>Industrial</ion-select-option>
+                            </ion-select>
+                        </ion-item>
 
-                <ion-item>
-                    <ion-label class="example-full-width">Tipos de Gas</ion-label>
-                    <ion-select>
-                        <ion-select-option value="1">Natural</ion-select-option>
-                        <ion-select-option value="2">GLP</ion-select-option>
-                    </ion-select>
-                </ion-item>
-
-                <ion-item>
-                    <ion-label class="example-full-width">Tipos de Servicio</ion-label>
-                    <ion-select [(ngModel)]="type_service">
-                        <ion-select-option [value]=1>Residencial</ion-select-option>
-                        <ion-select-option [value]=2>Comercial</ion-select-option>
-                        <ion-select-option [value]=3>Industrial</ion-select-option>
-                    </ion-select>
-                </ion-item>
-
-                <ion-item>
-                    <ion-label class="example-full-width">Tipo de Red</ion-label>
-                    <ion-select [(ngModel)]="type_network">
-                        <ion-select-option [value]=1>Nueva</ion-select-option>
-                        <ion-select-option [value]=2>Existente</ion-select-option>
-                        <ion-select-option [value]=3>Puesta en Servicio</ion-select-option>
-                        <ion-select-option [value]=4>Linea Matrix Existente</ion-select-option>
-                        <ion-select-option [value]=5>Linea Matrix Nueva</ion-select-option>
-                        <ion-select-option [value]=6>Reforma</ion-select-option>
-                        <ion-select-option [value]=7>No Usuario</ion-select-option>
-                    </ion-select>
-                </ion-item>
-
-
-
-
+                        <ion-item>
+                            <ion-label class="example-full-width">Tipo de Red</ion-label>
+                            <ion-select [(ngModel)]="Service.type_network_idtype_network">
+                                <ion-select-option *ngFor="let network of networks" [value]=network.idtype_network>
+                                    {{network.name_network}}
+                                </ion-select-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
             </div>
+            <div [hidden]="div_service">
+                <ion-list>
 
-            <ion-list>
+                    <ion-item>
+                        <ion-label class="ion-text-wrap">
+                            <ion-text>
+                                <h2>{{Service.idodi}}</h2>
+                            </ion-text>
+                            <p>Servicio Número</p>
+                        </ion-label>
+                    </ion-item>
 
-                <ion-item>
-                    <ion-label class="ion-text-wrap">
-                        <ion-text>
-                            <h2>{{Service.idodi}}</h2>
-                        </ion-text>
-                        <p>Servicio Número</p>
-                    </ion-label>
-                </ion-item>
+                    <ion-item>
+                        <ion-label class="ion-text-wrap">
+                            <ion-text>
+                                <h2>{{Service.name_priority}}</h2>
+                            </ion-text>
+                            <p>Prioridad</p>
+                        </ion-label>
+                        <ion-icon class="big1" src="assets/iconos/334047.svg" item-end *ngIf="Service.priority==1">
+                        </ion-icon>
+                        <ion-icon class="big1" src="assets/iconos/189670.svg" item-end *ngIf="Service.priority==2">
+                        </ion-icon>
+                        <ion-icon class="big1" src="assets/iconos/137495.svg" item-end *ngIf="Service.priority==3">
+                        </ion-icon>
+                    </ion-item>
 
-                <ion-item>
-                    <ion-label class="ion-text-wrap">
-                        <ion-text>
-                            <h2>{{Service.name_priority}}</h2>
-                        </ion-text>
-                        <p>Prioridad</p>
-                    </ion-label>
-                    <ion-icon class="big1" src="assets/iconos/334047.svg" item-end *ngIf="Service.priority==1">
-                    </ion-icon>
-                    <ion-icon class="big1" src="assets/iconos/189670.svg" item-end *ngIf="Service.priority==2">
-                    </ion-icon>
-                    <ion-icon class="big1" src="assets/iconos/137495.svg" item-end *ngIf="Service.priority==3">
-                    </ion-icon>
-                </ion-item>
+                    <ion-item>
+                        <ion-label class="ion-text-wrap">
+                            <ion-text>
+                                <h2>{{Service.contract_name}}</h2>
+                            </ion-text>
+                            <p>Sede</p>
+                        </ion-label>
+                    </ion-item>
 
-                <ion-item>
-                    <ion-label class="ion-text-wrap">
-                        <ion-text>
-                            <h2>{{Service.contract_name}}</h2>
-                        </ion-text>
-                        <p>Sede</p>
-                    </ion-label>
-                </ion-item>
+                    <ion-item>
+                        <ion-label class="ion-text-wrap">
+                            <ion-text>
+                                <h2>{{Service.date_programming}}</h2>
+                            </ion-text>
+                            <p>Programación</p>
+                        </ion-label>
+                    </ion-item>
 
-                <ion-item>
-                    <ion-label class="ion-text-wrap">
-                        <ion-text>
-                            <h2>{{Service.date_programming}}</h2>
-                        </ion-text>
-                        <p>Programación</p>
-                    </ion-label>
-                </ion-item>
+                    <ion-item>
+                        <ion-label class="ion-text-wrap">
+                            <ion-text>
+                                <h2>{{Service.name_atencion}}</h2>
+                            </ion-text>
+                            <p>Franja de Atención</p>
+                        </ion-label>
+                    </ion-item>
 
-                <ion-item>
-                    <ion-label class="ion-text-wrap">
-                        <ion-text>
-                            <h2>{{Service.name_gas}}</h2>
-                        </ion-text>
-                        <p>Tipo de Gas</p>
-                    </ion-label>
-                </ion-item>
+                    <ion-item>
+                        <ion-label class="ion-text-wrap">
+                            <ion-text>
+                                <h2>{{Service.name_gas}}</h2>
+                            </ion-text>
+                            <p>Tipo de Gas</p>
+                        </ion-label>
+                    </ion-item>
 
-                <ion-item>
-                    <ion-label class="ion-text-wrap">
-                        <ion-text>
-                            <h2>{{Service.name_type}}</h2>
-                        </ion-text>
-                        <p>Tipo de Servicio</p>
-                    </ion-label>
-                </ion-item>
-                <ion-item>
-                    <ion-label class="ion-text-wrap">
-                        <ion-text>
-                            <h2>{{Service.name_network}}</h2>
-                        </ion-text>
-                        <p>Tipo de Red</p>
-                    </ion-label>
-                </ion-item>
-                <ion-item>
-                    <ion-label class="ion-text-wrap">
-                        <ion-text>
-                            <h2>{{Service.name_state}}</h2>
-                        </ion-text>
-                        <p>Estado</p>
-                    </ion-label>
-                </ion-item>
-            </ion-list>
+                    <ion-item>
+                        <ion-label class="ion-text-wrap">
+                            <ion-text>
+                                <h2>{{Service.name_type}}</h2>
+                            </ion-text>
+                            <p>Tipo de Servicio</p>
+                        </ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label class="ion-text-wrap">
+                            <ion-text>
+                                <h2>{{Service.name_network}}</h2>
+                            </ion-text>
+                            <p>Tipo de Red</p>
+                        </ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label class="ion-text-wrap">
+                            <ion-text>
+                                <h2>{{Service.name_state}}</h2>
+                            </ion-text>
+                            <p>Estado</p>
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+            </div>
         </section>
 
         <section class="acc-section" (click)="setStep('expanded2')">

@@ -69,7 +69,7 @@
     <name>App MLS</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="https://localhost:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -110,11 +110,14 @@
     <preference name="loglevel" value="DEBUG" />
     <preference name="webView" value="com.ionicframework.cordova.webview.IonicWebViewEngine" />
     <preference name="ScrollEnabled" value="false" />
-    <preference name="android-minSdkVersion" value="19" />
+    <preference name="SplashScreenDelay" value="10000" />
+    <preference name="FadeSplashScreenDuration" value="1000" />
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="ShowSplashScreen" value="true" />
+    <preference name="FadeSplashScreen" value="true" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
-    <preference name="FadeSplashScreenDuration" value="300" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
-    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
 </widget>
