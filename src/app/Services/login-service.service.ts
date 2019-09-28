@@ -56,4 +56,8 @@ export class LoginServiceService {
   ViewImage(params): Observable<any> {
     return this.http.post(`${this.api_url}movil/ViewImage`, params);
   }
+
+  SaveService(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/SaveService`, params);
+  }
 }

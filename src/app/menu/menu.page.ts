@@ -30,30 +30,16 @@ export class MenuPage implements OnInit {
             icon: 'home',
             section: 'Servicios',
             routes: [
-                {
-                    title: 'Cuentas',
-                    url: '/menu/home',
-                    icon: 'briefcase'
-                },
+
                 {
                     title: 'Servicios',
                     url: '/menu/home',
                     icon: 'bookmark'
-                },
-                {
-                    title: 'Certificados',
-                    url: '/menu/home',
-                    icon: 'document'
                 }]
         },
         {
             section: 'Administración',
             routes: [
-                {
-                    title: 'Sedes',
-                    url: '/menu/home',
-                    icon: 'home'
-                },
                 {
                     title: 'Materiales',
                     url: '/menu/home',
@@ -63,7 +49,17 @@ export class MenuPage implements OnInit {
                     title: 'Constructores',
                     url: '/menu/home',
                     icon: 'apps'
-                }
+                },
+                {
+                    title: 'Cliente',
+                    url: '/menu/home',
+                    icon: 'person-add'
+                },
+                {
+                    title: 'Cuentas',
+                    url: '/menu/home',
+                    icon: 'briefcase'
+                },
             ]
         }
     ];

@@ -32,10 +32,8 @@ export class CertificatePage implements OnInit {
   }
 
   search() {
-
     const params = {
       idodi: this.data.idodi
-
     }
     this.loginServiceService.search_certificate(params).subscribe(result => {
       this.certificates = result.response
@@ -64,11 +62,10 @@ export class CertificatePage implements OnInit {
       });
 
     modal.onDidDismiss().then((detail) => {
+      this.search();
     });
 
     await modal.present();
-
-
   }
 
   async ModalCertificate(certificate) {

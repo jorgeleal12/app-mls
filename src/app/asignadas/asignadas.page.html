@@ -23,7 +23,7 @@
   </ion-refresher>
 
   <ion-item lines="none" *ngFor="let car of cars" (click)="servicio(car)">
-    <ion-icon class="big" src="assets/iconos/148965.svg" item-end></ion-icon>
+    <ion-icon class="big1" src="assets/iconos/138579.svg" item-end></ion-icon>
     <ion-label text-wrap>
       <ion-text color="primary">
         <h3>{{ car.idodi}}</h3>
@@ -32,8 +32,12 @@
       <ion-text>
 
         <p class="prog">Prog: {{car.date_programming }} {{ car.identifacation}}</p>
+        <p class="prog">Estado: {{car.name_state }} </p>
       </ion-text>
     </ion-label>
-    <ion-icon class="big" src="assets/iconos/148882.svg" item-end></ion-icon>
+    <ion-icon class="big" src="assets/iconos/148882.svg" item-end *ngIf="car.state!=3">
+    </ion-icon>
+    <ion-icon class="big" src="assets/iconos/226972.svg" item-end *ngIf="car.state==3">
+    </ion-icon>
   </ion-item>
 </ion-content>

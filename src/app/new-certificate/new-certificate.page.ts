@@ -27,6 +27,7 @@ export class NewCertificatePage implements OnInit {
   idNumber_cetificate
   iamges = [];
   messages
+
   NewCertificate = new NewCertificate();
 
   constructor(
@@ -93,7 +94,11 @@ export class NewCertificatePage implements OnInit {
 
   async ModalImage() {
 
-    console.log(this.NewCertificate.idservice_certifications)
+
+    if (this.NewCertificate.state == 2) {
+      this.presentToast('El certificado se encuentra Aprobado')
+      return;
+    }
     if (this.NewCertificate.idservice_certifications == undefined) {
       this.presentToast('Primero guarde el Certificado')
       return;
@@ -120,12 +125,13 @@ export class NewCertificatePage implements OnInit {
   }
 
   save() {
-    console.log(this.NewCertificate)
+    if (this.NewCertificate.state == 2) {
+      this.presentToast('El certificado se encuentra Aprobado')
+      return;
+    }
     if (this.NewCertificate.idservice_certifications == undefined) {
 
       this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
-
-        // this.tasksService.delete(this.data.idodi,)
         if (result.response == true) {
           this.NewCertificate.idservice_certifications = result.result
           this.presentToast('Se guardo el Certificado1')
@@ -139,7 +145,8 @@ export class NewCertificatePage implements OnInit {
 
     } else {
 
-      if (this.NewCertificate.state == 1 || this.NewCertificate.state == 3 || this.NewCertificate.state == undefined) {
+      // || this.NewCertificate.state == 3
+      if (this.NewCertificate.state == 1 || this.NewCertificate.state == undefined) {
 
         this.tasksService.SelectImage(this.data.idodi, this.NewCertificate.idservice_certifications)
           .then(tasks => {
@@ -208,8 +215,6 @@ export class NewCertificatePage implements OnInit {
 
         })
       }
-
-
     }
   }
 
@@ -231,9 +236,6 @@ export class NewCertificatePage implements OnInit {
   }
 
   async ModalAlertImage(images) {
-
-
-
     const modal: HTMLIonModalElement =
       await this.modalController.create({
         component: AlertImagePage,
@@ -251,8 +253,6 @@ export class NewCertificatePage implements OnInit {
     });
 
     await modal.present();
-
-
   }
 
   async presentToast(message) {

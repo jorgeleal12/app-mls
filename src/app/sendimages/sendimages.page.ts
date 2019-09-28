@@ -55,7 +55,6 @@ export class SendimagesPage implements OnInit {
     this.data = navParams.get('data');
     this.photos_service = navParams.get('photos_service');
     this.idservice = navParams.get('idservice');
-    console.log(this.idservice)
 
     for (let index = 0; index < this.photos_service.quantity; index++) {
       this.photos.push({
@@ -190,8 +189,6 @@ export class SendimagesPage implements OnInit {
     }
 
     this.tasksService.SelectImageOne(tipe, idodi, this.idservice).then(tasks => {
-      console.log(tipe, idodi, this.idservice)
-      console.log(tasks)
       this.row_data = tasks[0]
       this.number = this.row_data.actual + 1;
     })
@@ -289,21 +286,10 @@ export class SendimagesPage implements OnInit {
   }
 
   send_image() {
-
     this.showLoader()
-
-    // let loader = this.loadingCtrl.create({
-    //   content: "Please wait..."
-    // });
-    // loader.present();
-
     for (let data of this.photos) {
-
       if (data.imagenes == '') {
-        // console.log(1)
-
       } else {
-        //console.log(2)
         if (data.state_send == false) {
           this.onLoadimage(data.imagenes, data.id, data.name_photo, data.idodi, data.tipe, data.contract_idcontract);
         }
@@ -311,17 +297,6 @@ export class SendimagesPage implements OnInit {
       }
 
     }
-
-    // loader.dismiss();
-    // this.database.GetAllUsers(this.consecutivo).then(
-    //   Response => {
-    //     console.log(Response);
-    //   },
-    //   error => {}
-    // );
-    // this.image = [];
-
-    //let reader = new FileReader();
   }
 
 

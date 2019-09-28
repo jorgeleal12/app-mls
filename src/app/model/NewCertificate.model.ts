@@ -11,3 +11,4 @@ export class NewCertificate {
     public state: any;
     public Number_cetificate_idNumber_cetificate: any;
 }
+
