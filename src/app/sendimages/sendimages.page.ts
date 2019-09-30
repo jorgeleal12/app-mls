@@ -11,6 +11,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ActionSheetController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { TasksService } from '../Services/tasks-service';
+import { constant } from '../utilitis/constant';
 
 
 
@@ -35,6 +36,7 @@ export class SendimagesPage implements OnInit {
   suma;
   row_data: any = []
   idservice
+  constant = new constant();
   @ViewChild('layout', { static: true }) canvasRef;
   constructor(private route: ActivatedRoute, private router: Router, private imagePicker: ImagePicker,
     public transfer: FileTransfer,
@@ -230,7 +232,7 @@ export class SendimagesPage implements OnInit {
       fileTransfer
         .upload(
           imagen,
-          "http://192.168.1.57/laravel-mls/public/api/odi/send_image_movil",
+          this.constant.routeGlobal + "odi/send_image_movil",
           options
         )
         .then(

@@ -6,8 +6,9 @@
     <ion-title text-center class="center">Nuevo Cliente</ion-title>
 
     <ion-buttons slot="end">
-      <ion-button (click)="save()">
-        <ion-icon slot="icon-only" name="save"></ion-icon>
+      <ion-button [disabled]="!NewCliente.valid" (click)="save()">
+        <ion-icon slot="icon-only" name="save" *ngIf="NewCliente.value.idclient==''"></ion-icon>
+        <ion-icon slot="icon-only" name="create" *ngIf="NewCliente.value.idclient!=''"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -33,25 +34,33 @@
           Nombre requerido
         </div>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Teléfono">
+          <input matInput placeholder="Teléfono" formControlName="phone" id="phone">
           <mat-hint>Ingresa el Indicativo y el numero de teléfono (Ej. 57123456789)</mat-hint>
         </mat-form-field>
-
+        <div class="error" *ngIf="NewCliente.get('phone').hasError('required') && NewCliente.get('phone').touched">
+          Teléfono requerido
+        </div>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Identificación">
+          <input matInput placeholder="Identificación" formControlName="identification" id="identification">
           <mat-hint>Nit o Cedula del Cliente</mat-hint>
         </mat-form-field>
-
+        <div class="error"
+          *ngIf="NewCliente.get('identification').hasError('required') && NewCliente.get('identification').touched">
+          Nit o Cedula requerido
+        </div>
         <mat-form-field class="example-full-width1">
-          <input matInput placeholder="Correo Eletrónico">
+          <input matInput placeholder="Correo Eletrónico" formControlName="mail" id="mail">
           <mat-hint>Ingrese la dirección de correo eletrónico</mat-hint>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width1">
-          <input matInput placeholder="Correo Eletrónico">
-          <mat-hint>Ingrese la dirección de correo eletrónico</mat-hint>
-        </mat-form-field>
-
+        <ion-item>
+          <ion-label>Estado</ion-label>
+          <ion-select formControlName="state" id="state">
+            <ion-select-option [value]=1>Activo</ion-select-option>
+            <ion-select-option [value]=2>Inactivo</ion-select-option>
+            <ion-select-option [value]=3 selected>Por confirmar</ion-select-option>
+          </ion-select>
+        </ion-item>
       </ion-col>
 
     </ion-row>

@@ -11,7 +11,7 @@
       .aside-img {
         & img {
           width: 100%;
-          height: 250px;
+          height: 200px;
         }
       }
   
@@ -47,4 +47,9 @@
 
   .mat-form-field-appearance-legacy .mat-hint {
     color: rgba(113, 108, 108, 0.7)!important
+}
+
+.error{
+  font-size: 13px;
+  color: red;
 }

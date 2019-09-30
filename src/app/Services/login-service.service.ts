@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/internal/Observable";
+import { constant } from '../utilitis/constant';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoginServiceService {
 
-  api_url = 'http://192.168.1.57/laravel-mls/public/api/';
+export class LoginServiceService {
+  constant = new constant();
+  api_url = this.constant.routeGlobal;
 
   constructor(private http: HttpClient) { }
 
@@ -62,5 +64,9 @@ export class LoginServiceService {
   }
   type_red(params): Observable<any> {
     return this.http.post(`${this.api_url}list/list_type_network`, params);
+  }
+
+  SaveCliente(params): Observable<any> {
+    return this.http.post(`${this.api_url}client/create`, params);
   }
 }
