@@ -22,11 +22,10 @@
                             {{p.title}}
                         </ion-label>
                     </ion-item>
-
                 </ion-menu-toggle>
 
             </ion-list>
-            <ion-item class="aside-item" lines="none">
+            <ion-item class="aside-item" lines="none" (click)="close()">
                 <ion-icon name="md-close-circle" color="medium" size="small" class="aside-icon"> </ion-icon>
                 <ion-label>
                     Cerrar Sesión

@@ -28,6 +28,7 @@ import { NewCertificatePageModule } from './new-certificate/new-certificate.modu
 import { SQLite } from '@ionic-native/sqlite/ngx';
 import { AlertImagePageModule } from './alert-image/alert-image.module';
 import { ViewImagePageModule } from './view-image/view-image.module';
+import { NewClientPageModule } from './new-client/new-client.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -45,7 +46,8 @@ import { ViewImagePageModule } from './view-image/view-image.module';
     ViewImagePageModule,
     CertificatePageModule,
     NewCertificatePageModule,
-    AlertImagePageModule],
+    AlertImagePageModule,
+    NewClientPageModule],
   providers: [
     StatusBar,
     SplashScreen,

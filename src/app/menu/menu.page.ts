@@ -52,7 +52,7 @@ export class MenuPage implements OnInit {
                 },
                 {
                     title: 'Cliente',
-                    url: '/menu/home',
+                    url: '/menu/menu/client',
                     icon: 'person-add'
                 },
                 {
@@ -80,6 +80,10 @@ export class MenuPage implements OnInit {
         this.id = localStorage.getItem("id")
 
 
+    }
+    close() {
+        localStorage.clear();
+        this.router.navigate(['/']);
     }
 
 }

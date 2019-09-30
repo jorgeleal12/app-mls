@@ -95,8 +95,8 @@ export class NewCertificatePage implements OnInit {
   async ModalImage() {
 
 
-    if (this.NewCertificate.state == 2) {
-      this.presentToast('El certificado se encuentra Aprobado')
+    if (this.NewCertificate.state != 1) {
+      this.presentToast('El certificado se encuentra Realizado o Aprobado')
       return;
     }
     if (this.NewCertificate.idservice_certifications == undefined) {
@@ -125,7 +125,8 @@ export class NewCertificatePage implements OnInit {
   }
 
   save() {
-    if (this.NewCertificate.state == 2) {
+
+    if (this.NewCertificate.state == 3) {
       this.presentToast('El certificado se encuentra Aprobado')
       return;
     }
@@ -197,6 +198,7 @@ export class NewCertificatePage implements OnInit {
 
       } else {
 
+
         this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
 
           this.tasksService.delete(this.data.idodi, this.NewCertificate.idservice_certifications)
@@ -208,7 +210,7 @@ export class NewCertificatePage implements OnInit {
 
           if (result.response == false) {
 
-            this.presentToast('Se guardo el Certificado')
+            this.presentToast('Se guardo el Certificado3')
           }
 
         }, error => {

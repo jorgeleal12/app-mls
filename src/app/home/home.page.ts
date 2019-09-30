@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
 
-  total
+  asignada = 0;
+  rechazadas = 0;
   constructor(private LoginServiceService: LoginServiceService, private router: Router) {
 
 
@@ -21,7 +22,15 @@ export class HomePage implements OnInit {
   total_asignadas() {
 
     this.LoginServiceService.totalasignadas({ user: localStorage.getItem("id") }).subscribe(result => {
-      this.total = result.data.total
+
+
+      if (result.search_rech != null) {
+        this.rechazadas = result.search_rech.total
+      }
+
+      if (result.data != null) {
+        this.asignada = result.data.total - this.rechazadas
+      }
     }, error => {
 
     })

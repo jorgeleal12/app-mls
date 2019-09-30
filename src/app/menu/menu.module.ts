@@ -25,7 +25,8 @@ const routes: Routes = [
             {
                 path: 'servicio',
                 loadChildren: '../acordeon/acordeon.module#AcordeonPageModule'
-            }
+            },
+            { path: 'client', loadChildren: '../client/client.module#ClientPageModule' },
         ]
     }, {
         path: '',

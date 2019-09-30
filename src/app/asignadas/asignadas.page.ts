@@ -17,7 +17,10 @@ export class AsignadasPage implements OnInit {
   }
 
   search_asignadas() {
-    let params = { user: localStorage.getItem("id") }
+    let params = {
+      user: localStorage.getItem("id")
+      , type: localStorage.getItem("type")
+    }
     this.LoginServiceService.seach_asignadas(params).subscribe(result => {
       this.cars = result.data
     }, error => {

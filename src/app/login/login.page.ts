@@ -59,6 +59,7 @@ export class LoginPage implements OnInit {
         localStorage.setItem("nombres", result.data.name + " " + result.data.last_name);
         localStorage.setItem("email", result.data.email);
         localStorage.setItem("id", result.data.id);
+        localStorage.setItem("type", result.data.type);
         this.router.navigateByUrl('/menu');
         this.iduser = localStorage.getItem("idusers")
         this.fcm.getToken().then((token: String) =>
