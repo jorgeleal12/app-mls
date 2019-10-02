@@ -15,9 +15,28 @@
 
 
 <ion-content>
+  <ion-list>
+    <ion-item lines="none" *ngFor="let Client of Clients" (click)="ModalNewCliente(Client)">
+      <ion-label text-wrap>
+        {{Client.name_client}}
+        <p class="title">{{ Client.id_client}}</p>
+        <p class="title">{{ Client.phone}}</p>
+        <p class="title">{{ Client.state}}</p>
+
+      </ion-label>
+
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll threshold="5" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Cargando..">
+
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
   <ion-fab horizontal="end" vertical="bottom" slot="fixed" (click)="ModalNewCliente()">
     <ion-fab-button>
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
 </ion-content>

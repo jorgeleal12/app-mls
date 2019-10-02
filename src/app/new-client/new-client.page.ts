@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators, FormControlName } from "@angular/fo
 import { LoginServiceService } from '../Services/login-service.service';
 import { ToastController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
+import { NavParams } from '@ionic/angular';
 @Component({
   selector: 'app-new-client',
   templateUrl: './new-client.page.html',
@@ -14,11 +15,8 @@ export class NewClientPage implements OnInit {
   NewCliente: FormGroup;
   constructor(private loginServiceService: LoginServiceService,
     public toastController: ToastController,
-    public modalController: ModalController, ) {
-
-
-
-
+    public modalController: ModalController,
+    private navParams: NavParams) {
 
     this.NewCliente = new FormGroup({
       idclient: new FormControl(''),
@@ -28,6 +26,19 @@ export class NewClientPage implements OnInit {
       mail: new FormControl('', [Validators.required, Validators.email]),
       state: new FormControl()
     });
+
+    const data = navParams.get('data');
+
+    if (data != null) {
+      this.NewCliente.get('idclient').setValue(data.id_client);
+      this.NewCliente.get('name_cliente').setValue(data.name_client);
+      this.NewCliente.get('phone').setValue(data.phone);
+      this.NewCliente.get('identification').setValue(data.id_client);
+      this.NewCliente.get('mail').setValue(data.email);
+      this.NewCliente.get('state').setValue(data.idstate);
+    }
+
+
 
   }
 
@@ -53,7 +64,7 @@ export class NewClientPage implements OnInit {
 
       }
       if (result.response == false) {
-        this.presentToast('Se creo el Actualizo')
+        this.presentToast('Se Actualizo el Cliente')
 
       }
     }, error => {

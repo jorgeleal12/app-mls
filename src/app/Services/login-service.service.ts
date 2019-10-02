@@ -69,4 +69,10 @@ export class LoginServiceService {
   SaveCliente(params): Observable<any> {
     return this.http.post(`${this.api_url}client/create`, params);
   }
+
+  ListClient(page): Observable<any> {
+    return this.http.get(`${this.api_url}movil/ListClient?page=${page}`);
+
+
+  }
 }

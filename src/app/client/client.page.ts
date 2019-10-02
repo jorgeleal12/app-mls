@@ -10,12 +10,17 @@ import { ModalController } from '@ionic/angular';
 })
 export class ClientPage implements OnInit {
 
+  Clients = [];
+  page = 1;
+  maximumPage;
+
   constructor(
     private LoginServiceService: LoginServiceService,
     private router: Router,
     public modalController: ModalController, ) { }
 
   ngOnInit() {
+    this.ListClient();
   }
 
 
@@ -23,12 +28,12 @@ export class ClientPage implements OnInit {
     this.router.navigateByUrl('menu/menu/home');
   }
 
-  async  ModalNewCliente() {
+  async  ModalNewCliente(Client) {
     const modal: HTMLIonModalElement =
       await this.modalController.create({
         component: NewClientPage,
         componentProps: {
-          // 'data': this.data,
+          'data': Client,
           // 'idservice': this.NewCertificate.idservice_certifications,
         }
       });
@@ -38,6 +43,29 @@ export class ClientPage implements OnInit {
     });
 
     await modal.present();
+  }
+
+  ListClient(event?) {
+    const params = { idcompany: 1 }
+    this.LoginServiceService.ListClient(this.page).subscribe(result => {
+      this.Clients = this.Clients.concat(result.response.data)
+      this.maximumPage = result.response.last_page;
+      console.log(result)
+
+      if (event) {
+        event.target.complete();
+      }
+    }, error => {
+
+    })
+  }
+
+  loadMore(event) {
+    this.page++;
+    this.ListClient(event)
+    if (this.page === this.maximumPage) {
+      event.target.disabled = true;
+    }
   }
 
 }
