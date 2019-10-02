@@ -5,8 +5,11 @@ const routes: Routes = [
 
   { path: '', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
-  { path: 'alert-image', loadChildren: './alert-image/alert-image.module#AlertImagePageModule' },
-  { path: 'view-image', loadChildren: './view-image/view-image.module#ViewImagePageModule' },
+  // { path: 'alert-image', loadChildren: './alert-image/alert-image.module#AlertImagePageModule' },
+  // { path: 'view-image', loadChildren: './view-image/view-image.module#ViewImagePageModule' },
+  // { path: 'list-acount', loadChildren: './list-acount/list-acount.module#ListAcountPageModule' },
+  // { path: 'new-acount', loadChildren: './new-acount/new-acount.module#NewAcountPageModule' },
+
   // { path: 'client', loadChildren: './client/client.module#ClientPageModule' },
 
 

@@ -29,6 +29,8 @@ import { SQLite } from '@ionic-native/sqlite/ngx';
 import { AlertImagePageModule } from './alert-image/alert-image.module';
 import { ViewImagePageModule } from './view-image/view-image.module';
 import { NewClientPageModule } from './new-client/new-client.module';
+import { ListAcountPageModule } from './list-acount/list-acount.module';
+import { NewAcountPageModule } from './new-acount/new-acount.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -47,6 +49,8 @@ import { NewClientPageModule } from './new-client/new-client.module';
     CertificatePageModule,
     NewCertificatePageModule,
     AlertImagePageModule,
+    ListAcountPageModule,
+    NewAcountPageModule,
     NewClientPageModule],
   providers: [
     StatusBar,

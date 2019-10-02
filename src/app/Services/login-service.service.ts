@@ -72,7 +72,13 @@ export class LoginServiceService {
 
   ListClient(page): Observable<any> {
     return this.http.get(`${this.api_url}movil/ListClient?page=${page}`);
+  }
 
+  AutoListClient(client): Observable<any> {
+    return this.http.get(`${this.api_url}movil/AutoListClient?client=${client}`);
+  }
 
+  ListAcount(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/ListAcount`, params);
   }
 }

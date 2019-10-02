@@ -6,9 +6,11 @@
     <ion-title text-center class="center">Nuevo Cliente</ion-title>
 
     <ion-buttons slot="end">
-      <ion-button [disabled]="!NewCliente.valid" (click)="save()">
-        <ion-icon slot="icon-only" name="save" *ngIf="NewCliente.value.idclient==''"></ion-icon>
-        <ion-icon slot="icon-only" name="create" *ngIf="NewCliente.value.idclient!=''"></ion-icon>
+      <ion-button [disabled]="!NewCliente.valid" (click)="save()" *ngIf="hidden==false">
+        <ion-icon slot="icon-only" name="save"></ion-icon>
+      </ion-button>
+      <ion-button [disabled]="!NewCliente.valid" (click)="edit()" *ngIf="hidden==true">
+        <ion-icon slot="icon-only" name="create"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -21,7 +23,7 @@
     </div>
   </section>
   <form [formGroup]="NewCliente">
-    <ion-row>
+    <ion-row [hidden]="hidden">
       <ion-col size="12">
 
         <mat-form-field class="example-full-width">
@@ -55,14 +57,76 @@
 
         <ion-item>
           <ion-label>Estado</ion-label>
-          <ion-select formControlName="state" id="state">
+          <ion-select formControlName="idstate" id="idstate">
             <ion-select-option [value]=1>Activo</ion-select-option>
             <ion-select-option [value]=2>Inactivo</ion-select-option>
             <ion-select-option [value]=3 selected>Por confirmar</ion-select-option>
           </ion-select>
         </ion-item>
+
       </ion-col>
 
     </ion-row>
+
+    <ion-list [hidden]="hidden1">
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2>{{NewCliente.value.name_cliente}}</h2>
+          </ion-text>
+          <p>Nombre</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2>{{NewCliente.value.phone}}</h2>
+          </ion-text>
+          <p>Telefono</p>
+        </ion-label>
+        <ion-icon class="big1" src="assets/iconos/2178035.svg" item-end> </ion-icon>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2>{{NewCliente.value.identification}}</h2>
+          </ion-text>
+          <p>Identificación</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2>{{NewCliente.value.mail}}</h2>
+          </ion-text>
+          <p>Correo Alectrónico</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2>{{NewCliente.value.state}}</h2>
+          </ion-text>
+          <p>Estado</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item (click)="ModalAcount()">
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2>Cuentas</h2>
+          </ion-text>
+          <p>Información de cuentas</p>
+        </ion-label>
+        <ion-icon class="big1" src="assets/iconos/1824858.svg" item-end>
+        </ion-icon>
+      </ion-item>
+    </ion-list>
+
   </form>
 </ion-content>

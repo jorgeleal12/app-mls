@@ -10,9 +10,12 @@ import { ModalController } from '@ionic/angular';
 })
 export class ClientPage implements OnInit {
 
-  Clients = [];
+
+  Clients: any[] = [];
   page = 1;
   maximumPage;
+  isSearchbarOpened = false;
+  textSearch = '';
 
   constructor(
     private LoginServiceService: LoginServiceService,
@@ -50,7 +53,7 @@ export class ClientPage implements OnInit {
     this.LoginServiceService.ListClient(this.page).subscribe(result => {
       this.Clients = this.Clients.concat(result.response.data)
       this.maximumPage = result.response.last_page;
-      console.log(result)
+
 
       if (event) {
         event.target.complete();
@@ -67,5 +70,19 @@ export class ClientPage implements OnInit {
       event.target.disabled = true;
     }
   }
+  onSearch(event) {
+    if (event.target.value == '') {
+      this.page = 1
+      this.ListClient(event);
+    } else {
+      this.textSearch = event.target.value;
+      this.LoginServiceService.AutoListClient(this.textSearch).subscribe(result => {
 
+        this.Clients = result.response
+      }, error => {
+
+      })
+    }
+
+  }
 }
