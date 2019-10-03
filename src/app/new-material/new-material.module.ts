@@ -3,14 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { AppMaterialModule } from "../app-material.module";
+
 import { IonicModule } from '@ionic/angular';
 
-import { NewAcountPage } from './new-acount.page';
+import { NewMaterialPage } from './new-material.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: NewAcountPage
+    component: NewMaterialPage
   }
 ];
 
@@ -19,10 +20,10 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    ReactiveFormsModule,
     AppMaterialModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [NewAcountPage]
+  declarations: [NewMaterialPage]
 })
-export class NewAcountPageModule { }
+export class NewMaterialPageModule { }

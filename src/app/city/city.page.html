@@ -3,11 +3,13 @@
     <ion-buttons slot="start">
       <ion-icon slot="icon-only" name="arrow-back" (click)="back()" *ngIf="!isSearchbarOpened"></ion-icon>
     </ion-buttons>
-    <ion-title text-center class="center" *ngIf="!isSearchbarOpened">Cuentas</ion-title>
+    <ion-title text-center class="center" *ngIf="!isSearchbarOpened">Ciudad</ion-title>
     <!-- Default Searchbar -->
     <ion-searchbar *ngIf="isSearchbarOpened" showCancelButton="true" (ionChange)="onSearch($event)"
       (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+
     <ion-buttons slot="end">
+
       <ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
         <ion-icon slot="icon-only" name="search"></ion-icon>
       </ion-button>
@@ -19,21 +21,18 @@
 
 <ion-content>
   <ion-list>
-    <ion-item lines="none" *ngFor="let acount of acounts | filter:textSearch:'address'" (click)="ModalAcount(acount)">
+    <ion-item lines="none" *ngFor="let city of citys" (click)="select(city)">
       <ion-label text-wrap>
-        {{acount.address}}
-        <p class="title">{{ acount.name_city}}</p>
-        <p class="title">{{ acount.state}}</p>
+        {{city.name_municipality}}
+        <p class="title">{{ city.name_departments}}</p>
 
       </ion-label>
 
     </ion-item>
   </ion-list>
+  <ion-infinite-scroll threshold="5" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Cargando..">
 
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed" (click)="ModalNewAcount()">
-    <ion-fab-button>
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

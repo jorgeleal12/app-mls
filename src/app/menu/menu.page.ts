@@ -32,34 +32,26 @@ export class MenuPage implements OnInit {
             routes: [
 
                 {
-                    title: 'Servicios',
-                    url: '/menu/home',
-                    icon: 'bookmark'
-                }]
+                    title: 'Cliente',
+                    url: '/menu/menu/client',
+                    icon: 'person-add'
+                },]
         },
         {
             section: 'Administración',
             routes: [
                 {
                     title: 'Materiales',
-                    url: '/menu/home',
-                    icon: 'build'
+                    url: '/menu/menu/list-material',
+                    icon: 'hammer'
                 },
                 {
                     title: 'Constructores',
                     url: '/menu/home',
                     icon: 'apps'
                 },
-                {
-                    title: 'Cliente',
-                    url: '/menu/menu/client',
-                    icon: 'person-add'
-                },
-                {
-                    title: 'Cuentas',
-                    url: '/menu/home',
-                    icon: 'briefcase'
-                },
+
+
             ]
         }
     ];

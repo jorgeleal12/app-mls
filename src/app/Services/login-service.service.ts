@@ -81,4 +81,29 @@ export class LoginServiceService {
   ListAcount(params): Observable<any> {
     return this.http.post(`${this.api_url}movil/ListAcount`, params);
   }
+
+  CreateAcount(params): Observable<any> {
+    return this.http.post(`${this.api_url}client/create_account`, params);
+  }
+
+  ListCity(page): Observable<any> {
+
+    return this.http.get(`${this.api_url}movil/ListCity?page=${page}`);
+  }
+
+  AutoCity(city): Observable<any> {
+    return this.http.get(`${this.api_url}movil/AutoCity?city=${city}`);
+  }
+  ListMaterial(page): Observable<any> {
+
+    return this.http.get(`${this.api_url}movil/ListMaterial?page=${page}`);
+  }
+
+  AutoListMaterial(material): Observable<any> {
+    return this.http.get(`${this.api_url}movil/AutoListMaterial?material=${material}`);
+  }
+
+  CreateMaterial(params): Observable<any> {
+    return this.http.post(`${this.api_url}materials/savemovil`, params);
+  }
 }

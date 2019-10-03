@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { AppMaterialModule } from "../app-material.module";
+
 import { IonicModule } from '@ionic/angular';
 
-import { NewAcountPage } from './new-acount.page';
+import { ListMaterialPage } from './list-material.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: NewAcountPage
+    component: ListMaterialPage
   }
 ];
 
@@ -19,10 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    ReactiveFormsModule,
-    AppMaterialModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [NewAcountPage]
+  declarations: [ListMaterialPage]
 })
-export class NewAcountPageModule { }
+export class ListMaterialPageModule {}

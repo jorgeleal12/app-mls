@@ -31,7 +31,8 @@ import { ViewImagePageModule } from './view-image/view-image.module';
 import { NewClientPageModule } from './new-client/new-client.module';
 import { ListAcountPageModule } from './list-acount/list-acount.module';
 import { NewAcountPageModule } from './new-acount/new-acount.module';
-
+import { CityPageModule } from './city/city.module';
+import { NewMaterialPageModule } from './new-material/new-material.module';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -51,6 +52,8 @@ import { NewAcountPageModule } from './new-acount/new-acount.module';
     AlertImagePageModule,
     ListAcountPageModule,
     NewAcountPageModule,
+    CityPageModule,
+    NewMaterialPageModule,
     NewClientPageModule],
   providers: [
     StatusBar,

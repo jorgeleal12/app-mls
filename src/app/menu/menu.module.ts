@@ -27,6 +27,7 @@ const routes: Routes = [
                 loadChildren: '../acordeon/acordeon.module#AcordeonPageModule'
             },
             { path: 'client', loadChildren: '../client/client.module#ClientPageModule' },
+            { path: 'list-material', loadChildren: '../list-material/list-material.module#ListMaterialPageModule' },
         ]
     }, {
         path: '',

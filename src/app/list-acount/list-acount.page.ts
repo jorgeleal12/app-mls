@@ -48,13 +48,30 @@ export class ListAcountPage implements OnInit {
     this.textSearch = event.target.value;
   }
 
-  async  ModalNewAcount(acount) {
+  async  ModalAcount(acount) {
     const modal: HTMLIonModalElement =
       await this.modalController.create({
         component: NewAcountPage,
         componentProps: {
           'data': acount,
+          'idclient': this.idclient,
           // 'idservice': this.NewCertificate.idservice_certifications,
+        }
+      });
+
+    modal.onDidDismiss().then((detail) => {
+
+    });
+
+    await modal.present();
+  }
+
+  async  ModalNewAcount(Client) {
+    const modal: HTMLIonModalElement =
+      await this.modalController.create({
+        component: NewAcountPage,
+        componentProps: {
+          'idclient': this.idclient,
         }
       });
 

@@ -1,9 +1,122 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>NewAcount</ion-title>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-icon slot="icon-only" name="arrow-back" (click)="back()"></ion-icon>
+    </ion-buttons>
+    <ion-title text-center class="center">Nueva Cuenta</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [disabled]="!NewAcount.valid" (click)="save()" *ngIf="hidden==false">
+        <ion-icon slot="icon-only" name="save"></ion-icon>
+      </ion-button>
+      <ion-button [disabled]="!NewAcount.valid" (click)="edit()" *ngIf="hidden==true">
+        <ion-icon slot="icon-only" name="create"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <section class="aside-content">
+    <div class="aside-img">
+      <img class="img" src="{{imgUser}}" alt="">
+    </div>
+  </section>
+  <form [formGroup]="NewAcount">
+    <ion-row [hidden]="hidden">
+      <ion-col size="12">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Cuenta Número" formControlName="number_acount" id="number_acount">
+          <mat-hint>Este es el Número de Cuenta, Poliza o Dirección</mat-hint>
 
+        </mat-form-field>
+        <div class="error"
+          *ngIf="NewAcount.get('number_acount').hasError('required') && NewAcount.get('number_acount').touched">
+          Cuenta requerido
+        </div>
+
+
+        <mat-form-field class="example-full-width1">
+          <input matInput placeholder="Ciudad" formControlName="name_city" id="name_city" (click)="SearchCity()">
+          <mat-hint>Ciudad de la Cuenta</mat-hint>
+          <mat-icon matSuffix>keyboard_arrow_down</mat-icon>
+        </mat-form-field>
+        <div class="error" *ngIf="NewAcount.get('city').hasError('required') && NewAcount.get('city').touched">
+          Ciudad requerido
+        </div>
+
+        <mat-form-field class="example-full-width1">
+          <input matInput placeholder="Dirección" formControlName="address" id="address">
+          <mat-hint>Dirección de la Cuenta</mat-hint>
+
+        </mat-form-field>
+        <div class="error" *ngIf="NewAcount.get('address').hasError('required') && NewAcount.get('address').touched">
+          Dirección requerido
+        </div>
+
+        <mat-form-field class="example-full-width1">
+          <input matInput placeholder="Indicaciones" formControlName="indications" id="indications">
+          <mat-hint>Dirección de la Cuenta</mat-hint>
+        </mat-form-field>
+
+        <ion-item>
+          <ion-label>Estado</ion-label>
+          <ion-select formControlName="idstate" id="idstate">
+            <ion-select-option [value]=1>Activo</ion-select-option>
+            <ion-select-option [value]=2>Inactivo</ion-select-option>
+            <ion-select-option [value]=3 selected>Por confirmar</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <div class="error" *ngIf="NewAcount.get('idstate').hasError('required') && NewAcount.get('idstate').touched">
+          Estado requerido
+        </div>
+
+      </ion-col>
+    </ion-row>
+    <ion-list [hidden]="hidden1">
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2>{{NewAcount.value.number_acount}}</h2>
+          </ion-text>
+          <p>Cuenta Número</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2>{{NewAcount.value.name_city}}</h2>
+          </ion-text>
+          <p>Ciudad</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2>{{NewAcount.value.address}}</h2>
+          </ion-text>
+          <p>Dirección</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2>{{NewAcount.value.indications}}</h2>
+          </ion-text>
+          <p>Indicaciones</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2>{{NewAcount.value.state}}</h2>
+          </ion-text>
+          <p>Estado</p>
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
+
+  </form>
 </ion-content>

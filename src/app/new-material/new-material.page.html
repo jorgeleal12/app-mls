@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-icon slot="icon-only" name="arrow-back" (click)="back()"></ion-icon>
+    </ion-buttons>
+    <ion-title text-center class="center">Nuevo Material</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [disabled]="!NewMaterial.valid" (click)="save()" *ngIf="hidden==false">
+        <ion-icon slot="icon-only" name="save"></ion-icon>
+      </ion-button>
+      <ion-button [disabled]="!NewMaterial.valid" (click)="edit()" *ngIf="hidden==true">
+        <ion-icon slot="icon-only" name="create"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section class="aside-content">
+    <div class="aside-img">
+      <img class="img" src="{{imgUser}}" alt="">
+    </div>
+  </section>
+  <form [formGroup]="NewMaterial">
+    <ion-row [hidden]="hidden">
+      <ion-col size="12">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Material" formControlName="name_materials" id="name_materials">
+          <mat-hint>Nombre del Material</mat-hint>
+
+        </mat-form-field>
+        <div class="error"
+          *ngIf="NewMaterial.get('name_materials').hasError('required') && NewMaterial.get('name_materials').touched">
+          Material
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-list [hidden]="hidden1">
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2>{{NewMaterial.value.name_materials}}</h2>
+          </ion-text>
+          <p>Material</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2>{{NewMaterial.value.state}}</h2>
+          </ion-text>
+          <p>Estado</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+  </form>
+</ion-content>
