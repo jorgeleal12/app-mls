@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-icon slot="icon-only" name="arrow-back" *ngIf="!isSearchbarOpened" (click)="back()"></ion-icon>
+    </ion-buttons>
+    <ion-title text-center class="center" *ngIf="!isSearchbarOpened">Clientes</ion-title>
+    <!-- Default Searchbar -->
+    <ion-searchbar *ngIf="isSearchbarOpened" showCancelButton="true" (ionChange)="onSearch($event)"
+      (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+
+    <ion-buttons slot="end">
+
+      <ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item lines="none" *ngFor="let Client of Clients" (click)="ModalExit(Client)">
+      <ion-label text-wrap>
+        {{Client.name_client}}
+        <p class="title">{{ Client.id_client}}</p>
+        <p class="title">{{ Client.phone}}</p>
+        <p class="title">{{ Client.state}}</p>
+
+      </ion-label>
+
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll threshold="5" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Cargando..">
+
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed" (click)="ModalNewCliente()">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

@@ -28,6 +28,7 @@ const routes: Routes = [
             },
             { path: 'client', loadChildren: '../client/client.module#ClientPageModule' },
             { path: 'list-material', loadChildren: '../list-material/list-material.module#ListMaterialPageModule' },
+            { path: 'list-builder', loadChildren: '../list-builder/list-builder.module#ListBuilderPageModule' },
         ]
     }, {
         path: '',

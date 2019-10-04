@@ -11,13 +11,13 @@ import { NavParams } from '@ionic/angular';
   styleUrls: ['./new-material.page.scss'],
 })
 export class NewMaterialPage implements OnInit {
-
-  imgUser = '../assets/iconos/2101587.svg'
+  step = { sectionName: null };
+  imgUser = '../assets/iconos/1683018.svg'
   hidden = true;
   hidden1 = true;
   NewMaterial: FormGroup;
   idmaterial
-
+  certificates = [];
   constructor(private loginServiceService: LoginServiceService,
     public toastController: ToastController,
     public modalController: ModalController,
@@ -34,6 +34,7 @@ export class NewMaterialPage implements OnInit {
       date_expiration: new FormControl(),
       idmaterial_certificate: new FormControl(),
     })
+
     const data = navParams.get('data');
     this.idmaterial = navParams.get('idmaterial');
 
@@ -98,6 +99,29 @@ export class NewMaterialPage implements OnInit {
         this.hidden1 = false;
 
       }
+    }, error => {
+
+    })
+  }
+
+  getNameValid(sectionName) {
+
+    return this.step.sectionName === sectionName;
+  }
+
+  setStep(sectionName) {
+
+    this.step.sectionName = sectionName !== this.step.sectionName ? sectionName : null;
+
+  }
+
+  getIconName(sectionName) {
+    return this.getNameValid(sectionName) ? 'arrow-down' : 'arrow-forward';
+  }
+
+  listmaterial() {
+    this.loginServiceService.MaterialCertificate(this.NewMaterial.value.idmaterials).subscribe(result => {
+      this.certificates = result.response;
     }, error => {
 
     })

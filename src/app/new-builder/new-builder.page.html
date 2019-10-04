@@ -1,0 +1,140 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-icon slot="icon-only" name="arrow-back" (click)="back()"></ion-icon>
+    </ion-buttons>
+    <ion-title text-center class="center">Nuevo Constructor</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [disabled]="!NewBuilder.valid" (click)="save()" *ngIf="hidden==false">
+        <ion-icon slot="icon-only" name="save"></ion-icon>
+      </ion-button>
+      <ion-button [disabled]="!NewBuilder.valid" (click)="edit()" *ngIf="hidden==true">
+        <ion-icon slot="icon-only" name="create"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section class="aside-content">
+    <div class="aside-img">
+      <img class="img" src="{{imgUser}}" alt="">
+    </div>
+  </section>
+  <form [formGroup]="NewBuilder">
+    <ion-row [hidden]="hidden">
+      <ion-col size="12">
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Constructor" formControlName="name_builder" id="name_builder">
+          <mat-hint>Nombre del Constructor</mat-hint>
+
+        </mat-form-field>
+        <div class="error"
+          *ngIf="NewBuilder.get('name_builder').hasError('required') && NewBuilder.get('name_builder').touched">
+          Nombre
+        </div>
+
+        <mat-form-field class="example-full-width1">
+          <input matInput placeholder="Identificación" formControlName="identification" id="identification">
+          <mat-hint>Identificación del Constructor</mat-hint>
+
+        </mat-form-field>
+        <div class="error"
+          *ngIf="NewBuilder.get('identification').hasError('required') && NewBuilder.get('identification').touched">
+          Identification
+        </div>
+
+        <ion-item>
+          <ion-label>Estado</ion-label>
+          <ion-select formControlName="idstate" id="idstate">
+            <ion-select-option [value]=1>Activo</ion-select-option>
+            <ion-select-option [value]=2>Inactivo</ion-select-option>
+            <ion-select-option [value]=3 selected>Por confirmar</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+
+      </ion-col>
+    </ion-row>
+    <ion-list [hidden]="hidden1">
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2>{{NewBuilder.value.name_builder}}</h2>
+          </ion-text>
+          <p>Nombre</p>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2>{{NewBuilder.value.identification}}</h2>
+          </ion-text>
+          <p>Identificacón</p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label class="ion-text-wrap">
+          <ion-text>
+            <h2>{{NewBuilder.value.state}}</h2>
+          </ion-text>
+          <p>Estado</p>
+        </ion-label>
+      </ion-item>
+      <ion-list class="accordion-list" no-padding>
+        <section class="acc-section" (click)="setStep('expanded1')">
+          <div class="img">
+            <img src="../../assets/iconos/1172539.svg" alt="">
+          </div>
+          <div class="info" (click)="listsic()">
+            <p class="title">SIC's</p>
+            <p class="subtitle">Información de los SIC's</p>
+
+          </div>
+          <div class="icon">
+            <ion-icon name="{{getIconName('expanded1')}}" color="medium"></ion-icon>
+          </div>
+
+        </section>
+        <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded1')}">
+          <ion-item detail *ngFor="let sic of sic; let i = i; index" (click)="photos_add(sic)">
+            <ion-label class="ion-text-wrap">
+              <ion-text>
+                <h2>{{sic.code_sic}}</h2>
+              </ion-text>
+              <p>{{sic.date_expiration}}</p>
+            </ion-label>
+          </ion-item>
+        </section>
+
+        <section class="acc-section" (click)="setStep('expanded2')">
+          <div class="img">
+            <img src="../../assets/iconos/1172539.svg" alt="">
+          </div>
+          <div class="info" (click)="listcom()">
+            <p class="title">Competencias</p>
+            <p class="subtitle">Información de las Competencias</p>
+
+          </div>
+          <div class="icon">
+            <ion-icon name="{{getIconName('expanded2')}}" color="medium"></ion-icon>
+          </div>
+
+        </section>
+        <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded2')}">
+          <ion-item detail *ngFor="let competencia of competencias; let i = i; index" (click)="photos_add(competencia)">
+            <ion-label class="ion-text-wrap">
+              <ion-text>
+                <h2>{{competencia.competitions_code}}</h2>
+              </ion-text>
+              <p>{{competencia.date_expiration}}</p>
+            </ion-label>
+          </ion-item>
+        </section>
+
+      </ion-list>
+    </ion-list>
+  </form>
+</ion-content>

@@ -4,7 +4,15 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
 
   { path: '', loadChildren: './login/login.module#LoginPageModule' },
-  { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },  { path: 'new-material', loadChildren: './new-material/new-material.module#NewMaterialPageModule' },
+  { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
+  // { path: 'view-document', loadChildren: './view-document/view-document.module#ViewDocumentPageModule' },
+
+  // { path: 'new-builder', loadChildren: './new-builder/new-builder.module#NewBuilderPageModule' },
+  // { path: 'acount-service', loadChildren: './acount-service/acount-service.module#AcountServicePageModule' },
+  // { path: 'client-service', loadChildren: './client-service/client-service.module#ClientServicePageModule' },
+
+  // { path: 'new-material', loadChildren: './new-material/new-material.module#NewMaterialPageModule' },
+
 
   // { path: 'city', loadChildren: './city/city.module#CityPageModule' },
 

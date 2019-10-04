@@ -16,16 +16,25 @@ var map = {
 		"./src/app/asignadas/asignadas.module.ts",
 		"asignadas-asignadas-module"
 	],
+	"../client/client.module": [
+		"./src/app/client/client.module.ts",
+		"client-client-module"
+	],
 	"../home/home.module": [
 		"./src/app/home/home.module.ts",
 		"home-home-module"
 	],
+	"../list-builder/list-builder.module": [
+		"./src/app/list-builder/list-builder.module.ts",
+		"list-builder-list-builder-module"
+	],
+	"../list-material/list-material.module": [
+		"./src/app/list-material/list-material.module.ts",
+		"list-material-list-material-module"
+	],
 	"../servicio/servicio.module": [
 		"./src/app/servicio/servicio.module.ts",
 		"servicio-servicio-module"
-	],
-	"./alert-image/alert-image.module": [
-		"./src/app/alert-image/alert-image.module.ts"
 	],
 	"./login/login.module": [
 		"./src/app/login/login.module.ts",
@@ -34,9 +43,6 @@ var map = {
 	"./menu/menu.module": [
 		"./src/app/menu/menu.module.ts",
 		"menu-menu-module"
-	],
-	"./view-image/view-image.module": [
-		"./src/app/view-image/view-image.module.ts"
 	]
 };
 function webpackAsyncContext(req) {
@@ -49,7 +55,7 @@ function webpackAsyncContext(req) {
 	}
 
 	var ids = map[req], id = ids[0];
-	return Promise.all(ids.slice(1).map(__webpack_require__.e)).then(function() {
+	return __webpack_require__.e(ids[1]).then(function() {
 		return __webpack_require__(id);
 	});
 }
@@ -476,6 +482,17 @@ module.exports = webpackAsyncContext;
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/acount-service/acount-service.page.html":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/acount-service/acount-service.page.html ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\" *ngIf=\"!isSearchbarOpened\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\" *ngIf=\"!isSearchbarOpened\">Cuentas</ion-title>\n    <!-- Default Searchbar -->\n    <ion-searchbar *ngIf=\"isSearchbarOpened\" showCancelButton=\"true\" (ionChange)=\"onSearch($event)\"\n      (ionCancel)=\"isSearchbarOpened=false\"></ion-searchbar>\n    <ion-buttons slot=\"end\">\n      <ion-button icon-only *ngIf=\"!isSearchbarOpened\" (click)=\"isSearchbarOpened=true\">\n        <ion-icon slot=\"icon-only\" name=\"search\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let acount of acounts | filter:textSearch:'address'\" (click)=\"ModalExit(acount)\">\n      <ion-label text-wrap>\n        {{acount.address}}\n        <p class=\"title\">{{ acount.name_city}}</p>\n        <p class=\"title\">{{ acount.state}}</p>\n\n      </ion-label>\n\n    </ion-item>\n  </ion-list>\n\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\" (click)=\"ModalNewAcount()\">\n    <ion-fab-button>\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n</ion-content>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/alert-image/alert-image.page.html":
 /*!*****************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/alert-image/alert-image.page.html ***!
@@ -516,7 +533,29 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Lista de Certificados</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button>\n        <ion-icon slot=\"icon-only\" name=\"save\" [hidden]=\"true\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let certificate of certificates\" (click)=\"ModalCertificate(certificate)\">\n      <ion-label>\n        <ion-text>\n          <h2>{{certificate.number}}</h2>\n        </ion-text>\n        <ion-text>\n          <p>{{certificate.date}}</p>\n        </ion-text>\n        <p>Estado: {{certificate.name_state}}</p>\n      </ion-label>\n      <ion-icon class=\"big\" src=\"assets/iconos/148882.svg\" item-end *ngIf=\"certificate.state==1\"></ion-icon>\n      <ion-icon class=\"big\" src=\"assets/iconos/226972.svg\" item-end *ngIf=\"certificate.state==2\"></ion-icon>\n    </ion-item>\n  </ion-list>\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\" (click)=\"ModalNewCertificate()\">\n    <ion-fab-button>\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Lista de Certificados</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button>\n        <ion-icon slot=\"icon-only\" name=\"save\" [hidden]=\"true\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let certificate of certificates\" (click)=\"ModalCertificate(certificate)\">\n      <ion-label>\n        <ion-text>\n          <h2>{{certificate.number}}</h2>\n        </ion-text>\n        <ion-text>\n          <p>{{certificate.date}}</p>\n        </ion-text>\n        <p>Estado: {{certificate.name_state}}</p>\n      </ion-label>\n      <ion-icon class=\"big\" src=\"assets/iconos/291200.svg\" item-end *ngIf=\"certificate.state==1\"></ion-icon>\n      <ion-icon class=\"big\" src=\"assets/iconos/1828643.svg\" item-end *ngIf=\"certificate.state==2\"></ion-icon>\n      <ion-icon class=\"big\" src=\"assets/iconos/1632596.svg\" item-end *ngIf=\"certificate.state==3\"></ion-icon>\n      <ion-icon class=\"big\" src=\"assets/iconos/579006.svg\" item-end *ngIf=\"certificate.state==4\"></ion-icon>\n      <ion-icon class=\"big\" src=\"assets/iconos/579006.svg\" item-end *ngIf=\"certificate.state==5\"></ion-icon>\n      <ion-icon class=\"big\" src=\"assets/iconos/579006.svg\" item-end *ngIf=\"certificate.state==6\"></ion-icon>\n\n\n\n    </ion-item>\n  </ion-list>\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\" (click)=\"ModalNewCertificate()\">\n    <ion-fab-button>\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n</ion-content>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/city/city.page.html":
+/*!***************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/city/city.page.html ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\" *ngIf=\"!isSearchbarOpened\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\" *ngIf=\"!isSearchbarOpened\">Ciudad</ion-title>\n    <!-- Default Searchbar -->\n    <ion-searchbar *ngIf=\"isSearchbarOpened\" showCancelButton=\"true\" (ionChange)=\"onSearch($event)\"\n      (ionCancel)=\"isSearchbarOpened=false\"></ion-searchbar>\n\n    <ion-buttons slot=\"end\">\n\n      <ion-button icon-only *ngIf=\"!isSearchbarOpened\" (click)=\"isSearchbarOpened=true\">\n        <ion-icon slot=\"icon-only\" name=\"search\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let city of citys\" (click)=\"select(city)\">\n      <ion-label text-wrap>\n        {{city.name_municipality}}\n        <p class=\"title\">{{ city.name_departments}}</p>\n\n      </ion-label>\n\n    </ion-item>\n  </ion-list>\n  <ion-infinite-scroll threshold=\"5\" (ionInfinite)=\"loadMore($event)\">\n    <ion-infinite-scroll-content loadingSpinner=\"crescent\" loadingText=\"Cargando..\">\n\n    </ion-infinite-scroll-content>\n  </ion-infinite-scroll>\n</ion-content>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/client-service/client-service.page.html":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/client-service/client-service.page.html ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\" *ngIf=\"!isSearchbarOpened\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\" *ngIf=\"!isSearchbarOpened\">Clientes</ion-title>\n    <!-- Default Searchbar -->\n    <ion-searchbar *ngIf=\"isSearchbarOpened\" showCancelButton=\"true\" (ionChange)=\"onSearch($event)\"\n      (ionCancel)=\"isSearchbarOpened=false\"></ion-searchbar>\n\n    <ion-buttons slot=\"end\">\n\n      <ion-button icon-only *ngIf=\"!isSearchbarOpened\" (click)=\"isSearchbarOpened=true\">\n        <ion-icon slot=\"icon-only\" name=\"search\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let Client of Clients\" (click)=\"ModalExit(Client)\">\n      <ion-label text-wrap>\n        {{Client.name_client}}\n        <p class=\"title\">{{ Client.id_client}}</p>\n        <p class=\"title\">{{ Client.phone}}</p>\n        <p class=\"title\">{{ Client.state}}</p>\n\n      </ion-label>\n\n    </ion-item>\n  </ion-list>\n  <ion-infinite-scroll threshold=\"5\" (ionInfinite)=\"loadMore($event)\">\n    <ion-infinite-scroll-content loadingSpinner=\"crescent\" loadingText=\"Cargando..\">\n\n    </ion-infinite-scroll-content>\n  </ion-infinite-scroll>\n\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\" (click)=\"ModalNewCliente()\">\n    <ion-fab-button>\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n</ion-content>"
 
 /***/ }),
 
@@ -531,6 +570,17 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/list-acount/list-acount.page.html":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/list-acount/list-acount.page.html ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\" *ngIf=\"!isSearchbarOpened\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\" *ngIf=\"!isSearchbarOpened\">Cuentas</ion-title>\n    <!-- Default Searchbar -->\n    <ion-searchbar *ngIf=\"isSearchbarOpened\" showCancelButton=\"true\" (ionChange)=\"onSearch($event)\"\n      (ionCancel)=\"isSearchbarOpened=false\"></ion-searchbar>\n    <ion-buttons slot=\"end\">\n      <ion-button icon-only *ngIf=\"!isSearchbarOpened\" (click)=\"isSearchbarOpened=true\">\n        <ion-icon slot=\"icon-only\" name=\"search\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let acount of acounts | filter:textSearch:'address'\" (click)=\"ModalAcount(acount)\">\n      <ion-label text-wrap>\n        {{acount.address}}\n        <p class=\"title\">{{ acount.name_city}}</p>\n        <p class=\"title\">{{ acount.state}}</p>\n\n      </ion-label>\n\n    </ion-item>\n  </ion-list>\n\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\" (click)=\"ModalNewAcount()\">\n    <ion-fab-button>\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n</ion-content>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/materials/materials.page.html":
 /*!*************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/materials/materials.page.html ***!
@@ -542,6 +592,28 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/new-acount/new-acount.page.html":
+/*!***************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/new-acount/new-acount.page.html ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Nueva Cuenta</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button [disabled]=\"!NewAcount.valid\" (click)=\"save()\" *ngIf=\"hidden==false\">\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n      <ion-button [disabled]=\"!NewAcount.valid\" (click)=\"edit()\" *ngIf=\"hidden==true\">\n        <ion-icon slot=\"icon-only\" name=\"create\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <section class=\"aside-content\">\n    <div class=\"aside-img\">\n      <img class=\"img\" src=\"{{imgUser}}\" alt=\"\">\n    </div>\n  </section>\n  <form [formGroup]=\"NewAcount\">\n    <ion-row [hidden]=\"hidden\">\n      <ion-col size=\"12\">\n        <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"Cuenta Número\" formControlName=\"number_acount\" id=\"number_acount\">\n          <mat-hint>Este es el Número de Cuenta, Poliza o Dirección</mat-hint>\n\n        </mat-form-field>\n        <div class=\"error\"\n          *ngIf=\"NewAcount.get('number_acount').hasError('required') && NewAcount.get('number_acount').touched\">\n          Cuenta requerido\n        </div>\n\n\n        <mat-form-field class=\"example-full-width1\">\n          <input matInput placeholder=\"Ciudad\" formControlName=\"name_city\" id=\"name_city\" (click)=\"SearchCity()\">\n          <mat-hint>Ciudad de la Cuenta</mat-hint>\n          <mat-icon matSuffix>keyboard_arrow_down</mat-icon>\n        </mat-form-field>\n        <div class=\"error\" *ngIf=\"NewAcount.get('city').hasError('required') && NewAcount.get('city').touched\">\n          Ciudad requerido\n        </div>\n\n        <mat-form-field class=\"example-full-width1\">\n          <input matInput placeholder=\"Dirección\" formControlName=\"address\" id=\"address\">\n          <mat-hint>Dirección de la Cuenta</mat-hint>\n\n        </mat-form-field>\n        <div class=\"error\" *ngIf=\"NewAcount.get('address').hasError('required') && NewAcount.get('address').touched\">\n          Dirección requerido\n        </div>\n\n        <mat-form-field class=\"example-full-width1\">\n          <input matInput placeholder=\"Indicaciones\" formControlName=\"indications\" id=\"indications\">\n          <mat-hint>Dirección de la Cuenta</mat-hint>\n        </mat-form-field>\n\n        <ion-item>\n          <ion-label>Estado</ion-label>\n          <ion-select formControlName=\"idstate\" id=\"idstate\">\n            <ion-select-option [value]=1>Activo</ion-select-option>\n            <ion-select-option [value]=2>Inactivo</ion-select-option>\n            <ion-select-option [value]=3 selected>Por confirmar</ion-select-option>\n          </ion-select>\n        </ion-item>\n        <div class=\"error\" *ngIf=\"NewAcount.get('idstate').hasError('required') && NewAcount.get('idstate').touched\">\n          Estado requerido\n        </div>\n\n      </ion-col>\n    </ion-row>\n    <ion-list [hidden]=\"hidden1\">\n      <ion-item>\n        <ion-label class=\"ion-text-wrap\">\n          <ion-text>\n            <h2>{{NewAcount.value.number_acount}}</h2>\n          </ion-text>\n          <p>Cuenta Número</p>\n        </ion-label>\n      </ion-item>\n\n      <ion-item>\n        <ion-label class=\"ion-text-wrap\">\n          <ion-text>\n            <h2>{{NewAcount.value.name_city}}</h2>\n          </ion-text>\n          <p>Ciudad</p>\n        </ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label class=\"ion-text-wrap\">\n          <ion-text>\n            <h2>{{NewAcount.value.address}}</h2>\n          </ion-text>\n          <p>Dirección</p>\n        </ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label class=\"ion-text-wrap\">\n          <ion-text>\n            <h2>{{NewAcount.value.indications}}</h2>\n          </ion-text>\n          <p>Indicaciones</p>\n        </ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label class=\"ion-text-wrap\">\n          <ion-text>\n            <h2>{{NewAcount.value.state}}</h2>\n          </ion-text>\n          <p>Estado</p>\n        </ion-label>\n      </ion-item>\n\n    </ion-list>\n\n  </form>\n</ion-content>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/new-builder/new-builder.page.html":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/new-builder/new-builder.page.html ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Nuevo Constructor</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button [disabled]=\"!NewBuilder.valid\" (click)=\"save()\" *ngIf=\"hidden==false\">\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n      <ion-button [disabled]=\"!NewBuilder.valid\" (click)=\"edit()\" *ngIf=\"hidden==true\">\n        <ion-icon slot=\"icon-only\" name=\"create\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <section class=\"aside-content\">\n    <div class=\"aside-img\">\n      <img class=\"img\" src=\"{{imgUser}}\" alt=\"\">\n    </div>\n  </section>\n  <form [formGroup]=\"NewBuilder\">\n    <ion-row [hidden]=\"hidden\">\n      <ion-col size=\"12\">\n\n        <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"Constructor\" formControlName=\"name_builder\" id=\"name_builder\">\n          <mat-hint>Nombre del Constructor</mat-hint>\n\n        </mat-form-field>\n        <div class=\"error\"\n          *ngIf=\"NewBuilder.get('name_builder').hasError('required') && NewBuilder.get('name_builder').touched\">\n          Nombre\n        </div>\n\n        <mat-form-field class=\"example-full-width1\">\n          <input matInput placeholder=\"Identificación\" formControlName=\"identification\" id=\"identification\">\n          <mat-hint>Identificación del Constructor</mat-hint>\n\n        </mat-form-field>\n        <div class=\"error\"\n          *ngIf=\"NewBuilder.get('identification').hasError('required') && NewBuilder.get('identification').touched\">\n          Identification\n        </div>\n\n        <ion-item>\n          <ion-label>Estado</ion-label>\n          <ion-select formControlName=\"idstate\" id=\"idstate\">\n            <ion-select-option [value]=1>Activo</ion-select-option>\n            <ion-select-option [value]=2>Inactivo</ion-select-option>\n            <ion-select-option [value]=3 selected>Por confirmar</ion-select-option>\n          </ion-select>\n        </ion-item>\n\n\n      </ion-col>\n    </ion-row>\n    <ion-list [hidden]=\"hidden1\">\n      <ion-item>\n        <ion-label class=\"ion-text-wrap\">\n          <ion-text>\n            <h2>{{NewBuilder.value.name_builder}}</h2>\n          </ion-text>\n          <p>Nombre</p>\n        </ion-label>\n      </ion-item>\n      <ion-item>\n        <ion-label class=\"ion-text-wrap\">\n          <ion-text>\n            <h2>{{NewBuilder.value.identification}}</h2>\n          </ion-text>\n          <p>Identificacón</p>\n        </ion-label>\n      </ion-item>\n      <ion-item lines=\"none\">\n        <ion-label class=\"ion-text-wrap\">\n          <ion-text>\n            <h2>{{NewBuilder.value.state}}</h2>\n          </ion-text>\n          <p>Estado</p>\n        </ion-label>\n      </ion-item>\n      <ion-list class=\"accordion-list\" no-padding>\n        <section class=\"acc-section\" (click)=\"setStep('expanded1')\">\n          <div class=\"img\">\n            <img src=\"../../assets/iconos/1172539.svg\" alt=\"\">\n          </div>\n          <div class=\"info\" (click)=\"listsic()\">\n            <p class=\"title\">SIC's</p>\n            <p class=\"subtitle\">Información de los SIC's</p>\n\n          </div>\n          <div class=\"icon\">\n            <ion-icon name=\"{{getIconName('expanded1')}}\" color=\"medium\"></ion-icon>\n          </div>\n\n        </section>\n        <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded1')}\">\n          <ion-item detail *ngFor=\"let sic of sic; let i = i; index\" (click)=\"photos_add(sic)\">\n            <ion-label class=\"ion-text-wrap\">\n              <ion-text>\n                <h2>{{sic.code_sic}}</h2>\n              </ion-text>\n              <p>{{sic.date_expiration}}</p>\n            </ion-label>\n          </ion-item>\n        </section>\n\n        <section class=\"acc-section\" (click)=\"setStep('expanded2')\">\n          <div class=\"img\">\n            <img src=\"../../assets/iconos/1172539.svg\" alt=\"\">\n          </div>\n          <div class=\"info\" (click)=\"listcom()\">\n            <p class=\"title\">Competencias</p>\n            <p class=\"subtitle\">Información de las Competencias</p>\n\n          </div>\n          <div class=\"icon\">\n            <ion-icon name=\"{{getIconName('expanded2')}}\" color=\"medium\"></ion-icon>\n          </div>\n\n        </section>\n        <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded2')}\">\n          <ion-item detail *ngFor=\"let competencia of competencias; let i = i; index\" (click)=\"photos_add(competencia)\">\n            <ion-label class=\"ion-text-wrap\">\n              <ion-text>\n                <h2>{{competencia.competitions_code}}</h2>\n              </ion-text>\n              <p>{{competencia.date_expiration}}</p>\n            </ion-label>\n          </ion-item>\n        </section>\n\n      </ion-list>\n    </ion-list>\n  </form>\n</ion-content>"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/new-certificate/new-certificate.page.html":
 /*!*************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/new-certificate/new-certificate.page.html ***!
@@ -550,6 +622,28 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 /***/ (function(module, exports) {
 
 module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Certificado</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"save()\">\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list class=\"accordion-list\" no-padding>\n    <section class=\"acc-section\" (click)=\"setStep('expanded1')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/pngocean.com-id-wflsf.png\" alt=\"\">\n      </div>\n      <div class=\"info\">\n        <p class=\"title\">Certificado</p>\n        <p class=\"subtitle\">Información general</p>\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded1')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded1')}\">\n      <div [hidden]=\"div_hidden\">\n        <ion-grid>\n          <ion-row>\n            <ion-col size=\"12\">\n              <mat-form-field class=\"example-full-width\" style=\"margin-top: 10px;\">\n                <input matInput placeholder=\"Número de Certificado\" [(ngModel)]=\"NewCertificate.number\" readonly>\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Inspector\" [(ngModel)]=\"NewCertificate.obsins\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Revisor\" [(ngModel)]=\"NewCertificate.obssuper\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones para el Cliente\" [(ngModel)]=\"NewCertificate.obsclient\">\n              </mat-form-field>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </div>\n\n    </section>\n    <section class=\"acc-section\" (click)=\"setStep('expanded6')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/twotone_insert_photo_black_48dp.png\" alt=\"\">\n      </div>\n      <div class=\"info\" (click)=\"ModalImage()\">\n        <p class=\"title\">Fotografias</p>\n        <p class=\"subtitle\">Fotografias del servicio</p>\n\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded6')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded6')}\">\n      <ion-item detail *ngFor=\"let photos_service of photos_services; let i = i; index\"\n        (click)=\"photos_add(photos_service)\">\n        <ion-label>\n          {{photos_service.name_photo}}\n        </ion-label>\n      </ion-item>\n    </section>\n\n    <section class=\"acc-section\" (click)=\"setStep('expanded7')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/twotone_insert_photo_black_48dp.png\" alt=\"\">\n      </div>\n      <div class=\"info\" (click)=\"ModalViewImage()\">\n        <p class=\"title\">Ver Fotografias</p>\n        <p class=\"subtitle\">Ver las Fotografias del Servicio</p>\n\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded7')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded7')}\">\n\n    </section>\n  </ion-list>\n</ion-content>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/new-client/new-client.page.html":
+/*!***************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/new-client/new-client.page.html ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Nuevo Cliente</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button [disabled]=\"!NewCliente.valid\" (click)=\"save()\" *ngIf=\"hidden==false\">\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n      <ion-button [disabled]=\"!NewCliente.valid\" (click)=\"edit()\" *ngIf=\"hidden==true\">\n        <ion-icon slot=\"icon-only\" name=\"create\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <section class=\"aside-content\">\n    <div class=\"aside-img\">\n      <img class=\"img\" src=\"{{imgUser}}\" alt=\"\">\n    </div>\n  </section>\n  <form [formGroup]=\"NewCliente\">\n    <ion-row [hidden]=\"hidden\">\n      <ion-col size=\"12\">\n\n        <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"Nombre\" formControlName=\"name_cliente\" id=\"name_cliente\">\n          <mat-hint>Nombre de la Empresa o Persona</mat-hint>\n\n        </mat-form-field>\n        <div class=\"error\"\n          *ngIf=\"NewCliente.get('name_cliente').hasError('required') && NewCliente.get('name_cliente').touched\">\n          Nombre requerido\n        </div>\n        <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"Teléfono\" formControlName=\"phone\" id=\"phone\">\n          <mat-hint>Ingresa el Indicativo y el numero de teléfono (Ej. 57123456789)</mat-hint>\n        </mat-form-field>\n        <div class=\"error\" *ngIf=\"NewCliente.get('phone').hasError('required') && NewCliente.get('phone').touched\">\n          Teléfono requerido\n        </div>\n        <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"Identificación\" formControlName=\"identification\" id=\"identification\">\n          <mat-hint>Nit o Cedula del Cliente</mat-hint>\n        </mat-form-field>\n        <div class=\"error\"\n          *ngIf=\"NewCliente.get('identification').hasError('required') && NewCliente.get('identification').touched\">\n          Nit o Cedula requerido\n        </div>\n        <mat-form-field class=\"example-full-width1\">\n          <input matInput placeholder=\"Correo Eletrónico\" formControlName=\"mail\" id=\"mail\">\n          <mat-hint>Ingrese la dirección de correo eletrónico</mat-hint>\n        </mat-form-field>\n\n        <ion-item>\n          <ion-label>Estado</ion-label>\n          <ion-select formControlName=\"idstate\" id=\"idstate\">\n            <ion-select-option [value]=1>Activo</ion-select-option>\n            <ion-select-option [value]=2>Inactivo</ion-select-option>\n            <ion-select-option [value]=3 selected>Por confirmar</ion-select-option>\n          </ion-select>\n        </ion-item>\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-list [hidden]=\"hidden1\">\n      <ion-item>\n        <ion-label class=\"ion-text-wrap\">\n          <ion-text>\n            <h2>{{NewCliente.value.name_cliente}}</h2>\n          </ion-text>\n          <p>Nombre</p>\n        </ion-label>\n      </ion-item>\n\n      <ion-item>\n        <ion-label class=\"ion-text-wrap\">\n          <ion-text>\n            <h2>{{NewCliente.value.phone}}</h2>\n          </ion-text>\n          <p>Telefono</p>\n        </ion-label>\n        <ion-icon class=\"big1\" src=\"assets/iconos/2178035.svg\" item-end> </ion-icon>\n      </ion-item>\n\n\n      <ion-item>\n        <ion-label class=\"ion-text-wrap\">\n          <ion-text>\n            <h2>{{NewCliente.value.identification}}</h2>\n          </ion-text>\n          <p>Identificación</p>\n        </ion-label>\n      </ion-item>\n\n      <ion-item>\n        <ion-label class=\"ion-text-wrap\">\n          <ion-text>\n            <h2>{{NewCliente.value.mail}}</h2>\n          </ion-text>\n          <p>Correo Alectrónico</p>\n        </ion-label>\n      </ion-item>\n\n      <ion-item>\n        <ion-label class=\"ion-text-wrap\">\n          <ion-text>\n            <h2>{{NewCliente.value.state}}</h2>\n          </ion-text>\n          <p>Estado</p>\n        </ion-label>\n      </ion-item>\n\n      <ion-item (click)=\"ModalAcount()\">\n        <ion-label class=\"ion-text-wrap\">\n          <ion-text>\n            <h2>Cuentas</h2>\n          </ion-text>\n          <p>Información de cuentas</p>\n        </ion-label>\n        <ion-icon class=\"big1\" src=\"assets/iconos/1824858.svg\" item-end>\n        </ion-icon>\n      </ion-item>\n    </ion-list>\n\n  </form>\n</ion-content>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/new-material/new-material.page.html":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/new-material/new-material.page.html ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Nuevo Material</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button [disabled]=\"!NewMaterial.valid\" (click)=\"save()\" *ngIf=\"hidden==false\">\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n      <ion-button [disabled]=\"!NewMaterial.valid\" (click)=\"edit()\" *ngIf=\"hidden==true\">\n        <ion-icon slot=\"icon-only\" name=\"create\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <section class=\"aside-content\">\n    <div class=\"aside-img\">\n      <img class=\"img\" src=\"{{imgUser}}\" alt=\"\">\n    </div>\n  </section>\n  <form [formGroup]=\"NewMaterial\">\n    <ion-row [hidden]=\"hidden\">\n      <ion-col size=\"12\">\n        <mat-form-field class=\"example-full-width\">\n          <input matInput placeholder=\"Material\" formControlName=\"name_materials\" id=\"name_materials\">\n          <mat-hint>Nombre del Material</mat-hint>\n\n        </mat-form-field>\n        <div class=\"error\"\n          *ngIf=\"NewMaterial.get('name_materials').hasError('required') && NewMaterial.get('name_materials').touched\">\n          Material\n        </div>\n      </ion-col>\n    </ion-row>\n    <ion-list [hidden]=\"hidden1\">\n      <ion-item>\n        <ion-label class=\"ion-text-wrap\">\n          <ion-text>\n            <h2>{{NewMaterial.value.name_materials}}</h2>\n          </ion-text>\n          <p>Material</p>\n        </ion-label>\n      </ion-item>\n\n      <ion-item lines=\"none\">\n        <ion-label class=\"ion-text-wrap\">\n          <ion-text>\n            <h2>{{NewMaterial.value.state}}</h2>\n          </ion-text>\n          <p>Estado</p>\n        </ion-label>\n      </ion-item>\n      <ion-list class=\"accordion-list\" no-padding>\n        <section class=\"acc-section\" (click)=\"setStep('expanded1')\">\n          <div class=\"img\">\n            <img src=\"../../assets/iconos/1172539.svg\" alt=\"\">\n          </div>\n          <div class=\"info\" (click)=\"listmaterial()\">\n            <p class=\"title\">Certificados</p>\n            <p class=\"subtitle\">Información de los Certificados</p>\n\n          </div>\n          <div class=\"icon\">\n            <ion-icon name=\"{{getIconName('expanded1')}}\" color=\"medium\"></ion-icon>\n          </div>\n\n        </section>\n        <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded1')}\">\n          <ion-item detail *ngFor=\"let certificate of certificates; let i = i; index\"\n            (click)=\"photos_add(photos_service)\">\n            <ion-label class=\"ion-text-wrap\">\n              <ion-text>\n                <h2>{{certificate.codigo}}</h2>\n              </ion-text>\n              <p>{{certificate.date_expiration}}</p>\n            </ion-label>\n          </ion-item>\n        </section>\n      </ion-list>\n    </ion-list>\n  </form>\n</ion-content>"
 
 /***/ }),
 
@@ -588,13 +682,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _utilitis_constant__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utilitis/constant */ "./src/app/utilitis/constant.ts");
+
 
 
 
 let LoginServiceService = class LoginServiceService {
     constructor(http) {
         this.http = http;
-        this.api_url = 'http://190.0.33.166:90/laravel-mls/public/api/';
+        this.constant = new _utilitis_constant__WEBPACK_IMPORTED_MODULE_3__["constant"]();
+        this.api_url = this.constant.routeGlobal;
     }
     save_image(params) {
         return this.http.post(`${this.api_url}movil/image`, params);
@@ -637,6 +734,57 @@ let LoginServiceService = class LoginServiceService {
     }
     type_red(params) {
         return this.http.post(`${this.api_url}list/list_type_network`, params);
+    }
+    SaveCliente(params) {
+        return this.http.post(`${this.api_url}client/create`, params);
+    }
+    ListClient(page) {
+        return this.http.get(`${this.api_url}movil/ListClient?page=${page}`);
+    }
+    AutoListClient(client) {
+        return this.http.get(`${this.api_url}movil/AutoListClient?client=${client}`);
+    }
+    ListAcount(params) {
+        return this.http.post(`${this.api_url}movil/ListAcount`, params);
+    }
+    CreateAcount(params) {
+        return this.http.post(`${this.api_url}client/create_account`, params);
+    }
+    ListCity(page) {
+        return this.http.get(`${this.api_url}movil/ListCity?page=${page}`);
+    }
+    AutoCity(city) {
+        return this.http.get(`${this.api_url}movil/AutoCity?city=${city}`);
+    }
+    ListMaterial(page) {
+        return this.http.get(`${this.api_url}movil/ListMaterial?page=${page}`);
+    }
+    AutoListMaterial(material) {
+        return this.http.get(`${this.api_url}movil/AutoListMaterial?material=${material}`);
+    }
+    CreateMaterial(params) {
+        return this.http.post(`${this.api_url}materials/savemovil`, params);
+    }
+    MaterialCertificate(material) {
+        return this.http.get(`${this.api_url}movil/MaterialCertificate?material=${material}`);
+    }
+    ListBuilder(page) {
+        return this.http.get(`${this.api_url}movil/ListBuilder?page=${page}`);
+    }
+    AutoListBuilder(material) {
+        return this.http.get(`${this.api_url}movil/AutoListBuilder?builder=${material}`);
+    }
+    listsic(builder) {
+        return this.http.get(`${this.api_url}movil/listsic?builder=${builder}`);
+    }
+    listcom(builder) {
+        return this.http.get(`${this.api_url}movil/listcom?builder=${builder}`);
+    }
+    SevaBuilder(params) {
+        return this.http.post(`${this.api_url}builder/create`, params);
+    }
+    search_address(address) {
+        return this.http.get(`${this.api_url}movil/search_address?address=${address}`);
     }
 };
 LoginServiceService.ctorParameters = () => [
@@ -724,6 +872,148 @@ TasksService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
 ], TasksService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/acount-service/acount-service.module.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/acount-service/acount-service.module.ts ***!
+  \*********************************************************/
+/*! exports provided: AcountServicePageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AcountServicePageModule", function() { return AcountServicePageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _pipes_pipes_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../pipes/pipes.module */ "./src/app/pipes/pipes.module.ts");
+/* harmony import */ var _acount_service_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./acount-service.page */ "./src/app/acount-service/acount-service.page.ts");
+
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _acount_service_page__WEBPACK_IMPORTED_MODULE_7__["AcountServicePage"]
+    }
+];
+let AcountServicePageModule = class AcountServicePageModule {
+};
+AcountServicePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _pipes_pipes_module__WEBPACK_IMPORTED_MODULE_6__["PipesModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_acount_service_page__WEBPACK_IMPORTED_MODULE_7__["AcountServicePage"]]
+    })
+], AcountServicePageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/acount-service/acount-service.page.scss":
+/*!*********************************************************!*\
+  !*** ./src/app/acount-service/acount-service.page.scss ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Fjb3VudC1zZXJ2aWNlL2Fjb3VudC1zZXJ2aWNlLnBhZ2Uuc2NzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/acount-service/acount-service.page.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/acount-service/acount-service.page.ts ***!
+  \*******************************************************/
+/*! exports provided: AcountServicePage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AcountServicePage", function() { return AcountServicePage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+
+
+
+let AcountServicePage = class AcountServicePage {
+    constructor(loginServiceService, toastController, modalController, navParams) {
+        this.loginServiceService = loginServiceService;
+        this.toastController = toastController;
+        this.modalController = modalController;
+        this.navParams = navParams;
+        this.acounts = [];
+        this.isSearchbarOpened = false;
+        this.textSearch = '';
+        this.idclient = navParams.get('idclient');
+    }
+    ngOnInit() {
+        this.ListAcount();
+    }
+    back() {
+        this.modalController.dismiss({
+            'dismissed': false,
+        });
+    }
+    ListAcount() {
+        const params = {
+            idclient: this.idclient
+        };
+        this.loginServiceService.ListAcount(params).subscribe(result => {
+            this.acounts = result.response;
+        }, error => {
+        });
+    }
+    onSearch(event) {
+        this.textSearch = event.target.value;
+    }
+    ModalExit(acount) {
+        this.modalController.dismiss({
+            'dismissed': false,
+            data: acount
+        });
+    }
+};
+AcountServicePage.ctorParameters = () => [
+    { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"] }
+];
+AcountServicePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-acount-service',
+        template: __webpack_require__(/*! raw-loader!./acount-service.page.html */ "./node_modules/raw-loader/index.js!./src/app/acount-service/acount-service.page.html"),
+        styles: [__webpack_require__(/*! ./acount-service.page.scss */ "./src/app/acount-service/acount-service.page.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"]])
+], AcountServicePage);
 
 
 
@@ -1154,8 +1444,6 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     { path: '', loadChildren: './login/login.module#LoginPageModule' },
     { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
-    { path: 'alert-image', loadChildren: './alert-image/alert-image.module#AlertImagePageModule' },
-    { path: 'view-image', loadChildren: './view-image/view-image.module#ViewImagePageModule' },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -1339,6 +1627,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_sqlite_ngx__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @ionic-native/sqlite/ngx */ "./node_modules/@ionic-native/sqlite/ngx/index.js");
 /* harmony import */ var _alert_image_alert_image_module__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./alert-image/alert-image.module */ "./src/app/alert-image/alert-image.module.ts");
 /* harmony import */ var _view_image_view_image_module__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./view-image/view-image.module */ "./src/app/view-image/view-image.module.ts");
+/* harmony import */ var _new_client_new_client_module__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./new-client/new-client.module */ "./src/app/new-client/new-client.module.ts");
+/* harmony import */ var _list_acount_list_acount_module__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./list-acount/list-acount.module */ "./src/app/list-acount/list-acount.module.ts");
+/* harmony import */ var _new_acount_new_acount_module__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./new-acount/new-acount.module */ "./src/app/new-acount/new-acount.module.ts");
+/* harmony import */ var _city_city_module__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./city/city.module */ "./src/app/city/city.module.ts");
+/* harmony import */ var _new_material_new_material_module__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./new-material/new-material.module */ "./src/app/new-material/new-material.module.ts");
+/* harmony import */ var _new_builder_new_builder_module__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./new-builder/new-builder.module */ "./src/app/new-builder/new-builder.module.ts");
+/* harmony import */ var _client_service_client_service_module__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./client-service/client-service.module */ "./src/app/client-service/client-service.module.ts");
+/* harmony import */ var _acount_service_acount_service_module__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./acount-service/acount-service.module */ "./src/app/acount-service/acount-service.module.ts");
+
+
+
+
+
+
+
+
 
 
 
@@ -1388,7 +1692,15 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _view_image_view_image_module__WEBPACK_IMPORTED_MODULE_29__["ViewImagePageModule"],
             _certificate_certificate_module__WEBPACK_IMPORTED_MODULE_25__["CertificatePageModule"],
             _new_certificate_new_certificate_module__WEBPACK_IMPORTED_MODULE_26__["NewCertificatePageModule"],
-            _alert_image_alert_image_module__WEBPACK_IMPORTED_MODULE_28__["AlertImagePageModule"]],
+            _alert_image_alert_image_module__WEBPACK_IMPORTED_MODULE_28__["AlertImagePageModule"],
+            _list_acount_list_acount_module__WEBPACK_IMPORTED_MODULE_31__["ListAcountPageModule"],
+            _new_acount_new_acount_module__WEBPACK_IMPORTED_MODULE_32__["NewAcountPageModule"],
+            _city_city_module__WEBPACK_IMPORTED_MODULE_33__["CityPageModule"],
+            _new_material_new_material_module__WEBPACK_IMPORTED_MODULE_34__["NewMaterialPageModule"],
+            _new_builder_new_builder_module__WEBPACK_IMPORTED_MODULE_35__["NewBuilderPageModule"],
+            _client_service_client_service_module__WEBPACK_IMPORTED_MODULE_36__["ClientServicePageModule"],
+            _acount_service_acount_service_module__WEBPACK_IMPORTED_MODULE_37__["AcountServicePageModule"],
+            _new_client_new_client_module__WEBPACK_IMPORTED_MODULE_30__["NewClientPageModule"]],
         providers: [
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
@@ -1700,6 +2012,316 @@ CertificatePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/city/city.module.ts":
+/*!*************************************!*\
+  !*** ./src/app/city/city.module.ts ***!
+  \*************************************/
+/*! exports provided: CityPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CityPageModule", function() { return CityPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _city_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./city.page */ "./src/app/city/city.page.ts");
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _city_page__WEBPACK_IMPORTED_MODULE_6__["CityPage"]
+    }
+];
+let CityPageModule = class CityPageModule {
+};
+CityPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_city_page__WEBPACK_IMPORTED_MODULE_6__["CityPage"]]
+    })
+], CityPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/city/city.page.scss":
+/*!*************************************!*\
+  !*** ./src/app/city/city.page.scss ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NpdHkvY2l0eS5wYWdlLnNjc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/city/city.page.ts":
+/*!***********************************!*\
+  !*** ./src/app/city/city.page.ts ***!
+  \***********************************/
+/*! exports provided: CityPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CityPage", function() { return CityPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+
+
+let CityPage = class CityPage {
+    constructor(loginServiceService, modalController, navParams) {
+        this.loginServiceService = loginServiceService;
+        this.modalController = modalController;
+        this.navParams = navParams;
+        this.citys = [];
+        this.page = 1;
+        this.isSearchbarOpened = false;
+        this.textSearch = '';
+    }
+    ngOnInit() {
+        this.ListClient();
+    }
+    back() {
+        this.modalController.dismiss({
+            'dismissed': false,
+        });
+    }
+    select(city) {
+        this.modalController.dismiss({
+            'dismissed': false,
+            data: city
+        });
+    }
+    ListClient(event) {
+        const params = { idcompany: 1 };
+        this.loginServiceService.ListCity(this.page).subscribe(result => {
+            this.citys = this.citys.concat(result.response.data);
+            this.maximumPage = result.response.last_page;
+            if (event) {
+                event.target.complete();
+            }
+        }, error => {
+        });
+    }
+    loadMore(event) {
+        this.page++;
+        this.ListClient(event);
+        if (this.page === this.maximumPage) {
+            event.target.disabled = true;
+        }
+    }
+    onSearch(event) {
+        if (event.target.value == '') {
+            this.page = 1;
+            this.ListClient(event);
+        }
+        else {
+            this.textSearch = event.target.value;
+            this.loginServiceService.AutoCity(this.textSearch).subscribe(result => {
+                this.citys = result.response;
+            }, error => {
+            });
+        }
+    }
+};
+CityPage.ctorParameters = () => [
+    { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"] }
+];
+CityPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-city',
+        template: __webpack_require__(/*! raw-loader!./city.page.html */ "./node_modules/raw-loader/index.js!./src/app/city/city.page.html"),
+        styles: [__webpack_require__(/*! ./city.page.scss */ "./src/app/city/city.page.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"]])
+], CityPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/client-service/client-service.module.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/client-service/client-service.module.ts ***!
+  \*********************************************************/
+/*! exports provided: ClientServicePageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClientServicePageModule", function() { return ClientServicePageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _pipes_pipes_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../pipes/pipes.module */ "./src/app/pipes/pipes.module.ts");
+/* harmony import */ var _client_service_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./client-service.page */ "./src/app/client-service/client-service.page.ts");
+
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _client_service_page__WEBPACK_IMPORTED_MODULE_7__["ClientServicePage"]
+    }
+];
+let ClientServicePageModule = class ClientServicePageModule {
+};
+ClientServicePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _pipes_pipes_module__WEBPACK_IMPORTED_MODULE_6__["PipesModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_client_service_page__WEBPACK_IMPORTED_MODULE_7__["ClientServicePage"]]
+    })
+], ClientServicePageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/client-service/client-service.page.scss":
+/*!*********************************************************!*\
+  !*** ./src/app/client-service/client-service.page.scss ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NsaWVudC1zZXJ2aWNlL2NsaWVudC1zZXJ2aWNlLnBhZ2Uuc2NzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/client-service/client-service.page.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/client-service/client-service.page.ts ***!
+  \*******************************************************/
+/*! exports provided: ClientServicePage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClientServicePage", function() { return ClientServicePage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+
+
+let ClientServicePage = class ClientServicePage {
+    constructor(LoginServiceService, router, modalController) {
+        this.LoginServiceService = LoginServiceService;
+        this.router = router;
+        this.modalController = modalController;
+        this.Clients = [];
+        this.page = 1;
+        this.isSearchbarOpened = false;
+        this.textSearch = '';
+    }
+    ngOnInit() {
+        this.ListClient();
+    }
+    back() {
+        this.router.navigateByUrl('menu/menu/home');
+    }
+    ListClient(event) {
+        const params = { idcompany: 1 };
+        this.LoginServiceService.ListClient(this.page).subscribe(result => {
+            this.Clients = this.Clients.concat(result.response.data);
+            this.maximumPage = result.response.last_page;
+            if (event) {
+                event.target.complete();
+            }
+        }, error => {
+        });
+    }
+    loadMore(event) {
+        this.page++;
+        this.ListClient(event);
+        if (this.page === this.maximumPage) {
+            event.target.disabled = true;
+        }
+    }
+    onSearch(event) {
+        if (event.target.value == '') {
+            this.page = 1;
+            this.ListClient(event);
+        }
+        else {
+            this.textSearch = event.target.value;
+            this.LoginServiceService.AutoListClient(this.textSearch).subscribe(result => {
+                this.Clients = result.response;
+            }, error => {
+            });
+        }
+    }
+    ModalExit(Client) {
+        this.modalController.dismiss({
+            'dismissed': false,
+            data: Client
+        });
+    }
+};
+ClientServicePage.ctorParameters = () => [
+    { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__["LoginServiceService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"] }
+];
+ClientServicePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-client-service',
+        template: __webpack_require__(/*! raw-loader!./client-service.page.html */ "./node_modules/raw-loader/index.js!./src/app/client-service/client-service.page.html"),
+        styles: [__webpack_require__(/*! ./client-service.page.scss */ "./src/app/client-service/client-service.page.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__["LoginServiceService"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"]])
+], ClientServicePage);
+
+
+
+/***/ }),
+
 /***/ "./src/app/images/images.module.ts":
 /*!*****************************************!*\
   !*** ./src/app/images/images.module.ts ***!
@@ -1889,6 +2511,171 @@ ImagesPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/list-acount/list-acount.module.ts":
+/*!***************************************************!*\
+  !*** ./src/app/list-acount/list-acount.module.ts ***!
+  \***************************************************/
+/*! exports provided: ListAcountPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListAcountPageModule", function() { return ListAcountPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _list_acount_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./list-acount.page */ "./src/app/list-acount/list-acount.page.ts");
+/* harmony import */ var _pipes_pipes_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../pipes/pipes.module */ "./src/app/pipes/pipes.module.ts");
+
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _list_acount_page__WEBPACK_IMPORTED_MODULE_6__["ListAcountPage"]
+    }
+];
+let ListAcountPageModule = class ListAcountPageModule {
+};
+ListAcountPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _pipes_pipes_module__WEBPACK_IMPORTED_MODULE_7__["PipesModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_list_acount_page__WEBPACK_IMPORTED_MODULE_6__["ListAcountPage"]]
+    })
+], ListAcountPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/list-acount/list-acount.page.scss":
+/*!***************************************************!*\
+  !*** ./src/app/list-acount/list-acount.page.scss ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xpc3QtYWNvdW50L2xpc3QtYWNvdW50LnBhZ2Uuc2NzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/list-acount/list-acount.page.ts":
+/*!*************************************************!*\
+  !*** ./src/app/list-acount/list-acount.page.ts ***!
+  \*************************************************/
+/*! exports provided: ListAcountPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListAcountPage", function() { return ListAcountPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _new_acount_new_acount_page__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../new-acount/new-acount.page */ "./src/app/new-acount/new-acount.page.ts");
+
+
+
+
+
+
+
+let ListAcountPage = class ListAcountPage {
+    constructor(loginServiceService, toastController, modalController, navParams) {
+        this.loginServiceService = loginServiceService;
+        this.toastController = toastController;
+        this.modalController = modalController;
+        this.navParams = navParams;
+        this.acounts = [];
+        this.isSearchbarOpened = false;
+        this.textSearch = '';
+        this.idclient = navParams.get('idclient');
+    }
+    ngOnInit() {
+        this.ListAcount();
+    }
+    back() {
+        this.modalController.dismiss({
+            'dismissed': false,
+        });
+    }
+    ListAcount() {
+        const params = {
+            idclient: this.idclient
+        };
+        this.loginServiceService.ListAcount(params).subscribe(result => {
+            this.acounts = result.response;
+        }, error => {
+        });
+    }
+    onSearch(event) {
+        this.textSearch = event.target.value;
+    }
+    ModalAcount(acount) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const modal = yield this.modalController.create({
+                component: _new_acount_new_acount_page__WEBPACK_IMPORTED_MODULE_4__["NewAcountPage"],
+                componentProps: {
+                    'data': acount,
+                    'idclient': this.idclient,
+                }
+            });
+            modal.onDidDismiss().then((detail) => {
+            });
+            yield modal.present();
+        });
+    }
+    ModalNewAcount(Client) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const modal = yield this.modalController.create({
+                component: _new_acount_new_acount_page__WEBPACK_IMPORTED_MODULE_4__["NewAcountPage"],
+                componentProps: {
+                    'idclient': this.idclient,
+                }
+            });
+            modal.onDidDismiss().then((detail) => {
+            });
+            yield modal.present();
+        });
+    }
+};
+ListAcountPage.ctorParameters = () => [
+    { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"] }
+];
+ListAcountPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-list-acount',
+        template: __webpack_require__(/*! raw-loader!./list-acount.page.html */ "./node_modules/raw-loader/index.js!./src/app/list-acount/list-acount.page.html"),
+        styles: [__webpack_require__(/*! ./list-acount.page.scss */ "./src/app/list-acount/list-acount.page.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"]])
+], ListAcountPage);
+
+
+
+/***/ }),
+
 /***/ "./src/app/materials/materials.module.ts":
 /*!***********************************************!*\
   !*** ./src/app/materials/materials.module.ts ***!
@@ -2031,6 +2818,417 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewCertificate", function() { return NewCertificate; });
 class NewCertificate {
 }
+
+
+/***/ }),
+
+/***/ "./src/app/new-acount/new-acount.module.ts":
+/*!*************************************************!*\
+  !*** ./src/app/new-acount/new-acount.module.ts ***!
+  \*************************************************/
+/*! exports provided: NewAcountPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewAcountPageModule", function() { return NewAcountPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _app_material_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../app-material.module */ "./src/app/app-material.module.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _new_acount_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./new-acount.page */ "./src/app/new-acount/new-acount.page.ts");
+
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _new_acount_page__WEBPACK_IMPORTED_MODULE_7__["NewAcountPage"]
+    }
+];
+let NewAcountPageModule = class NewAcountPageModule {
+};
+NewAcountPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
+            _app_material_module__WEBPACK_IMPORTED_MODULE_5__["AppMaterialModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_new_acount_page__WEBPACK_IMPORTED_MODULE_7__["NewAcountPage"]]
+    })
+], NewAcountPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/new-acount/new-acount.page.scss":
+/*!*************************************************!*\
+  !*** ./src/app/new-acount/new-acount.page.scss ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".center {\n  color: rgba(255, 255, 255, 0.93) !important;\n}\n\n.aside-content {\n  margin-top: 1em;\n}\n\n.aside-content .aside-img img {\n  width: 100%;\n  height: 200px;\n}\n\n.aside-content .info-text {\n  color: #fff;\n  margin: 0.2em 0;\n  font-size: 1em;\n}\n\n.aside-item {\n  font-size: 1em;\n  color: #727279;\n}\n\n.example-form {\n  min-width: 150px;\n  max-width: 500px;\n  width: 100%;\n}\n\n.example-full-width {\n  width: 100%;\n  margin-top: 5px;\n}\n\n.example-full-width1 {\n  width: 100%;\n  margin-top: 10px;\n}\n\n.mat-form-field-appearance-legacy .mat-hint {\n  color: rgba(113, 108, 108, 0.7) !important;\n}\n\n.error {\n  font-size: 13px;\n  color: red;\n}\n\nion-icon.big {\n  width: 52px !important;\n  height: 52px !important;\n}\n\nion-icon.big1 {\n  width: 38px !important;\n  height: 38px !important;\n  margin-right: 10px !important;\n}\n\nion-icon.big2 {\n  width: 52px !important;\n  height: 52px !important;\n  margin-right: 10px !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi92YXIvd3d3L2h0bWwvYXBwLW1scy9zcmMvYXBwL25ldy1hY291bnQvbmV3LWFjb3VudC5wYWdlLnNjc3MiLCJzcmMvYXBwL25ldy1hY291bnQvbmV3LWFjb3VudC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSwyQ0FBQTtBQ0NGOztBREtFO0VBQ0UsZUFBQTtBQ0ZKOztBREtNO0VBQ0UsV0FBQTtFQUNBLGFBQUE7QUNIUjs7QURPSTtFQUNFLFdBQUE7RUFDQSxlQUFBO0VBQ0EsY0FBQTtBQ0xOOztBRFVFO0VBQ0UsY0FBQTtFQUNBLGNBQUE7QUNSSjs7QURhQTtFQUNJLGdCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxXQUFBO0FDVko7O0FEYUU7RUFDRSxXQUFBO0VBQ0EsZUFBQTtBQ1ZKOztBRFlFO0VBQ0UsV0FBQTtFQUNBLGdCQUFBO0FDVEo7O0FEWUU7RUFDRSwwQ0FBQTtBQ1RKOztBRFlBO0VBQ0UsZUFBQTtFQUNBLFVBQUE7QUNURjs7QURhRTtFQUNFLHNCQUFBO0VBQ0EsdUJBQUE7QUNWSjs7QURZRTtFQUNJLHNCQUFBO0VBQ0EsdUJBQUE7RUFDQSw2QkFBQTtBQ1ZOOztBRFlJO0VBQ0Usc0JBQUE7RUFDQSx1QkFBQTtFQUNBLDZCQUFBO0FDVk4iLCJmaWxlIjoic3JjL2FwcC9uZXctYWNvdW50L25ldy1hY291bnQucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNlbnRlciB7XG4gIGNvbG9yOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuOTMpICFpbXBvcnRhbnRcbn1cblxuLmFzaWRlIHtcbiBcblxuICAmLWNvbnRlbnQge1xuICAgIG1hcmdpbi10b3A6IDFlbTtcblxuICAgIC5hc2lkZS1pbWcge1xuICAgICAgJiBpbWcge1xuICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgaGVpZ2h0OiAyMDBweDtcbiAgICAgIH1cbiAgICB9XG5cbiAgICAuaW5mby10ZXh0IHtcbiAgICAgIGNvbG9yOiAjZmZmO1xuICAgICAgbWFyZ2luOiAuMmVtIDA7XG4gICAgICBmb250LXNpemU6IDFlbTtcblxuICAgIH1cbiAgfVxuXG4gICYtaXRlbSB7XG4gICAgZm9udC1zaXplOiAxZW07XG4gICAgY29sb3I6ICM3MjcyNzk7XG4gIH1cblxufVxuXG4uZXhhbXBsZS1mb3JtIHtcbiAgICBtaW4td2lkdGg6IDE1MHB4O1xuICAgIG1heC13aWR0aDogNTAwcHg7XG4gICAgd2lkdGg6IDEwMCU7XG4gIH1cbiAgXG4gIC5leGFtcGxlLWZ1bGwtd2lkdGgge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIG1hcmdpbi10b3A6IDVweDtcbiAgfVxuICAuZXhhbXBsZS1mdWxsLXdpZHRoMXtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBtYXJnaW4tdG9wOiAxMHB4O1xuICB9XG5cbiAgLm1hdC1mb3JtLWZpZWxkLWFwcGVhcmFuY2UtbGVnYWN5IC5tYXQtaGludCB7XG4gICAgY29sb3I6IHJnYmEoMTEzLCAxMDgsIDEwOCwgMC43KSFpbXBvcnRhbnRcbn1cblxuLmVycm9ye1xuICBmb250LXNpemU6IDEzcHg7XG4gIGNvbG9yOiByZWQ7XG59XG5cbmlvbi1pY29uIHtcbiAgJi5iaWcge1xuICAgIHdpZHRoOiA1MnB4IWltcG9ydGFudDtcbiAgICBoZWlnaHQ6IDUycHghaW1wb3J0YW50O1xuICB9XG4gICYuYmlnMSB7XG4gICAgICB3aWR0aDogMzhweCFpbXBvcnRhbnQ7XG4gICAgICBoZWlnaHQ6IDM4cHghaW1wb3J0YW50O1xuICAgICAgbWFyZ2luLXJpZ2h0OiAxMHB4IWltcG9ydGFudDtcbiAgICB9XG4gICAgJi5iaWcyIHtcbiAgICAgIHdpZHRoOiA1MnB4IWltcG9ydGFudDtcbiAgICAgIGhlaWdodDogNTJweCFpbXBvcnRhbnQ7XG4gICAgICBtYXJnaW4tcmlnaHQ6IDEwcHghaW1wb3J0YW50O1xuICAgfVxufSIsIi5jZW50ZXIge1xuICBjb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjkzKSAhaW1wb3J0YW50O1xufVxuXG4uYXNpZGUtY29udGVudCB7XG4gIG1hcmdpbi10b3A6IDFlbTtcbn1cbi5hc2lkZS1jb250ZW50IC5hc2lkZS1pbWcgaW1nIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMjAwcHg7XG59XG4uYXNpZGUtY29udGVudCAuaW5mby10ZXh0IHtcbiAgY29sb3I6ICNmZmY7XG4gIG1hcmdpbjogMC4yZW0gMDtcbiAgZm9udC1zaXplOiAxZW07XG59XG4uYXNpZGUtaXRlbSB7XG4gIGZvbnQtc2l6ZTogMWVtO1xuICBjb2xvcjogIzcyNzI3OTtcbn1cblxuLmV4YW1wbGUtZm9ybSB7XG4gIG1pbi13aWR0aDogMTUwcHg7XG4gIG1heC13aWR0aDogNTAwcHg7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4uZXhhbXBsZS1mdWxsLXdpZHRoIHtcbiAgd2lkdGg6IDEwMCU7XG4gIG1hcmdpbi10b3A6IDVweDtcbn1cblxuLmV4YW1wbGUtZnVsbC13aWR0aDEge1xuICB3aWR0aDogMTAwJTtcbiAgbWFyZ2luLXRvcDogMTBweDtcbn1cblxuLm1hdC1mb3JtLWZpZWxkLWFwcGVhcmFuY2UtbGVnYWN5IC5tYXQtaGludCB7XG4gIGNvbG9yOiByZ2JhKDExMywgMTA4LCAxMDgsIDAuNykgIWltcG9ydGFudDtcbn1cblxuLmVycm9yIHtcbiAgZm9udC1zaXplOiAxM3B4O1xuICBjb2xvcjogcmVkO1xufVxuXG5pb24taWNvbi5iaWcge1xuICB3aWR0aDogNTJweCAhaW1wb3J0YW50O1xuICBoZWlnaHQ6IDUycHggIWltcG9ydGFudDtcbn1cbmlvbi1pY29uLmJpZzEge1xuICB3aWR0aDogMzhweCAhaW1wb3J0YW50O1xuICBoZWlnaHQ6IDM4cHggIWltcG9ydGFudDtcbiAgbWFyZ2luLXJpZ2h0OiAxMHB4ICFpbXBvcnRhbnQ7XG59XG5pb24taWNvbi5iaWcyIHtcbiAgd2lkdGg6IDUycHggIWltcG9ydGFudDtcbiAgaGVpZ2h0OiA1MnB4ICFpbXBvcnRhbnQ7XG4gIG1hcmdpbi1yaWdodDogMTBweCAhaW1wb3J0YW50O1xufSJdfQ== */"
+
+/***/ }),
+
+/***/ "./src/app/new-acount/new-acount.page.ts":
+/*!***********************************************!*\
+  !*** ./src/app/new-acount/new-acount.page.ts ***!
+  \***********************************************/
+/*! exports provided: NewAcountPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewAcountPage", function() { return NewAcountPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _city_city_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../city/city.page */ "./src/app/city/city.page.ts");
+
+
+
+
+
+
+
+
+let NewAcountPage = class NewAcountPage {
+    constructor(loginServiceService, toastController, modalController, navParams) {
+        this.loginServiceService = loginServiceService;
+        this.toastController = toastController;
+        this.modalController = modalController;
+        this.navParams = navParams;
+        this.imgUser = '../assets/iconos/1986736.svg';
+        this.hidden = true;
+        this.hidden1 = true;
+        this.NewAcount = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
+            idclient_account: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
+            city: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](),
+            address: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+            indications: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](),
+            state: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](),
+            idstate: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+            client_idclient: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](),
+            number_acount: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+            name_city: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+        });
+        const data = navParams.get('data');
+        this.idclient = navParams.get('idclient');
+        if (data != null) {
+            this.NewAcount.get('idclient_account').setValue(data.idclient_account);
+            this.NewAcount.get('city').setValue(data.city);
+            this.NewAcount.get('name_city').setValue(data.name_city);
+            this.NewAcount.get('address').setValue(data.address);
+            this.NewAcount.get('indications').setValue(data.indications);
+            this.NewAcount.get('idstate').setValue(data.idstate);
+            this.NewAcount.get('client_idclient').setValue(data.client_idclient);
+            this.NewAcount.get('number_acount').setValue(data.number_acount);
+            this.NewAcount.get('state').setValue(data.state);
+            this.hidden1 = false;
+        }
+        else {
+            this.hidden = false;
+        }
+    }
+    ngOnInit() {
+    }
+    save() {
+        const params = {
+            idclient_account: this.NewAcount.value.idclient_account,
+            city: this.NewAcount.value.city,
+            address: this.NewAcount.value.address,
+            indications: this.NewAcount.value.indications,
+            state: this.NewAcount.value.idstate,
+            client_idclient: this.idclient,
+            number_acount: this.NewAcount.value.number_acount,
+        };
+        this.loginServiceService.CreateAcount(params).subscribe(result => {
+            if (result.response == true) {
+                this.presentToast('Se creo la Cuenta');
+                this.NewAcount.get('idclient_account').setValue(result.idaccount);
+                this.hidden = true;
+                this.hidden1 = false;
+            }
+            if (result.response == false) {
+                this.presentToast('Se Actualizo la Cuenta');
+                this.hidden = true;
+                this.hidden1 = false;
+            }
+        }, error => {
+        });
+    }
+    back() {
+        this.modalController.dismiss({
+            'dismissed': false,
+        });
+    }
+    SearchCity() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const modal = yield this.modalController.create({
+                component: _city_city_page__WEBPACK_IMPORTED_MODULE_5__["CityPage"],
+                componentProps: {}
+            });
+            modal.onDidDismiss().then((detail) => {
+                this.NewAcount.get('name_city').setValue(detail.data.data.name_municipality);
+                this.NewAcount.get('city').setValue(detail.data.data.idmunicipality);
+            });
+            yield modal.present();
+        });
+    }
+    edit() {
+        this.hidden = false;
+        this.hidden1 = true;
+    }
+    presentToast(message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const toast = yield this.toastController.create({
+                message: message,
+                duration: 2000
+            });
+            toast.present();
+        });
+    }
+};
+NewAcountPage.ctorParameters = () => [
+    { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__["LoginServiceService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavParams"] }
+];
+NewAcountPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-new-acount',
+        template: __webpack_require__(/*! raw-loader!./new-acount.page.html */ "./node_modules/raw-loader/index.js!./src/app/new-acount/new-acount.page.html"),
+        styles: [__webpack_require__(/*! ./new-acount.page.scss */ "./src/app/new-acount/new-acount.page.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__["LoginServiceService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavParams"]])
+], NewAcountPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/new-builder/new-builder.module.ts":
+/*!***************************************************!*\
+  !*** ./src/app/new-builder/new-builder.module.ts ***!
+  \***************************************************/
+/*! exports provided: NewBuilderPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewBuilderPageModule", function() { return NewBuilderPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _app_material_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../app-material.module */ "./src/app/app-material.module.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _new_builder_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./new-builder.page */ "./src/app/new-builder/new-builder.page.ts");
+
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _new_builder_page__WEBPACK_IMPORTED_MODULE_7__["NewBuilderPage"]
+    }
+];
+let NewBuilderPageModule = class NewBuilderPageModule {
+};
+NewBuilderPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
+            _app_material_module__WEBPACK_IMPORTED_MODULE_5__["AppMaterialModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_new_builder_page__WEBPACK_IMPORTED_MODULE_7__["NewBuilderPage"]]
+    })
+], NewBuilderPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/new-builder/new-builder.page.scss":
+/*!***************************************************!*\
+  !*** ./src/app/new-builder/new-builder.page.scss ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".acc-section {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  border-top: thin solid #c1c1c1;\n  background: #eaeaea;\n  padding: 0.7em;\n}\n.acc-section:first-child {\n  border-top: none;\n}\n.acc-section:last-child {\n  border-bottom: thin solid #e5e5e5;\n}\n.acc-section .img {\n  width: 35px;\n  margin-right: 0.5em;\n}\n.acc-section .img img {\n  width: 100%;\n}\n.acc-section .info {\n  width: calc(100% - 60px);\n}\n.acc-section .info > * {\n  margin: 0;\n}\n.acc-section .info .title {\n  font-size: 1em;\n  color: #323133;\n}\n.acc-section .info .subtitle {\n  font-size: 0.9em;\n  color: #8a888a;\n}\n.acc-section .info .text {\n  font-size: 0.8em;\n  color: #f3b236;\n}\n.acc-section .icon {\n  width: 20px;\n}\n.acc-content {\n  height: 0;\n  overflow: hidden;\n  padding: 0 0.5em;\n  -webkit-transition: max-height 0.4s ease-in-out;\n  transition: max-height 0.4s ease-in-out;\n}\n.acc-content.expandable {\n  -webkit-transition: max-height 0.4s ease-in-out;\n  transition: max-height 0.4s ease-in-out;\n  overflow: hidden;\n  height: auto;\n}\n@-webkit-keyframes delay-overflow {\n  from {\n    overflow: auto;\n  }\n}\n@keyframes delay-overflow {\n  from {\n    overflow: auto;\n  }\n}\n.center {\n  color: rgba(255, 255, 255, 0.93) !important;\n}\n.aside-content {\n  margin-top: 1em;\n}\n.aside-content .aside-img img {\n  width: 100%;\n  height: 200px;\n}\n.aside-content .info-text {\n  color: #fff;\n  margin: 0.2em 0;\n  font-size: 1em;\n}\n.aside-item {\n  font-size: 1em;\n  color: #727279;\n}\n.example-form {\n  min-width: 150px;\n  max-width: 500px;\n  width: 100%;\n}\n.example-full-width {\n  width: 100%;\n  margin-top: 5px;\n}\n.example-full-width1 {\n  width: 100%;\n  margin-top: 10px;\n}\n.mat-form-field-appearance-legacy .mat-hint {\n  color: rgba(113, 108, 108, 0.7) !important;\n}\n.error {\n  font-size: 13px;\n  color: red;\n}\nion-icon.big {\n  width: 52px !important;\n  height: 52px !important;\n}\nion-icon.big1 {\n  width: 38px !important;\n  height: 38px !important;\n  margin-right: 10px !important;\n}\nion-icon.big2 {\n  width: 52px !important;\n  height: 52px !important;\n  margin-right: 10px !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi92YXIvd3d3L2h0bWwvYXBwLW1scy9zcmMvYXBwL25ldy1idWlsZGVyL25ldy1idWlsZGVyLnBhZ2Uuc2NzcyIsInNyYy9hcHAvbmV3LWJ1aWxkZXIvbmV3LWJ1aWxkZXIucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksb0JBQUE7RUFBQSxhQUFBO0VBQ0EseUJBQUE7VUFBQSxtQkFBQTtFQUNBLDhCQUFBO0VBQ0EsbUJBQUE7RUFDQSxjQUFBO0FDQ0o7QURDSTtFQUNFLGdCQUFBO0FDQ047QURFSTtFQUNFLGlDQUFBO0FDQU47QURHSTtFQUNFLFdBQUE7RUFDQSxtQkFBQTtBQ0ROO0FER007RUFDRSxXQUFBO0FDRFI7QURLSTtFQUNFLHdCQUFBO0FDSE47QURLTTtFQUNFLFNBQUE7QUNIUjtBRE1NO0VBQ0UsY0FBQTtFQUNBLGNBQUE7QUNKUjtBRE9NO0VBQ0UsZ0JBQUE7RUFDQSxjQUFBO0FDTFI7QURRTTtFQUNFLGdCQUFBO0VBQ0EsY0FBQTtBQ05SO0FEVUk7RUFDRSxXQUFBO0FDUk47QURXRTtFQUNFLFNBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0VBQ0EsK0NBQUE7RUFBQSx1Q0FBQTtBQ1JKO0FEVUk7RUFDRSwrQ0FBQTtFQUFBLHVDQUFBO0VBQ0EsZ0JBQUE7RUFDQSxZQUFBO0FDUk47QURZRTtFQUNFO0lBQ0UsY0FBQTtFQ1RKO0FBQ0Y7QURNRTtFQUNFO0lBQ0UsY0FBQTtFQ1RKO0FBQ0Y7QURZRTtFQUNJLDJDQUFBO0FDVk47QURnQk07RUFDRSxlQUFBO0FDYlI7QURnQlU7RUFDRSxXQUFBO0VBQ0EsYUFBQTtBQ2RaO0FEa0JRO0VBQ0UsV0FBQTtFQUNBLGVBQUE7RUFDQSxjQUFBO0FDaEJWO0FEcUJNO0VBQ0UsY0FBQTtFQUNBLGNBQUE7QUNuQlI7QUR3Qkk7RUFDSSxnQkFBQTtFQUNBLGdCQUFBO0VBQ0EsV0FBQTtBQ3JCUjtBRHdCTTtFQUNFLFdBQUE7RUFDQSxlQUFBO0FDckJSO0FEdUJNO0VBQ0UsV0FBQTtFQUNBLGdCQUFBO0FDcEJSO0FEdUJNO0VBQ0UsMENBQUE7QUNwQlI7QUR1Qkk7RUFDRSxlQUFBO0VBQ0EsVUFBQTtBQ3BCTjtBRHdCTTtFQUNFLHNCQUFBO0VBQ0EsdUJBQUE7QUNyQlI7QUR1Qk07RUFDSSxzQkFBQTtFQUNBLHVCQUFBO0VBQ0EsNkJBQUE7QUNyQlY7QUR1QlE7RUFDRSxzQkFBQTtFQUNBLHVCQUFBO0VBQ0EsNkJBQUE7QUNyQlYiLCJmaWxlIjoic3JjL2FwcC9uZXctYnVpbGRlci9uZXctYnVpbGRlci5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYWNjLXNlY3Rpb24ge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICBib3JkZXItdG9wOiB0aGluIHNvbGlkICNjMWMxYzE7XG4gICAgYmFja2dyb3VuZDogI2VhZWFlYTtcbiAgICBwYWRkaW5nOiAuN2VtO1xuICBcbiAgICAmOmZpcnN0LWNoaWxkIHtcbiAgICAgIGJvcmRlci10b3A6IG5vbmU7XG4gICAgfVxuICBcbiAgICAmOmxhc3QtY2hpbGQge1xuICAgICAgYm9yZGVyLWJvdHRvbTogdGhpbiBzb2xpZCAjZTVlNWU1O1xuICAgIH1cbiAgXG4gICAgJiAuaW1nIHtcbiAgICAgIHdpZHRoOiAzNXB4O1xuICAgICAgbWFyZ2luLXJpZ2h0OiAuNWVtO1xuICBcbiAgICAgICYgaW1nIHtcbiAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICB9XG4gICAgfVxuICBcbiAgICAmIC5pbmZvIHtcbiAgICAgIHdpZHRoOiBjYWxjKDEwMCUgLSA2MHB4KTtcbiAgXG4gICAgICAmID4gKiB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgIH1cbiAgXG4gICAgICAmIC50aXRsZSB7XG4gICAgICAgIGZvbnQtc2l6ZTogMWVtO1xuICAgICAgICBjb2xvcjogIzMyMzEzMztcbiAgICAgIH1cbiAgXG4gICAgICAmIC5zdWJ0aXRsZSB7XG4gICAgICAgIGZvbnQtc2l6ZTogLjllbTtcbiAgICAgICAgY29sb3I6ICM4YTg4OGE7XG4gICAgICB9XG4gIFxuICAgICAgJiAudGV4dCB7XG4gICAgICAgIGZvbnQtc2l6ZTogLjhlbTtcbiAgICAgICAgY29sb3I6ICNmM2IyMzY7XG4gICAgICB9XG4gICAgfVxuICBcbiAgICAmIC5pY29uIHtcbiAgICAgIHdpZHRoOiAyMHB4O1xuICAgIH1cbiAgfVxuICAuYWNjLWNvbnRlbnQge1xuICAgIGhlaWdodDogMDtcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuICAgIHBhZGRpbmc6IDAgLjVlbTtcbiAgICB0cmFuc2l0aW9uOiBtYXgtaGVpZ2h0IDAuNHMgZWFzZS1pbi1vdXQ7XG4gIFxuICAgICYuZXhwYW5kYWJsZSB7XG4gICAgICB0cmFuc2l0aW9uOiBtYXgtaGVpZ2h0IDAuNHMgZWFzZS1pbi1vdXQ7XG4gICAgICBvdmVyZmxvdzogaGlkZGVuO1xuICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgIH1cbiAgfVxuICBcbiAgQGtleWZyYW1lcyBkZWxheS1vdmVyZmxvdyB7XG4gICAgZnJvbSB7XG4gICAgICBvdmVyZmxvdzogYXV0bztcbiAgICB9XG4gIH1cbiAgXG4gIC5jZW50ZXIge1xuICAgICAgY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC45MykgIWltcG9ydGFudFxuICAgIH1cbiAgICBcbiAgICAuYXNpZGUge1xuICAgICBcbiAgICBcbiAgICAgICYtY29udGVudCB7XG4gICAgICAgIG1hcmdpbi10b3A6IDFlbTtcbiAgICBcbiAgICAgICAgLmFzaWRlLWltZyB7XG4gICAgICAgICAgJiBpbWcge1xuICAgICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgICAgICBoZWlnaHQ6IDIwMHB4O1xuICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgIFxuICAgICAgICAuaW5mby10ZXh0IHtcbiAgICAgICAgICBjb2xvcjogI2ZmZjtcbiAgICAgICAgICBtYXJnaW46IC4yZW0gMDtcbiAgICAgICAgICBmb250LXNpemU6IDFlbTtcbiAgICBcbiAgICAgICAgfVxuICAgICAgfVxuICAgIFxuICAgICAgJi1pdGVtIHtcbiAgICAgICAgZm9udC1zaXplOiAxZW07XG4gICAgICAgIGNvbG9yOiAjNzI3Mjc5O1xuICAgICAgfVxuICAgIFxuICAgIH1cbiAgICBcbiAgICAuZXhhbXBsZS1mb3JtIHtcbiAgICAgICAgbWluLXdpZHRoOiAxNTBweDtcbiAgICAgICAgbWF4LXdpZHRoOiA1MDBweDtcbiAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICB9XG4gICAgICBcbiAgICAgIC5leGFtcGxlLWZ1bGwtd2lkdGgge1xuICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgbWFyZ2luLXRvcDogNXB4O1xuICAgICAgfVxuICAgICAgLmV4YW1wbGUtZnVsbC13aWR0aDF7XG4gICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICBtYXJnaW4tdG9wOiAxMHB4O1xuICAgICAgfVxuICAgIFxuICAgICAgLm1hdC1mb3JtLWZpZWxkLWFwcGVhcmFuY2UtbGVnYWN5IC5tYXQtaGludCB7XG4gICAgICAgIGNvbG9yOiByZ2JhKDExMywgMTA4LCAxMDgsIDAuNykhaW1wb3J0YW50XG4gICAgfVxuICAgIFxuICAgIC5lcnJvcntcbiAgICAgIGZvbnQtc2l6ZTogMTNweDtcbiAgICAgIGNvbG9yOiByZWQ7XG4gICAgfVxuICAgIFxuICAgIGlvbi1pY29uIHtcbiAgICAgICYuYmlnIHtcbiAgICAgICAgd2lkdGg6IDUycHghaW1wb3J0YW50O1xuICAgICAgICBoZWlnaHQ6IDUycHghaW1wb3J0YW50O1xuICAgICAgfVxuICAgICAgJi5iaWcxIHtcbiAgICAgICAgICB3aWR0aDogMzhweCFpbXBvcnRhbnQ7XG4gICAgICAgICAgaGVpZ2h0OiAzOHB4IWltcG9ydGFudDtcbiAgICAgICAgICBtYXJnaW4tcmlnaHQ6IDEwcHghaW1wb3J0YW50O1xuICAgICAgICB9XG4gICAgICAgICYuYmlnMiB7XG4gICAgICAgICAgd2lkdGg6IDUycHghaW1wb3J0YW50O1xuICAgICAgICAgIGhlaWdodDogNTJweCFpbXBvcnRhbnQ7XG4gICAgICAgICAgbWFyZ2luLXJpZ2h0OiAxMHB4IWltcG9ydGFudDtcbiAgICAgICB9XG4gICAgfSIsIi5hY2Mtc2VjdGlvbiB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGJvcmRlci10b3A6IHRoaW4gc29saWQgI2MxYzFjMTtcbiAgYmFja2dyb3VuZDogI2VhZWFlYTtcbiAgcGFkZGluZzogMC43ZW07XG59XG4uYWNjLXNlY3Rpb246Zmlyc3QtY2hpbGQge1xuICBib3JkZXItdG9wOiBub25lO1xufVxuLmFjYy1zZWN0aW9uOmxhc3QtY2hpbGQge1xuICBib3JkZXItYm90dG9tOiB0aGluIHNvbGlkICNlNWU1ZTU7XG59XG4uYWNjLXNlY3Rpb24gLmltZyB7XG4gIHdpZHRoOiAzNXB4O1xuICBtYXJnaW4tcmlnaHQ6IDAuNWVtO1xufVxuLmFjYy1zZWN0aW9uIC5pbWcgaW1nIHtcbiAgd2lkdGg6IDEwMCU7XG59XG4uYWNjLXNlY3Rpb24gLmluZm8ge1xuICB3aWR0aDogY2FsYygxMDAlIC0gNjBweCk7XG59XG4uYWNjLXNlY3Rpb24gLmluZm8gPiAqIHtcbiAgbWFyZ2luOiAwO1xufVxuLmFjYy1zZWN0aW9uIC5pbmZvIC50aXRsZSB7XG4gIGZvbnQtc2l6ZTogMWVtO1xuICBjb2xvcjogIzMyMzEzMztcbn1cbi5hY2Mtc2VjdGlvbiAuaW5mbyAuc3VidGl0bGUge1xuICBmb250LXNpemU6IDAuOWVtO1xuICBjb2xvcjogIzhhODg4YTtcbn1cbi5hY2Mtc2VjdGlvbiAuaW5mbyAudGV4dCB7XG4gIGZvbnQtc2l6ZTogMC44ZW07XG4gIGNvbG9yOiAjZjNiMjM2O1xufVxuLmFjYy1zZWN0aW9uIC5pY29uIHtcbiAgd2lkdGg6IDIwcHg7XG59XG5cbi5hY2MtY29udGVudCB7XG4gIGhlaWdodDogMDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgcGFkZGluZzogMCAwLjVlbTtcbiAgdHJhbnNpdGlvbjogbWF4LWhlaWdodCAwLjRzIGVhc2UtaW4tb3V0O1xufVxuLmFjYy1jb250ZW50LmV4cGFuZGFibGUge1xuICB0cmFuc2l0aW9uOiBtYXgtaGVpZ2h0IDAuNHMgZWFzZS1pbi1vdXQ7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGhlaWdodDogYXV0bztcbn1cblxuQGtleWZyYW1lcyBkZWxheS1vdmVyZmxvdyB7XG4gIGZyb20ge1xuICAgIG92ZXJmbG93OiBhdXRvO1xuICB9XG59XG4uY2VudGVyIHtcbiAgY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC45MykgIWltcG9ydGFudDtcbn1cblxuLmFzaWRlLWNvbnRlbnQge1xuICBtYXJnaW4tdG9wOiAxZW07XG59XG4uYXNpZGUtY29udGVudCAuYXNpZGUtaW1nIGltZyB7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDIwMHB4O1xufVxuLmFzaWRlLWNvbnRlbnQgLmluZm8tdGV4dCB7XG4gIGNvbG9yOiAjZmZmO1xuICBtYXJnaW46IDAuMmVtIDA7XG4gIGZvbnQtc2l6ZTogMWVtO1xufVxuLmFzaWRlLWl0ZW0ge1xuICBmb250LXNpemU6IDFlbTtcbiAgY29sb3I6ICM3MjcyNzk7XG59XG5cbi5leGFtcGxlLWZvcm0ge1xuICBtaW4td2lkdGg6IDE1MHB4O1xuICBtYXgtd2lkdGg6IDUwMHB4O1xuICB3aWR0aDogMTAwJTtcbn1cblxuLmV4YW1wbGUtZnVsbC13aWR0aCB7XG4gIHdpZHRoOiAxMDAlO1xuICBtYXJnaW4tdG9wOiA1cHg7XG59XG5cbi5leGFtcGxlLWZ1bGwtd2lkdGgxIHtcbiAgd2lkdGg6IDEwMCU7XG4gIG1hcmdpbi10b3A6IDEwcHg7XG59XG5cbi5tYXQtZm9ybS1maWVsZC1hcHBlYXJhbmNlLWxlZ2FjeSAubWF0LWhpbnQge1xuICBjb2xvcjogcmdiYSgxMTMsIDEwOCwgMTA4LCAwLjcpICFpbXBvcnRhbnQ7XG59XG5cbi5lcnJvciB7XG4gIGZvbnQtc2l6ZTogMTNweDtcbiAgY29sb3I6IHJlZDtcbn1cblxuaW9uLWljb24uYmlnIHtcbiAgd2lkdGg6IDUycHggIWltcG9ydGFudDtcbiAgaGVpZ2h0OiA1MnB4ICFpbXBvcnRhbnQ7XG59XG5pb24taWNvbi5iaWcxIHtcbiAgd2lkdGg6IDM4cHggIWltcG9ydGFudDtcbiAgaGVpZ2h0OiAzOHB4ICFpbXBvcnRhbnQ7XG4gIG1hcmdpbi1yaWdodDogMTBweCAhaW1wb3J0YW50O1xufVxuaW9uLWljb24uYmlnMiB7XG4gIHdpZHRoOiA1MnB4ICFpbXBvcnRhbnQ7XG4gIGhlaWdodDogNTJweCAhaW1wb3J0YW50O1xuICBtYXJnaW4tcmlnaHQ6IDEwcHggIWltcG9ydGFudDtcbn0iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/new-builder/new-builder.page.ts":
+/*!*************************************************!*\
+  !*** ./src/app/new-builder/new-builder.page.ts ***!
+  \*************************************************/
+/*! exports provided: NewBuilderPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewBuilderPage", function() { return NewBuilderPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+
+
+
+
+let NewBuilderPage = class NewBuilderPage {
+    constructor(loginServiceService, toastController, modalController, navParams) {
+        this.loginServiceService = loginServiceService;
+        this.toastController = toastController;
+        this.modalController = modalController;
+        this.navParams = navParams;
+        this.step = { sectionName: null };
+        this.imgUser = '../assets/iconos/2092076.svg';
+        this.hidden = true;
+        this.hidden1 = true;
+        this.sic = [];
+        this.competencias = [];
+        this.NewBuilder = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
+            idbuilder: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
+            name_builder: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+            identification: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+            state: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
+            idstate: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](3),
+        });
+        const data = navParams.get('data');
+        this.idmaterial = navParams.get('idmaterial');
+        if (data != null) {
+            this.NewBuilder.get('idbuilder').setValue(data.idbuilder);
+            this.NewBuilder.get('name_builder').setValue(data.name_builder);
+            this.NewBuilder.get('identification').setValue(data.identification);
+            this.NewBuilder.get('state').setValue(data.state);
+            this.NewBuilder.get('idstate').setValue(data.idstate);
+            this.hidden1 = false;
+        }
+        else {
+            this.hidden = false;
+        }
+    }
+    ngOnInit() {
+    }
+    back() {
+        this.modalController.dismiss({
+            'dismissed': false,
+        });
+    }
+    edit() {
+        this.hidden = false;
+        this.hidden1 = true;
+    }
+    presentToast(message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const toast = yield this.toastController.create({
+                message: message,
+                duration: 2000
+            });
+            toast.present();
+        });
+    }
+    getNameValid(sectionName) {
+        return this.step.sectionName === sectionName;
+    }
+    setStep(sectionName) {
+        this.step.sectionName = sectionName !== this.step.sectionName ? sectionName : null;
+    }
+    getIconName(sectionName) {
+        return this.getNameValid(sectionName) ? 'arrow-down' : 'arrow-forward';
+    }
+    listsic() {
+        this.loginServiceService.listsic(this.NewBuilder.value.idbuilder).subscribe(result => {
+            this.sic = result.response;
+        }, error => {
+        });
+    }
+    listcom() {
+        this.loginServiceService.listcom(this.NewBuilder.value.idbuilder).subscribe(result => {
+            this.competencias = result.response;
+        }, error => {
+        });
+    }
+    save() {
+        const params = {
+            idbuilder: this.NewBuilder.value.idbuilder,
+            name_builder: this.NewBuilder.value.name_builder,
+            identification: this.NewBuilder.value.identification,
+            state: this.NewBuilder.value.idstate,
+        };
+        this.loginServiceService.SevaBuilder(params).subscribe(result => {
+            if (result.response == true) {
+                this.presentToast('Se creo el Material');
+                this.NewBuilder.get('idbuilder').setValue(result.result);
+                this.NewBuilder.get('state').setValue('Por Confirmar');
+                this.hidden = true;
+                this.hidden1 = false;
+            }
+            if (result.response == false) {
+                this.presentToast('Se Actualizo el Material');
+                this.hidden = true;
+                this.hidden1 = false;
+            }
+        }, error => {
+        });
+    }
+};
+NewBuilderPage.ctorParameters = () => [
+    { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__["LoginServiceService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavParams"] }
+];
+NewBuilderPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-new-builder',
+        template: __webpack_require__(/*! raw-loader!./new-builder.page.html */ "./node_modules/raw-loader/index.js!./src/app/new-builder/new-builder.page.html"),
+        styles: [__webpack_require__(/*! ./new-builder.page.scss */ "./src/app/new-builder/new-builder.page.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__["LoginServiceService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavParams"]])
+], NewBuilderPage);
+
 
 
 /***/ }),
@@ -2179,8 +3377,8 @@ let NewCertificatePage = class NewCertificatePage {
     }
     ModalImage() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            if (this.NewCertificate.state == 2) {
-                this.presentToast('El certificado se encuentra Aprobado');
+            if (this.NewCertificate.state != 1) {
+                this.presentToast('El certificado se encuentra Realizado o Aprobado');
                 return;
             }
             if (this.NewCertificate.idservice_certifications == undefined) {
@@ -2202,7 +3400,7 @@ let NewCertificatePage = class NewCertificatePage {
         });
     }
     save() {
-        if (this.NewCertificate.state == 2) {
+        if (this.NewCertificate.state == 3) {
             this.presentToast('El certificado se encuentra Aprobado');
             return;
         }
@@ -2266,7 +3464,7 @@ let NewCertificatePage = class NewCertificatePage {
                         console.error(error);
                     });
                     if (result.response == false) {
-                        this.presentToast('Se guardo el Certificado');
+                        this.presentToast('Se guardo el Certificado3');
                     }
                 }, error => {
                 });
@@ -2340,6 +3538,409 @@ NewCertificatePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/new-client/new-client.module.ts":
+/*!*************************************************!*\
+  !*** ./src/app/new-client/new-client.module.ts ***!
+  \*************************************************/
+/*! exports provided: NewClientPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewClientPageModule", function() { return NewClientPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _app_material_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../app-material.module */ "./src/app/app-material.module.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _new_client_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./new-client.page */ "./src/app/new-client/new-client.page.ts");
+
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _new_client_page__WEBPACK_IMPORTED_MODULE_7__["NewClientPage"]
+    }
+];
+let NewClientPageModule = class NewClientPageModule {
+};
+NewClientPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicModule"],
+            _app_material_module__WEBPACK_IMPORTED_MODULE_5__["AppMaterialModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_new_client_page__WEBPACK_IMPORTED_MODULE_7__["NewClientPage"]]
+    })
+], NewClientPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/new-client/new-client.page.scss":
+/*!*************************************************!*\
+  !*** ./src/app/new-client/new-client.page.scss ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".center {\n  color: rgba(255, 255, 255, 0.93) !important;\n}\n\n.aside-content {\n  margin-top: 1em;\n}\n\n.aside-content .aside-img img {\n  width: 100%;\n  height: 200px;\n}\n\n.aside-content .info-text {\n  color: #fff;\n  margin: 0.2em 0;\n  font-size: 1em;\n}\n\n.aside-item {\n  font-size: 1em;\n  color: #727279;\n}\n\n.example-form {\n  min-width: 150px;\n  max-width: 500px;\n  width: 100%;\n}\n\n.example-full-width {\n  width: 100%;\n  margin-top: 5px;\n}\n\n.example-full-width1 {\n  width: 100%;\n  margin-top: 5px;\n}\n\n.mat-form-field-appearance-legacy .mat-hint {\n  color: rgba(113, 108, 108, 0.7) !important;\n}\n\n.error {\n  font-size: 13px;\n  color: red;\n}\n\nion-icon.big {\n  width: 52px !important;\n  height: 52px !important;\n}\n\nion-icon.big1 {\n  width: 38px !important;\n  height: 38px !important;\n  margin-right: 10px !important;\n}\n\nion-icon.big2 {\n  width: 52px !important;\n  height: 52px !important;\n  margin-right: 10px !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi92YXIvd3d3L2h0bWwvYXBwLW1scy9zcmMvYXBwL25ldy1jbGllbnQvbmV3LWNsaWVudC5wYWdlLnNjc3MiLCJzcmMvYXBwL25ldy1jbGllbnQvbmV3LWNsaWVudC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSwyQ0FBQTtBQ0NKOztBREtJO0VBQ0UsZUFBQTtBQ0ZOOztBREtRO0VBQ0UsV0FBQTtFQUNBLGFBQUE7QUNIVjs7QURPTTtFQUNFLFdBQUE7RUFDQSxlQUFBO0VBQ0EsY0FBQTtBQ0xSOztBRFVJO0VBQ0UsY0FBQTtFQUNBLGNBQUE7QUNSTjs7QURhRTtFQUNFLGdCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxXQUFBO0FDVko7O0FEYUU7RUFDRSxXQUFBO0VBQ0EsZUFBQTtBQ1ZKOztBRFlFO0VBQ0UsV0FBQTtFQUNBLGVBQUE7QUNUSjs7QURZRTtFQUNFLDBDQUFBO0FDVEo7O0FEWUE7RUFDRSxlQUFBO0VBQ0EsVUFBQTtBQ1RGOztBRGFFO0VBQ0Usc0JBQUE7RUFDQSx1QkFBQTtBQ1ZKOztBRFlFO0VBQ0ksc0JBQUE7RUFDQSx1QkFBQTtFQUNBLDZCQUFBO0FDVk47O0FEWUk7RUFDRSxzQkFBQTtFQUNBLHVCQUFBO0VBQ0EsNkJBQUE7QUNWTiIsImZpbGUiOiJzcmMvYXBwL25ldy1jbGllbnQvbmV3LWNsaWVudC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2VudGVyIHtcbiAgICBjb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjkzKSAhaW1wb3J0YW50XG4gIH1cblxuICAuYXNpZGUge1xuICAgXG5cbiAgICAmLWNvbnRlbnQge1xuICAgICAgbWFyZ2luLXRvcDogMWVtO1xuICBcbiAgICAgIC5hc2lkZS1pbWcge1xuICAgICAgICAmIGltZyB7XG4gICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgICAgaGVpZ2h0OiAyMDBweDtcbiAgICAgICAgfVxuICAgICAgfVxuICBcbiAgICAgIC5pbmZvLXRleHQge1xuICAgICAgICBjb2xvcjogI2ZmZjtcbiAgICAgICAgbWFyZ2luOiAuMmVtIDA7XG4gICAgICAgIGZvbnQtc2l6ZTogMWVtO1xuICBcbiAgICAgIH1cbiAgICB9XG4gIFxuICAgICYtaXRlbSB7XG4gICAgICBmb250LXNpemU6IDFlbTtcbiAgICAgIGNvbG9yOiAjNzI3Mjc5O1xuICAgIH1cbiAgXG4gIH1cblxuICAuZXhhbXBsZS1mb3JtIHtcbiAgICBtaW4td2lkdGg6IDE1MHB4O1xuICAgIG1heC13aWR0aDogNTAwcHg7XG4gICAgd2lkdGg6IDEwMCU7XG4gIH1cbiAgXG4gIC5leGFtcGxlLWZ1bGwtd2lkdGgge1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIG1hcmdpbi10b3A6IDVweDtcbiAgfVxuICAuZXhhbXBsZS1mdWxsLXdpZHRoMXtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBtYXJnaW4tdG9wOiA1cHg7XG4gIH1cblxuICAubWF0LWZvcm0tZmllbGQtYXBwZWFyYW5jZS1sZWdhY3kgLm1hdC1oaW50IHtcbiAgICBjb2xvcjogcmdiYSgxMTMsIDEwOCwgMTA4LCAwLjcpIWltcG9ydGFudFxufVxuXG4uZXJyb3J7XG4gIGZvbnQtc2l6ZTogMTNweDtcbiAgY29sb3I6IHJlZDtcbn1cblxuaW9uLWljb24ge1xuICAmLmJpZyB7XG4gICAgd2lkdGg6IDUycHghaW1wb3J0YW50O1xuICAgIGhlaWdodDogNTJweCFpbXBvcnRhbnQ7XG4gIH1cbiAgJi5iaWcxIHtcbiAgICAgIHdpZHRoOiAzOHB4IWltcG9ydGFudDtcbiAgICAgIGhlaWdodDogMzhweCFpbXBvcnRhbnQ7XG4gICAgICBtYXJnaW4tcmlnaHQ6IDEwcHghaW1wb3J0YW50O1xuICAgIH1cbiAgICAmLmJpZzIge1xuICAgICAgd2lkdGg6IDUycHghaW1wb3J0YW50O1xuICAgICAgaGVpZ2h0OiA1MnB4IWltcG9ydGFudDtcbiAgICAgIG1hcmdpbi1yaWdodDogMTBweCFpbXBvcnRhbnQ7XG4gICB9XG59IiwiLmNlbnRlciB7XG4gIGNvbG9yOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuOTMpICFpbXBvcnRhbnQ7XG59XG5cbi5hc2lkZS1jb250ZW50IHtcbiAgbWFyZ2luLXRvcDogMWVtO1xufVxuLmFzaWRlLWNvbnRlbnQgLmFzaWRlLWltZyBpbWcge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAyMDBweDtcbn1cbi5hc2lkZS1jb250ZW50IC5pbmZvLXRleHQge1xuICBjb2xvcjogI2ZmZjtcbiAgbWFyZ2luOiAwLjJlbSAwO1xuICBmb250LXNpemU6IDFlbTtcbn1cbi5hc2lkZS1pdGVtIHtcbiAgZm9udC1zaXplOiAxZW07XG4gIGNvbG9yOiAjNzI3Mjc5O1xufVxuXG4uZXhhbXBsZS1mb3JtIHtcbiAgbWluLXdpZHRoOiAxNTBweDtcbiAgbWF4LXdpZHRoOiA1MDBweDtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5leGFtcGxlLWZ1bGwtd2lkdGgge1xuICB3aWR0aDogMTAwJTtcbiAgbWFyZ2luLXRvcDogNXB4O1xufVxuXG4uZXhhbXBsZS1mdWxsLXdpZHRoMSB7XG4gIHdpZHRoOiAxMDAlO1xuICBtYXJnaW4tdG9wOiA1cHg7XG59XG5cbi5tYXQtZm9ybS1maWVsZC1hcHBlYXJhbmNlLWxlZ2FjeSAubWF0LWhpbnQge1xuICBjb2xvcjogcmdiYSgxMTMsIDEwOCwgMTA4LCAwLjcpICFpbXBvcnRhbnQ7XG59XG5cbi5lcnJvciB7XG4gIGZvbnQtc2l6ZTogMTNweDtcbiAgY29sb3I6IHJlZDtcbn1cblxuaW9uLWljb24uYmlnIHtcbiAgd2lkdGg6IDUycHggIWltcG9ydGFudDtcbiAgaGVpZ2h0OiA1MnB4ICFpbXBvcnRhbnQ7XG59XG5pb24taWNvbi5iaWcxIHtcbiAgd2lkdGg6IDM4cHggIWltcG9ydGFudDtcbiAgaGVpZ2h0OiAzOHB4ICFpbXBvcnRhbnQ7XG4gIG1hcmdpbi1yaWdodDogMTBweCAhaW1wb3J0YW50O1xufVxuaW9uLWljb24uYmlnMiB7XG4gIHdpZHRoOiA1MnB4ICFpbXBvcnRhbnQ7XG4gIGhlaWdodDogNTJweCAhaW1wb3J0YW50O1xuICBtYXJnaW4tcmlnaHQ6IDEwcHggIWltcG9ydGFudDtcbn0iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/new-client/new-client.page.ts":
+/*!***********************************************!*\
+  !*** ./src/app/new-client/new-client.page.ts ***!
+  \***********************************************/
+/*! exports provided: NewClientPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewClientPage", function() { return NewClientPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _list_acount_list_acount_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../list-acount/list-acount.page */ "./src/app/list-acount/list-acount.page.ts");
+
+
+
+
+
+
+
+
+let NewClientPage = class NewClientPage {
+    constructor(loginServiceService, toastController, modalController, navParams) {
+        this.loginServiceService = loginServiceService;
+        this.toastController = toastController;
+        this.modalController = modalController;
+        this.navParams = navParams;
+        this.imgUser = '../assets/iconos/network.svg';
+        this.hidden = true;
+        this.hidden1 = true;
+        this.NewCliente = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
+            idclient: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
+            name_cliente: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+            phone: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+            identification: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+            mail: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].email]),
+            state: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](),
+            idstate: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]()
+        });
+        const data = navParams.get('data');
+        if (data != null) {
+            this.NewCliente.get('idclient').setValue(data.id_client);
+            this.NewCliente.get('name_cliente').setValue(data.name_client);
+            this.NewCliente.get('phone').setValue(data.phone);
+            this.NewCliente.get('identification').setValue(data.id_client);
+            this.NewCliente.get('mail').setValue(data.email);
+            this.NewCliente.get('idstate').setValue(data.idstate);
+            this.NewCliente.get('state').setValue(data.state);
+            this.hidden1 = false;
+        }
+        else {
+            this.hidden = false;
+        }
+    }
+    ngOnInit() {
+    }
+    save() {
+        if (this.NewCliente.value.name_cliente == '') {
+        }
+        const params = {
+            idclient: this.NewCliente.value.idclient,
+            name_client: this.NewCliente.value.name_cliente,
+            phone: this.NewCliente.value.phone,
+            id_client: this.NewCliente.value.identification,
+            email: this.NewCliente.value.mail,
+            state: this.NewCliente.value.idstate,
+        };
+        this.loginServiceService.SaveCliente(params).subscribe(result => {
+            if (result.response == true) {
+                this.presentToast('Se creo el Cliente');
+                this.NewCliente.get('idclient').setValue(result.id);
+                this.hidden = true;
+                this.hidden1 = false;
+            }
+            if (result.response == false) {
+                this.presentToast('Se Actualizo el Cliente');
+                this.hidden = true;
+                this.hidden1 = false;
+            }
+        }, error => {
+        });
+    }
+    presentToast(message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const toast = yield this.toastController.create({
+                message: message,
+                duration: 2000
+            });
+            toast.present();
+        });
+    }
+    back() {
+        this.modalController.dismiss({
+            'dismissed': false,
+        });
+    }
+    edit() {
+        this.hidden = false;
+        this.hidden1 = true;
+    }
+    ModalAcount(Client) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const modal = yield this.modalController.create({
+                component: _list_acount_list_acount_page__WEBPACK_IMPORTED_MODULE_5__["ListAcountPage"],
+                componentProps: {
+                    'idclient': this.NewCliente.value.idclient,
+                }
+            });
+            modal.onDidDismiss().then((detail) => {
+            });
+            yield modal.present();
+        });
+    }
+};
+NewClientPage.ctorParameters = () => [
+    { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__["LoginServiceService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavParams"] }
+];
+NewClientPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-new-client',
+        template: __webpack_require__(/*! raw-loader!./new-client.page.html */ "./node_modules/raw-loader/index.js!./src/app/new-client/new-client.page.html"),
+        styles: [__webpack_require__(/*! ./new-client.page.scss */ "./src/app/new-client/new-client.page.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__["LoginServiceService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavParams"]])
+], NewClientPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/new-material/new-material.module.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/new-material/new-material.module.ts ***!
+  \*****************************************************/
+/*! exports provided: NewMaterialPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewMaterialPageModule", function() { return NewMaterialPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _app_material_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../app-material.module */ "./src/app/app-material.module.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _new_material_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./new-material.page */ "./src/app/new-material/new-material.page.ts");
+
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _new_material_page__WEBPACK_IMPORTED_MODULE_7__["NewMaterialPage"]
+    }
+];
+let NewMaterialPageModule = class NewMaterialPageModule {
+};
+NewMaterialPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicModule"],
+            _app_material_module__WEBPACK_IMPORTED_MODULE_5__["AppMaterialModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_new_material_page__WEBPACK_IMPORTED_MODULE_7__["NewMaterialPage"]]
+    })
+], NewMaterialPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/new-material/new-material.page.scss":
+/*!*****************************************************!*\
+  !*** ./src/app/new-material/new-material.page.scss ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".acc-section {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  border-top: thin solid #c1c1c1;\n  background: #eaeaea;\n  padding: 0.7em;\n}\n.acc-section:first-child {\n  border-top: none;\n}\n.acc-section:last-child {\n  border-bottom: thin solid #e5e5e5;\n}\n.acc-section .img {\n  width: 35px;\n  margin-right: 0.5em;\n}\n.acc-section .img img {\n  width: 100%;\n}\n.acc-section .info {\n  width: calc(100% - 60px);\n}\n.acc-section .info > * {\n  margin: 0;\n}\n.acc-section .info .title {\n  font-size: 1em;\n  color: #323133;\n}\n.acc-section .info .subtitle {\n  font-size: 0.9em;\n  color: #8a888a;\n}\n.acc-section .info .text {\n  font-size: 0.8em;\n  color: #f3b236;\n}\n.acc-section .icon {\n  width: 20px;\n}\n.acc-content {\n  height: 0;\n  overflow: hidden;\n  padding: 0 0.5em;\n  -webkit-transition: max-height 0.4s ease-in-out;\n  transition: max-height 0.4s ease-in-out;\n}\n.acc-content.expandable {\n  -webkit-transition: max-height 0.4s ease-in-out;\n  transition: max-height 0.4s ease-in-out;\n  overflow: hidden;\n  height: auto;\n}\n@-webkit-keyframes delay-overflow {\n  from {\n    overflow: auto;\n  }\n}\n@keyframes delay-overflow {\n  from {\n    overflow: auto;\n  }\n}\n.center {\n  color: rgba(255, 255, 255, 0.93) !important;\n}\n.aside-content {\n  margin-top: 1em;\n}\n.aside-content .aside-img img {\n  width: 100%;\n  height: 200px;\n}\n.aside-content .info-text {\n  color: #fff;\n  margin: 0.2em 0;\n  font-size: 1em;\n}\n.aside-item {\n  font-size: 1em;\n  color: #727279;\n}\n.example-form {\n  min-width: 150px;\n  max-width: 500px;\n  width: 100%;\n}\n.example-full-width {\n  width: 100%;\n  margin-top: 5px;\n}\n.example-full-width1 {\n  width: 100%;\n  margin-top: 10px;\n}\n.mat-form-field-appearance-legacy .mat-hint {\n  color: rgba(113, 108, 108, 0.7) !important;\n}\n.error {\n  font-size: 13px;\n  color: red;\n}\nion-icon.big {\n  width: 52px !important;\n  height: 52px !important;\n}\nion-icon.big1 {\n  width: 38px !important;\n  height: 38px !important;\n  margin-right: 10px !important;\n}\nion-icon.big2 {\n  width: 52px !important;\n  height: 52px !important;\n  margin-right: 10px !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi92YXIvd3d3L2h0bWwvYXBwLW1scy9zcmMvYXBwL25ldy1tYXRlcmlhbC9uZXctbWF0ZXJpYWwucGFnZS5zY3NzIiwic3JjL2FwcC9uZXctbWF0ZXJpYWwvbmV3LW1hdGVyaWFsLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLG9CQUFBO0VBQUEsYUFBQTtFQUNBLHlCQUFBO1VBQUEsbUJBQUE7RUFDQSw4QkFBQTtFQUNBLG1CQUFBO0VBQ0EsY0FBQTtBQ0NGO0FEQ0U7RUFDRSxnQkFBQTtBQ0NKO0FERUU7RUFDRSxpQ0FBQTtBQ0FKO0FER0U7RUFDRSxXQUFBO0VBQ0EsbUJBQUE7QUNESjtBREdJO0VBQ0UsV0FBQTtBQ0ROO0FES0U7RUFDRSx3QkFBQTtBQ0hKO0FES0k7RUFDRSxTQUFBO0FDSE47QURNSTtFQUNFLGNBQUE7RUFDQSxjQUFBO0FDSk47QURPSTtFQUNFLGdCQUFBO0VBQ0EsY0FBQTtBQ0xOO0FEUUk7RUFDRSxnQkFBQTtFQUNBLGNBQUE7QUNOTjtBRFVFO0VBQ0UsV0FBQTtBQ1JKO0FEV0E7RUFDRSxTQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLCtDQUFBO0VBQUEsdUNBQUE7QUNSRjtBRFVFO0VBQ0UsK0NBQUE7RUFBQSx1Q0FBQTtFQUNBLGdCQUFBO0VBQ0EsWUFBQTtBQ1JKO0FEWUE7RUFDRTtJQUNFLGNBQUE7RUNURjtBQUNGO0FETUE7RUFDRTtJQUNFLGNBQUE7RUNURjtBQUNGO0FEWUE7RUFDSSwyQ0FBQTtBQ1ZKO0FEZ0JJO0VBQ0UsZUFBQTtBQ2JOO0FEZ0JRO0VBQ0UsV0FBQTtFQUNBLGFBQUE7QUNkVjtBRGtCTTtFQUNFLFdBQUE7RUFDQSxlQUFBO0VBQ0EsY0FBQTtBQ2hCUjtBRHFCSTtFQUNFLGNBQUE7RUFDQSxjQUFBO0FDbkJOO0FEd0JFO0VBQ0ksZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLFdBQUE7QUNyQk47QUR3Qkk7RUFDRSxXQUFBO0VBQ0EsZUFBQTtBQ3JCTjtBRHVCSTtFQUNFLFdBQUE7RUFDQSxnQkFBQTtBQ3BCTjtBRHVCSTtFQUNFLDBDQUFBO0FDcEJOO0FEdUJFO0VBQ0UsZUFBQTtFQUNBLFVBQUE7QUNwQko7QUR3Qkk7RUFDRSxzQkFBQTtFQUNBLHVCQUFBO0FDckJOO0FEdUJJO0VBQ0ksc0JBQUE7RUFDQSx1QkFBQTtFQUNBLDZCQUFBO0FDckJSO0FEdUJNO0VBQ0Usc0JBQUE7RUFDQSx1QkFBQTtFQUNBLDZCQUFBO0FDckJSIiwiZmlsZSI6InNyYy9hcHAvbmV3LW1hdGVyaWFsL25ldy1tYXRlcmlhbC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuYWNjLXNlY3Rpb24ge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBib3JkZXItdG9wOiB0aGluIHNvbGlkICNjMWMxYzE7XG4gIGJhY2tncm91bmQ6ICNlYWVhZWE7XG4gIHBhZGRpbmc6IC43ZW07XG5cbiAgJjpmaXJzdC1jaGlsZCB7XG4gICAgYm9yZGVyLXRvcDogbm9uZTtcbiAgfVxuXG4gICY6bGFzdC1jaGlsZCB7XG4gICAgYm9yZGVyLWJvdHRvbTogdGhpbiBzb2xpZCAjZTVlNWU1O1xuICB9XG5cbiAgJiAuaW1nIHtcbiAgICB3aWR0aDogMzVweDtcbiAgICBtYXJnaW4tcmlnaHQ6IC41ZW07XG5cbiAgICAmIGltZyB7XG4gICAgICB3aWR0aDogMTAwJTtcbiAgICB9XG4gIH1cblxuICAmIC5pbmZvIHtcbiAgICB3aWR0aDogY2FsYygxMDAlIC0gNjBweCk7XG5cbiAgICAmID4gKiB7XG4gICAgICBtYXJnaW46IDA7XG4gICAgfVxuXG4gICAgJiAudGl0bGUge1xuICAgICAgZm9udC1zaXplOiAxZW07XG4gICAgICBjb2xvcjogIzMyMzEzMztcbiAgICB9XG5cbiAgICAmIC5zdWJ0aXRsZSB7XG4gICAgICBmb250LXNpemU6IC45ZW07XG4gICAgICBjb2xvcjogIzhhODg4YTtcbiAgICB9XG5cbiAgICAmIC50ZXh0IHtcbiAgICAgIGZvbnQtc2l6ZTogLjhlbTtcbiAgICAgIGNvbG9yOiAjZjNiMjM2O1xuICAgIH1cbiAgfVxuXG4gICYgLmljb24ge1xuICAgIHdpZHRoOiAyMHB4O1xuICB9XG59XG4uYWNjLWNvbnRlbnQge1xuICBoZWlnaHQ6IDA7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIHBhZGRpbmc6IDAgLjVlbTtcbiAgdHJhbnNpdGlvbjogbWF4LWhlaWdodCAwLjRzIGVhc2UtaW4tb3V0O1xuXG4gICYuZXhwYW5kYWJsZSB7XG4gICAgdHJhbnNpdGlvbjogbWF4LWhlaWdodCAwLjRzIGVhc2UtaW4tb3V0O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG4gICAgaGVpZ2h0OiBhdXRvO1xuICB9XG59XG5cbkBrZXlmcmFtZXMgZGVsYXktb3ZlcmZsb3cge1xuICBmcm9tIHtcbiAgICBvdmVyZmxvdzogYXV0bztcbiAgfVxufVxuXG4uY2VudGVyIHtcbiAgICBjb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjkzKSAhaW1wb3J0YW50XG4gIH1cbiAgXG4gIC5hc2lkZSB7XG4gICBcbiAgXG4gICAgJi1jb250ZW50IHtcbiAgICAgIG1hcmdpbi10b3A6IDFlbTtcbiAgXG4gICAgICAuYXNpZGUtaW1nIHtcbiAgICAgICAgJiBpbWcge1xuICAgICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICAgIGhlaWdodDogMjAwcHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgXG4gICAgICAuaW5mby10ZXh0IHtcbiAgICAgICAgY29sb3I6ICNmZmY7XG4gICAgICAgIG1hcmdpbjogLjJlbSAwO1xuICAgICAgICBmb250LXNpemU6IDFlbTtcbiAgXG4gICAgICB9XG4gICAgfVxuICBcbiAgICAmLWl0ZW0ge1xuICAgICAgZm9udC1zaXplOiAxZW07XG4gICAgICBjb2xvcjogIzcyNzI3OTtcbiAgICB9XG4gIFxuICB9XG4gIFxuICAuZXhhbXBsZS1mb3JtIHtcbiAgICAgIG1pbi13aWR0aDogMTUwcHg7XG4gICAgICBtYXgtd2lkdGg6IDUwMHB4O1xuICAgICAgd2lkdGg6IDEwMCU7XG4gICAgfVxuICAgIFxuICAgIC5leGFtcGxlLWZ1bGwtd2lkdGgge1xuICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICBtYXJnaW4tdG9wOiA1cHg7XG4gICAgfVxuICAgIC5leGFtcGxlLWZ1bGwtd2lkdGgxe1xuICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICBtYXJnaW4tdG9wOiAxMHB4O1xuICAgIH1cbiAgXG4gICAgLm1hdC1mb3JtLWZpZWxkLWFwcGVhcmFuY2UtbGVnYWN5IC5tYXQtaGludCB7XG4gICAgICBjb2xvcjogcmdiYSgxMTMsIDEwOCwgMTA4LCAwLjcpIWltcG9ydGFudFxuICB9XG4gIFxuICAuZXJyb3J7XG4gICAgZm9udC1zaXplOiAxM3B4O1xuICAgIGNvbG9yOiByZWQ7XG4gIH1cbiAgXG4gIGlvbi1pY29uIHtcbiAgICAmLmJpZyB7XG4gICAgICB3aWR0aDogNTJweCFpbXBvcnRhbnQ7XG4gICAgICBoZWlnaHQ6IDUycHghaW1wb3J0YW50O1xuICAgIH1cbiAgICAmLmJpZzEge1xuICAgICAgICB3aWR0aDogMzhweCFpbXBvcnRhbnQ7XG4gICAgICAgIGhlaWdodDogMzhweCFpbXBvcnRhbnQ7XG4gICAgICAgIG1hcmdpbi1yaWdodDogMTBweCFpbXBvcnRhbnQ7XG4gICAgICB9XG4gICAgICAmLmJpZzIge1xuICAgICAgICB3aWR0aDogNTJweCFpbXBvcnRhbnQ7XG4gICAgICAgIGhlaWdodDogNTJweCFpbXBvcnRhbnQ7XG4gICAgICAgIG1hcmdpbi1yaWdodDogMTBweCFpbXBvcnRhbnQ7XG4gICAgIH1cbiAgfSIsIi5hY2Mtc2VjdGlvbiB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGJvcmRlci10b3A6IHRoaW4gc29saWQgI2MxYzFjMTtcbiAgYmFja2dyb3VuZDogI2VhZWFlYTtcbiAgcGFkZGluZzogMC43ZW07XG59XG4uYWNjLXNlY3Rpb246Zmlyc3QtY2hpbGQge1xuICBib3JkZXItdG9wOiBub25lO1xufVxuLmFjYy1zZWN0aW9uOmxhc3QtY2hpbGQge1xuICBib3JkZXItYm90dG9tOiB0aGluIHNvbGlkICNlNWU1ZTU7XG59XG4uYWNjLXNlY3Rpb24gLmltZyB7XG4gIHdpZHRoOiAzNXB4O1xuICBtYXJnaW4tcmlnaHQ6IDAuNWVtO1xufVxuLmFjYy1zZWN0aW9uIC5pbWcgaW1nIHtcbiAgd2lkdGg6IDEwMCU7XG59XG4uYWNjLXNlY3Rpb24gLmluZm8ge1xuICB3aWR0aDogY2FsYygxMDAlIC0gNjBweCk7XG59XG4uYWNjLXNlY3Rpb24gLmluZm8gPiAqIHtcbiAgbWFyZ2luOiAwO1xufVxuLmFjYy1zZWN0aW9uIC5pbmZvIC50aXRsZSB7XG4gIGZvbnQtc2l6ZTogMWVtO1xuICBjb2xvcjogIzMyMzEzMztcbn1cbi5hY2Mtc2VjdGlvbiAuaW5mbyAuc3VidGl0bGUge1xuICBmb250LXNpemU6IDAuOWVtO1xuICBjb2xvcjogIzhhODg4YTtcbn1cbi5hY2Mtc2VjdGlvbiAuaW5mbyAudGV4dCB7XG4gIGZvbnQtc2l6ZTogMC44ZW07XG4gIGNvbG9yOiAjZjNiMjM2O1xufVxuLmFjYy1zZWN0aW9uIC5pY29uIHtcbiAgd2lkdGg6IDIwcHg7XG59XG5cbi5hY2MtY29udGVudCB7XG4gIGhlaWdodDogMDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgcGFkZGluZzogMCAwLjVlbTtcbiAgdHJhbnNpdGlvbjogbWF4LWhlaWdodCAwLjRzIGVhc2UtaW4tb3V0O1xufVxuLmFjYy1jb250ZW50LmV4cGFuZGFibGUge1xuICB0cmFuc2l0aW9uOiBtYXgtaGVpZ2h0IDAuNHMgZWFzZS1pbi1vdXQ7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGhlaWdodDogYXV0bztcbn1cblxuQGtleWZyYW1lcyBkZWxheS1vdmVyZmxvdyB7XG4gIGZyb20ge1xuICAgIG92ZXJmbG93OiBhdXRvO1xuICB9XG59XG4uY2VudGVyIHtcbiAgY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC45MykgIWltcG9ydGFudDtcbn1cblxuLmFzaWRlLWNvbnRlbnQge1xuICBtYXJnaW4tdG9wOiAxZW07XG59XG4uYXNpZGUtY29udGVudCAuYXNpZGUtaW1nIGltZyB7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDIwMHB4O1xufVxuLmFzaWRlLWNvbnRlbnQgLmluZm8tdGV4dCB7XG4gIGNvbG9yOiAjZmZmO1xuICBtYXJnaW46IDAuMmVtIDA7XG4gIGZvbnQtc2l6ZTogMWVtO1xufVxuLmFzaWRlLWl0ZW0ge1xuICBmb250LXNpemU6IDFlbTtcbiAgY29sb3I6ICM3MjcyNzk7XG59XG5cbi5leGFtcGxlLWZvcm0ge1xuICBtaW4td2lkdGg6IDE1MHB4O1xuICBtYXgtd2lkdGg6IDUwMHB4O1xuICB3aWR0aDogMTAwJTtcbn1cblxuLmV4YW1wbGUtZnVsbC13aWR0aCB7XG4gIHdpZHRoOiAxMDAlO1xuICBtYXJnaW4tdG9wOiA1cHg7XG59XG5cbi5leGFtcGxlLWZ1bGwtd2lkdGgxIHtcbiAgd2lkdGg6IDEwMCU7XG4gIG1hcmdpbi10b3A6IDEwcHg7XG59XG5cbi5tYXQtZm9ybS1maWVsZC1hcHBlYXJhbmNlLWxlZ2FjeSAubWF0LWhpbnQge1xuICBjb2xvcjogcmdiYSgxMTMsIDEwOCwgMTA4LCAwLjcpICFpbXBvcnRhbnQ7XG59XG5cbi5lcnJvciB7XG4gIGZvbnQtc2l6ZTogMTNweDtcbiAgY29sb3I6IHJlZDtcbn1cblxuaW9uLWljb24uYmlnIHtcbiAgd2lkdGg6IDUycHggIWltcG9ydGFudDtcbiAgaGVpZ2h0OiA1MnB4ICFpbXBvcnRhbnQ7XG59XG5pb24taWNvbi5iaWcxIHtcbiAgd2lkdGg6IDM4cHggIWltcG9ydGFudDtcbiAgaGVpZ2h0OiAzOHB4ICFpbXBvcnRhbnQ7XG4gIG1hcmdpbi1yaWdodDogMTBweCAhaW1wb3J0YW50O1xufVxuaW9uLWljb24uYmlnMiB7XG4gIHdpZHRoOiA1MnB4ICFpbXBvcnRhbnQ7XG4gIGhlaWdodDogNTJweCAhaW1wb3J0YW50O1xuICBtYXJnaW4tcmlnaHQ6IDEwcHggIWltcG9ydGFudDtcbn0iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/new-material/new-material.page.ts":
+/*!***************************************************!*\
+  !*** ./src/app/new-material/new-material.page.ts ***!
+  \***************************************************/
+/*! exports provided: NewMaterialPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewMaterialPage", function() { return NewMaterialPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+
+
+
+
+let NewMaterialPage = class NewMaterialPage {
+    constructor(loginServiceService, toastController, modalController, navParams) {
+        this.loginServiceService = loginServiceService;
+        this.toastController = toastController;
+        this.modalController = modalController;
+        this.navParams = navParams;
+        this.step = { sectionName: null };
+        this.imgUser = '../assets/iconos/1683018.svg';
+        this.hidden = true;
+        this.hidden1 = true;
+        this.certificates = [];
+        this.NewMaterial = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
+            idmaterials: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
+            name_materials: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]),
+            state: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](),
+            idstate: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](),
+            codigo: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](),
+            date_expiration: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](),
+            idmaterial_certificate: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](),
+        });
+        const data = navParams.get('data');
+        this.idmaterial = navParams.get('idmaterial');
+        if (data != null) {
+            this.NewMaterial.get('idmaterials').setValue(data.idmaterials);
+            this.NewMaterial.get('name_materials').setValue(data.name_materials);
+            this.NewMaterial.get('state').setValue(data.state);
+            this.NewMaterial.get('idstate').setValue(data.idstate);
+            this.NewMaterial.get('codigo').setValue(data.codigo);
+            this.NewMaterial.get('date_expiration').setValue(data.date_expiration);
+            this.NewMaterial.get('idmaterial_certificate').setValue(data.idmaterial_certificate);
+            this.hidden1 = false;
+        }
+        else {
+            this.hidden = false;
+        }
+    }
+    ngOnInit() {
+    }
+    back() {
+        this.modalController.dismiss({
+            'dismissed': false,
+        });
+    }
+    edit() {
+        this.hidden = false;
+        this.hidden1 = true;
+    }
+    presentToast(message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const toast = yield this.toastController.create({
+                message: message,
+                duration: 2000
+            });
+            toast.present();
+        });
+    }
+    save() {
+        const params = {
+            idmaterials: this.NewMaterial.value.idmaterials,
+            name_materials: this.NewMaterial.value.name_materials,
+            state_one_idstate_one: 3,
+        };
+        this.loginServiceService.CreateMaterial(params).subscribe(result => {
+            if (result.response == true) {
+                this.presentToast('Se creo el Material');
+                this.NewMaterial.get('idmaterials').setValue(result.idmaterials);
+                this.NewMaterial.get('state').setValue('Por Confirmar');
+                this.hidden = true;
+                this.hidden1 = false;
+            }
+            if (result.response == false) {
+                this.presentToast('Se Actualizo el Material');
+                this.hidden = true;
+                this.hidden1 = false;
+            }
+        }, error => {
+        });
+    }
+    getNameValid(sectionName) {
+        return this.step.sectionName === sectionName;
+    }
+    setStep(sectionName) {
+        this.step.sectionName = sectionName !== this.step.sectionName ? sectionName : null;
+    }
+    getIconName(sectionName) {
+        return this.getNameValid(sectionName) ? 'arrow-down' : 'arrow-forward';
+    }
+    listmaterial() {
+        this.loginServiceService.MaterialCertificate(this.NewMaterial.value.idmaterials).subscribe(result => {
+            this.certificates = result.response;
+        }, error => {
+        });
+    }
+};
+NewMaterialPage.ctorParameters = () => [
+    { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__["LoginServiceService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavParams"] }
+];
+NewMaterialPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-new-material',
+        template: __webpack_require__(/*! raw-loader!./new-material.page.html */ "./node_modules/raw-loader/index.js!./src/app/new-material/new-material.page.html"),
+        styles: [__webpack_require__(/*! ./new-material.page.scss */ "./src/app/new-material/new-material.page.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__["LoginServiceService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["NavParams"]])
+], NewMaterialPage);
+
+
+
+/***/ }),
+
 /***/ "./src/app/pipes/filter.pipe.ts":
 /*!**************************************!*\
   !*** ./src/app/pipes/filter.pipe.ts ***!
@@ -2356,17 +3957,15 @@ __webpack_require__.r(__webpack_exports__);
 
 let FilterPipe = class FilterPipe {
     transform(arreglo, Texto, columna) {
-        console.log(Texto);
         Texto = Texto.toLowerCase();
         if (Texto === '') {
             return arreglo;
         }
-        console.log(columna);
         return arreglo.filter(item => {
+            console.log(item);
             return item[columna].toLowerCase().includes(Texto);
         });
         console.log(arreglo);
-        // return arreglo;
     }
 };
 FilterPipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
@@ -2487,6 +4086,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_file_chooser_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/file-chooser/ngx */ "./node_modules/@ionic-native/file-chooser/ngx/index.js");
 /* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/ngx/index.js");
 /* harmony import */ var _Services_tasks_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Services/tasks-service */ "./src/app/Services/tasks-service.ts");
+/* harmony import */ var _utilitis_constant__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utilitis/constant */ "./src/app/utilitis/constant.ts");
+
 
 
 
@@ -2521,6 +4122,7 @@ let SendimagesPage = class SendimagesPage {
         this.response = true;
         this.falso = true;
         this.row_data = [];
+        this.constant = new _utilitis_constant__WEBPACK_IMPORTED_MODULE_10__["constant"]();
         this.number_service = navParams.get('number_service');
         this.type_network = navParams.get('type_network');
         this.data = navParams.get('data');
@@ -2668,7 +4270,7 @@ let SendimagesPage = class SendimagesPage {
                 params: { params: params }
             };
             fileTransfer
-                .upload(imagen, "http://190.0.33.166:90/laravel-mls/public/api/odi/send_image_movil", options)
+                .upload(imagen, this.constant.routeGlobal + "odi/send_image_movil", options)
                 .then(data => {
                 var json = JSON.parse(data.response);
                 if (json.response == true) {
@@ -2840,6 +4442,25 @@ SendimagesPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _Services_tasks_service__WEBPACK_IMPORTED_MODULE_9__["TasksService"]])
 ], SendimagesPage);
 
+
+
+/***/ }),
+
+/***/ "./src/app/utilitis/constant.ts":
+/*!**************************************!*\
+  !*** ./src/app/utilitis/constant.ts ***!
+  \**************************************/
+/*! exports provided: constant */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "constant", function() { return constant; });
+class constant {
+    constructor() {
+        this.routeGlobal = "http://190.0.33.166:90/laravel-mls/public/api/"; ///sip/public/api/
+    }
+}
 
 
 /***/ }),

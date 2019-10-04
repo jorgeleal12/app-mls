@@ -103,6 +103,8 @@ let LoginPage = class LoginPage {
         this.fcm = fcm;
     }
     ngOnInit() {
+    }
+    ionViewCanEnter() {
         if (!localStorage.getItem("idusers")) {
         }
         else {
@@ -137,6 +139,8 @@ let LoginPage = class LoginPage {
                 localStorage.setItem("nombres", result.data.name + " " + result.data.last_name);
                 localStorage.setItem("email", result.data.email);
                 localStorage.setItem("id", result.data.id);
+                localStorage.setItem("type", result.data.type);
+                localStorage.setItem("idemployees", result.idemployees);
                 this.router.navigateByUrl('/menu');
                 this.iduser = localStorage.getItem("idusers");
                 this.fcm.getToken().then((token) => this.LoginServiceService.registerToken({ token: token, iduser: this.iduser }).subscribe(result => {

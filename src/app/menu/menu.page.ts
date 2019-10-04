@@ -47,7 +47,7 @@ export class MenuPage implements OnInit {
                 },
                 {
                     title: 'Constructores',
-                    url: '/menu/home',
+                    url: '/menu/menu/list-builder',
                     icon: 'apps'
                 },
 

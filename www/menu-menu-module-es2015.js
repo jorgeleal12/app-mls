@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-split-pane>\n    <ion-menu contentId=\"content\">\n        <ion-header class=\"aside\">\n            <section class=\"aside-content\">\n                <div class=\"aside-img\">\n                    <img class=\"img\" src=\"{{imgUser}}\" alt=\"\">\n                </div>\n                <p class=\"info-text\">{{user}}</p>\n                <p class=\"info-text\">{{mail}}</p>\n            </section>\n        </ion-header>\n\n        <ion-content>\n            <ion-list *ngFor=\"let page of pages\">\n                <ion-list-header *ngIf=\"page.section\" class=\"aside-item\">{{page.section}}</ion-list-header>\n\n                <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of page.routes\">\n                    <ion-item [routerLink]=\"p.url\" routerDirection=\"forward\" class=\"aside-item\" lines=\"none\">\n                        <ion-icon name=\"{{p.icon}}\" *ngIf=\"p.icon\" color=\"medium\" size=\"small\" class=\"aside-icon\">\n                        </ion-icon>\n                        <ion-label>\n                            {{p.title}}\n                        </ion-label>\n                    </ion-item>\n\n                </ion-menu-toggle>\n\n            </ion-list>\n            <ion-item class=\"aside-item\" lines=\"none\">\n                <ion-icon name=\"md-close-circle\" color=\"medium\" size=\"small\" class=\"aside-icon\"> </ion-icon>\n                <ion-label>\n                    Cerrar Sesión\n                </ion-label>\n            </ion-item>\n\n        </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"content\" main>\n    </ion-router-outlet>\n</ion-split-pane>"
+module.exports = "<ion-split-pane>\n    <ion-menu contentId=\"content\">\n        <ion-header class=\"aside\">\n            <section class=\"aside-content\">\n                <div class=\"aside-img\">\n                    <img class=\"img\" src=\"{{imgUser}}\" alt=\"\">\n                </div>\n                <p class=\"info-text\">{{user}}</p>\n                <p class=\"info-text\">{{mail}}</p>\n            </section>\n        </ion-header>\n\n        <ion-content>\n            <ion-list *ngFor=\"let page of pages\">\n                <ion-list-header *ngIf=\"page.section\" class=\"aside-item\">{{page.section}}</ion-list-header>\n\n                <ion-menu-toggle auto-hide=\"false\" *ngFor=\"let p of page.routes\">\n                    <ion-item [routerLink]=\"p.url\" routerDirection=\"forward\" class=\"aside-item\" lines=\"none\">\n                        <ion-icon name=\"{{p.icon}}\" *ngIf=\"p.icon\" color=\"medium\" size=\"small\" class=\"aside-icon\">\n                        </ion-icon>\n                        <ion-label>\n                            {{p.title}}\n                        </ion-label>\n                    </ion-item>\n                </ion-menu-toggle>\n\n            </ion-list>\n            <ion-item class=\"aside-item\" lines=\"none\" (click)=\"close()\">\n                <ion-icon name=\"md-close-circle\" color=\"medium\" size=\"small\" class=\"aside-icon\"> </ion-icon>\n                <ion-label>\n                    Cerrar Sesión\n                </ion-label>\n            </ion-item>\n\n        </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"content\" main>\n    </ion-router-outlet>\n</ion-split-pane>"
 
 /***/ }),
 
@@ -54,7 +54,10 @@ const routes = [
             {
                 path: 'servicio',
                 loadChildren: '../acordeon/acordeon.module#AcordeonPageModule'
-            }
+            },
+            { path: 'client', loadChildren: '../client/client.module#ClientPageModule' },
+            { path: 'list-material', loadChildren: '../list-material/list-material.module#ListMaterialPageModule' },
+            { path: 'list-builder', loadChildren: '../list-builder/list-builder.module#ListBuilderPageModule' },
         ]
     }, {
         path: '',
@@ -127,10 +130,10 @@ let MenuPage = class MenuPage {
                 section: 'Servicios',
                 routes: [
                     {
-                        title: 'Servicios',
-                        url: '/menu/home',
-                        icon: 'bookmark'
-                    }
+                        title: 'Cliente',
+                        url: '/menu/menu/client',
+                        icon: 'person-add'
+                    },
                 ]
             },
             {
@@ -138,23 +141,13 @@ let MenuPage = class MenuPage {
                 routes: [
                     {
                         title: 'Materiales',
-                        url: '/menu/home',
-                        icon: 'build'
+                        url: '/menu/menu/list-material',
+                        icon: 'hammer'
                     },
                     {
                         title: 'Constructores',
-                        url: '/menu/home',
+                        url: '/menu/menu/list-builder',
                         icon: 'apps'
-                    },
-                    {
-                        title: 'Cliente',
-                        url: '/menu/home',
-                        icon: 'person-add'
-                    },
-                    {
-                        title: 'Cuentas',
-                        url: '/menu/home',
-                        icon: 'briefcase'
                     },
                 ]
             }
@@ -168,6 +161,10 @@ let MenuPage = class MenuPage {
         this.mail = localStorage.getItem("email");
         this.idusers = localStorage.getItem("idusers");
         this.id = localStorage.getItem("id");
+    }
+    close() {
+        localStorage.clear();
+        this.router.navigate(['/']);
     }
 };
 MenuPage.ctorParameters = () => [

@@ -24,13 +24,15 @@ export class CertificatePage implements OnInit {
     this.number_service = navParams.get('number_service');
     this.type_network = navParams.get('type_network');
     this.data = navParams.get('data');
+    console.log(this.data)
   }
 
   ngOnInit() {
 
+  }
+  ionViewWillEnter() {
     this.search();
   }
-
   search() {
     const params = {
       idodi: this.data.idodi
@@ -48,7 +50,9 @@ export class CertificatePage implements OnInit {
   }
 
   async ModalNewCertificate() {
-
+    if (this.data.state != 2) {
+      return
+    }
     const modal: HTMLIonModalElement =
       await this.modalController.create({
         component: NewCertificatePage,

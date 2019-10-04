@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start" (click)="back()">
+      <ion-icon slot="icon-only" name="arrow-back" *ngIf="!isSearchbarOpened"></ion-icon>
+    </ion-buttons>
+    <ion-title text-center class="center" *ngIf="!isSearchbarOpened">Cuentas</ion-title>
+    <!-- Default Searchbar -->
+    <ion-searchbar *ngIf="isSearchbarOpened" showCancelButton="true" (ionChange)="onSearch($event)"
+      (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+    <ion-buttons slot="end">
+      <ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item lines="none" *ngFor="let acount of acounts | filter:textSearch:'address'" (click)="ModalExit(acount)">
+      <ion-label text-wrap>
+        {{acount.address}}
+        <p class="title">{{ acount.name_city}}</p>
+        <p class="title">{{ acount.state}}</p>
+
+      </ion-label>
+
+    </ion-item>
+  </ion-list>
+</ion-content>

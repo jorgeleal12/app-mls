@@ -41,7 +41,7 @@ export class NewCertificatePage implements OnInit {
     this.number_service = navParams.get('number_service');
     this.type_network = navParams.get('type_network');
     this.data = navParams.get('data');
-    this.idusers = localStorage.getItem("id")
+    this.idusers = localStorage.getItem("id");
 
     this.NewCertificate = navParams.get('certificate');
 
@@ -135,7 +135,7 @@ export class NewCertificatePage implements OnInit {
       this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
         if (result.response == true) {
           this.NewCertificate.idservice_certifications = result.result
-          this.presentToast('Se guardo el Certificado1')
+          this.presentToast('Se guardo el Certificado')
         }
 
       }, error => {

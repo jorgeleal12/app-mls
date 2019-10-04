@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar color=\"success\">\n        <ion-buttons slot=\"start\">\n            <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n        </ion-buttons>\n        <ion-title text-center class=\"center\">Servicio</ion-title>\n\n        <ion-buttons slot=\"end\">\n            <ion-button (click)=\"save()\">\n                <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n            </ion-button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <ion-list class=\"accordion-list\" no-padding>\n        <section class=\"acc-section\" (click)=\"setStep('expanded1')\">\n            <div class=\"img\">\n                <img src=\"../../assets/img/pngocean.com-id-wflsf.png\" alt=\"\">\n            </div>\n            <div class=\"info\">\n                <p class=\"title\">Servicio</p>\n                <p class=\"subtitle\">Información general de la orden</p>\n            </div>\n            <div class=\"icon\">\n                <ion-icon name=\"{{getIconName('expanded1')}}\" color=\"medium\"></ion-icon>\n            </div>\n\n        </section>\n\n        <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded1')}\">\n            <div [hidden]=\"div_hidden\">\n                <ion-row>\n                    <ion-col size=\"12\">\n                        <mat-form-field class=\"example-full-width\" style=\"margin-top: 5px;\">\n                            <input matInput placeholder=\"Servicio Número\" [(ngModel)]=\"number_service\" readonly>\n                        </mat-form-field>\n\n\n\n                        <ion-item>\n                            <ion-label class=\"example-full-width\">Prioridad</ion-label>\n                            <ion-select [(ngModel)]=\"Service.priority\">\n                                <ion-select-option [value]=1>Alta</ion-select-option>\n                                <ion-select-option [value]=2>Media</ion-select-option>\n                                <ion-select-option [value]=3>Baja</ion-select-option>\n                            </ion-select>\n                        </ion-item>\n                        <ion-item>\n                            <ion-label class=\"example-full-width\">Programación</ion-label>\n                            <ion-datetime displayFormat=\"YYYY-MM-DD\" [(ngModel)]=\"Service.date_programming\">\n                            </ion-datetime>\n                        </ion-item>\n\n                        <ion-item>\n                            <ion-label class=\"example-full-width\">Franja de Atención</ion-label>\n                            <ion-select [(ngModel)]=\"Service.Attention\">\n                                <ion-select-option [value]=1>Manaña</ion-select-option>\n                                <ion-select-option [value]=2>Tarde</ion-select-option>\n\n                            </ion-select>\n                        </ion-item>\n\n                        <ion-item>\n                            <ion-label class=\"example-full-width\">Tipos de Gas</ion-label>\n                            <ion-select>\n                                <ion-select-option value=\"1\">Natural</ion-select-option>\n                                <ion-select-option value=\"2\">GLP</ion-select-option>\n                            </ion-select>\n                        </ion-item>\n\n                        <ion-item>\n                            <ion-label class=\"example-full-width\">Tipos de Servicio</ion-label>\n                            <ion-select [(ngModel)]=\"Service.type_service_idtype_service\" (ionChange)=\"type_red()\">\n                                <ion-select-option [value]=1>Residencial</ion-select-option>\n                                <ion-select-option [value]=2>Comercial</ion-select-option>\n                                <ion-select-option [value]=3>Industrial</ion-select-option>\n                            </ion-select>\n                        </ion-item>\n\n                        <ion-item>\n                            <ion-label class=\"example-full-width\">Tipo de Red</ion-label>\n                            <ion-select [(ngModel)]=\"Service.type_network_idtype_network\">\n                                <ion-select-option *ngFor=\"let network of networks\" [value]=network.idtype_network>\n                                    {{network.name_network}}\n                                </ion-select-option>\n                            </ion-select>\n                        </ion-item>\n                    </ion-col>\n                </ion-row>\n            </div>\n            <div [hidden]=\"div_service\">\n                <ion-list>\n\n                    <ion-item>\n                        <ion-label class=\"ion-text-wrap\">\n                            <ion-text>\n                                <h2>{{Service.idodi}}</h2>\n                            </ion-text>\n                            <p>Servicio Número</p>\n                        </ion-label>\n                    </ion-item>\n\n                    <ion-item>\n                        <ion-label class=\"ion-text-wrap\">\n                            <ion-text>\n                                <h2>{{Service.name_priority}}</h2>\n                            </ion-text>\n                            <p>Prioridad</p>\n                        </ion-label>\n                        <ion-icon class=\"big1\" src=\"assets/iconos/334047.svg\" item-end *ngIf=\"Service.priority==1\">\n                        </ion-icon>\n                        <ion-icon class=\"big1\" src=\"assets/iconos/189670.svg\" item-end *ngIf=\"Service.priority==2\">\n                        </ion-icon>\n                        <ion-icon class=\"big1\" src=\"assets/iconos/137495.svg\" item-end *ngIf=\"Service.priority==3\">\n                        </ion-icon>\n                    </ion-item>\n\n                    <ion-item>\n                        <ion-label class=\"ion-text-wrap\">\n                            <ion-text>\n                                <h2>{{Service.contract_name}}</h2>\n                            </ion-text>\n                            <p>Sede</p>\n                        </ion-label>\n                    </ion-item>\n\n                    <ion-item>\n                        <ion-label class=\"ion-text-wrap\">\n                            <ion-text>\n                                <h2>{{Service.date_programming}}</h2>\n                            </ion-text>\n                            <p>Programación</p>\n                        </ion-label>\n                    </ion-item>\n\n                    <ion-item>\n                        <ion-label class=\"ion-text-wrap\">\n                            <ion-text>\n                                <h2>{{Service.name_atencion}}</h2>\n                            </ion-text>\n                            <p>Franja de Atención</p>\n                        </ion-label>\n                    </ion-item>\n\n                    <ion-item>\n                        <ion-label class=\"ion-text-wrap\">\n                            <ion-text>\n                                <h2>{{Service.name_gas}}</h2>\n                            </ion-text>\n                            <p>Tipo de Gas</p>\n                        </ion-label>\n                    </ion-item>\n\n                    <ion-item>\n                        <ion-label class=\"ion-text-wrap\">\n                            <ion-text>\n                                <h2>{{Service.name_type}}</h2>\n                            </ion-text>\n                            <p>Tipo de Servicio</p>\n                        </ion-label>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label class=\"ion-text-wrap\">\n                            <ion-text>\n                                <h2>{{Service.name_network}}</h2>\n                            </ion-text>\n                            <p>Tipo de Red</p>\n                        </ion-label>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label class=\"ion-text-wrap\">\n                            <ion-text>\n                                <h2>{{Service.name_state}}</h2>\n                            </ion-text>\n                            <p>Estado</p>\n                        </ion-label>\n                    </ion-item>\n                </ion-list>\n            </div>\n        </section>\n\n        <section class=\"acc-section\" (click)=\"setStep('expanded2')\">\n            <div class=\"img\">\n                <img src=\"../../assets/img/twotone_add_location_black_48dp.png\" alt=\"\">\n\n            </div>\n            <div class=\"info\">\n                <p class=\"title\">Ubicación</p>\n                <p class=\"subtitle\">Información general de la Ubicación</p>\n\n            </div>\n            <div class=\"icon\">\n                <ion-icon name=\"{{getIconName('expanded2')}}\" color=\"medium\"></ion-icon>\n            </div>\n\n        </section>\n        <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded2')}\">\n            <ion-list>\n                <ion-item>\n                    <ion-label class=\"ion-text-wrap\">\n                        <ion-text>\n                            <h2>{{Service.address}}</h2>\n                        </ion-text>\n                        <p>Dirección</p>\n                    </ion-label>\n                    <ion-icon class=\"big\" src=\"assets/iconos/854878.svg\" item-end (click)=\"send_address()\"></ion-icon>\n\n                </ion-item>\n            </ion-list>\n        </section>\n        <section class=\"acc-section\" (click)=\"setStep('expanded3')\">\n            <div class=\"img\">\n                <img src=\"../../assets/img/twotone_person_black_48dp.png\" alt=\"\">\n            </div>\n            <div class=\"info\">\n                <p class=\"title\">Cliente</p>\n                <p class=\"subtitle\">Información del Cliente</p>\n\n            </div>\n            <div class=\"icon\">\n                <ion-icon name=\"{{getIconName('expanded3')}}\" color=\"medium\"></ion-icon>\n            </div>\n\n        </section>\n        <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded3')}\">\n            <ion-list>\n\n                <ion-item>\n                    <ion-label class=\"ion-text-wrap\">\n                        <ion-text>\n                            <h2>{{Service.client}}</h2>\n                        </ion-text>\n                        <p>Nombre del Cliente</p>\n                    </ion-label>\n                </ion-item>\n                <ion-item>\n                    <ion-label class=\"ion-text-wrap\">\n                        <ion-text>\n                            <h2>{{Service.identifacation}}</h2>\n                        </ion-text>\n                        <p>Identificación del Cliente</p>\n                    </ion-label>\n                </ion-item>\n                <ion-item>\n                    <ion-label class=\"ion-text-wrap\">\n                        <ion-text>\n                            <h2>{{Service.phone}}</h2>\n                        </ion-text>\n                        <p>Teléfono de Contacto</p>\n                    </ion-label>\n                </ion-item>\n            </ion-list>\n\n\n        </section>\n\n        <section class=\"acc-section\" (click)=\"setStep('expanded4')\">\n            <div class=\"img\">\n                <img src=\"../../assets/img/twotone_build_black_48dp.png\" alt=\"\">\n            </div>\n            <div class=\"info\" (click)=\"presentModal()\">\n                <p class=\"title\">Material</p>\n                <p class=\"subtitle\">Información del Material</p>\n\n            </div>\n            <div class=\"icon\">\n                <ion-icon name=\"{{getIconName('expanded4')}}\" color=\"medium\" (click)=\"presentModal()\"></ion-icon>\n            </div>\n\n        </section>\n        <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded4')}\">\n\n            <!-- Sliding item with text options on both sides -->\n            <ion-item-sliding>\n                <ion-item-options side=\"start\">\n                    <ion-item-option (click)=\"edit_material()\">\n                        <ion-icon src=\"assets/iconos/61456.svg\"></ion-icon>\n                    </ion-item-option>\n                    <ion-item-option color=\"danger\" (click)=\"DeleteMaterial()\">\n                        <ion-icon src=\"assets/iconos/64022.svg\"></ion-icon>\n                    </ion-item-option>\n                </ion-item-options>\n\n                <ion-item lines=\"none\">\n                    <ion-label class=\"ion-text-wrap\">\n                        <ion-text>\n                            <h2>{{Service.name_material}}</h2>\n                        </ion-text>\n\n                    </ion-label>\n                </ion-item>\n            </ion-item-sliding>\n\n\n\n        </section>\n\n        <section class=\"acc-section\" (click)=\"setStep('expanded5')\">\n            <div class=\"img\">\n                <img src=\"../../assets/img/1043ea6260755f02bafd6d2fa98072ec-icono-de-casco-de-construccion.png\" alt=\"\">\n            </div>\n            <div class=\"info\" (click)=\"ModalBuilder()\">\n                <p class=\"title\">Constructor</p>\n                <p class=\"subtitle\">Información del Constructor</p>\n\n            </div>\n            <div class=\"icon\">\n                <ion-icon name=\"{{getIconName('expanded5')}}\" color=\"medium\" (click)=\"ModalBuilder()\"></ion-icon>\n            </div>\n\n        </section>\n        <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded5')}\">\n            <ion-item-sliding>\n                <ion-item-options side=\"start\">\n                    <ion-item-option (click)=\"edit_builder()\">\n                        <ion-icon src=\"assets/iconos/61456.svg\"></ion-icon>\n                    </ion-item-option>\n                    <ion-item-option color=\"danger\" (click)=\"DeleteConstructor()\">\n                        <ion-icon src=\"assets/iconos/64022.svg\"></ion-icon>\n                    </ion-item-option>\n                </ion-item-options>\n\n                <ion-item lines=\"none\">\n                    <ion-label class=\"ion-text-wrap\">\n                        <ion-text>\n                            <h2>{{Service.name_construtor}}</h2>\n                        </ion-text>\n\n                    </ion-label>\n                </ion-item>\n            </ion-item-sliding>\n\n        </section>\n\n\n\n\n        <section class=\"acc-section\" (click)=\"setStep('expanded7')\">\n            <div class=\"img\">\n                <img src=\"../../assets/img/twotone_insert_photo_black_48dp.png\" alt=\"\">\n            </div>\n            <div class=\"info\" (click)=\"ModalCetificate()\">\n                <p class=\"title\">Certificados</p>\n                <p class=\"subtitle\">Certificados asociados al servicio</p>\n\n            </div>\n            <div class=\"icon\">\n                <ion-icon name=\"{{getIconName('expanded6')}}\" color=\"medium\"></ion-icon>\n            </div>\n\n        </section>\n        <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded7')}\">\n            <ion-item detail *ngFor=\"let photos_service of photos_services; let i = i; index\"\n                (click)=\"photos_add(photos_service)\">\n                <ion-label>\n                    {{photos_service.name_photo}}\n                </ion-label>\n            </ion-item>\n        </section>\n\n    </ion-list>\n</ion-content>"
+module.exports = "<ion-header>\n    <ion-toolbar color=\"success\">\n        <ion-buttons slot=\"start\">\n            <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n        </ion-buttons>\n        <ion-title text-center class=\"center\">Servicio</ion-title>\n\n        <ion-buttons slot=\"end\">\n            <ion-button (click)=\"save()\">\n                <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n            </ion-button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <form [formGroup]=\"NewService\">\n        <ion-list class=\"accordion-list\" no-padding>\n            <section class=\"acc-section\" (click)=\"setStep('expanded1')\">\n                <div class=\"img\">\n                    <img src=\"../../assets/img/pngocean.com-id-wflsf.png\" alt=\"\">\n                </div>\n                <div class=\"info\">\n                    <p class=\"title\">Servicio</p>\n                    <p class=\"subtitle\">Información general de la orden</p>\n                </div>\n                <div class=\"icon\">\n                    <ion-icon name=\"{{getIconName('expanded1')}}\" color=\"medium\"></ion-icon>\n                </div>\n\n            </section>\n\n            <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded1')}\">\n                <div [hidden]=\"div_hidden\">\n                    <ion-row>\n                        <ion-col size=\"12\">\n                            <mat-form-field class=\"example-full-width\" style=\"margin-top: 5px;\">\n                                <input matInput placeholder=\"Servicio Número\" formControlName=\"number_service\" readonly>\n                            </mat-form-field>\n\n\n\n                            <ion-item>\n                                <ion-label class=\"example-full-width\">Prioridad</ion-label>\n                                <ion-select formControlName=\"priority\">\n                                    <ion-select-option [value]=1>Alta</ion-select-option>\n                                    <ion-select-option [value]=2>Media</ion-select-option>\n                                    <ion-select-option [value]=3>Baja</ion-select-option>\n                                </ion-select>\n                            </ion-item>\n                            <ion-item>\n                                <ion-label class=\"example-full-width\">Programación</ion-label>\n                                <ion-datetime displayFormat=\"YYYY-MM-DD\" formControlName=\"date_programming\">\n                                </ion-datetime>\n                            </ion-item>\n\n                            <ion-item>\n                                <ion-label class=\"example-full-width\">Franja de Atención</ion-label>\n                                <ion-select formControlName=\"Attention\">\n                                    <ion-select-option [value]=1>Manaña</ion-select-option>\n                                    <ion-select-option [value]=2>Tarde</ion-select-option>\n\n                                </ion-select>\n                            </ion-item>\n\n                            <ion-item>\n                                <ion-label class=\"example-full-width\">Tipos de Gas</ion-label>\n                                <ion-select>\n                                    <ion-select-option value=\"1\">Natural</ion-select-option>\n                                    <ion-select-option value=\"2\">GLP</ion-select-option>\n                                </ion-select>\n                            </ion-item>\n\n                            <ion-item>\n                                <ion-label class=\"example-full-width\">Tipo de Obra</ion-label>\n                                <ion-select formControlName=\"service_type_idservice_type\">\n                                    <ion-select-option [value]=1>Revisión Periodica</ion-select-option>\n                                    <ion-select-option [value]=2>Nueva</ion-select-option>\n                                </ion-select>\n                            </ion-item>\n\n                            <ion-item>\n                                <ion-label class=\"example-full-width\">Tipos de Servicio</ion-label>\n                                <ion-select formControlName=\"type_service_idtype_service\" (ionChange)=\"type_red()\">\n                                    <ion-select-option [value]=1>Residencial</ion-select-option>\n                                    <ion-select-option [value]=2>Comercial</ion-select-option>\n                                    <ion-select-option [value]=3>Industrial</ion-select-option>\n                                </ion-select>\n                            </ion-item>\n\n                            <ion-item lines=\"none\">\n                                <ion-label class=\"example-full-width\">Tipo de Red</ion-label>\n                                <ion-select formControlName=\"type_network_idtype_network\">\n                                    <ion-select-option *ngFor=\"let network of networks\" [value]=network.idtype_network>\n                                        {{network.name_network}}\n                                    </ion-select-option>\n                                </ion-select>\n                            </ion-item>\n                        </ion-col>\n                    </ion-row>\n                </div>\n                <div [hidden]=\"div_service\">\n                    <ion-list>\n\n                        <ion-item>\n                            <ion-label class=\"ion-text-wrap\">\n                                <ion-text>\n                                    <h2>{{ NewService.value.idodi}}</h2>\n                                </ion-text>\n                                <p>Servicio Número</p>\n                            </ion-label>\n                        </ion-item>\n\n                        <ion-item>\n                            <ion-label class=\"ion-text-wrap\">\n                                <ion-text>\n                                    <h2>{{ NewService.value.name_priority}}</h2>\n                                </ion-text>\n                                <p>Prioridad</p>\n                            </ion-label>\n                            <ion-icon class=\"big1\" src=\"assets/iconos/334047.svg\" item-end\n                                *ngIf=\" NewService.value.priority==1\">\n                            </ion-icon>\n                            <ion-icon class=\"big1\" src=\"assets/iconos/189670.svg\" item-end\n                                *ngIf=\" NewService.value.priority==2\">\n                            </ion-icon>\n                            <ion-icon class=\"big1\" src=\"assets/iconos/137495.svg\" item-end\n                                *ngIf=\" NewService.value.priority==3\">\n                            </ion-icon>\n                        </ion-item>\n\n                        <ion-item>\n                            <ion-label class=\"ion-text-wrap\">\n                                <ion-text>\n                                    <h2>{{ NewService.value.contract_name}}</h2>\n                                </ion-text>\n                                <p>Sede</p>\n                            </ion-label>\n                        </ion-item>\n\n                        <ion-item>\n                            <ion-label class=\"ion-text-wrap\">\n                                <ion-text>\n                                    <h2>{{ NewService.value.date_programming}}</h2>\n                                </ion-text>\n                                <p>Programación</p>\n                            </ion-label>\n                        </ion-item>\n\n                        <ion-item>\n                            <ion-label class=\"ion-text-wrap\">\n                                <ion-text>\n                                    <h2>{{NewService.value.name_atencion}}</h2>\n                                </ion-text>\n                                <p>Franja de Atención</p>\n                            </ion-label>\n                        </ion-item>\n\n                        <ion-item>\n                            <ion-label class=\"ion-text-wrap\">\n                                <ion-text>\n                                    <h2>{{ NewService.value.name_gas}}</h2>\n                                </ion-text>\n                                <p>Tipo de Gas</p>\n                            </ion-label>\n                        </ion-item>\n\n                        <ion-item>\n                            <ion-label class=\"ion-text-wrap\">\n                                <ion-text>\n                                    <h2>{{ NewService.value.name_type}}</h2>\n                                </ion-text>\n                                <p>Tipo de Servicio</p>\n                            </ion-label>\n                        </ion-item>\n                        <ion-item>\n                            <ion-label class=\"ion-text-wrap\">\n                                <ion-text>\n                                    <h2>{{ NewService.value.name_network}}</h2>\n                                </ion-text>\n                                <p>Tipo de Red</p>\n                            </ion-label>\n                        </ion-item>\n                        <ion-item>\n                            <ion-label class=\"ion-text-wrap\">\n                                <ion-text>\n                                    <h2>{{ NewService.value.name_state}}</h2>\n                                </ion-text>\n                                <p>Estado</p>\n                            </ion-label>\n                        </ion-item>\n                    </ion-list>\n                </div>\n            </section>\n\n\n            <section class=\"acc-section\" (click)=\"setStep('expanded3')\">\n                <div class=\"img\">\n                    <img src=\"../../assets/img/twotone_person_black_48dp.png\" alt=\"\">\n                </div>\n                <div class=\"info\">\n                    <p class=\"title\">Cliente</p>\n                    <p class=\"subtitle\">Información del Cliente</p>\n\n                </div>\n                <div class=\"icon\">\n                    <ion-icon name=\"{{getIconName('expanded3')}}\" color=\"medium\"></ion-icon>\n                </div>\n\n            </section>\n            <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded3')}\">\n                <ion-list>\n\n\n\n                    <ion-item-sliding>\n                        <ion-item-options side=\"start\">\n                            <ion-item-option (click)=\"edit_client()\">\n                                <ion-icon src=\"assets/iconos/61456.svg\"></ion-icon>\n                            </ion-item-option>\n                            <ion-item-option color=\"danger\" (click)=\"DeleClient()\">\n                                <ion-icon src=\"assets/iconos/64022.svg\"></ion-icon>\n                            </ion-item-option>\n                        </ion-item-options>\n\n                        <ion-item (click)=\"client()\">\n                            <ion-label class=\"ion-text-wrap\">\n                                <ion-text>\n                                    <h2>{{ NewService.value.name_client}}</h2>\n                                </ion-text>\n                                <p>Nombre del Cliente</p>\n                            </ion-label>\n                        </ion-item>\n\n\n                    </ion-item-sliding>\n                    <ion-item>\n                        <ion-label class=\"ion-text-wrap\">\n                            <ion-text>\n                                <h2>{{ NewService.value.identifacation}}</h2>\n                            </ion-text>\n                            <p>Identificación del Cliente</p>\n                        </ion-label>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label class=\"ion-text-wrap\">\n                            <ion-text>\n                                <h2>{{ NewService.value.phone}}</h2>\n                            </ion-text>\n                            <p>Teléfono de Contacto</p>\n                        </ion-label>\n                    </ion-item>\n                </ion-list>\n\n\n            </section>\n\n            <section class=\"acc-section\" (click)=\"setStep('expanded2')\">\n                <div class=\"img\">\n                    <img src=\"../../assets/img/twotone_add_location_black_48dp.png\" alt=\"\">\n\n                </div>\n                <div class=\"info\">\n                    <p class=\"title\">Ubicación</p>\n                    <p class=\"subtitle\">Información general de la Ubicación</p>\n\n                </div>\n                <div class=\"icon\">\n                    <ion-icon name=\"{{getIconName('expanded2')}}\" color=\"medium\"></ion-icon>\n                </div>\n\n            </section>\n            <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded2')}\">\n                <ion-list>\n                    <ion-item>\n                        <ion-label class=\"ion-text-wrap\">\n                            <ion-text>\n                                <h2>{{ NewService.value.name_address}}</h2>\n                            </ion-text>\n                            <p>Dirección</p>\n                        </ion-label>\n                        <ion-icon class=\"big\" src=\"assets/iconos/854878.svg\" item-end (click)=\"send_address()\">\n                        </ion-icon>\n                    </ion-item>\n                    <ion-item (click)=\"acount()\">\n                        <ion-label class=\"ion-text-wrap\">\n                            <ion-text>\n                                <h2>{{ NewService.value.indications}}</h2>\n                            </ion-text>\n                            <p>Indicaciones</p>\n                        </ion-label>\n                    </ion-item>\n                    <ion-item-sliding>\n                        <ion-item-options side=\"start\">\n                            <ion-item-option (click)=\"edit_acount()\">\n                                <ion-icon src=\"assets/iconos/61456.svg\"></ion-icon>\n                            </ion-item-option>\n                            <ion-item-option color=\"danger\" (click)=\"DeleAcount()\">\n                                <ion-icon src=\"assets/iconos/64022.svg\"></ion-icon>\n                            </ion-item-option>\n                        </ion-item-options>\n\n                        <ion-item lines=\"none\" (click)=\"acount()\">\n                            <ion-label class=\"ion-text-wrap\">\n                                <ion-text>\n                                    <h2>{{ NewService.value.number_acount}}</h2>\n                                </ion-text>\n\n                            </ion-label>\n                        </ion-item>\n                    </ion-item-sliding>\n                </ion-list>\n            </section>\n\n            <section class=\"acc-section\" (click)=\"setStep('expanded4')\">\n                <div class=\"img\">\n                    <img src=\"../../assets/img/twotone_build_black_48dp.png\" alt=\"\">\n                </div>\n                <div class=\"info\" (click)=\"presentModal()\">\n                    <p class=\"title\">Material</p>\n                    <p class=\"subtitle\">Información del Material</p>\n\n                </div>\n                <div class=\"icon\">\n                    <ion-icon name=\"{{getIconName('expanded4')}}\" color=\"medium\" (click)=\"presentModal()\"></ion-icon>\n                </div>\n\n            </section>\n            <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded4')}\">\n\n                <!-- Sliding item with text options on both sides -->\n                <ion-item-sliding>\n                    <ion-item-options side=\"start\">\n                        <ion-item-option (click)=\"edit_material()\">\n                            <ion-icon src=\"assets/iconos/61456.svg\"></ion-icon>\n                        </ion-item-option>\n                        <ion-item-option color=\"danger\" (click)=\"DeleteMaterial()\">\n                            <ion-icon src=\"assets/iconos/64022.svg\"></ion-icon>\n                        </ion-item-option>\n                    </ion-item-options>\n\n                    <ion-item lines=\"none\">\n                        <ion-label class=\"ion-text-wrap\">\n                            <ion-text>\n                                <h2>{{ NewService.value.name_material}}</h2>\n                            </ion-text>\n\n                        </ion-label>\n                    </ion-item>\n                </ion-item-sliding>\n\n\n\n            </section>\n\n            <section class=\"acc-section\" (click)=\"setStep('expanded5')\">\n                <div class=\"img\">\n                    <img src=\"../../assets/img/1043ea6260755f02bafd6d2fa98072ec-icono-de-casco-de-construccion.png\"\n                        alt=\"\">\n                </div>\n                <div class=\"info\" (click)=\"ModalBuilder()\">\n                    <p class=\"title\">Constructor</p>\n                    <p class=\"subtitle\">Información del Constructor</p>\n\n                </div>\n                <div class=\"icon\">\n                    <ion-icon name=\"{{getIconName('expanded5')}}\" color=\"medium\" (click)=\"ModalBuilder()\"></ion-icon>\n                </div>\n\n            </section>\n            <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded5')}\">\n                <ion-item-sliding>\n                    <ion-item-options side=\"start\">\n                        <ion-item-option (click)=\"edit_builder()\">\n                            <ion-icon src=\"assets/iconos/61456.svg\"></ion-icon>\n                        </ion-item-option>\n                        <ion-item-option color=\"danger\" (click)=\"DeleteConstructor()\">\n                            <ion-icon src=\"assets/iconos/64022.svg\"></ion-icon>\n                        </ion-item-option>\n                    </ion-item-options>\n\n                    <ion-item lines=\"none\">\n                        <ion-label class=\"ion-text-wrap\">\n                            <ion-text>\n                                <h2>{{NewService.value.name_construtor}}</h2>\n                            </ion-text>\n\n                        </ion-label>\n                    </ion-item>\n                </ion-item-sliding>\n\n            </section>\n\n\n\n\n            <section class=\"acc-section\" (click)=\"setStep('expanded7')\">\n                <div class=\"img\">\n                    <img src=\"../../assets/img/twotone_insert_photo_black_48dp.png\" alt=\"\">\n                </div>\n                <div class=\"info\" (click)=\"ModalCetificate()\">\n                    <p class=\"title\">Certificados</p>\n                    <p class=\"subtitle\">Certificados asociados al servicio</p>\n\n                </div>\n                <div class=\"icon\">\n                    <ion-icon name=\"{{getIconName('expanded6')}}\" color=\"medium\"></ion-icon>\n                </div>\n\n            </section>\n            <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded7')}\">\n                <ion-item detail *ngFor=\"let photos_service of photos_services; let i = i; index\"\n                    (click)=\"photos_add(photos_service)\">\n                    <ion-label>\n                        {{photos_service.name_photo}}\n                    </ion-label>\n                </ion-item>\n            </section>\n\n        </ion-list>\n    </form>\n</ion-content>"
 
 /***/ }),
 
@@ -52,6 +52,7 @@ AcordeonPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _app_material_module__WEBPACK_IMPORTED_MODULE_5__["AppMaterialModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
             _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
         ],
         declarations: [_acordeon_page__WEBPACK_IMPORTED_MODULE_7__["AcordeonPage"]]
@@ -94,6 +95,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _builder_builder_page__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../builder/builder.page */ "./src/app/builder/builder.page.ts");
 /* harmony import */ var _model_Service_model__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../model/Service.model */ "./src/app/model/Service.model.ts");
 /* harmony import */ var _certificate_certificate_page__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../certificate/certificate.page */ "./src/app/certificate/certificate.page.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _client_service_client_service_page__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../client-service/client-service.page */ "./src/app/client-service/client-service.page.ts");
+/* harmony import */ var _acount_service_acount_service_page__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../acount-service/acount-service.page */ "./src/app/acount-service/acount-service.page.ts");
+
+
+
 
 
 
@@ -119,22 +126,92 @@ let AcordeonPage = class AcordeonPage {
         this.div_hidden = true;
         this.div_service = true;
         this.Service = new _model_Service_model__WEBPACK_IMPORTED_MODULE_9__["Service"]();
+        this.NewService = new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormGroup"]({
+            number_service: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            name_priority: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            date_programming: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            Attention: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            name_atencion: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            name_gas: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            name_type: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            name_network: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            contract_name: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            client: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            name_client: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            identifacation: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            phone: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            type_service_idtype_service: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            type_network_idtype_network: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            address: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            idodi: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            name_state: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            state: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            name_material: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            name_construtor: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            priority: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            material: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            construtor: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            service_type_idservice_type: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            name_address: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            number_acount: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            indications: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            user: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            user_type: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            department_iddepartment: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+            city: new _angular_forms__WEBPACK_IMPORTED_MODULE_11__["FormControl"](),
+        });
         this.route.queryParams.subscribe(params => {
             if (this.router.getCurrentNavigation().extras.state) {
                 this.data = this.router.getCurrentNavigation().extras;
                 this.div_service = false;
                 this.div_hidden = true;
-                this.Service = this.data;
+                this.NewService.get('number_service').setValue(this.data.idodi);
+                this.NewService.get('name_priority').setValue(this.data.name_priority);
+                this.NewService.get('date_programming').setValue(this.data.date_programming);
+                this.NewService.get('Attention').setValue(this.data.Attention);
+                this.NewService.get('name_atencion').setValue(this.data.name_atencion);
+                this.NewService.get('name_gas').setValue(this.data.name_gas);
+                this.NewService.get('name_type').setValue(this.data.name_type);
+                this.NewService.get('name_network').setValue(this.data.name_network);
+                this.NewService.get('contract_name').setValue(this.data.contract_name);
+                this.NewService.get('client').setValue(this.data.client);
+                this.NewService.get('name_client').setValue(this.data.name_client);
+                this.NewService.get('identifacation').setValue(this.data.identifacation);
+                this.NewService.get('phone').setValue(this.data.phone);
+                this.NewService.get('type_service_idtype_service').setValue(this.data.type_service_idtype_service);
+                this.NewService.get('type_network_idtype_network').setValue(this.data.type_network_idtype_network);
+                this.NewService.get('address').setValue(this.data.address);
+                this.NewService.get('idodi').setValue(this.data.idodi);
+                this.NewService.get('name_state').setValue(this.data.name_state);
+                this.NewService.get('state').setValue(this.data.state);
+                this.NewService.get('name_material').setValue(this.data.name_material);
+                this.NewService.get('name_construtor').setValue(this.data.name_construtor);
+                this.NewService.get('priority').setValue(this.data.priority);
+                this.NewService.get('material').setValue(this.data.material);
+                this.NewService.get('construtor').setValue(this.data.construtor);
+                this.NewService.get('service_type_idservice_type').setValue(this.data.service_type_idservice_type);
+                this.search_address();
             }
             else {
                 this.div_hidden = false;
                 this.div_service = true;
-                this.Service = new _model_Service_model__WEBPACK_IMPORTED_MODULE_9__["Service"]();
+                this.NewService.reset();
             }
         });
         this.coords();
     }
     ngOnInit() {
+        this.NewService.get('user').setValue(localStorage.getItem("idemployees"));
+        this.NewService.get('user_type').setValue(localStorage.getItem("type"));
+    }
+    search_address() {
+        this.loginServiceService.search_address(this.NewService.value.address).subscribe(result => {
+            this.NewService.get('name_address').setValue(result.response.address);
+            this.NewService.get('number_acount').setValue(result.response.number_acount);
+            this.NewService.get('indications').setValue(result.response.indications);
+            this.NewService.get('city').setValue(result.response.city);
+        }, error => {
+        });
     }
     presentToast(message) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
@@ -147,14 +224,14 @@ let AcordeonPage = class AcordeonPage {
     }
     presentModal() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            if (this.Service.material == null) {
+            if (this.NewService.value.material == null) {
                 const modal = yield this.modalController.create({
                     component: _materials_materials_page__WEBPACK_IMPORTED_MODULE_6__["MaterialsPage"]
                 });
                 modal.onDidDismiss().then((detail) => {
                     if (detail.data.data !== undefined) {
-                        this.Service.name_material = detail.data.data.name_materials;
-                        this.Service.material = detail.data.data.idmaterials;
+                        this.NewService.get('name_material').setValue(detail.data.data.name_materials);
+                        this.NewService.get('material').setValue(detail.data.data.idmaterials);
                         this.step.sectionName = 'expanded4';
                     }
                 });
@@ -169,24 +246,94 @@ let AcordeonPage = class AcordeonPage {
             });
             modal.onDidDismiss().then((detail) => {
                 if (detail.data.data !== undefined) {
-                    this.Service.name_material = detail.data.data.name_materials;
-                    this.Service.material = detail.data.data.idmaterials;
+                    this.NewService.get('name_material').setValue(detail.data.data.name_materials);
+                    this.NewService.get('material').setValue(detail.data.data.idmaterials);
                     this.step.sectionName = 'expanded4';
                 }
             });
             yield modal.present();
         });
     }
+    client() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            if (this.NewService.value.client == undefined) {
+                const modal = yield this.modalController.create({
+                    component: _client_service_client_service_page__WEBPACK_IMPORTED_MODULE_12__["ClientServicePage"],
+                });
+                modal.onDidDismiss().then((detail) => {
+                    if (detail.data.data !== undefined) {
+                        this.NewService.get('client').setValue(detail.data.data.idclient);
+                        this.NewService.get('name_client').setValue(detail.data.data.name_client);
+                        this.NewService.get('identifacation').setValue(detail.data.data.id_client);
+                        this.NewService.get('phone').setValue(detail.data.data.phone);
+                        this.step.sectionName = 'expanded3';
+                    }
+                });
+                yield modal.present();
+            }
+        });
+    }
+    edit_client() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const modal = yield this.modalController.create({
+                component: _client_service_client_service_page__WEBPACK_IMPORTED_MODULE_12__["ClientServicePage"],
+            });
+            modal.onDidDismiss().then((detail) => {
+                if (detail.data.data !== undefined) {
+                    this.NewService.get('client').setValue(detail.data.data.idclient);
+                    this.NewService.get('name_client').setValue(detail.data.data.name_client);
+                    this.NewService.get('identifacation').setValue(detail.data.data.id_client);
+                    this.NewService.get('phone').setValue(detail.data.data.phone);
+                    this.step.sectionName = 'expanded3';
+                }
+            });
+            yield modal.present();
+        });
+    }
+    DeleClient() {
+        this.NewService.get('client').setValue(null);
+        this.NewService.get('name_client').setValue('');
+        this.NewService.get('identifacation').setValue('');
+        this.NewService.get('phone').setValue('');
+        this.step.sectionName = 'expanded3';
+    }
+    acount() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            if (this.NewService.value.client == null) {
+                this.presentToast('Seleccione Primero un Cliente');
+                return;
+            }
+            if (this.NewService.value.address == undefined) {
+                const modal = yield this.modalController.create({
+                    component: _acount_service_acount_service_page__WEBPACK_IMPORTED_MODULE_13__["AcountServicePage"],
+                    componentProps: {
+                        'idclient': this.NewService.value.client,
+                    }
+                });
+                modal.onDidDismiss().then((detail) => {
+                    if (detail.data.data !== undefined) {
+                        this.NewService.get('address').setValue(detail.data.data.idclient_account);
+                        this.NewService.get('name_address').setValue(detail.data.data.address);
+                        this.NewService.get('number_acount').setValue(detail.data.data.number_acount);
+                        this.NewService.get('indications').setValue(detail.data.data.indications);
+                        this.NewService.get('city').setValue(detail.data.data.city);
+                        this.step.sectionName = 'expanded2';
+                    }
+                });
+                yield modal.present();
+            }
+        });
+    }
     ModalBuilder() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            if (this.Service.construtor == undefined) {
+            if (this.NewService.value.construtor == undefined) {
                 const modal = yield this.modalController.create({
                     component: _builder_builder_page__WEBPACK_IMPORTED_MODULE_8__["BuilderPage"]
                 });
                 modal.onDidDismiss().then((detail) => {
                     if (detail.data.data !== undefined) {
-                        this.Service.construtor = detail.data.data.idbuilder;
-                        this.Service.name_construtor = detail.data.data.name_builder;
+                        this.NewService.get('construtor').setValue(detail.data.data.idbuilder);
+                        this.NewService.get('name_construtor').setValue(detail.data.data.name_builder);
                         this.step.sectionName = 'expanded5';
                     }
                 });
@@ -196,20 +343,19 @@ let AcordeonPage = class AcordeonPage {
     }
     ModalCetificate() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            if (this.NewService.value.idodi == null) {
+                this.presentToast('Guarde Primero');
+                return;
+            }
             const modal = yield this.modalController.create({
                 component: _certificate_certificate_page__WEBPACK_IMPORTED_MODULE_10__["CertificatePage"],
                 componentProps: {
-                    'number_service': this.Service.idodi,
-                    'type_network': this.Service.type_network_idtype_network,
-                    'data': this.Service,
+                    'number_service': this.NewService.value.idodi,
+                    'type_network': this.NewService.value.type_network_idtype_network,
+                    'data': this.NewService,
                 }
             });
             modal.onDidDismiss().then((detail) => {
-                // if (detail !== null) {
-                //     this.idbuilder = detail.data.data.idbuilder
-                //     this.name_builder = detail.data.data.name_builder
-                //     this.state_builder = detail.data.data.name_state
-                // }
             });
             yield modal.present();
         });
@@ -221,8 +367,8 @@ let AcordeonPage = class AcordeonPage {
             });
             modal.onDidDismiss().then((detail) => {
                 if (detail.data.data !== undefined) {
-                    this.Service.construtor = detail.data.data.idbuilder;
-                    this.Service.name_construtor = detail.data.data.name_builder;
+                    this.NewService.get('construtor').setValue(detail.data.data.idbuilder);
+                    this.NewService.get('name_construtor').setValue(detail.data.data.name_builder);
                     this.step.sectionName = 'expanded5';
                 }
             });
@@ -259,7 +405,7 @@ let AcordeonPage = class AcordeonPage {
             .then(success => console.log('Launched navigator'), error => console.log('Error launching navigator', error));
     }
     save() {
-        this.loginServiceService.SaveService(this.Service).subscribe(result => {
+        this.loginServiceService.SaveService(this.NewService.value).subscribe(result => {
             if (result.response == true) {
                 this.presentToast('Se Guardo el Servicio');
             }
@@ -270,17 +416,16 @@ let AcordeonPage = class AcordeonPage {
         });
     }
     DeleteMaterial() {
-        this.Service.name_material = '';
-        this.Service.material = null;
+        this.NewService.get('name_material').setValue('');
+        this.NewService.get('material').setValue(null);
     }
     DeleteConstructor() {
-        this.Service.name_construtor = '';
-        this.Service.construtor = null;
+        this.NewService.get('name_construtor').setValue('');
+        this.NewService.get('construtor').setValue(null);
     }
     type_red() {
-        console.log('1');
         const params = {
-            type: this.Service.type_service_idtype_service
+            type: this.NewService.value.type_service_idtype_service
         };
         this.loginServiceService.type_red(params).subscribe(result => {
             this.networks = result.response;

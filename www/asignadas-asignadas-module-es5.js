@@ -101,7 +101,10 @@ var AsignadasPage = /** @class */ (function () {
     };
     AsignadasPage.prototype.search_asignadas = function () {
         var _this = this;
-        var params = { user: localStorage.getItem("id") };
+        var params = {
+            user: localStorage.getItem("id"),
+            type: localStorage.getItem("type")
+        };
         this.LoginServiceService.seach_asignadas(params).subscribe(function (result) {
             _this.cars = result.data;
         }, function (error) {

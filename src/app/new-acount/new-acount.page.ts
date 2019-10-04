@@ -12,7 +12,7 @@ import { CityPage } from '../city/city.page';
   styleUrls: ['./new-acount.page.scss'],
 })
 export class NewAcountPage implements OnInit {
-  imgUser = '../assets/iconos/2075416.svg'
+  imgUser = '../assets/iconos/1986736.svg'
   hidden = true;
   hidden1 = true;
   NewAcount: FormGroup;
@@ -124,5 +124,7 @@ export class NewAcountPage implements OnInit {
     });
     toast.present();
   }
+
+
 
 }

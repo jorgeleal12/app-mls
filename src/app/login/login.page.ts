@@ -19,13 +19,15 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
 
+
+  }
+  ionViewCanEnter() {
     if (!localStorage.getItem("idusers")) {
 
     } else {
       this.router.navigateByUrl('/menu');
     }
   }
-
 
   async presentToast(mesajje) {
     const toast = await this.toastController.create({
@@ -60,6 +62,7 @@ export class LoginPage implements OnInit {
         localStorage.setItem("email", result.data.email);
         localStorage.setItem("id", result.data.id);
         localStorage.setItem("type", result.data.type);
+        localStorage.setItem("idemployees", result.idemployees);
         this.router.navigateByUrl('/menu');
         this.iduser = localStorage.getItem("idusers")
         this.fcm.getToken().then((token: String) =>

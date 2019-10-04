@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n    <ion-toolbar color=\"success\">\n        <ion-buttons slot=\"start\">\n            <ion-menu-button></ion-menu-button>\n        </ion-buttons>\n\n        <ion-title text-center class=\"center\">Inicio</ion-title>\n\n        <ion-buttons slot=\"end\">\n            <ion-button>\n                <ion-icon slot=\"icon-only\" name=\"cloud-upload\"></ion-icon>\n            </ion-button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-card class=\"card\" (click)=\"asignadas()\"\n        style=\"background-image: url(https://cdn.pixabay.com/photo/2015/03/26/11/04/graffiti-692364_960_720.jpg)\">\n        <ion-card-content class=\"card-body\">\n            <ion-card-subtitle class=\"card-title\">Asignadas</ion-card-subtitle>\n            <ion-card-title class=\"card-text\">{{total}} Órdenes de servicio Asignadas</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n    <ion-card class=\"card\"\n        style=\"background-image: url(https://cdn.pixabay.com/photo/2016/11/21/16/37/loader-1846346_960_720.jpg)\">\n        <ion-card-content class=\"card-body\">\n            <ion-card-subtitle class=\"card-title\">Pendientes</ion-card-subtitle>\n            <ion-card-title class=\"card-text\">0 Órdenes de servicio Pendientes</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n\n\n</ion-content>"
+module.exports = "<ion-header>\n    <ion-toolbar color=\"success\">\n        <ion-buttons slot=\"start\">\n            <ion-menu-button></ion-menu-button>\n        </ion-buttons>\n\n        <ion-title text-center class=\"center\">Inicio</ion-title>\n\n        <ion-buttons slot=\"end\">\n            <ion-button>\n                <ion-icon slot=\"icon-only\" name=\"cloud-upload\"></ion-icon>\n            </ion-button>\n        </ion-buttons>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-card class=\"card\" (click)=\"asignadas()\" style=\"background-image: url(./assets/img/IMAGE8.jpg)\">\n        <ion-card-content class=\"card-body\">\n            <ion-card-subtitle class=\"card-title\">Programadas</ion-card-subtitle>\n            <ion-card-title class=\"card-text\">{{asignada}} Órdenes de servicio Asignadas</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n\n    <ion-card class=\"card\" style=\"background-image: url(./assets/img/IMAGE7.jpg)\">\n        <ion-card-content class=\"card-body\">\n            <ion-card-subtitle class=\"card-title\">Aprobadas</ion-card-subtitle>\n            <ion-card-title class=\"card-text\">0 Órdenes de servicio Pendientes</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n\n    <ion-card class=\"card\" style=\"background-image: url(./assets/img/DENIED.jpg)\">\n        <ion-card-content class=\"card-body\">\n            <ion-card-subtitle class=\"card-title\">Rechazadas</ion-card-subtitle>\n            <ion-card-title class=\"card-text\">{{rechazadas}} Órdenes de servicio Pendientes</ion-card-title>\n        </ion-card-content>\n    </ion-card>\n</ion-content>"
 
 /***/ }),
 
@@ -94,13 +94,20 @@ let HomePage = class HomePage {
     constructor(LoginServiceService, router) {
         this.LoginServiceService = LoginServiceService;
         this.router = router;
+        this.asignada = 0;
+        this.rechazadas = 0;
     }
     ngOnInit() {
         this.total_asignadas();
     }
     total_asignadas() {
         this.LoginServiceService.totalasignadas({ user: localStorage.getItem("id") }).subscribe(result => {
-            this.total = result.data.total;
+            if (result.search_rech != null) {
+                this.rechazadas = result.search_rech.total;
+            }
+            if (result.data != null) {
+                this.asignada = result.data.total - this.rechazadas;
+            }
         }, error => {
         });
     }

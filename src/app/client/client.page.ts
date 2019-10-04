@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { LoginServiceService } from "../Services/login-service.service";
 import { NewClientPage } from '../new-client/new-client.page';
 import { ModalController } from '@ionic/angular';
+import { finalize } from 'rxjs/operators';
+import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-client',
   templateUrl: './client.page.html',
@@ -10,7 +12,7 @@ import { ModalController } from '@ionic/angular';
 })
 export class ClientPage implements OnInit {
 
-
+  loaderToShow
   Clients: any[] = [];
   page = 1;
   maximumPage;
@@ -20,13 +22,16 @@ export class ClientPage implements OnInit {
   constructor(
     private LoginServiceService: LoginServiceService,
     private router: Router,
-    public modalController: ModalController, ) { }
+    public modalController: ModalController,
+    public loadingController: LoadingController) { }
 
   ngOnInit() {
-    this.ListClient();
+
   }
 
-
+  ionViewWillEnter() {
+    this.ListClient();
+  }
   back() {
     this.router.navigateByUrl('menu/menu/home');
   }
@@ -49,18 +54,22 @@ export class ClientPage implements OnInit {
   }
 
   ListClient(event?) {
+    this.showLoader();
     const params = { idcompany: 1 }
-    this.LoginServiceService.ListClient(this.page).subscribe(result => {
-      this.Clients = this.Clients.concat(result.response.data)
-      this.maximumPage = result.response.last_page;
+    this.LoginServiceService.ListClient(this.page).pipe(
+      finalize(() => {
+        this.loadingController.dismiss();
+      })).subscribe(result => {
+        this.Clients = this.Clients.concat(result.response.data)
+        this.maximumPage = result.response.last_page;
 
 
-      if (event) {
-        event.target.complete();
-      }
-    }, error => {
+        if (event) {
+          event.target.complete();
+        }
+      }, error => {
 
-    })
+      })
   }
 
   loadMore(event) {
@@ -71,6 +80,8 @@ export class ClientPage implements OnInit {
     }
   }
   onSearch(event) {
+
+
     if (event.target.value == '') {
       this.page = 1
       this.ListClient(event);
@@ -83,6 +94,15 @@ export class ClientPage implements OnInit {
 
       })
     }
+
+  }
+  showLoader() {
+    this.loaderToShow = this.loadingController.create({
+      message: 'Cargando',
+      duration: 1000
+    }).then((res) => {
+      res.present();
+    });
 
   }
 }

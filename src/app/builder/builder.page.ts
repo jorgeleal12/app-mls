@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginServiceService } from '../Services/login-service.service';
 import { ModalController } from '@ionic/angular';
+import { finalize } from 'rxjs/operators';
+import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-builder',
   templateUrl: './builder.page.html',
@@ -11,19 +13,26 @@ export class BuilderPage implements OnInit {
   builders: any[] = [];
   isSearchbarOpened = false;
   textSearch = '';
-  constructor(private LoginServiceService: LoginServiceService, public modalController: ModalController) { }
+  loaderToShow
+  constructor(private LoginServiceService: LoginServiceService, public modalController: ModalController, public loadingController: LoadingController) { }
   ngOnInit() {
+
+  }
+  ionViewWillEnter() {
     this.search();
   }
   search() {
-    this.LoginServiceService.search_builder().subscribe(result => {
-      this.builders = result.response;
-    }, error => {
+    this.showLoader();
+    this.LoginServiceService.search_builder().pipe(
+      finalize(() => {
+        this.loadingController.dismiss();
+      })).subscribe(result => {
+        this.builders = result.response;
+      }, error => {
 
-    })
+      })
   }
   select(builders) {
-    // console.log(material)
     this.modalController.dismiss({
       'dismissed': true,
       data: builders
@@ -40,5 +49,13 @@ export class BuilderPage implements OnInit {
 
     this.textSearch = event.target.value;
   }
+  showLoader() {
+    this.loaderToShow = this.loadingController.create({
+      message: 'Cargando',
+      duration: 1000
+    }).then((res) => {
+      res.present();
+    });
 
+  }
 }

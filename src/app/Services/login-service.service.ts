@@ -95,7 +95,6 @@ export class LoginServiceService {
     return this.http.get(`${this.api_url}movil/AutoCity?city=${city}`);
   }
   ListMaterial(page): Observable<any> {
-
     return this.http.get(`${this.api_url}movil/ListMaterial?page=${page}`);
   }
 
@@ -106,4 +105,32 @@ export class LoginServiceService {
   CreateMaterial(params): Observable<any> {
     return this.http.post(`${this.api_url}materials/savemovil`, params);
   }
+  MaterialCertificate(material): Observable<any> {
+    return this.http.get(`${this.api_url}movil/MaterialCertificate?material=${material}`);
+  }
+
+  ListBuilder(page): Observable<any> {
+    return this.http.get(`${this.api_url}movil/ListBuilder?page=${page}`);
+  }
+
+  AutoListBuilder(material): Observable<any> {
+    return this.http.get(`${this.api_url}movil/AutoListBuilder?builder=${material}`);
+  }
+
+  listsic(builder): Observable<any> {
+    return this.http.get(`${this.api_url}movil/listsic?builder=${builder}`);
+  }
+  listcom(builder): Observable<any> {
+    return this.http.get(`${this.api_url}movil/listcom?builder=${builder}`);
+  }
+
+  SevaBuilder(params): Observable<any> {
+    return this.http.post(`${this.api_url}builder/create`, params);
+  }
+
+  search_address(address): Observable<any> {
+    return this.http.get(`${this.api_url}movil/search_address?address=${address}`);
+  }
+
+
 }

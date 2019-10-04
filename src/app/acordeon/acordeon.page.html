@@ -14,351 +14,408 @@
 </ion-header>
 
 <ion-content>
-    <ion-list class="accordion-list" no-padding>
-        <section class="acc-section" (click)="setStep('expanded1')">
-            <div class="img">
-                <img src="../../assets/img/pngocean.com-id-wflsf.png" alt="">
-            </div>
-            <div class="info">
-                <p class="title">Servicio</p>
-                <p class="subtitle">Información general de la orden</p>
-            </div>
-            <div class="icon">
-                <ion-icon name="{{getIconName('expanded1')}}" color="medium"></ion-icon>
-            </div>
+    <form [formGroup]="NewService">
+        <ion-list class="accordion-list" no-padding>
+            <section class="acc-section" (click)="setStep('expanded1')">
+                <div class="img">
+                    <img src="../../assets/iconos/2127595.svg" alt="">
+                </div>
+                <div class="info">
+                    <p class="title">Servicio</p>
+                    <p class="subtitle">Información general de la orden</p>
+                </div>
+                <div class="icon">
+                    <ion-icon name="{{getIconName('expanded1')}}" color="medium"></ion-icon>
+                </div>
 
-        </section>
+            </section>
 
-        <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded1')}">
-            <div [hidden]="div_hidden">
-                <ion-row>
-                    <ion-col size="12">
-                        <mat-form-field class="example-full-width" style="margin-top: 5px;">
-                            <input matInput placeholder="Servicio Número" [(ngModel)]="number_service" readonly>
-                        </mat-form-field>
+            <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded1')}">
+                <div [hidden]="div_hidden">
+                    <ion-row>
+                        <ion-col size="12">
+                            <mat-form-field class="example-full-width" style="margin-top: 5px;">
+                                <input matInput placeholder="Servicio Número" formControlName="number_service" readonly>
+                            </mat-form-field>
 
 
+
+                            <ion-item>
+                                <ion-label class="example-full-width">Prioridad</ion-label>
+                                <ion-select formControlName="priority">
+                                    <ion-select-option [value]=1>Alta</ion-select-option>
+                                    <ion-select-option [value]=2>Media</ion-select-option>
+                                    <ion-select-option [value]=3>Baja</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label class="example-full-width">Programación</ion-label>
+                                <ion-datetime displayFormat="YYYY-MM-DD" formControlName="date_programming">
+                                </ion-datetime>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label class="example-full-width">Franja de Atención</ion-label>
+                                <ion-select formControlName="Attention">
+                                    <ion-select-option [value]=1>Manaña</ion-select-option>
+                                    <ion-select-option [value]=2>Tarde</ion-select-option>
+
+                                </ion-select>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label class="example-full-width">Tipos de Gas</ion-label>
+                                <ion-select>
+                                    <ion-select-option value="1">Natural</ion-select-option>
+                                    <ion-select-option value="2">GLP</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label class="example-full-width">Tipo de Obra</ion-label>
+                                <ion-select formControlName="service_type_idservice_type">
+                                    <ion-select-option [value]=1>Revisión Periodica</ion-select-option>
+                                    <ion-select-option [value]=2>Nueva</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+
+                            <ion-item>
+                                <ion-label class="example-full-width">Tipos de Servicio</ion-label>
+                                <ion-select formControlName="type_service_idtype_service" (ionChange)="type_red()">
+                                    <ion-select-option [value]=1>Residencial</ion-select-option>
+                                    <ion-select-option [value]=2>Comercial</ion-select-option>
+                                    <ion-select-option [value]=3>Industrial</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+
+                            <ion-item lines="none">
+                                <ion-label class="example-full-width">Tipo de Red</ion-label>
+                                <ion-select formControlName="type_network_idtype_network">
+                                    <ion-select-option *ngFor="let network of networks" [value]=network.idtype_network>
+                                        {{network.name_network}}
+                                    </ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                </div>
+                <div [hidden]="div_service">
+                    <ion-list>
 
                         <ion-item>
-                            <ion-label class="example-full-width">Prioridad</ion-label>
-                            <ion-select [(ngModel)]="Service.priority">
-                                <ion-select-option [value]=1>Alta</ion-select-option>
-                                <ion-select-option [value]=2>Media</ion-select-option>
-                                <ion-select-option [value]=3>Baja</ion-select-option>
-                            </ion-select>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label class="example-full-width">Programación</ion-label>
-                            <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="Service.date_programming">
-                            </ion-datetime>
+                            <ion-label class="ion-text-wrap">
+                                <ion-text>
+                                    <h2>{{ NewService.value.idodi}}</h2>
+                                </ion-text>
+                                <p>Servicio Número</p>
+                            </ion-label>
                         </ion-item>
 
                         <ion-item>
-                            <ion-label class="example-full-width">Franja de Atención</ion-label>
-                            <ion-select [(ngModel)]="Service.Attention">
-                                <ion-select-option [value]=1>Manaña</ion-select-option>
-                                <ion-select-option [value]=2>Tarde</ion-select-option>
-
-                            </ion-select>
+                            <ion-label class="ion-text-wrap">
+                                <ion-text>
+                                    <h2>{{ NewService.value.name_priority}}</h2>
+                                </ion-text>
+                                <p>Prioridad</p>
+                            </ion-label>
+                            <ion-icon class="big1" src="assets/iconos/334047.svg" item-end
+                                *ngIf=" NewService.value.priority==1">
+                            </ion-icon>
+                            <ion-icon class="big1" src="assets/iconos/189670.svg" item-end
+                                *ngIf=" NewService.value.priority==2">
+                            </ion-icon>
+                            <ion-icon class="big1" src="assets/iconos/137495.svg" item-end
+                                *ngIf=" NewService.value.priority==3">
+                            </ion-icon>
                         </ion-item>
 
                         <ion-item>
-                            <ion-label class="example-full-width">Tipos de Gas</ion-label>
-                            <ion-select>
-                                <ion-select-option value="1">Natural</ion-select-option>
-                                <ion-select-option value="2">GLP</ion-select-option>
-                            </ion-select>
+                            <ion-label class="ion-text-wrap">
+                                <ion-text>
+                                    <h2>{{ NewService.value.contract_name}}</h2>
+                                </ion-text>
+                                <p>Sede</p>
+                            </ion-label>
                         </ion-item>
 
                         <ion-item>
-                            <ion-label class="example-full-width">Tipos de Servicio</ion-label>
-                            <ion-select [(ngModel)]="Service.type_service_idtype_service" (ionChange)="type_red()">
-                                <ion-select-option [value]=1>Residencial</ion-select-option>
-                                <ion-select-option [value]=2>Comercial</ion-select-option>
-                                <ion-select-option [value]=3>Industrial</ion-select-option>
-                            </ion-select>
+                            <ion-label class="ion-text-wrap">
+                                <ion-text>
+                                    <h2>{{ NewService.value.date_programming}}</h2>
+                                </ion-text>
+                                <p>Programación</p>
+                            </ion-label>
                         </ion-item>
 
                         <ion-item>
-                            <ion-label class="example-full-width">Tipo de Red</ion-label>
-                            <ion-select [(ngModel)]="Service.type_network_idtype_network">
-                                <ion-select-option *ngFor="let network of networks" [value]=network.idtype_network>
-                                    {{network.name_network}}
-                                </ion-select-option>
-                            </ion-select>
+                            <ion-label class="ion-text-wrap">
+                                <ion-text>
+                                    <h2>{{NewService.value.name_atencion}}</h2>
+                                </ion-text>
+                                <p>Franja de Atención</p>
+                            </ion-label>
                         </ion-item>
-                    </ion-col>
-                </ion-row>
-            </div>
-            <div [hidden]="div_service">
+
+                        <ion-item>
+                            <ion-label class="ion-text-wrap">
+                                <ion-text>
+                                    <h2>{{ NewService.value.name_gas}}</h2>
+                                </ion-text>
+                                <p>Tipo de Gas</p>
+                            </ion-label>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label class="ion-text-wrap">
+                                <ion-text>
+                                    <h2>{{ NewService.value.name_type}}</h2>
+                                </ion-text>
+                                <p>Tipo de Servicio</p>
+                            </ion-label>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label class="ion-text-wrap">
+                                <ion-text>
+                                    <h2>{{ NewService.value.name_network}}</h2>
+                                </ion-text>
+                                <p>Tipo de Red</p>
+                            </ion-label>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label class="ion-text-wrap">
+                                <ion-text>
+                                    <h2>{{ NewService.value.name_state}}</h2>
+                                </ion-text>
+                                <p>Estado</p>
+                            </ion-label>
+                        </ion-item>
+                    </ion-list>
+                </div>
+            </section>
+
+
+            <section class="acc-section" (click)="setStep('expanded3')">
+                <div class="img">
+                    <img src="../../assets/iconos/902709.svg" alt="">
+                </div>
+                <div class="info">
+                    <p class="title">Cliente</p>
+                    <p class="subtitle">Información del Cliente</p>
+
+                </div>
+                <div class="icon">
+                    <ion-icon name="{{getIconName('expanded3')}}" color="medium"></ion-icon>
+                </div>
+
+            </section>
+            <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded3')}">
                 <ion-list>
 
-                    <ion-item>
-                        <ion-label class="ion-text-wrap">
-                            <ion-text>
-                                <h2>{{Service.idodi}}</h2>
-                            </ion-text>
-                            <p>Servicio Número</p>
-                        </ion-label>
-                    </ion-item>
 
-                    <ion-item>
-                        <ion-label class="ion-text-wrap">
-                            <ion-text>
-                                <h2>{{Service.name_priority}}</h2>
-                            </ion-text>
-                            <p>Prioridad</p>
-                        </ion-label>
-                        <ion-icon class="big1" src="assets/iconos/334047.svg" item-end *ngIf="Service.priority==1">
-                        </ion-icon>
-                        <ion-icon class="big1" src="assets/iconos/189670.svg" item-end *ngIf="Service.priority==2">
-                        </ion-icon>
-                        <ion-icon class="big1" src="assets/iconos/137495.svg" item-end *ngIf="Service.priority==3">
-                        </ion-icon>
-                    </ion-item>
 
-                    <ion-item>
-                        <ion-label class="ion-text-wrap">
-                            <ion-text>
-                                <h2>{{Service.contract_name}}</h2>
-                            </ion-text>
-                            <p>Sede</p>
-                        </ion-label>
-                    </ion-item>
+                    <ion-item-sliding>
+                        <ion-item-options side="start">
+                            <ion-item-option (click)="edit_client()">
+                                <ion-icon src="assets/iconos/61456.svg"></ion-icon>
+                            </ion-item-option>
+                            <ion-item-option color="danger" (click)="DeleClient()">
+                                <ion-icon src="assets/iconos/64022.svg"></ion-icon>
+                            </ion-item-option>
+                        </ion-item-options>
 
-                    <ion-item>
-                        <ion-label class="ion-text-wrap">
-                            <ion-text>
-                                <h2>{{Service.date_programming}}</h2>
-                            </ion-text>
-                            <p>Programación</p>
-                        </ion-label>
-                    </ion-item>
+                        <ion-item (click)="client()">
+                            <ion-label class="ion-text-wrap">
+                                <ion-text>
+                                    <h2>{{ NewService.value.name_client}}</h2>
+                                </ion-text>
+                                <p>Nombre del Cliente</p>
+                            </ion-label>
+                        </ion-item>
 
-                    <ion-item>
-                        <ion-label class="ion-text-wrap">
-                            <ion-text>
-                                <h2>{{Service.name_atencion}}</h2>
-                            </ion-text>
-                            <p>Franja de Atención</p>
-                        </ion-label>
-                    </ion-item>
 
+                    </ion-item-sliding>
                     <ion-item>
                         <ion-label class="ion-text-wrap">
                             <ion-text>
-                                <h2>{{Service.name_gas}}</h2>
+                                <h2>{{ NewService.value.identifacation}}</h2>
                             </ion-text>
-                            <p>Tipo de Gas</p>
-                        </ion-label>
-                    </ion-item>
-
-                    <ion-item>
-                        <ion-label class="ion-text-wrap">
-                            <ion-text>
-                                <h2>{{Service.name_type}}</h2>
-                            </ion-text>
-                            <p>Tipo de Servicio</p>
+                            <p>Identificación del Cliente</p>
                         </ion-label>
                     </ion-item>
                     <ion-item>
                         <ion-label class="ion-text-wrap">
                             <ion-text>
-                                <h2>{{Service.name_network}}</h2>
+                                <h2>{{ NewService.value.phone}}</h2>
                             </ion-text>
-                            <p>Tipo de Red</p>
-                        </ion-label>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label class="ion-text-wrap">
-                            <ion-text>
-                                <h2>{{Service.name_state}}</h2>
-                            </ion-text>
-                            <p>Estado</p>
+                            <p>Teléfono de Contacto</p>
                         </ion-label>
                     </ion-item>
                 </ion-list>
-            </div>
-        </section>
 
-        <section class="acc-section" (click)="setStep('expanded2')">
-            <div class="img">
-                <img src="../../assets/img/twotone_add_location_black_48dp.png" alt="">
 
-            </div>
-            <div class="info">
-                <p class="title">Ubicación</p>
-                <p class="subtitle">Información general de la Ubicación</p>
+            </section>
 
-            </div>
-            <div class="icon">
-                <ion-icon name="{{getIconName('expanded2')}}" color="medium"></ion-icon>
-            </div>
+            <section class="acc-section" (click)="setStep('expanded2')">
+                <div class="img">
+                    <img src="../../assets/iconos/1198464.svg" alt="">
 
-        </section>
-        <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded2')}">
-            <ion-list>
-                <ion-item>
-                    <ion-label class="ion-text-wrap">
-                        <ion-text>
-                            <h2>{{Service.address}}</h2>
-                        </ion-text>
-                        <p>Dirección</p>
+                </div>
+                <div class="info">
+                    <p class="title">Cuenta</p>
+                    <p class="subtitle">Información general de la Cuenta</p>
+
+                </div>
+                <div class="icon">
+                    <ion-icon name="{{getIconName('expanded2')}}" color="medium"></ion-icon>
+                </div>
+
+            </section>
+            <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded2')}">
+                <ion-list>
+                    <ion-item>
+                        <ion-label class="ion-text-wrap">
+                            <ion-text>
+                                <h2>{{ NewService.value.name_address}}</h2>
+                            </ion-text>
+                            <p>Dirección</p>
+                        </ion-label>
+                        <ion-icon class="big" src="assets/iconos/854878.svg" item-end (click)="send_address()">
+                        </ion-icon>
+                    </ion-item>
+                    <ion-item (click)="acount()">
+                        <ion-label class="ion-text-wrap">
+                            <ion-text>
+                                <h2>{{ NewService.value.indications}}</h2>
+                            </ion-text>
+                            <p>Indicaciones</p>
+                        </ion-label>
+                    </ion-item>
+                    <ion-item-sliding>
+                        <ion-item-options side="start">
+                            <ion-item-option (click)="edit_acount()">
+                                <ion-icon src="assets/iconos/61456.svg"></ion-icon>
+                            </ion-item-option>
+                            <ion-item-option color="danger" (click)="DeleAcount()">
+                                <ion-icon src="assets/iconos/64022.svg"></ion-icon>
+                            </ion-item-option>
+                        </ion-item-options>
+
+                        <ion-item lines="none" (click)="acount()">
+                            <ion-label class="ion-text-wrap">
+                                <ion-text>
+                                    <h2>{{ NewService.value.number_acount}}</h2>
+                                </ion-text>
+                                <p># Cuenta</p>
+                            </ion-label>
+                        </ion-item>
+                    </ion-item-sliding>
+                </ion-list>
+            </section>
+
+            <section class="acc-section" (click)="setStep('expanded4')">
+                <div class="img">
+                    <img src="../../assets/iconos/1683018.svg" alt="">
+                </div>
+                <div class="info" (click)="presentModal()">
+                    <p class="title">Material</p>
+                    <p class="subtitle">Información del Material</p>
+
+                </div>
+                <div class="icon">
+                    <ion-icon name="{{getIconName('expanded4')}}" color="medium" (click)="presentModal()"></ion-icon>
+                </div>
+
+            </section>
+            <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded4')}">
+
+                <!-- Sliding item with text options on both sides -->
+                <ion-item-sliding>
+                    <ion-item-options side="start">
+                        <ion-item-option (click)="edit_material()">
+                            <ion-icon src="assets/iconos/61456.svg"></ion-icon>
+                        </ion-item-option>
+                        <ion-item-option color="danger" (click)="DeleteMaterial()">
+                            <ion-icon src="assets/iconos/64022.svg"></ion-icon>
+                        </ion-item-option>
+                    </ion-item-options>
+
+                    <ion-item lines="none">
+                        <ion-label class="ion-text-wrap">
+                            <ion-text>
+                                <h2>{{ NewService.value.name_material}}</h2>
+                            </ion-text>
+
+                        </ion-label>
+                    </ion-item>
+                </ion-item-sliding>
+
+
+
+            </section>
+
+            <section class="acc-section" (click)="setStep('expanded5')">
+                <div class="img">
+                    <img src="../../assets/iconos/2139370.svg" alt="">
+                </div>
+                <div class="info" (click)="ModalBuilder()">
+                    <p class="title">Constructor</p>
+                    <p class="subtitle">Información del Constructor</p>
+
+                </div>
+                <div class="icon">
+                    <ion-icon name="{{getIconName('expanded5')}}" color="medium" (click)="ModalBuilder()"></ion-icon>
+                </div>
+
+            </section>
+            <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded5')}">
+                <ion-item-sliding>
+                    <ion-item-options side="start">
+                        <ion-item-option (click)="edit_builder()">
+                            <ion-icon src="assets/iconos/61456.svg"></ion-icon>
+                        </ion-item-option>
+                        <ion-item-option color="danger" (click)="DeleteConstructor()">
+                            <ion-icon src="assets/iconos/64022.svg"></ion-icon>
+                        </ion-item-option>
+                    </ion-item-options>
+
+                    <ion-item lines="none">
+                        <ion-label class="ion-text-wrap">
+                            <ion-text>
+                                <h2>{{NewService.value.name_construtor}}</h2>
+                            </ion-text>
+
+                        </ion-label>
+                    </ion-item>
+                </ion-item-sliding>
+
+            </section>
+
+
+
+
+            <section class="acc-section" (click)="setStep('expanded7')">
+                <div class="img">
+                    <img src="../../assets/iconos/1172539.svg" alt="">
+                </div>
+                <div class="info" (click)="ModalCetificate()">
+                    <p class="title">Certificados</p>
+                    <p class="subtitle">Certificados asociados al servicio</p>
+
+                </div>
+                <div class="icon">
+                    <ion-icon name="{{getIconName('expanded6')}}" color="medium"></ion-icon>
+                </div>
+
+            </section>
+            <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded7')}">
+                <ion-item detail *ngFor="let photos_service of photos_services; let i = i; index"
+                    (click)="photos_add(photos_service)">
+                    <ion-label>
+                        {{photos_service.name_photo}}
                     </ion-label>
-                    <ion-icon class="big" src="assets/iconos/854878.svg" item-end (click)="send_address()"></ion-icon>
-
                 </ion-item>
-            </ion-list>
-        </section>
-        <section class="acc-section" (click)="setStep('expanded3')">
-            <div class="img">
-                <img src="../../assets/img/twotone_person_black_48dp.png" alt="">
-            </div>
-            <div class="info">
-                <p class="title">Cliente</p>
-                <p class="subtitle">Información del Cliente</p>
+            </section>
 
-            </div>
-            <div class="icon">
-                <ion-icon name="{{getIconName('expanded3')}}" color="medium"></ion-icon>
-            </div>
-
-        </section>
-        <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded3')}">
-            <ion-list>
-
-                <ion-item>
-                    <ion-label class="ion-text-wrap">
-                        <ion-text>
-                            <h2>{{Service.client}}</h2>
-                        </ion-text>
-                        <p>Nombre del Cliente</p>
-                    </ion-label>
-                </ion-item>
-                <ion-item>
-                    <ion-label class="ion-text-wrap">
-                        <ion-text>
-                            <h2>{{Service.identifacation}}</h2>
-                        </ion-text>
-                        <p>Identificación del Cliente</p>
-                    </ion-label>
-                </ion-item>
-                <ion-item>
-                    <ion-label class="ion-text-wrap">
-                        <ion-text>
-                            <h2>{{Service.phone}}</h2>
-                        </ion-text>
-                        <p>Teléfono de Contacto</p>
-                    </ion-label>
-                </ion-item>
-            </ion-list>
-
-
-        </section>
-
-        <section class="acc-section" (click)="setStep('expanded4')">
-            <div class="img">
-                <img src="../../assets/img/twotone_build_black_48dp.png" alt="">
-            </div>
-            <div class="info" (click)="presentModal()">
-                <p class="title">Material</p>
-                <p class="subtitle">Información del Material</p>
-
-            </div>
-            <div class="icon">
-                <ion-icon name="{{getIconName('expanded4')}}" color="medium" (click)="presentModal()"></ion-icon>
-            </div>
-
-        </section>
-        <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded4')}">
-
-            <!-- Sliding item with text options on both sides -->
-            <ion-item-sliding>
-                <ion-item-options side="start">
-                    <ion-item-option (click)="edit_material()">
-                        <ion-icon src="assets/iconos/61456.svg"></ion-icon>
-                    </ion-item-option>
-                    <ion-item-option color="danger" (click)="DeleteMaterial()">
-                        <ion-icon src="assets/iconos/64022.svg"></ion-icon>
-                    </ion-item-option>
-                </ion-item-options>
-
-                <ion-item lines="none">
-                    <ion-label class="ion-text-wrap">
-                        <ion-text>
-                            <h2>{{Service.name_material}}</h2>
-                        </ion-text>
-
-                    </ion-label>
-                </ion-item>
-            </ion-item-sliding>
-
-
-
-        </section>
-
-        <section class="acc-section" (click)="setStep('expanded5')">
-            <div class="img">
-                <img src="../../assets/img/1043ea6260755f02bafd6d2fa98072ec-icono-de-casco-de-construccion.png" alt="">
-            </div>
-            <div class="info" (click)="ModalBuilder()">
-                <p class="title">Constructor</p>
-                <p class="subtitle">Información del Constructor</p>
-
-            </div>
-            <div class="icon">
-                <ion-icon name="{{getIconName('expanded5')}}" color="medium" (click)="ModalBuilder()"></ion-icon>
-            </div>
-
-        </section>
-        <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded5')}">
-            <ion-item-sliding>
-                <ion-item-options side="start">
-                    <ion-item-option (click)="edit_builder()">
-                        <ion-icon src="assets/iconos/61456.svg"></ion-icon>
-                    </ion-item-option>
-                    <ion-item-option color="danger" (click)="DeleteConstructor()">
-                        <ion-icon src="assets/iconos/64022.svg"></ion-icon>
-                    </ion-item-option>
-                </ion-item-options>
-
-                <ion-item lines="none">
-                    <ion-label class="ion-text-wrap">
-                        <ion-text>
-                            <h2>{{Service.name_construtor}}</h2>
-                        </ion-text>
-
-                    </ion-label>
-                </ion-item>
-            </ion-item-sliding>
-
-        </section>
-
-
-
-
-        <section class="acc-section" (click)="setStep('expanded7')">
-            <div class="img">
-                <img src="../../assets/img/twotone_insert_photo_black_48dp.png" alt="">
-            </div>
-            <div class="info" (click)="ModalCetificate()">
-                <p class="title">Certificados</p>
-                <p class="subtitle">Certificados asociados al servicio</p>
-
-            </div>
-            <div class="icon">
-                <ion-icon name="{{getIconName('expanded6')}}" color="medium"></ion-icon>
-            </div>
-
-        </section>
-        <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded7')}">
-            <ion-item detail *ngFor="let photos_service of photos_services; let i = i; index"
-                (click)="photos_add(photos_service)">
-                <ion-label>
-                    {{photos_service.name_photo}}
-                </ion-label>
-            </ion-item>
-        </section>
-
-    </ion-list>
+        </ion-list>
+    </form>
 </ion-content>

@@ -33,6 +33,10 @@ import { ListAcountPageModule } from './list-acount/list-acount.module';
 import { NewAcountPageModule } from './new-acount/new-acount.module';
 import { CityPageModule } from './city/city.module';
 import { NewMaterialPageModule } from './new-material/new-material.module';
+import { NewBuilderPageModule } from './new-builder/new-builder.module';
+import { ClientServicePageModule } from './client-service/client-service.module';
+import { AcountServicePageModule } from './acount-service/acount-service.module';
+import { ViewDocumentPageModule } from './view-document/view-document.module';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -54,6 +58,10 @@ import { NewMaterialPageModule } from './new-material/new-material.module';
     NewAcountPageModule,
     CityPageModule,
     NewMaterialPageModule,
+    NewBuilderPageModule,
+    ClientServicePageModule,
+    AcountServicePageModule,
+    ViewDocumentPageModule,
     NewClientPageModule],
   providers: [
     StatusBar,

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { AppMaterialModule } from "../app-material.module";
 import { IonicModule } from '@ionic/angular';
@@ -20,7 +20,7 @@ const routes: Routes = [
     AppMaterialModule,
     FormsModule,
     IonicModule,
-
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [AcordeonPage]

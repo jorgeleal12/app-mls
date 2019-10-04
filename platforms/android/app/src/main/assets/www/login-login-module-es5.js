@@ -106,6 +106,8 @@ var LoginPage = /** @class */ (function () {
         this.fcm = fcm;
     }
     LoginPage.prototype.ngOnInit = function () {
+    };
+    LoginPage.prototype.ionViewCanEnter = function () {
         if (!localStorage.getItem("idusers")) {
         }
         else {
@@ -149,6 +151,8 @@ var LoginPage = /** @class */ (function () {
                 localStorage.setItem("nombres", result.data.name + " " + result.data.last_name);
                 localStorage.setItem("email", result.data.email);
                 localStorage.setItem("id", result.data.id);
+                localStorage.setItem("type", result.data.type);
+                localStorage.setItem("idemployees", result.idemployees);
                 _this.router.navigateByUrl('/menu');
                 _this.iduser = localStorage.getItem("idusers");
                 _this.fcm.getToken().then(function (token) {
