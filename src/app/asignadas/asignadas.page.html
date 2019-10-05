@@ -7,8 +7,9 @@
     <ion-title text-center class="center">Servicios</ion-title>
 
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button (click)="sendimage()">
         <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
+        <ion-badge color="danger" id="cart-badge">{{propCount}}</ion-badge>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -28,10 +29,8 @@
       <ion-text color="primary">
         <h3>{{ car.idodi}}</h3>
       </ion-text>
-      <p class="title">{{ car.address}}</p>
       <ion-text>
-
-        <p class="prog">Prog: {{car.date_programming }} {{ car.identifacation}}</p>
+        <p class="prog">Prog: {{car.date_programming }}</p>
         <p class="prog">Estado: {{car.name_state }} </p>
       </ion-text>
     </ion-label>

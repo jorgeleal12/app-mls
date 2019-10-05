@@ -89,23 +89,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
 
 
 
 
 var HomePage = /** @class */ (function () {
-    function HomePage(LoginServiceService, router) {
+    function HomePage(LoginServiceService, router, loadingController) {
         this.LoginServiceService = LoginServiceService;
         this.router = router;
+        this.loadingController = loadingController;
         this.asignada = 0;
         this.rechazadas = 0;
     }
     HomePage.prototype.ngOnInit = function () {
+    };
+    HomePage.prototype.ionViewWillEnter = function () {
         this.total_asignadas();
     };
     HomePage.prototype.total_asignadas = function () {
         var _this = this;
-        this.LoginServiceService.totalasignadas({ user: localStorage.getItem("id") }).subscribe(function (result) {
+        this.showLoader();
+        this.LoginServiceService.totalasignadas({ user: localStorage.getItem("id") }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["finalize"])(function () {
+            _this.loadingController.dismiss();
+        })).subscribe(function (result) {
             if (result.search_rech != null) {
                 _this.rechazadas = result.search_rech.total;
             }
@@ -118,9 +128,18 @@ var HomePage = /** @class */ (function () {
     HomePage.prototype.asignadas = function () {
         this.router.navigateByUrl('menu/menu/asignadas');
     };
+    HomePage.prototype.showLoader = function () {
+        this.loaderToShow = this.loadingController.create({
+            message: 'Cargando',
+            duration: 1000
+        }).then(function (res) {
+            res.present();
+        });
+    };
     HomePage.ctorParameters = function () { return [
         { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"] },
-        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+        { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["LoadingController"] }
     ]; };
     HomePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -128,7 +147,7 @@ var HomePage = /** @class */ (function () {
             template: __webpack_require__(/*! raw-loader!./home.page.html */ "./node_modules/raw-loader/index.js!./src/app/home/home.page.html"),
             styles: [__webpack_require__(/*! ./home.page.scss */ "./src/app/home/home.page.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["LoadingController"]])
     ], HomePage);
     return HomePage;
 }());

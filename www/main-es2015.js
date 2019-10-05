@@ -489,7 +489,7 @@ module.exports = webpackAsyncContext;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\" *ngIf=\"!isSearchbarOpened\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\" *ngIf=\"!isSearchbarOpened\">Cuentas</ion-title>\n    <!-- Default Searchbar -->\n    <ion-searchbar *ngIf=\"isSearchbarOpened\" showCancelButton=\"true\" (ionChange)=\"onSearch($event)\"\n      (ionCancel)=\"isSearchbarOpened=false\"></ion-searchbar>\n    <ion-buttons slot=\"end\">\n      <ion-button icon-only *ngIf=\"!isSearchbarOpened\" (click)=\"isSearchbarOpened=true\">\n        <ion-icon slot=\"icon-only\" name=\"search\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let acount of acounts | filter:textSearch:'address'\" (click)=\"ModalExit(acount)\">\n      <ion-label text-wrap>\n        {{acount.address}}\n        <p class=\"title\">{{ acount.name_city}}</p>\n        <p class=\"title\">{{ acount.state}}</p>\n\n      </ion-label>\n\n    </ion-item>\n  </ion-list>\n\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\" (click)=\"ModalNewAcount()\">\n    <ion-fab-button>\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\" (click)=\"back()\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" *ngIf=\"!isSearchbarOpened\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\" *ngIf=\"!isSearchbarOpened\">Cuentas</ion-title>\n    <!-- Default Searchbar -->\n    <ion-searchbar *ngIf=\"isSearchbarOpened\" showCancelButton=\"true\" (ionChange)=\"onSearch($event)\"\n      (ionCancel)=\"isSearchbarOpened=false\"></ion-searchbar>\n    <ion-buttons slot=\"end\">\n      <ion-button icon-only *ngIf=\"!isSearchbarOpened\" (click)=\"isSearchbarOpened=true\">\n        <ion-icon slot=\"icon-only\" name=\"search\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let acount of acounts | filter:textSearch:'address'\" (click)=\"ModalExit(acount)\">\n      <ion-label text-wrap>\n        {{acount.address}}\n        <p class=\"title\">{{ acount.name_city}}</p>\n        <p class=\"title\">{{ acount.state}}</p>\n\n      </ion-label>\n\n    </ion-item>\n  </ion-list>\n</ion-content>"
 
 /***/ }),
 
@@ -555,7 +555,7 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\" *ngIf=\"!isSearchbarOpened\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\" *ngIf=\"!isSearchbarOpened\">Clientes</ion-title>\n    <!-- Default Searchbar -->\n    <ion-searchbar *ngIf=\"isSearchbarOpened\" showCancelButton=\"true\" (ionChange)=\"onSearch($event)\"\n      (ionCancel)=\"isSearchbarOpened=false\"></ion-searchbar>\n\n    <ion-buttons slot=\"end\">\n\n      <ion-button icon-only *ngIf=\"!isSearchbarOpened\" (click)=\"isSearchbarOpened=true\">\n        <ion-icon slot=\"icon-only\" name=\"search\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let Client of Clients\" (click)=\"ModalExit(Client)\">\n      <ion-label text-wrap>\n        {{Client.name_client}}\n        <p class=\"title\">{{ Client.id_client}}</p>\n        <p class=\"title\">{{ Client.phone}}</p>\n        <p class=\"title\">{{ Client.state}}</p>\n\n      </ion-label>\n\n    </ion-item>\n  </ion-list>\n  <ion-infinite-scroll threshold=\"5\" (ionInfinite)=\"loadMore($event)\">\n    <ion-infinite-scroll-content loadingSpinner=\"crescent\" loadingText=\"Cargando..\">\n\n    </ion-infinite-scroll-content>\n  </ion-infinite-scroll>\n\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\" (click)=\"ModalNewCliente()\">\n    <ion-fab-button>\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" *ngIf=\"!isSearchbarOpened\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\" *ngIf=\"!isSearchbarOpened\">Clientes</ion-title>\n    <!-- Default Searchbar -->\n    <ion-searchbar *ngIf=\"isSearchbarOpened\" showCancelButton=\"true\" (ionChange)=\"onSearch($event)\"\n      (ionCancel)=\"isSearchbarOpened=false\"></ion-searchbar>\n\n    <ion-buttons slot=\"end\">\n\n      <ion-button icon-only *ngIf=\"!isSearchbarOpened\" (click)=\"isSearchbarOpened=true\">\n        <ion-icon slot=\"icon-only\" name=\"search\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n\n\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item lines=\"none\" *ngFor=\"let Client of Clients\" (click)=\"ModalExit(Client)\">\n      <ion-label text-wrap>\n        {{Client.name_client}}\n        <p class=\"title\">{{ Client.id_client}}</p>\n        <p class=\"title\">{{ Client.phone}}</p>\n        <p class=\"title\">{{ Client.state}}</p>\n\n      </ion-label>\n\n    </ion-item>\n  </ion-list>\n  <ion-infinite-scroll threshold=\"5\" (ionInfinite)=\"loadMore($event)\">\n    <ion-infinite-scroll-content loadingSpinner=\"crescent\" loadingText=\"Cargando..\">\n\n    </ion-infinite-scroll-content>\n  </ion-infinite-scroll>\n\n  <ion-fab horizontal=\"end\" vertical=\"bottom\" slot=\"fixed\" (click)=\"ModalNewCliente()\">\n    <ion-fab-button>\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n</ion-content>"
 
 /***/ }),
 
@@ -621,7 +621,7 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Certificado</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"save()\">\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list class=\"accordion-list\" no-padding>\n    <section class=\"acc-section\" (click)=\"setStep('expanded1')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/pngocean.com-id-wflsf.png\" alt=\"\">\n      </div>\n      <div class=\"info\">\n        <p class=\"title\">Certificado</p>\n        <p class=\"subtitle\">Información general</p>\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded1')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded1')}\">\n      <div [hidden]=\"div_hidden\">\n        <ion-grid>\n          <ion-row>\n            <ion-col size=\"12\">\n              <mat-form-field class=\"example-full-width\" style=\"margin-top: 10px;\">\n                <input matInput placeholder=\"Número de Certificado\" [(ngModel)]=\"NewCertificate.number\" readonly>\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Inspector\" [(ngModel)]=\"NewCertificate.obsins\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Revisor\" [(ngModel)]=\"NewCertificate.obssuper\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones para el Cliente\" [(ngModel)]=\"NewCertificate.obsclient\">\n              </mat-form-field>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </div>\n\n    </section>\n    <section class=\"acc-section\" (click)=\"setStep('expanded6')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/twotone_insert_photo_black_48dp.png\" alt=\"\">\n      </div>\n      <div class=\"info\" (click)=\"ModalImage()\">\n        <p class=\"title\">Fotografias</p>\n        <p class=\"subtitle\">Fotografias del servicio</p>\n\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded6')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded6')}\">\n      <ion-item detail *ngFor=\"let photos_service of photos_services; let i = i; index\"\n        (click)=\"photos_add(photos_service)\">\n        <ion-label>\n          {{photos_service.name_photo}}\n        </ion-label>\n      </ion-item>\n    </section>\n\n    <section class=\"acc-section\" (click)=\"setStep('expanded7')\">\n      <div class=\"img\">\n        <img src=\"../../assets/img/twotone_insert_photo_black_48dp.png\" alt=\"\">\n      </div>\n      <div class=\"info\" (click)=\"ModalViewImage()\">\n        <p class=\"title\">Ver Fotografias</p>\n        <p class=\"subtitle\">Ver las Fotografias del Servicio</p>\n\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded7')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded7')}\">\n\n    </section>\n  </ion-list>\n</ion-content>"
+module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n    <ion-title text-center class=\"center\">Certificado</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"save()\">\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list class=\"accordion-list\" no-padding>\n    <section class=\"acc-section\" (click)=\"setStep('expanded1')\">\n      <div class=\"img\">\n        <img src=\"../../assets/iconos/1172539.svg\" alt=\"\">\n      </div>\n      <div class=\"info\">\n        <p class=\"title\">Certificado</p>\n        <p class=\"subtitle\">Información general</p>\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded1')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded1')}\">\n      <div [hidden]=\"div_hidden\">\n        <ion-grid>\n          <ion-row>\n            <ion-col size=\"12\">\n              <mat-form-field class=\"example-full-width\" style=\"margin-top: 10px;\">\n                <input matInput placeholder=\"Número de Certificado\" [(ngModel)]=\"NewCertificate.number\" readonly>\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Inspector\" [(ngModel)]=\"NewCertificate.obsins\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones del Revisor\" [(ngModel)]=\"NewCertificate.obssuper\">\n              </mat-form-field>\n\n              <mat-form-field class=\"example-full-width\">\n                <input matInput placeholder=\"Observaciones para el Cliente\" [(ngModel)]=\"NewCertificate.obsclient\">\n              </mat-form-field>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </div>\n\n    </section>\n    <section class=\"acc-section\" (click)=\"setStep('expanded6')\">\n      <div class=\"img\">\n        <img src=\"../../assets/iconos/148717.svg\" alt=\"\">\n      </div>\n      <div class=\"info\" (click)=\"ModalImage()\">\n        <p class=\"title\">Fotografias</p>\n        <p class=\"subtitle\">Fotografias del servicio</p>\n\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded6')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded6')}\">\n      <ion-item detail *ngFor=\"let photos_service of photos_services; let i = i; index\"\n        (click)=\"photos_add(photos_service)\">\n        <ion-label>\n          {{photos_service.name_photo}}\n        </ion-label>\n      </ion-item>\n    </section>\n\n    <section class=\"acc-section\" (click)=\"setStep('expanded7')\">\n      <div class=\"img\">\n        <img src=\"../../assets/iconos/138589.svg\" alt=\"\">\n      </div>\n      <div class=\"info\" (click)=\"ModalViewImage()\">\n        <p class=\"title\">Ver Fotografias</p>\n        <p class=\"subtitle\">Ver las Fotografias del Servicio</p>\n\n      </div>\n      <div class=\"icon\">\n        <ion-icon name=\"{{getIconName('expanded7')}}\" color=\"medium\"></ion-icon>\n      </div>\n\n    </section>\n    <section class=\"acc-content\" [ngClass]=\"{'expandable':getNameValid('expanded7')}\">\n\n    </section>\n  </ion-list>\n</ion-content>"
 
 /***/ }),
 
@@ -655,6 +655,17 @@ module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-butt
 /***/ (function(module, exports) {
 
 module.exports = "<ion-header>\n  <ion-toolbar color=\"success\">\n    <ion-buttons slot=\"start\">\n      <ion-icon slot=\"icon-only\" name=\"arrow-back\" (click)=\"back()\"></ion-icon>\n    </ion-buttons>\n\n    <ion-title text-center class=\"center\">Enviar Fotografias</ion-title>\n\n    <ion-buttons slot=\"end\">\n      <ion-button (click)=\"send_image()\">\n        <ion-icon slot=\"icon-only\" name=\"save\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n  <!--div-->\n  <section class=\"content-images\">\n    <ion-card class=\"add-img\" *ngFor=\"let photo of photos; let i = i; index\" (click)=\"selectImage(photo)\"\n      [ngStyle]=\"{background: 'url(' + photo.imagenes + ')no-repeat scroll center center / 100% 100%'}\">\n\n      <!-- <img [src]=\"photo.imagenes\" class=\"img\" width=\"200\" height=\"100\" [hidden]=\"photo.hidden_image\" /> -->\n\n      <div class=\"divv\">\n        <ion-icon name=\"md-checkmark-circle\" color=\"light\" size=\"large\" [hidden]=\"photo.send\"\n          *ngIf=\"photo.state == true\"></ion-icon>\n      </div>\n      <div class=\"divv\">\n        <ion-icon name=\"add-circle\" color=\"light\" size=\"large\" [hidden]=\"photo.hidden\"></ion-icon>\n      </div>\n      <div class=\"divv\">\n        <ion-icon name=\"md-close-circle\" color=\"red\" size=\"large\" [hidden]=\"photo.error\" *ngIf=\"photo.state == false\">\n        </ion-icon>\n      </div>\n\n\n\n    </ion-card>\n\n    <ion-card class=\"add-img add-pdf\" (click)=\"selectImage(photo)\">\n      <ion-card-content>\n        <ion-icon name=\"document\" color=\"light\" size=\"large\"></ion-icon>\n      </ion-card-content>\n    </ion-card>\n\n    <canvas #layout hidden></canvas>\n  </section>\n\n</ion-content>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/view-document/view-document.page.html":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/view-document/view-document.page.html ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>ViewDocument</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n</ion-content>\n"
 
 /***/ }),
 
@@ -865,6 +876,30 @@ let TasksService = class TasksService {
         let sql = 'DELETE  FROM image WHERE odi_idodi=? and idservice_certifications=?';
         return this.db.executeSql(sql, [odi_idodi, certificate]);
     }
+    createTableImageCertificate() {
+        let sql = 'CREATE TABLE IF NOT EXISTS imagecert(id INTEGER PRIMARY KEY AUTOINCREMENT,idphotos INTEGER, name_photo TEXT, odi_idodi INTEGER, certifications INTEGER)';
+        return this.db.executeSql(sql, []);
+    }
+    InsertICertificate(image, type, odi, idservice) {
+        console.log(odi);
+        console.log(image);
+        console.log(type);
+        console.log(idservice);
+        let sql = 'INSERT INTO imagecert(idphotos,name_photo, odi_idodi,certifications) VALUES(?,?,?,?)';
+        return this.db.executeSql(sql, [type, image, odi, idservice]);
+    }
+    SelectICertificate() {
+        let sql = 'SELECT * FROM imagecert';
+        return this.db.executeSql(sql, [])
+            .then(response => {
+            let tasks = [];
+            for (let index = 0; index < response.rows.length; index++) {
+                tasks.push(response.rows.item(index));
+            }
+            return Promise.resolve(tasks);
+        })
+            .catch(error => Promise.reject(error));
+    }
 };
 TasksService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
@@ -953,6 +988,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+
+
 
 
 
@@ -960,17 +998,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let AcountServicePage = class AcountServicePage {
-    constructor(loginServiceService, toastController, modalController, navParams) {
+    constructor(loginServiceService, toastController, modalController, navParams, loadingController) {
         this.loginServiceService = loginServiceService;
         this.toastController = toastController;
         this.modalController = modalController;
         this.navParams = navParams;
+        this.loadingController = loadingController;
         this.acounts = [];
         this.isSearchbarOpened = false;
         this.textSearch = '';
         this.idclient = navParams.get('idclient');
     }
     ngOnInit() {
+    }
+    ionViewWillEnter() {
         this.ListAcount();
     }
     back() {
@@ -979,10 +1020,13 @@ let AcountServicePage = class AcountServicePage {
         });
     }
     ListAcount() {
+        this.showLoader();
         const params = {
             idclient: this.idclient
         };
-        this.loginServiceService.ListAcount(params).subscribe(result => {
+        this.loginServiceService.ListAcount(params).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["finalize"])(() => {
+            this.loadingController.dismiss();
+        })).subscribe(result => {
             this.acounts = result.response;
         }, error => {
         });
@@ -996,12 +1040,21 @@ let AcountServicePage = class AcountServicePage {
             data: acount
         });
     }
+    showLoader() {
+        this.loaderToShow = this.loadingController.create({
+            message: 'Cargando',
+            duration: 1000
+        }).then((res) => {
+            res.present();
+        });
+    }
 };
 AcountServicePage.ctorParameters = () => [
     { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"] }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"] }
 ];
 AcountServicePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1012,7 +1065,8 @@ AcountServicePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"],
         _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"],
         _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"],
-        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"]])
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["NavParams"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"]])
 ], AcountServicePage);
 
 
@@ -1520,7 +1574,8 @@ let AppComponent = class AppComponent {
         })
             .then((db) => {
             this.tasksService.setDatabase(db);
-            return this.tasksService.createTableImage();
+            this.tasksService.createTableImage();
+            this.tasksService.createTableImageCertificate();
         })
             .then(() => {
         })
@@ -1635,6 +1690,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _new_builder_new_builder_module__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./new-builder/new-builder.module */ "./src/app/new-builder/new-builder.module.ts");
 /* harmony import */ var _client_service_client_service_module__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./client-service/client-service.module */ "./src/app/client-service/client-service.module.ts");
 /* harmony import */ var _acount_service_acount_service_module__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./acount-service/acount-service.module */ "./src/app/acount-service/acount-service.module.ts");
+/* harmony import */ var _view_document_view_document_module__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./view-document/view-document.module */ "./src/app/view-document/view-document.module.ts");
+
 
 
 
@@ -1700,6 +1757,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _new_builder_new_builder_module__WEBPACK_IMPORTED_MODULE_35__["NewBuilderPageModule"],
             _client_service_client_service_module__WEBPACK_IMPORTED_MODULE_36__["ClientServicePageModule"],
             _acount_service_acount_service_module__WEBPACK_IMPORTED_MODULE_37__["AcountServicePageModule"],
+            _view_document_view_document_module__WEBPACK_IMPORTED_MODULE_38__["ViewDocumentPageModule"],
             _new_client_new_client_module__WEBPACK_IMPORTED_MODULE_30__["NewClientPageModule"]],
         providers: [
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
@@ -1801,29 +1859,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+
+
 
 
 
 
 let BuilderPage = class BuilderPage {
-    constructor(LoginServiceService, modalController) {
+    constructor(LoginServiceService, modalController, loadingController) {
         this.LoginServiceService = LoginServiceService;
         this.modalController = modalController;
+        this.loadingController = loadingController;
         this.builders = [];
         this.isSearchbarOpened = false;
         this.textSearch = '';
     }
     ngOnInit() {
+    }
+    ionViewWillEnter() {
         this.search();
     }
     search() {
-        this.LoginServiceService.search_builder().subscribe(result => {
+        this.showLoader();
+        this.LoginServiceService.search_builder().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["finalize"])(() => {
+            this.loadingController.dismiss();
+        })).subscribe(result => {
             this.builders = result.response;
         }, error => {
         });
     }
     select(builders) {
-        // console.log(material)
         this.modalController.dismiss({
             'dismissed': true,
             data: builders
@@ -1837,10 +1903,19 @@ let BuilderPage = class BuilderPage {
     onSearch(event) {
         this.textSearch = event.target.value;
     }
+    showLoader() {
+        this.loaderToShow = this.loadingController.create({
+            message: 'Cargando',
+            duration: 1000
+        }).then((res) => {
+            res.present();
+        });
+    }
 };
 BuilderPage.ctorParameters = () => [
     { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"] }
 ];
 BuilderPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1848,7 +1923,7 @@ BuilderPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./builder.page.html */ "./node_modules/raw-loader/index.js!./src/app/builder/builder.page.html"),
         styles: [__webpack_require__(/*! ./builder.page.scss */ "./src/app/builder/builder.page.scss")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"]])
 ], BuilderPage);
 
 
@@ -1943,8 +2018,11 @@ let CertificatePage = class CertificatePage {
         this.number_service = navParams.get('number_service');
         this.type_network = navParams.get('type_network');
         this.data = navParams.get('data');
+        console.log(this.data);
     }
     ngOnInit() {
+    }
+    ionViewWillEnter() {
         this.search();
     }
     search() {
@@ -1962,6 +2040,9 @@ let CertificatePage = class CertificatePage {
     }
     ModalNewCertificate() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            if (this.data.state != 2) {
+                return;
+            }
             const modal = yield this.modalController.create({
                 component: _new_certificate_new_certificate_page__WEBPACK_IMPORTED_MODULE_4__["NewCertificatePage"],
                 componentProps: {
@@ -2243,30 +2324,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+
+
 
 
 
 
 
 let ClientServicePage = class ClientServicePage {
-    constructor(LoginServiceService, router, modalController) {
+    constructor(LoginServiceService, router, modalController, loadingController) {
         this.LoginServiceService = LoginServiceService;
         this.router = router;
         this.modalController = modalController;
+        this.loadingController = loadingController;
         this.Clients = [];
         this.page = 1;
         this.isSearchbarOpened = false;
         this.textSearch = '';
     }
     ngOnInit() {
+    }
+    ionViewWillEnter() {
         this.ListClient();
     }
-    back() {
-        this.router.navigateByUrl('menu/menu/home');
-    }
     ListClient(event) {
+        this.showLoader();
         const params = { idcompany: 1 };
-        this.LoginServiceService.ListClient(this.page).subscribe(result => {
+        this.LoginServiceService.ListClient(this.page).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["finalize"])(() => {
+            this.loadingController.dismiss();
+        })).subscribe(result => {
             this.Clients = this.Clients.concat(result.response.data);
             this.maximumPage = result.response.last_page;
             if (event) {
@@ -2301,11 +2388,25 @@ let ClientServicePage = class ClientServicePage {
             data: Client
         });
     }
+    back() {
+        this.modalController.dismiss({
+            'dismissed': false,
+        });
+    }
+    showLoader() {
+        this.loaderToShow = this.loadingController.create({
+            message: 'Cargando',
+            duration: 1000
+        }).then((res) => {
+            res.present();
+        });
+    }
 };
 ClientServicePage.ctorParameters = () => [
     { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__["LoginServiceService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"] }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["LoadingController"] }
 ];
 ClientServicePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2315,7 +2416,8 @@ ClientServicePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_3__["LoginServiceService"],
         _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
-        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"]])
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ModalController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["LoadingController"]])
 ], ClientServicePage);
 
 
@@ -2752,23 +2854,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Services/login-service.service */ "./src/app/Services/login-service.service.ts");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+
+
 
 
 
 
 let MaterialsPage = class MaterialsPage {
-    constructor(LoginServiceService, modalController) {
+    constructor(LoginServiceService, modalController, loadingController) {
         this.LoginServiceService = LoginServiceService;
         this.modalController = modalController;
+        this.loadingController = loadingController;
         this.materials = [];
         this.isSearchbarOpened = false;
         this.textSearch = '';
     }
     ngOnInit() {
+    }
+    ionViewWillEnter() {
         this.search();
     }
     search() {
-        this.LoginServiceService.search_materials().subscribe(result => {
+        this.showLoader();
+        this.LoginServiceService.search_materials().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["finalize"])(() => {
+            this.loadingController.dismiss();
+        })).subscribe(result => {
             this.materials = result.response;
         }, error => {
         });
@@ -2788,10 +2899,19 @@ let MaterialsPage = class MaterialsPage {
     onSearch(event) {
         this.textSearch = event.target.value;
     }
+    showLoader() {
+        this.loaderToShow = this.loadingController.create({
+            message: 'Cargando',
+            duration: 1000
+        }).then((res) => {
+            res.present();
+        });
+    }
 };
 MaterialsPage.ctorParameters = () => [
     { type: _Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"] }
 ];
 MaterialsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -2799,7 +2919,8 @@ MaterialsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: __webpack_require__(/*! raw-loader!./materials.page.html */ "./node_modules/raw-loader/index.js!./src/app/materials/materials.page.html"),
         styles: [__webpack_require__(/*! ./materials.page.scss */ "./src/app/materials/materials.page.scss")]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_Services_login_service_service__WEBPACK_IMPORTED_MODULE_2__["LoginServiceService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ModalController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["LoadingController"]])
 ], MaterialsPage);
 
 
@@ -3291,7 +3412,7 @@ NewCertificatePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".acc-section {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  border-top: thin solid #c1c1c1;\n  background: #eaeaea;\n  padding: 0.7em;\n}\n.acc-section:first-child {\n  border-top: none;\n}\n.acc-section:last-child {\n  border-bottom: thin solid #e5e5e5;\n}\n.acc-section .img {\n  width: 35px;\n  margin-right: 0.5em;\n}\n.acc-section .img img {\n  width: 100%;\n}\n.acc-section .info {\n  width: calc(100% - 60px);\n}\n.acc-section .info > * {\n  margin: 0;\n}\n.acc-section .info .title {\n  font-size: 1em;\n  color: #323133;\n}\n.acc-section .info .subtitle {\n  font-size: 0.9em;\n  color: #8a888a;\n}\n.acc-section .info .text {\n  font-size: 0.8em;\n  color: #f3b236;\n}\n.acc-section .icon {\n  width: 20px;\n}\n.acc-content {\n  height: 0;\n  overflow: hidden;\n  padding: 0 0.5em;\n  -webkit-transition: max-height 0.4s ease-in-out;\n  transition: max-height 0.4s ease-in-out;\n}\n.acc-content.expandable {\n  -webkit-transition: max-height 0.4s ease-in-out;\n  transition: max-height 0.4s ease-in-out;\n  overflow: hidden;\n  height: auto;\n}\n@-webkit-keyframes delay-overflow {\n  from {\n    overflow: auto;\n  }\n}\n@keyframes delay-overflow {\n  from {\n    overflow: auto;\n  }\n}\n.example-form {\n  min-width: 150px;\n  max-width: 500px;\n  width: 100%;\n}\n.example-full-width {\n  width: 100%;\n  font-size: 15px;\n  color: #8a888a;\n}\n.list-md {\n  padding-top: 0px !important;\n  padding-bottom: 0px !important;\n}\n.acc-content {\n  padding: 0em !important;\n}\nion-icon.big {\n  width: 52px !important;\n  height: 52px !important;\n}\nion-icon.big1 {\n  width: 38px !important;\n  height: 38px !important;\n  margin-right: 10px !important;\n}\nion-icon.big2 {\n  width: 52px !important;\n  height: 52px !important;\n  margin-right: 10px !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi92YXIvd3d3L2h0bWwvYXBwLW1scy9zcmMvYXBwL25ldy1jZXJ0aWZpY2F0ZS9uZXctY2VydGlmaWNhdGUucGFnZS5zY3NzIiwic3JjL2FwcC9uZXctY2VydGlmaWNhdGUvbmV3LWNlcnRpZmljYXRlLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLG9CQUFBO0VBQUEsYUFBQTtFQUNBLHlCQUFBO1VBQUEsbUJBQUE7RUFDQSw4QkFBQTtFQUNBLG1CQUFBO0VBQ0EsY0FBQTtBQ0NKO0FEQ0k7RUFDRSxnQkFBQTtBQ0NOO0FERUk7RUFDRSxpQ0FBQTtBQ0FOO0FER0k7RUFDRSxXQUFBO0VBQ0EsbUJBQUE7QUNETjtBREdNO0VBQ0UsV0FBQTtBQ0RSO0FES0k7RUFDRSx3QkFBQTtBQ0hOO0FES007RUFDRSxTQUFBO0FDSFI7QURNTTtFQUNFLGNBQUE7RUFDQSxjQUFBO0FDSlI7QURPTTtFQUNFLGdCQUFBO0VBQ0EsY0FBQTtBQ0xSO0FEUU07RUFDRSxnQkFBQTtFQUNBLGNBQUE7QUNOUjtBRFVJO0VBQ0UsV0FBQTtBQ1JOO0FEWUU7RUFDRSxTQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLCtDQUFBO0VBQUEsdUNBQUE7QUNUSjtBRFdJO0VBQ0UsK0NBQUE7RUFBQSx1Q0FBQTtFQUNBLGdCQUFBO0VBQ0EsWUFBQTtBQ1ROO0FEYUU7RUFDRTtJQUNFLGNBQUE7RUNWSjtBQUNGO0FET0U7RUFDRTtJQUNFLGNBQUE7RUNWSjtBQUNGO0FEWUU7RUFDRSxnQkFBQTtFQUNBLGdCQUFBO0VBQ0EsV0FBQTtBQ1ZKO0FEYUU7RUFDRSxXQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7QUNWSjtBRGVFO0VBRUcsMkJBQUE7RUFDQSw4QkFBQTtBQ2JMO0FEZ0JFO0VBQ0UsdUJBQUE7QUNiSjtBRGlCSTtFQUNFLHNCQUFBO0VBQ0EsdUJBQUE7QUNkTjtBRGdCSTtFQUNJLHNCQUFBO0VBQ0EsdUJBQUE7RUFDQSw2QkFBQTtBQ2RSO0FEZ0JNO0VBQ0Usc0JBQUE7RUFDQSx1QkFBQTtFQUNBLDZCQUFBO0FDZFIiLCJmaWxlIjoic3JjL2FwcC9uZXctY2VydGlmaWNhdGUvbmV3LWNlcnRpZmljYXRlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5hY2Mtc2VjdGlvbiB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIGJvcmRlci10b3A6IHRoaW4gc29saWQgI2MxYzFjMTtcbiAgICBiYWNrZ3JvdW5kOiAjZWFlYWVhO1xuICAgIHBhZGRpbmc6IC43ZW07XG4gIFxuICAgICY6Zmlyc3QtY2hpbGQge1xuICAgICAgYm9yZGVyLXRvcDogbm9uZTtcbiAgICB9XG4gIFxuICAgICY6bGFzdC1jaGlsZCB7XG4gICAgICBib3JkZXItYm90dG9tOiB0aGluIHNvbGlkICNlNWU1ZTU7XG4gICAgfVxuICBcbiAgICAmIC5pbWcge1xuICAgICAgd2lkdGg6IDM1cHg7XG4gICAgICBtYXJnaW4tcmlnaHQ6IC41ZW07XG4gIFxuICAgICAgJiBpbWcge1xuICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgIH1cbiAgICB9XG4gIFxuICAgICYgLmluZm8ge1xuICAgICAgd2lkdGg6IGNhbGMoMTAwJSAtIDYwcHgpO1xuICBcbiAgICAgICYgPiAqIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgfVxuICBcbiAgICAgICYgLnRpdGxlIHtcbiAgICAgICAgZm9udC1zaXplOiAxZW07XG4gICAgICAgIGNvbG9yOiAjMzIzMTMzO1xuICAgICAgfVxuICBcbiAgICAgICYgLnN1YnRpdGxlIHtcbiAgICAgICAgZm9udC1zaXplOiAuOWVtO1xuICAgICAgICBjb2xvcjogIzhhODg4YTtcbiAgICAgIH1cbiAgXG4gICAgICAmIC50ZXh0IHtcbiAgICAgICAgZm9udC1zaXplOiAuOGVtO1xuICAgICAgICBjb2xvcjogI2YzYjIzNjtcbiAgICAgIH1cbiAgICB9XG4gIFxuICAgICYgLmljb24ge1xuICAgICAgd2lkdGg6IDIwcHg7XG4gICAgfVxuICB9XG4gIFxuICAuYWNjLWNvbnRlbnQge1xuICAgIGhlaWdodDogMDtcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuICAgIHBhZGRpbmc6IDAgLjVlbTtcbiAgICB0cmFuc2l0aW9uOiBtYXgtaGVpZ2h0IDAuNHMgZWFzZS1pbi1vdXQ7XG4gIFxuICAgICYuZXhwYW5kYWJsZSB7XG4gICAgICB0cmFuc2l0aW9uOiBtYXgtaGVpZ2h0IDAuNHMgZWFzZS1pbi1vdXQ7XG4gICAgICBvdmVyZmxvdzogaGlkZGVuO1xuICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgIH1cbiAgfVxuICBcbiAgQGtleWZyYW1lcyBkZWxheS1vdmVyZmxvdyB7XG4gICAgZnJvbSB7XG4gICAgICBvdmVyZmxvdzogYXV0bztcbiAgICB9XG4gIH1cbiAgLmV4YW1wbGUtZm9ybSB7XG4gICAgbWluLXdpZHRoOiAxNTBweDtcbiAgICBtYXgtd2lkdGg6IDUwMHB4O1xuICAgIHdpZHRoOiAxMDAlO1xuICB9XG4gIFxuICAuZXhhbXBsZS1mdWxsLXdpZHRoIHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBmb250LXNpemU6IDE1cHg7XG4gICAgY29sb3I6ICM4YTg4OGE7XG5cbiAgICAvL21hcmdpbi1ib3R0b206IC0xMHB4ICFpbXBvcnRhbnQ7XG4gIH1cbiAgXG4gIC5saXN0LW1kIHtcbiAgICBcbiAgICAgcGFkZGluZy10b3A6IDBweCAhaW1wb3J0YW50O1xuICAgICBwYWRkaW5nLWJvdHRvbTogMHB4IWltcG9ydGFudDtcbiAgICBcbiAgfVxuICAuYWNjLWNvbnRlbnQge1xuICAgIHBhZGRpbmc6IDBlbSFpbXBvcnRhbnQ7XG4gIH1cbiAgXG4gIGlvbi1pY29uIHtcbiAgICAmLmJpZyB7XG4gICAgICB3aWR0aDogNTJweCFpbXBvcnRhbnQ7XG4gICAgICBoZWlnaHQ6IDUycHghaW1wb3J0YW50O1xuICAgIH1cbiAgICAmLmJpZzEge1xuICAgICAgICB3aWR0aDogMzhweCFpbXBvcnRhbnQ7XG4gICAgICAgIGhlaWdodDogMzhweCFpbXBvcnRhbnQ7XG4gICAgICAgIG1hcmdpbi1yaWdodDogMTBweCFpbXBvcnRhbnQ7XG4gICAgICB9XG4gICAgICAmLmJpZzIge1xuICAgICAgICB3aWR0aDogNTJweCFpbXBvcnRhbnQ7XG4gICAgICAgIGhlaWdodDogNTJweCFpbXBvcnRhbnQ7XG4gICAgICAgIG1hcmdpbi1yaWdodDogMTBweCFpbXBvcnRhbnQ7XG4gICAgIH1cbiAgfSIsIi5hY2Mtc2VjdGlvbiB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGJvcmRlci10b3A6IHRoaW4gc29saWQgI2MxYzFjMTtcbiAgYmFja2dyb3VuZDogI2VhZWFlYTtcbiAgcGFkZGluZzogMC43ZW07XG59XG4uYWNjLXNlY3Rpb246Zmlyc3QtY2hpbGQge1xuICBib3JkZXItdG9wOiBub25lO1xufVxuLmFjYy1zZWN0aW9uOmxhc3QtY2hpbGQge1xuICBib3JkZXItYm90dG9tOiB0aGluIHNvbGlkICNlNWU1ZTU7XG59XG4uYWNjLXNlY3Rpb24gLmltZyB7XG4gIHdpZHRoOiAzNXB4O1xuICBtYXJnaW4tcmlnaHQ6IDAuNWVtO1xufVxuLmFjYy1zZWN0aW9uIC5pbWcgaW1nIHtcbiAgd2lkdGg6IDEwMCU7XG59XG4uYWNjLXNlY3Rpb24gLmluZm8ge1xuICB3aWR0aDogY2FsYygxMDAlIC0gNjBweCk7XG59XG4uYWNjLXNlY3Rpb24gLmluZm8gPiAqIHtcbiAgbWFyZ2luOiAwO1xufVxuLmFjYy1zZWN0aW9uIC5pbmZvIC50aXRsZSB7XG4gIGZvbnQtc2l6ZTogMWVtO1xuICBjb2xvcjogIzMyMzEzMztcbn1cbi5hY2Mtc2VjdGlvbiAuaW5mbyAuc3VidGl0bGUge1xuICBmb250LXNpemU6IDAuOWVtO1xuICBjb2xvcjogIzhhODg4YTtcbn1cbi5hY2Mtc2VjdGlvbiAuaW5mbyAudGV4dCB7XG4gIGZvbnQtc2l6ZTogMC44ZW07XG4gIGNvbG9yOiAjZjNiMjM2O1xufVxuLmFjYy1zZWN0aW9uIC5pY29uIHtcbiAgd2lkdGg6IDIwcHg7XG59XG5cbi5hY2MtY29udGVudCB7XG4gIGhlaWdodDogMDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgcGFkZGluZzogMCAwLjVlbTtcbiAgdHJhbnNpdGlvbjogbWF4LWhlaWdodCAwLjRzIGVhc2UtaW4tb3V0O1xufVxuLmFjYy1jb250ZW50LmV4cGFuZGFibGUge1xuICB0cmFuc2l0aW9uOiBtYXgtaGVpZ2h0IDAuNHMgZWFzZS1pbi1vdXQ7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGhlaWdodDogYXV0bztcbn1cblxuQGtleWZyYW1lcyBkZWxheS1vdmVyZmxvdyB7XG4gIGZyb20ge1xuICAgIG92ZXJmbG93OiBhdXRvO1xuICB9XG59XG4uZXhhbXBsZS1mb3JtIHtcbiAgbWluLXdpZHRoOiAxNTBweDtcbiAgbWF4LXdpZHRoOiA1MDBweDtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5leGFtcGxlLWZ1bGwtd2lkdGgge1xuICB3aWR0aDogMTAwJTtcbiAgZm9udC1zaXplOiAxNXB4O1xuICBjb2xvcjogIzhhODg4YTtcbn1cblxuLmxpc3QtbWQge1xuICBwYWRkaW5nLXRvcDogMHB4ICFpbXBvcnRhbnQ7XG4gIHBhZGRpbmctYm90dG9tOiAwcHggIWltcG9ydGFudDtcbn1cblxuLmFjYy1jb250ZW50IHtcbiAgcGFkZGluZzogMGVtICFpbXBvcnRhbnQ7XG59XG5cbmlvbi1pY29uLmJpZyB7XG4gIHdpZHRoOiA1MnB4ICFpbXBvcnRhbnQ7XG4gIGhlaWdodDogNTJweCAhaW1wb3J0YW50O1xufVxuaW9uLWljb24uYmlnMSB7XG4gIHdpZHRoOiAzOHB4ICFpbXBvcnRhbnQ7XG4gIGhlaWdodDogMzhweCAhaW1wb3J0YW50O1xuICBtYXJnaW4tcmlnaHQ6IDEwcHggIWltcG9ydGFudDtcbn1cbmlvbi1pY29uLmJpZzIge1xuICB3aWR0aDogNTJweCAhaW1wb3J0YW50O1xuICBoZWlnaHQ6IDUycHggIWltcG9ydGFudDtcbiAgbWFyZ2luLXJpZ2h0OiAxMHB4ICFpbXBvcnRhbnQ7XG59Il19 */"
+module.exports = ".acc-section {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  border-top: thin solid #efecec;\n  background: #f7f7f7;\n  padding: 0.7em;\n}\n.acc-section:first-child {\n  border-top: none;\n}\n.acc-section:last-child {\n  border-bottom: thin solid #e5e5e5;\n}\n.acc-section .img {\n  width: 35px;\n  margin-right: 0.5em;\n}\n.acc-section .img img {\n  width: 100%;\n}\n.acc-section .info {\n  width: calc(100% - 60px);\n}\n.acc-section .info > * {\n  margin: 0;\n}\n.acc-section .info .title {\n  font-size: 1em;\n  color: #323133;\n}\n.acc-section .info .subtitle {\n  font-size: 0.9em;\n  color: #8a888a;\n}\n.acc-section .info .text {\n  font-size: 0.8em;\n  color: #f3b236;\n}\n.acc-section .icon {\n  width: 20px;\n}\n.acc-content {\n  height: 0;\n  overflow: hidden;\n  padding: 0 0.5em;\n  -webkit-transition: max-height 0.4s ease-in-out;\n  transition: max-height 0.4s ease-in-out;\n}\n.acc-content.expandable {\n  -webkit-transition: max-height 0.4s ease-in-out;\n  transition: max-height 0.4s ease-in-out;\n  overflow: hidden;\n  height: auto;\n}\n@-webkit-keyframes delay-overflow {\n  from {\n    overflow: auto;\n  }\n}\n@keyframes delay-overflow {\n  from {\n    overflow: auto;\n  }\n}\n.example-form {\n  min-width: 150px;\n  max-width: 500px;\n  width: 100%;\n}\n.example-full-width {\n  width: 100%;\n  font-size: 15px;\n  color: #8a888a;\n}\n.list-md {\n  padding-top: 0px !important;\n  padding-bottom: 0px !important;\n}\n.acc-content {\n  padding: 0em !important;\n}\nion-icon.big {\n  width: 52px !important;\n  height: 52px !important;\n}\nion-icon.big1 {\n  width: 38px !important;\n  height: 38px !important;\n  margin-right: 10px !important;\n}\nion-icon.big2 {\n  width: 52px !important;\n  height: 52px !important;\n  margin-right: 10px !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi92YXIvd3d3L2h0bWwvYXBwLW1scy9zcmMvYXBwL25ldy1jZXJ0aWZpY2F0ZS9uZXctY2VydGlmaWNhdGUucGFnZS5zY3NzIiwic3JjL2FwcC9uZXctY2VydGlmaWNhdGUvbmV3LWNlcnRpZmljYXRlLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLG9CQUFBO0VBQUEsYUFBQTtFQUNBLHlCQUFBO1VBQUEsbUJBQUE7RUFDQSw4QkFBQTtFQUNBLG1CQUFBO0VBQ0EsY0FBQTtBQ0NKO0FEQ0k7RUFDRSxnQkFBQTtBQ0NOO0FERUk7RUFDRSxpQ0FBQTtBQ0FOO0FER0k7RUFDRSxXQUFBO0VBQ0EsbUJBQUE7QUNETjtBREdNO0VBQ0UsV0FBQTtBQ0RSO0FES0k7RUFDRSx3QkFBQTtBQ0hOO0FES007RUFDRSxTQUFBO0FDSFI7QURNTTtFQUNFLGNBQUE7RUFDQSxjQUFBO0FDSlI7QURPTTtFQUNFLGdCQUFBO0VBQ0EsY0FBQTtBQ0xSO0FEUU07RUFDRSxnQkFBQTtFQUNBLGNBQUE7QUNOUjtBRFVJO0VBQ0UsV0FBQTtBQ1JOO0FEWUU7RUFDRSxTQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQkFBQTtFQUNBLCtDQUFBO0VBQUEsdUNBQUE7QUNUSjtBRFdJO0VBQ0UsK0NBQUE7RUFBQSx1Q0FBQTtFQUNBLGdCQUFBO0VBQ0EsWUFBQTtBQ1ROO0FEYUU7RUFDRTtJQUNFLGNBQUE7RUNWSjtBQUNGO0FET0U7RUFDRTtJQUNFLGNBQUE7RUNWSjtBQUNGO0FEWUU7RUFDRSxnQkFBQTtFQUNBLGdCQUFBO0VBQ0EsV0FBQTtBQ1ZKO0FEYUU7RUFDRSxXQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7QUNWSjtBRGVFO0VBRUcsMkJBQUE7RUFDQSw4QkFBQTtBQ2JMO0FEZ0JFO0VBQ0UsdUJBQUE7QUNiSjtBRGlCSTtFQUNFLHNCQUFBO0VBQ0EsdUJBQUE7QUNkTjtBRGdCSTtFQUNJLHNCQUFBO0VBQ0EsdUJBQUE7RUFDQSw2QkFBQTtBQ2RSO0FEZ0JNO0VBQ0Usc0JBQUE7RUFDQSx1QkFBQTtFQUNBLDZCQUFBO0FDZFIiLCJmaWxlIjoic3JjL2FwcC9uZXctY2VydGlmaWNhdGUvbmV3LWNlcnRpZmljYXRlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5hY2Mtc2VjdGlvbiB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIGJvcmRlci10b3A6IHRoaW4gc29saWQgI2VmZWNlYztcbiAgICBiYWNrZ3JvdW5kOiAjZjdmN2Y3O1xuICAgIHBhZGRpbmc6IC43ZW07XG4gIFxuICAgICY6Zmlyc3QtY2hpbGQge1xuICAgICAgYm9yZGVyLXRvcDogbm9uZTtcbiAgICB9XG4gIFxuICAgICY6bGFzdC1jaGlsZCB7XG4gICAgICBib3JkZXItYm90dG9tOiB0aGluIHNvbGlkICNlNWU1ZTU7XG4gICAgfVxuICBcbiAgICAmIC5pbWcge1xuICAgICAgd2lkdGg6IDM1cHg7XG4gICAgICBtYXJnaW4tcmlnaHQ6IC41ZW07XG4gIFxuICAgICAgJiBpbWcge1xuICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgIH1cbiAgICB9XG4gIFxuICAgICYgLmluZm8ge1xuICAgICAgd2lkdGg6IGNhbGMoMTAwJSAtIDYwcHgpO1xuICBcbiAgICAgICYgPiAqIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgfVxuICBcbiAgICAgICYgLnRpdGxlIHtcbiAgICAgICAgZm9udC1zaXplOiAxZW07XG4gICAgICAgIGNvbG9yOiAjMzIzMTMzO1xuICAgICAgfVxuICBcbiAgICAgICYgLnN1YnRpdGxlIHtcbiAgICAgICAgZm9udC1zaXplOiAuOWVtO1xuICAgICAgICBjb2xvcjogIzhhODg4YTtcbiAgICAgIH1cbiAgXG4gICAgICAmIC50ZXh0IHtcbiAgICAgICAgZm9udC1zaXplOiAuOGVtO1xuICAgICAgICBjb2xvcjogI2YzYjIzNjtcbiAgICAgIH1cbiAgICB9XG4gIFxuICAgICYgLmljb24ge1xuICAgICAgd2lkdGg6IDIwcHg7XG4gICAgfVxuICB9XG4gIFxuICAuYWNjLWNvbnRlbnQge1xuICAgIGhlaWdodDogMDtcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuICAgIHBhZGRpbmc6IDAgLjVlbTtcbiAgICB0cmFuc2l0aW9uOiBtYXgtaGVpZ2h0IDAuNHMgZWFzZS1pbi1vdXQ7XG4gIFxuICAgICYuZXhwYW5kYWJsZSB7XG4gICAgICB0cmFuc2l0aW9uOiBtYXgtaGVpZ2h0IDAuNHMgZWFzZS1pbi1vdXQ7XG4gICAgICBvdmVyZmxvdzogaGlkZGVuO1xuICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgIH1cbiAgfVxuICBcbiAgQGtleWZyYW1lcyBkZWxheS1vdmVyZmxvdyB7XG4gICAgZnJvbSB7XG4gICAgICBvdmVyZmxvdzogYXV0bztcbiAgICB9XG4gIH1cbiAgLmV4YW1wbGUtZm9ybSB7XG4gICAgbWluLXdpZHRoOiAxNTBweDtcbiAgICBtYXgtd2lkdGg6IDUwMHB4O1xuICAgIHdpZHRoOiAxMDAlO1xuICB9XG4gIFxuICAuZXhhbXBsZS1mdWxsLXdpZHRoIHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBmb250LXNpemU6IDE1cHg7XG4gICAgY29sb3I6ICM4YTg4OGE7XG5cbiAgICAvL21hcmdpbi1ib3R0b206IC0xMHB4ICFpbXBvcnRhbnQ7XG4gIH1cbiAgXG4gIC5saXN0LW1kIHtcbiAgICBcbiAgICAgcGFkZGluZy10b3A6IDBweCAhaW1wb3J0YW50O1xuICAgICBwYWRkaW5nLWJvdHRvbTogMHB4IWltcG9ydGFudDtcbiAgICBcbiAgfVxuICAuYWNjLWNvbnRlbnQge1xuICAgIHBhZGRpbmc6IDBlbSFpbXBvcnRhbnQ7XG4gIH1cbiAgXG4gIGlvbi1pY29uIHtcbiAgICAmLmJpZyB7XG4gICAgICB3aWR0aDogNTJweCFpbXBvcnRhbnQ7XG4gICAgICBoZWlnaHQ6IDUycHghaW1wb3J0YW50O1xuICAgIH1cbiAgICAmLmJpZzEge1xuICAgICAgICB3aWR0aDogMzhweCFpbXBvcnRhbnQ7XG4gICAgICAgIGhlaWdodDogMzhweCFpbXBvcnRhbnQ7XG4gICAgICAgIG1hcmdpbi1yaWdodDogMTBweCFpbXBvcnRhbnQ7XG4gICAgICB9XG4gICAgICAmLmJpZzIge1xuICAgICAgICB3aWR0aDogNTJweCFpbXBvcnRhbnQ7XG4gICAgICAgIGhlaWdodDogNTJweCFpbXBvcnRhbnQ7XG4gICAgICAgIG1hcmdpbi1yaWdodDogMTBweCFpbXBvcnRhbnQ7XG4gICAgIH1cbiAgfSIsIi5hY2Mtc2VjdGlvbiB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGJvcmRlci10b3A6IHRoaW4gc29saWQgI2VmZWNlYztcbiAgYmFja2dyb3VuZDogI2Y3ZjdmNztcbiAgcGFkZGluZzogMC43ZW07XG59XG4uYWNjLXNlY3Rpb246Zmlyc3QtY2hpbGQge1xuICBib3JkZXItdG9wOiBub25lO1xufVxuLmFjYy1zZWN0aW9uOmxhc3QtY2hpbGQge1xuICBib3JkZXItYm90dG9tOiB0aGluIHNvbGlkICNlNWU1ZTU7XG59XG4uYWNjLXNlY3Rpb24gLmltZyB7XG4gIHdpZHRoOiAzNXB4O1xuICBtYXJnaW4tcmlnaHQ6IDAuNWVtO1xufVxuLmFjYy1zZWN0aW9uIC5pbWcgaW1nIHtcbiAgd2lkdGg6IDEwMCU7XG59XG4uYWNjLXNlY3Rpb24gLmluZm8ge1xuICB3aWR0aDogY2FsYygxMDAlIC0gNjBweCk7XG59XG4uYWNjLXNlY3Rpb24gLmluZm8gPiAqIHtcbiAgbWFyZ2luOiAwO1xufVxuLmFjYy1zZWN0aW9uIC5pbmZvIC50aXRsZSB7XG4gIGZvbnQtc2l6ZTogMWVtO1xuICBjb2xvcjogIzMyMzEzMztcbn1cbi5hY2Mtc2VjdGlvbiAuaW5mbyAuc3VidGl0bGUge1xuICBmb250LXNpemU6IDAuOWVtO1xuICBjb2xvcjogIzhhODg4YTtcbn1cbi5hY2Mtc2VjdGlvbiAuaW5mbyAudGV4dCB7XG4gIGZvbnQtc2l6ZTogMC44ZW07XG4gIGNvbG9yOiAjZjNiMjM2O1xufVxuLmFjYy1zZWN0aW9uIC5pY29uIHtcbiAgd2lkdGg6IDIwcHg7XG59XG5cbi5hY2MtY29udGVudCB7XG4gIGhlaWdodDogMDtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgcGFkZGluZzogMCAwLjVlbTtcbiAgdHJhbnNpdGlvbjogbWF4LWhlaWdodCAwLjRzIGVhc2UtaW4tb3V0O1xufVxuLmFjYy1jb250ZW50LmV4cGFuZGFibGUge1xuICB0cmFuc2l0aW9uOiBtYXgtaGVpZ2h0IDAuNHMgZWFzZS1pbi1vdXQ7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIGhlaWdodDogYXV0bztcbn1cblxuQGtleWZyYW1lcyBkZWxheS1vdmVyZmxvdyB7XG4gIGZyb20ge1xuICAgIG92ZXJmbG93OiBhdXRvO1xuICB9XG59XG4uZXhhbXBsZS1mb3JtIHtcbiAgbWluLXdpZHRoOiAxNTBweDtcbiAgbWF4LXdpZHRoOiA1MDBweDtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5leGFtcGxlLWZ1bGwtd2lkdGgge1xuICB3aWR0aDogMTAwJTtcbiAgZm9udC1zaXplOiAxNXB4O1xuICBjb2xvcjogIzhhODg4YTtcbn1cblxuLmxpc3QtbWQge1xuICBwYWRkaW5nLXRvcDogMHB4ICFpbXBvcnRhbnQ7XG4gIHBhZGRpbmctYm90dG9tOiAwcHggIWltcG9ydGFudDtcbn1cblxuLmFjYy1jb250ZW50IHtcbiAgcGFkZGluZzogMGVtICFpbXBvcnRhbnQ7XG59XG5cbmlvbi1pY29uLmJpZyB7XG4gIHdpZHRoOiA1MnB4ICFpbXBvcnRhbnQ7XG4gIGhlaWdodDogNTJweCAhaW1wb3J0YW50O1xufVxuaW9uLWljb24uYmlnMSB7XG4gIHdpZHRoOiAzOHB4ICFpbXBvcnRhbnQ7XG4gIGhlaWdodDogMzhweCAhaW1wb3J0YW50O1xuICBtYXJnaW4tcmlnaHQ6IDEwcHggIWltcG9ydGFudDtcbn1cbmlvbi1pY29uLmJpZzIge1xuICB3aWR0aDogNTJweCAhaW1wb3J0YW50O1xuICBoZWlnaHQ6IDUycHggIWltcG9ydGFudDtcbiAgbWFyZ2luLXJpZ2h0OiAxMHB4ICFpbXBvcnRhbnQ7XG59Il19 */"
 
 /***/ }),
 
@@ -3408,7 +3529,7 @@ let NewCertificatePage = class NewCertificatePage {
             this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
                 if (result.response == true) {
                     this.NewCertificate.idservice_certifications = result.result;
-                    this.presentToast('Se guardo el Certificado1');
+                    this.presentToast('Se guardo el Certificado');
                 }
             }, error => {
             });
@@ -4203,10 +4324,6 @@ let SendimagesPage = class SendimagesPage {
         });
     }
     choosePicture(photo) {
-        // this.respuesta = true;
-        // this.falso = true;
-        // this.imagenbotton = false;
-        //this.rowDataHomeForm = [];
         let options = {
             title: "selecionar imagen",
             message: "select 1",
@@ -4218,15 +4335,10 @@ let SendimagesPage = class SendimagesPage {
             sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
         };
         this.imagePicker.getPictures(options).then(_imagePath => {
-            // this.image = _imagePath;
             let path = this.win.Ionic.WebView.convertFileSrc(_imagePath[0]);
             photo.imagenes = path;
-            // console.log(_imagePath[0])
-            // console.log(photo)
             photo.hidden = true;
             photo.hidden_image = false;
-            // for (var i = 0; i < this.image.length; i++) {
-            // }
         }, err => { });
     }
     onLoadimage(img, id, name_photo, idodi, tipe, contract_idcontract) {
@@ -4300,6 +4412,13 @@ let SendimagesPage = class SendimagesPage {
                 this.photos[id].state_send = true;
                 this.photos[id].error = false;
                 this.writeFile(imagen, "My Picture", divisiones1[0]);
+                this.tasksService.InsertICertificate(divisiones1[0], tipe, idodi, this.idservice)
+                    .then(response => {
+                    console.log(response);
+                })
+                    .catch(error => {
+                    console.error(error);
+                });
                 this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
                 this.presentToast('Error de Coneción');
             });
@@ -4458,9 +4577,100 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "constant", function() { return constant; });
 class constant {
     constructor() {
-        this.routeGlobal = "http://190.0.33.166:90/laravel-mls/public/api/"; ///sip/public/api/
+        this.routeGlobal = "http://192.168.1.57/laravel-mls/public/api/"; ///sip/public/api/
     }
 }
+
+
+/***/ }),
+
+/***/ "./src/app/view-document/view-document.module.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/view-document/view-document.module.ts ***!
+  \*******************************************************/
+/*! exports provided: ViewDocumentPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewDocumentPageModule", function() { return ViewDocumentPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _view_document_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./view-document.page */ "./src/app/view-document/view-document.page.ts");
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _view_document_page__WEBPACK_IMPORTED_MODULE_6__["ViewDocumentPage"]
+    }
+];
+let ViewDocumentPageModule = class ViewDocumentPageModule {
+};
+ViewDocumentPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_view_document_page__WEBPACK_IMPORTED_MODULE_6__["ViewDocumentPage"]]
+    })
+], ViewDocumentPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/view-document/view-document.page.scss":
+/*!*******************************************************!*\
+  !*** ./src/app/view-document/view-document.page.scss ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3ZpZXctZG9jdW1lbnQvdmlldy1kb2N1bWVudC5wYWdlLnNjc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/view-document/view-document.page.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/view-document/view-document.page.ts ***!
+  \*****************************************************/
+/*! exports provided: ViewDocumentPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewDocumentPage", function() { return ViewDocumentPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let ViewDocumentPage = class ViewDocumentPage {
+    constructor() { }
+    ngOnInit() {
+    }
+};
+ViewDocumentPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-view-document',
+        template: __webpack_require__(/*! raw-loader!./view-document.page.html */ "./node_modules/raw-loader/index.js!./src/app/view-document/view-document.page.html"),
+        styles: [__webpack_require__(/*! ./view-document.page.scss */ "./src/app/view-document/view-document.page.scss")]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], ViewDocumentPage);
+
 
 
 /***/ }),

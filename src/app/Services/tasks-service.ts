@@ -23,6 +23,7 @@ export class TasksService {
     return this.db.executeSql(sql, []);
   }
 
+
   InsertImage(odi, image, idservice) {
     let sql = 'INSERT INTO image(idphotos,name_photo, actual,quantity,min,odi_idodi,idservice_certifications) VALUES(?,?,?,?,?,?,?)';
     return this.db.executeSql(sql, [image.idphotos, image.name_photo, 0, image.quantity, image.min, odi, idservice]);
@@ -69,6 +70,36 @@ export class TasksService {
   delete(odi_idodi, certificate) {
     let sql = 'DELETE  FROM image WHERE odi_idodi=? and idservice_certifications=?';
     return this.db.executeSql(sql, [odi_idodi, certificate]);
+  }
+
+
+  createTableImageCertificate() {
+    let sql = 'CREATE TABLE IF NOT EXISTS imagecert(id INTEGER PRIMARY KEY AUTOINCREMENT,idphotos INTEGER, name_photo TEXT, odi_idodi INTEGER, certifications INTEGER)';
+    return this.db.executeSql(sql, []);
+  }
+
+  InsertICertificate(image, type, odi, idservice) {
+    console.log(odi)
+    console.log(image)
+    console.log(type)
+    console.log(idservice)
+
+    let sql = 'INSERT INTO imagecert(idphotos,name_photo, odi_idodi,certifications) VALUES(?,?,?,?)';
+    return this.db.executeSql(sql, [type, image, odi, idservice]);
+  }
+
+  SelectICertificate() {
+    let sql = 'SELECT * FROM imagecert';
+    return this.db.executeSql(sql, [])
+      .then(response => {
+        let tasks = [];
+        for (let index = 0; index < response.rows.length; index++) {
+          tasks.push(response.rows.item(index));
+        }
+        return Promise.resolve(tasks);
+      })
+      .catch(error => Promise.reject(error));
+
   }
 
 }

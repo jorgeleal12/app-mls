@@ -39,3 +39,13 @@ ion-icon {
         margin-right: 10px!important;
      }
 }
+
+#cart-btn {
+    position: relative;
+  }
+  
+  #cart-badge {
+    position: absolute;
+    top: -2px;
+    
+  }

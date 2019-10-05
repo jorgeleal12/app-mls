@@ -145,11 +145,6 @@ export class SendimagesPage implements OnInit {
     });
   }
   choosePicture(photo) {
-    // this.respuesta = true;
-    // this.falso = true;
-    // this.imagenbotton = false;
-    //this.rowDataHomeForm = [];
-
     let options = {
       title: "selecionar imagen",
       message: "select 1",
@@ -163,19 +158,10 @@ export class SendimagesPage implements OnInit {
 
     this.imagePicker.getPictures(options).then(
       _imagePath => {
-        // this.image = _imagePath;
-
-
         let path = this.win.Ionic.WebView.convertFileSrc(_imagePath[0]);
-
         photo.imagenes = path;
-        // console.log(_imagePath[0])
-        // console.log(photo)
         photo.hidden = true
         photo.hidden_image = false
-        // for (var i = 0; i < this.image.length; i++) {
-
-        // }
       },
       err => { }
     );
@@ -243,7 +229,6 @@ export class SendimagesPage implements OnInit {
               this.photos[id].state_send = true;
               this.photos[id].send = false;
 
-
               this.tasksService.update(tipe, idodi, this.idservice, this.number)
                 .then(response => {
                   console.log(response)
@@ -270,6 +255,17 @@ export class SendimagesPage implements OnInit {
             this.photos[id].state_send = true;
             this.photos[id].error = false;
             this.writeFile(imagen, "My Picture", divisiones1[0]);
+
+            this.tasksService.InsertICertificate(divisiones1[0], tipe, idodi, this.idservice)
+              .then(response => {
+                console.log(response)
+              })
+              .catch(error => {
+                console.error(error);
+              })
+
+
+
             this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
             this.presentToast('Error de Coneción')
           }
