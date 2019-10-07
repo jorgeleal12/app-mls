@@ -33,17 +33,7 @@
         <ion-icon name="md-close-circle" color="red" size="large" [hidden]="photo.error" *ngIf="photo.state == false">
         </ion-icon>
       </div>
-
-
-
     </ion-card>
-
-    <ion-card class="add-img add-pdf" (click)="selectImage(photo)">
-      <ion-card-content>
-        <ion-icon name="document" color="light" size="large"></ion-icon>
-      </ion-card-content>
-    </ion-card>
-
     <canvas #layout hidden></canvas>
   </section>
 

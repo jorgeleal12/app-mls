@@ -30,6 +30,7 @@ export class AcordeonPage implements OnInit {
     photos_services
     networks
     NewService: FormGroup;
+    hidden;
     constructor(
         private route: ActivatedRoute,
         private router: Router,
@@ -113,10 +114,13 @@ export class AcordeonPage implements OnInit {
                 this.NewService.get('construtor').setValue(this.data.construtor);
                 this.NewService.get('service_type_idservice_type').setValue(this.data.service_type_idservice_type);
                 this.search_address();
+                this.hidden = true;
+                this.type_red()
             } else {
                 this.div_hidden = false;
                 this.div_service = true;
                 this.NewService.reset();
+                this.hidden = false;
             }
         });
 
@@ -128,7 +132,14 @@ export class AcordeonPage implements OnInit {
         this.NewService.get('user').setValue(localStorage.getItem("idemployees"));
         this.NewService.get('user_type').setValue(localStorage.getItem("type"));
     }
-
+    edit() {
+        console.log('1');
+        this.hidden = false;
+        this.div_hidden = false;
+        this.div_service = true;
+        console.log(this.NewService.value.service_type_idservice_type)
+        this.search_address();
+    }
     search_address() {
         this.loginServiceService.search_address(this.NewService.value.address).subscribe(result => {
             this.NewService.get('name_address').setValue(result.response.address);

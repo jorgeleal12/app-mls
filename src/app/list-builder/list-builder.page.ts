@@ -59,6 +59,25 @@ export class ListBuilderPage implements OnInit {
     await modal.present();
   }
 
+  async  ModalNewClient() {
+    const modal: HTMLIonModalElement =
+      await this.modalController.create({
+        component: NewBuilderPage,
+        componentProps: {
+          'data': null,
+          // 'idservice': this.NewCertificate.idservice_certifications,
+        }
+      });
+
+    modal.onDidDismiss().then((detail) => {
+      this.builders = [];
+      this.ListBuilder();
+    });
+
+    await modal.present();
+  }
+
+
   loadMore(event) {
     this.page++;
     this.ListBuilder(event)

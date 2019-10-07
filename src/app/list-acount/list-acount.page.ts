@@ -66,7 +66,7 @@ export class ListAcountPage implements OnInit {
     await modal.present();
   }
 
-  async  ModalNewAcount(Client) {
+  async  ModalNewAcount() {
     const modal: HTMLIonModalElement =
       await this.modalController.create({
         component: NewAcountPage,

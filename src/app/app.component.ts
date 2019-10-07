@@ -27,9 +27,6 @@ export class AppComponent {
   ) {
 
     this.initializeApp();
-
-
-
   }
 
 
@@ -41,8 +38,8 @@ export class AppComponent {
     })
       .then((db) => {
         this.tasksService.setDatabase(db);
-        this.tasksService.createTableImage();
-        this.tasksService.createTableImageCertificate();
+        return this.tasksService.createTableImage();
+        // return this.tasksService.createTableImageCertificate();
       })
       .then(() => {
 

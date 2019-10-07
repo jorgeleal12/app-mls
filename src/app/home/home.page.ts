@@ -12,6 +12,7 @@ export class HomePage implements OnInit {
   loaderToShow
   asignada = 0;
   rechazadas = 0;
+  etendidas = 0;
   constructor(private LoginServiceService: LoginServiceService, private router: Router, public loadingController: LoadingController) {
 
 
@@ -34,11 +35,14 @@ export class HomePage implements OnInit {
       })).subscribe(result => {
         if (result.search_rech != null) {
           this.rechazadas = result.search_rech.total
+
         }
 
         if (result.data != null) {
           this.asignada = result.data.total - this.rechazadas
+
         }
+        this.etendidas = result.search_etn.total
       }, error => {
 
       })

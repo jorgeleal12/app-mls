@@ -101,5 +101,10 @@ export class TasksService {
       .catch(error => Promise.reject(error));
 
   }
+  DeleteImageCertificado(id) {
+    let sql = 'DELETE  FROM imagecert WHERE id=?';
+    return this.db.executeSql(sql, [id]);
+  }
+
 
 }

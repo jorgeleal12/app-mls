@@ -95,31 +95,37 @@ export class NewCertificatePage implements OnInit {
   async ModalImage() {
 
 
-    if (this.NewCertificate.state != 1) {
-      this.presentToast('El certificado se encuentra Realizado o Aprobado')
-      return;
-    }
+
     if (this.NewCertificate.idservice_certifications == undefined) {
       this.presentToast('Primero guarde el Certificado')
       return;
-    }
+    } else {
 
-    const modal: HTMLIonModalElement =
-      await this.modalController.create({
-        component: ImagesPage,
-        componentProps: {
-          'number_service': this.number_service,
-          'type_network': this.type_network,
-          'data': this.data,
-          'idservice': this.NewCertificate.idservice_certifications,
-        }
+      if (this.NewCertificate.state != 1) {
+        this.presentToast('El certificado se encuentra Realizado o Aprobado')
+        return;
+      }
 
+      const modal: HTMLIonModalElement =
+        await this.modalController.create({
+          component: ImagesPage,
+          componentProps: {
+            'number_service': this.number_service,
+            'type_network': this.type_network,
+            'data': this.data,
+            'idservice': this.NewCertificate.idservice_certifications,
+          }
+
+        });
+
+      modal.onDidDismiss().then((detail) => {
       });
 
-    modal.onDidDismiss().then((detail) => {
-    });
+      await modal.present();
 
-    await modal.present();
+    }
+
+
 
 
   }
@@ -184,7 +190,7 @@ export class NewCertificatePage implements OnInit {
 
               if (result.response == false) {
 
-                this.presentToast('Se guardo el Certificado2')
+                this.presentToast('Se guardo el Certificado')
               }
 
             }, error => {
@@ -210,7 +216,7 @@ export class NewCertificatePage implements OnInit {
 
           if (result.response == false) {
 
-            this.presentToast('Se guardo el Certificado3')
+            this.presentToast('Se guardo el Certificado')
           }
 
         }, error => {

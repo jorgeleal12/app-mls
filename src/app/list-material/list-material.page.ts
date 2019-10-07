@@ -64,6 +64,25 @@ export class ListMaterialPage implements OnInit {
     await modal.present();
   }
 
+  async  ModalNewMterial() {
+    const modal: HTMLIonModalElement =
+      await this.modalController.create({
+        component: NewMaterialPage,
+        componentProps: {
+          'data': null,
+          // 'idservice': this.NewCertificate.idservice_certifications,
+        }
+      });
+
+    modal.onDidDismiss().then((detail) => {
+      this.Materials = [];
+      this.ListMaterial();
+    });
+
+    await modal.present();
+  }
+
+
   loadMore(event) {
     this.page++;
     this.ListMaterial(event)

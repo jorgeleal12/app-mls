@@ -53,6 +53,23 @@ export class ClientPage implements OnInit {
     await modal.present();
   }
 
+  async  ModalNewClient() {
+    const modal: HTMLIonModalElement =
+      await this.modalController.create({
+        component: NewClientPage,
+        componentProps: {
+          'data': null,
+          // 'idservice': this.NewCertificate.idservice_certifications,
+        }
+      });
+
+    modal.onDidDismiss().then((detail) => {
+
+    });
+
+    await modal.present();
+  }
+
   ListClient(event?) {
     this.showLoader();
     const params = { idcompany: 1 }

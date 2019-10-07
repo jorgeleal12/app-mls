@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginServiceService } from "../Services/login-service.service";
 import { Router } from '@angular/router';
-import { finalize } from 'rxjs/operators';
-import { LoadingController } from '@ionic/angular';
+
 import { TasksService } from '../Services/tasks-service';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { File } from '@ionic-native/file/ngx';
+import { finalize } from 'rxjs/operators';
+import { LoadingController } from '@ionic/angular';
 import { constant } from '../utilitis/constant';
 @Component({
   selector: 'app-asignadas',
@@ -34,19 +35,19 @@ export class AsignadasPage implements OnInit {
 
   }
   ionViewWillEnter() {
-    this.sqli();
+    // this.sqli();
     this.search_asignadas()
 
   }
   search_asignadas() {
-    this.showLoader()
+    this.showLoader('Cargando...')
     let params = {
       user: localStorage.getItem("id")
       , type: localStorage.getItem("type")
     }
     this.LoginServiceService.seach_asignadas(params).pipe(
       finalize(() => {
-        this.loadingController.dismiss();
+        this.hideLoader();
 
       })).subscribe(result => {
         this.cars = result.data
@@ -59,6 +60,11 @@ export class AsignadasPage implements OnInit {
   servicio(car) {
 
     this.router.navigate(['menu/menu/servicio'], car);
+  }
+
+  servicio1() {
+
+    this.router.navigate(['menu/menu/servicio']);
   }
 
   doRefresh(event) {
@@ -74,41 +80,34 @@ export class AsignadasPage implements OnInit {
     this.router.navigateByUrl('menu/menu/home');
   }
 
-  showLoader() {
-    this.loaderToShow = this.loadingController.create({
-      message: 'Cargando',
-      duration: 1000
-    }).then((res) => {
-      res.present();
-    });
 
-  }
 
   sqli() {
     this.tasksService.SelectICertificate()
       .then(tasks => {
-        console.log(tasks)
         this.image = tasks;
         this.propCount = Object.keys(tasks).length;
       })
       .catch(error => {
-        console.error(error);
       });
   }
 
   sendimage() {
-
+    this.showLoader('Enviando...');
+    let number = 0;
     for (let data of this.image) {
-      console.log(data)
+      number++;
+      this.onLoadimage(data.name_photo, data.odi_idodi, data.idphotos, data.certifications, data.id);
+    }
 
-      this.onLoadimage(data.name_photo, data.odi_idodi, data.idphotos, data.certifications);
+    if (number == this.propCount) {
 
-
+      this.hideLoader();
     }
 
   }
 
-  onLoadimage(name_photo, odi_idodi, idphotos, certifications) {
+  onLoadimage(name_photo, odi_idodi, idphotos, certifications, id) {
 
     let params = {
       idodi: odi_idodi,
@@ -119,8 +118,6 @@ export class AsignadasPage implements OnInit {
 
     const fileTransfer: FileTransferObject = this.transfer.create();
     let imagen = filePath + name_photo
-    console.log(imagen)
-
     let options: FileUploadOptions = {
       fileKey: "file",
       fileName: 'name.jpg',
@@ -137,7 +134,17 @@ export class AsignadasPage implements OnInit {
         data => {
           var json = JSON.parse(data.response);
           if (json.response == true) {
-            console.log(json.response)
+
+            this.tasksService.DeleteImageCertificado(id)
+              .then(tasks => {
+                this.file.removeFile(filePath, name_photo);
+                this.sqli()
+              })
+              .catch(error => {
+                console.error(error);
+              });
+
+
           }
         },
         err => {
@@ -147,5 +154,24 @@ export class AsignadasPage implements OnInit {
         }
       );
   };
+
+
+  showLoader(mensaje) {
+    this.loaderToShow = this.loadingController.create({
+      message: mensaje
+    }).then((res) => {
+      res.present();
+
+      res.onDidDismiss().then((dis) => {
+
+      });
+    });
+
+  }
+  hideLoader() {
+    setTimeout(() => {
+      this.loadingController.dismiss();
+    });
+  }
 
 }

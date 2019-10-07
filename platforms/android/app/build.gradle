@@ -99,11 +99,11 @@ ext {
 
 // PLUGIN GRADLE EXTENSIONS START
 apply from: "../cordova-android-support-gradle-release/app_mls-cordova-android-support-gradle-release.gradle"
-apply from: "../cordova-plugin-badge/app_mls-badge.gradle"
-apply from: "../cordova-plugin-fcm-with-dependecy-updated/app_mls-FCMPlugin.gradle"
-apply from: "../cordova-plugin-local-notification/app_mls-localnotification.gradle"
 apply from: "../cordova-plugin-telerik-imagepicker/app_mls-ignorelinterrors.gradle"
 apply from: "../cordova-plugin-telerik-imagepicker/app_mls-androidtarget.gradle"
+apply from: "../cordova-plugin-fcm-with-dependecy-updated/app_mls-FCMPlugin.gradle"
+apply from: "../cordova-plugin-badge/app_mls-badge.gradle"
+apply from: "../cordova-plugin-local-notification/app_mls-localnotification.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras1 = file('build-extras.gradle').exists()
@@ -299,13 +299,13 @@ dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
-    implementation "com.android.support:support-v4:27.+"
+    implementation "com.squareup.okhttp3:okhttp:3.12.0"
+    implementation "com.android.support:appcompat-v7:23+"
     implementation "com.google.firebase:firebase-core:16.0.9"
     implementation "com.google.firebase:firebase-messaging:18.0.0"
-    implementation "com.android.support:support-annotations:27.+"
     implementation "com.android.support:support-v4:26.+"
-    implementation "com.android.support:appcompat-v7:23+"
-    implementation "com.squareup.okhttp3:okhttp:3.12.0"
+    implementation "com.android.support:support-v4:27.+"
+    implementation "com.android.support:support-annotations:27.+"
     // SUB-PROJECT DEPENDENCIES END
 }
 

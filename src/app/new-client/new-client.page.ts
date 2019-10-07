@@ -102,7 +102,7 @@ export class NewClientPage implements OnInit {
     this.hidden1 = true;
   }
 
-  async  ModalAcount(Client) {
+  async  ModalAcount() {
     const modal: HTMLIonModalElement =
       await this.modalController.create({
         component: ListAcountPage,

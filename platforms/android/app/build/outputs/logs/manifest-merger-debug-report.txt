@@ -1,35 +1,36 @@
 -- Merging decision tree log ---
-provider#org.apache.cordova.camera.FileProvider
-INJECTED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:12:9-14:20
-	android:grantUriPermissions
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:12:92-126
-	android:authorities
-		INJECTED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:12:19-66
-	android:exported
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:12:67-91
-	android:name
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:12:127-180
 provider#de.appplant.cordova.plugin.notification.util.AssetProvider
-INJECTED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:26:9-28:20
+INJECTED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:25:9-27:20
 	android:grantUriPermissions
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:26:92-126
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:25:92-126
 	android:authorities
 		INJECTED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:26:19-66
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:25:19-66
 	android:exported
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:26:67-91
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:25:67-91
 	android:name
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:26:127-200
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:25:127-200
+provider#org.apache.cordova.camera.FileProvider
+INJECTED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:31:9-33:20
+	android:grantUriPermissions
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:31:92-126
+	android:authorities
+		INJECTED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:31:19-66
+	android:exported
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:31:67-91
+	android:name
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:31:127-180
 manifest
 ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:2:1-41:12
 INJECTED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:2:1-41:12
 INJECTED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:2:1-41:12
 INJECTED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:2:1-41:12
-MERGED from [me.leolin:ShortcutBadger:1.1.22] /root/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/3e15d4ef109debfaaaf04de9a1eb7a8f/AndroidManifest.xml:2:1-52:12
 MERGED from [com.google.firebase:firebase-core:16.0.9] /root/.gradle/caches/transforms-1/files-1.1/firebase-core-16.0.9.aar/e69bc44fc0c1252299f107b0d08a77bd/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-messaging:18.0.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-messaging-18.0.0.aar/5433f93c6699a1ac7b962c75748dbd3e/AndroidManifest.xml:17:1-37:12
+MERGED from [me.leolin:ShortcutBadger:1.1.22] /root/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/3e15d4ef109debfaaaf04de9a1eb7a8f/AndroidManifest.xml:2:1-52:12
 MERGED from [:CordovaLib] /var/www/html/app-mls/platforms/android/CordovaLib/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:1-27:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/b54419c4ef1536f79d6ece8334fc6bd9/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-analytics:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.5.0.aar/29b8da9bdd78a3d75b56a5692167ff8b/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-measurement-api:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-api-16.5.0.aar/e6ae448f9a19c050c587cb790c31af37/AndroidManifest.xml:17:1-36:12
 MERGED from [com.google.firebase:firebase-iid:18.0.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-iid-18.0.0.aar/1e1478458d65db54e22867c111ec1e7a/AndroidManifest.xml:17:1-47:12
@@ -47,17 +48,16 @@ MERGED from [com.google.android.gms:play-services-measurement-base:16.5.0] /root
 MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-ads-identifier-16.0.0.aar/09ed983a9c266245aa938a0231c94bd7/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-basement:16.2.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.2.0.aar/6b5b007ca21368d60ec6c69ad533bbde/AndroidManifest.xml:17:1-28:12
 MERGED from [com.android.support:support-v4:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/11fcfe3d7c7a1f036941316d120ec9d8/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:appcompat-v7:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/b54419c4ef1536f79d6ece8334fc6bd9/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-media-compat:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/2b6df4176ce8b2f0e5fbce0cbae7ac8c/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-fragment:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/a34359dd122076c81cc88ba12b9f4c9a/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:animated-vector-drawable:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/3a3e1c550ddbb87fb38a5e11c5b851b9/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-ui:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.1.aar/478ec2b357dc8ab4c5c6719bb98159a4/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-utils:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/d9de3b3d00d83e28ef6c6af845887813/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-vector-drawable:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/12c2a185fe1a6d90809dd89e8c2155a7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/2b6df4176ce8b2f0e5fbce0cbae7ac8c/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-compat:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/fa27400905446a11bb12a5fdeed8e5cf/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:runtime:1.1.0] /root/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/94e0b1582919acad2b44d7291fdad9f9/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /root/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/ca0b2141d0a29c9c89d467b90659c8a3/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /root/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/4df9b83e9605bf361ebf022eade853d8/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /root/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/94e0b1582919acad2b44d7291fdad9f9/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.0] /root/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/bc4390fd973282de7a995e3977d0dd24/AndroidManifest.xml:17:1-22:12
 INJECTED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:2:1-41:12
 INJECTED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:2:1-41:12
@@ -180,76 +180,86 @@ category#android.intent.category.LAUNCHER
 ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:9:17-77
 	android:name
 		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:9:27-74
+meta-data#launchnavigator.GOOGLE_API_KEY
+ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:12:9-85
+	android:value
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:12:66-82
+	android:name
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:12:20-65
+activity#com.synconset.MultiImageChooserActivity
+ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:13:9-160
+	android:label
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:13:19-57
+	android:theme
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:13:113-157
+	android:name
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:13:58-112
 activity#com.gae.scaffolder.plugin.FCMPluginActivity
-ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:15:9-20:20
+ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:14:9-19:20
 	android:launchMode
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:15:43-73
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:14:43-73
 	android:exported
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:15:19-42
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:14:19-42
 	android:name
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:15:74-132
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:14:74-132
 intent-filter#action:name:FCM_PLUGIN_ACTIVITY+category:name:android.intent.category.DEFAULT
-ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:16:13-19:29
+ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:15:13-18:29
 action#FCM_PLUGIN_ACTIVITY
-ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:17:17-62
+ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:16:17-62
 	android:name
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:17:25-59
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:16:25-59
 category#android.intent.category.DEFAULT
-ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:18:17-76
+ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:17:17-76
 	android:name
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:18:27-73
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:17:27-73
 service#com.gae.scaffolder.plugin.MyFirebaseMessagingService
-ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:21:9-25:19
+ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:20:9-24:19
 	android:stopWithTask
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:21:86-114
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:20:86-114
 	android:name
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:21:18-85
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:20:18-85
 intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
-ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:22:13-24:29
+ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:21:13-23:29
 action#com.google.firebase.MESSAGING_EVENT
-ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:23:17-78
+ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:22:17-78
 	android:name
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:23:25-75
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:22:25-75
 receiver#de.appplant.cordova.plugin.localnotification.TriggerReceiver
-ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:29:9-122
+ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:28:9-122
+	android:exported
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:28:19-43
+	android:name
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:28:44-119
+receiver#de.appplant.cordova.plugin.localnotification.ClearReceiver
+ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:29:9-120
 	android:exported
 		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:29:19-43
 	android:name
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:29:44-119
-receiver#de.appplant.cordova.plugin.localnotification.ClearReceiver
-ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:30:9-120
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:29:44-117
+activity#de.appplant.cordova.plugin.localnotification.ClickReceiver
+ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:30:9-205
+	android:launchMode
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:30:44-79
 	android:exported
 		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:30:19-43
-	android:name
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:30:44-117
-activity#de.appplant.cordova.plugin.localnotification.ClickReceiver
-ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:31:9-205
-	android:launchMode
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:31:44-79
-	android:exported
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:31:19-43
 	android:theme
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:31:154-202
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:30:154-202
 	android:name
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:31:80-153
-activity#com.synconset.MultiImageChooserActivity
-ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:32:9-160
-	android:label
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:32:19-57
-	android:theme
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:32:113-157
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:30:80-153
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:35:5-79
+MERGED from [com.google.android.gms:play-services-measurement-api:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-api-16.5.0.aar/e6ae448f9a19c050c587cb790c31af37/AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-measurement-api:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-api-16.5.0.aar/e6ae448f9a19c050c587cb790c31af37/AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-iid:18.0.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-iid-18.0.0.aar/1e1478458d65db54e22867c111ec1e7a/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:18.0.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-iid-18.0.0.aar/1e1478458d65db54e22867c111ec1e7a/AndroidManifest.xml:22:5-79
+MERGED from [com.google.android.gms:play-services-measurement:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-16.5.0.aar/3b2601f8e4ee1909cc25d164a3b76384/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-16.5.0.aar/3b2601f8e4ee1909cc25d164a3b76384/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-impl:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-impl-16.5.0.aar/9282f10025d1228f8565894a5fc196f5/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-impl:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-impl-16.5.0.aar/9282f10025d1228f8565894a5fc196f5/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-sdk-api-16.5.0.aar/d44975272545f9415032f64b10c03516/AndroidManifest.xml:24:5-79
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-sdk-api-16.5.0.aar/d44975272545f9415032f64b10c03516/AndroidManifest.xml:24:5-79
 	android:name
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:32:58-112
-meta-data#launchnavigator.GOOGLE_API_KEY
-ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:33:9-85
-	android:value
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:33:66-82
-	android:name
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:33:20-65
-uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:35:5-81
-	android:name
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:35:22-78
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:35:22-76
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
 ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:36:5-81
 	android:name
@@ -262,8 +272,12 @@ uses-feature#android.hardware.location.gps
 ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:38:5-66
 	android:name
 		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:38:19-63
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:39:5-81
+	android:name
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:39:22-78
 uses-permission#android.permission.WAKE_LOCK
-ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:39:5-68
+ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:40:5-68
 MERGED from [com.google.android.gms:play-services-measurement-api:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-api-16.5.0.aar/e6ae448f9a19c050c587cb790c31af37/AndroidManifest.xml:24:5-68
 MERGED from [com.google.android.gms:play-services-measurement-api:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-api-16.5.0.aar/e6ae448f9a19c050c587cb790c31af37/AndroidManifest.xml:24:5-68
 MERGED from [com.google.firebase:firebase-iid:18.0.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-iid-18.0.0.aar/1e1478458d65db54e22867c111ec1e7a/AndroidManifest.xml:24:5-68
@@ -275,33 +289,21 @@ MERGED from [com.google.android.gms:play-services-measurement-impl:16.5.0] /root
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-sdk-api-16.5.0.aar/d44975272545f9415032f64b10c03516/AndroidManifest.xml:25:5-68
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-sdk-api-16.5.0.aar/d44975272545f9415032f64b10c03516/AndroidManifest.xml:25:5-68
 	android:name
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:39:22-65
-uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:40:5-79
-MERGED from [com.google.android.gms:play-services-measurement-api:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-api-16.5.0.aar/e6ae448f9a19c050c587cb790c31af37/AndroidManifest.xml:23:5-79
-MERGED from [com.google.android.gms:play-services-measurement-api:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-api-16.5.0.aar/e6ae448f9a19c050c587cb790c31af37/AndroidManifest.xml:23:5-79
-MERGED from [com.google.firebase:firebase-iid:18.0.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-iid-18.0.0.aar/1e1478458d65db54e22867c111ec1e7a/AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-iid:18.0.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-iid-18.0.0.aar/1e1478458d65db54e22867c111ec1e7a/AndroidManifest.xml:22:5-79
-MERGED from [com.google.android.gms:play-services-measurement:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-16.5.0.aar/3b2601f8e4ee1909cc25d164a3b76384/AndroidManifest.xml:24:5-79
-MERGED from [com.google.android.gms:play-services-measurement:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-16.5.0.aar/3b2601f8e4ee1909cc25d164a3b76384/AndroidManifest.xml:24:5-79
-MERGED from [com.google.android.gms:play-services-measurement-impl:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-impl-16.5.0.aar/9282f10025d1228f8565894a5fc196f5/AndroidManifest.xml:24:5-79
-MERGED from [com.google.android.gms:play-services-measurement-impl:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-impl-16.5.0.aar/9282f10025d1228f8565894a5fc196f5/AndroidManifest.xml:24:5-79
-MERGED from [com.google.android.gms:play-services-measurement-sdk-api:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-sdk-api-16.5.0.aar/d44975272545f9415032f64b10c03516/AndroidManifest.xml:24:5-79
-MERGED from [com.google.android.gms:play-services-measurement-sdk-api:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-sdk-api-16.5.0.aar/d44975272545f9415032f64b10c03516/AndroidManifest.xml:24:5-79
-	android:name
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:40:22-76
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:40:22-65
 uses-sdk
 INJECTED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml
 INJECTED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml
-MERGED from [me.leolin:ShortcutBadger:1.1.22] /root/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/3e15d4ef109debfaaaf04de9a1eb7a8f/AndroidManifest.xml:7:5-9:41
-MERGED from [me.leolin:ShortcutBadger:1.1.22] /root/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/3e15d4ef109debfaaaf04de9a1eb7a8f/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.firebase:firebase-core:16.0.9] /root/.gradle/caches/transforms-1/files-1.1/firebase-core-16.0.9.aar/e69bc44fc0c1252299f107b0d08a77bd/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-core:16.0.9] /root/.gradle/caches/transforms-1/files-1.1/firebase-core-16.0.9.aar/e69bc44fc0c1252299f107b0d08a77bd/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-messaging:18.0.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-messaging-18.0.0.aar/5433f93c6699a1ac7b962c75748dbd3e/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-messaging:18.0.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-messaging-18.0.0.aar/5433f93c6699a1ac7b962c75748dbd3e/AndroidManifest.xml:20:5-44
+MERGED from [me.leolin:ShortcutBadger:1.1.22] /root/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/3e15d4ef109debfaaaf04de9a1eb7a8f/AndroidManifest.xml:7:5-9:41
+MERGED from [me.leolin:ShortcutBadger:1.1.22] /root/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/3e15d4ef109debfaaaf04de9a1eb7a8f/AndroidManifest.xml:7:5-9:41
 MERGED from [:CordovaLib] /var/www/html/app-mls/platforms/android/CordovaLib/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:5-44
 MERGED from [:CordovaLib] /var/www/html/app-mls/platforms/android/CordovaLib/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/b54419c4ef1536f79d6ece8334fc6bd9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/b54419c4ef1536f79d6ece8334fc6bd9/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-analytics:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.5.0.aar/29b8da9bdd78a3d75b56a5692167ff8b/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-analytics:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.5.0.aar/29b8da9bdd78a3d75b56a5692167ff8b/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-measurement-api:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-api-16.5.0.aar/e6ae448f9a19c050c587cb790c31af37/AndroidManifest.xml:20:5-44
@@ -336,10 +338,6 @@ MERGED from [com.google.android.gms:play-services-basement:16.2.0] /root/.gradle
 MERGED from [com.google.android.gms:play-services-basement:16.2.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-basement-16.2.0.aar/6b5b007ca21368d60ec6c69ad533bbde/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-v4:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/11fcfe3d7c7a1f036941316d120ec9d8/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-v4:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-v4-27.1.1.aar/11fcfe3d7c7a1f036941316d120ec9d8/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/b54419c4ef1536f79d6ece8334fc6bd9/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/b54419c4ef1536f79d6ece8334fc6bd9/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/2b6df4176ce8b2f0e5fbce0cbae7ac8c/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/2b6df4176ce8b2f0e5fbce0cbae7ac8c/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/a34359dd122076c81cc88ba12b9f4c9a/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.1.aar/a34359dd122076c81cc88ba12b9f4c9a/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:animated-vector-drawable:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.1.aar/3a3e1c550ddbb87fb38a5e11c5b851b9/AndroidManifest.xml:20:5-44
@@ -350,14 +348,16 @@ MERGED from [com.android.support:support-core-utils:27.1.1] /root/.gradle/caches
 MERGED from [com.android.support:support-core-utils:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.1.aar/d9de3b3d00d83e28ef6c6af845887813/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/12c2a185fe1a6d90809dd89e8c2155a7/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.1.aar/12c2a185fe1a6d90809dd89e8c2155a7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/2b6df4176ce8b2f0e5fbce0cbae7ac8c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/2b6df4176ce8b2f0e5fbce0cbae7ac8c/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-compat:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/fa27400905446a11bb12a5fdeed8e5cf/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-compat:27.1.1] /root/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/fa27400905446a11bb12a5fdeed8e5cf/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.0] /root/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/94e0b1582919acad2b44d7291fdad9f9/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.0] /root/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/94e0b1582919acad2b44d7291fdad9f9/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /root/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/ca0b2141d0a29c9c89d467b90659c8a3/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /root/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/ca0b2141d0a29c9c89d467b90659c8a3/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /root/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/4df9b83e9605bf361ebf022eade853d8/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /root/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/4df9b83e9605bf361ebf022eade853d8/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /root/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/94e0b1582919acad2b44d7291fdad9f9/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /root/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/94e0b1582919acad2b44d7291fdad9f9/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.core:runtime:1.1.0] /root/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/bc4390fd973282de7a995e3977d0dd24/AndroidManifest.xml:20:5-44
 MERGED from [android.arch.core:runtime:1.1.0] /root/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/bc4390fd973282de7a995e3977d0dd24/AndroidManifest.xml:20:5-44
 INJECTED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml
@@ -371,11 +371,17 @@ INJECTED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManife
 		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml
 		INJECTED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:13:13-123
+ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:26:13-134
 	android:resource
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:13:75-120
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:26:75-131
 	android:name
-		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:13:24-74
+		ADDED from /var/www/html/app-mls/platforms/android/app/src/main/AndroidManifest.xml:26:24-74
+service#com.google.firebase.messaging.FirebaseMessagingService
+ADDED from [com.google.firebase:firebase-messaging:18.0.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-messaging-18.0.0.aar/5433f93c6699a1ac7b962c75748dbd3e/AndroidManifest.xml:28:9-34:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-messaging:18.0.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-messaging-18.0.0.aar/5433f93c6699a1ac7b962c75748dbd3e/AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [com.google.firebase:firebase-messaging:18.0.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-messaging-18.0.0.aar/5433f93c6699a1ac7b962c75748dbd3e/AndroidManifest.xml:29:13-82
 uses-permission#com.sec.android.provider.badge.permission.READ
 ADDED from [me.leolin:ShortcutBadger:1.1.22] /root/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/3e15d4ef109debfaaaf04de9a1eb7a8f/AndroidManifest.xml:19:5-86
 	android:name
@@ -440,12 +446,6 @@ uses-permission#me.everything.badger.permission.BADGE_COUNT_WRITE
 ADDED from [me.leolin:ShortcutBadger:1.1.22] /root/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/3e15d4ef109debfaaaf04de9a1eb7a8f/AndroidManifest.xml:50:5-89
 	android:name
 		ADDED from [me.leolin:ShortcutBadger:1.1.22] /root/.gradle/caches/transforms-1/files-1.1/ShortcutBadger-1.1.22.aar/3e15d4ef109debfaaaf04de9a1eb7a8f/AndroidManifest.xml:50:22-86
-service#com.google.firebase.messaging.FirebaseMessagingService
-ADDED from [com.google.firebase:firebase-messaging:18.0.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-messaging-18.0.0.aar/5433f93c6699a1ac7b962c75748dbd3e/AndroidManifest.xml:28:9-34:19
-	android:exported
-		ADDED from [com.google.firebase:firebase-messaging:18.0.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-messaging-18.0.0.aar/5433f93c6699a1ac7b962c75748dbd3e/AndroidManifest.xml:30:13-37
-	android:name
-		ADDED from [com.google.firebase:firebase-messaging:18.0.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-messaging-18.0.0.aar/5433f93c6699a1ac7b962c75748dbd3e/AndroidManifest.xml:29:13-82
 service#com.google.firebase.components.ComponentDiscoveryService
 ADDED from [com.google.android.gms:play-services-measurement-api:16.5.0] /root/.gradle/caches/transforms-1/files-1.1/play-services-measurement-api-16.5.0.aar/e6ae448f9a19c050c587cb790c31af37/AndroidManifest.xml:27:9-33:19
 MERGED from [com.google.firebase:firebase-iid:18.0.0] /root/.gradle/caches/transforms-1/files-1.1/firebase-iid-18.0.0.aar/1e1478458d65db54e22867c111ec1e7a/AndroidManifest.xml:29:9-35:19
