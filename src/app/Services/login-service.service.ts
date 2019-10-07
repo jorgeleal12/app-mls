@@ -132,5 +132,16 @@ export class LoginServiceService {
     return this.http.get(`${this.api_url}movil/search_address?address=${address}`);
   }
 
+  certificate_material(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/certificate_material`, params);
+  }
+
+  sic_builder(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/sic_builder`, params);
+  }
+
+  com_builder(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/sic_builder`, params);
+  }
 
 }

@@ -15,28 +15,28 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-card class="card" (click)="asignadas()" style="background-image: url(./assets/img/IMAGE8.jpg)">
+    <ion-card class="card" (click)="asignadas(1)" style="background-image: url(./assets/img/IMAGE8.jpg)">
         <ion-card-content class="card-body">
             <ion-card-subtitle class="card-title">Programadas</ion-card-subtitle>
             <ion-card-title class="card-text">{{asignada}} Órdenes de servicio Asignadas</ion-card-title>
         </ion-card-content>
     </ion-card>
 
-    <ion-card class="card" style="background-image: url(./assets/img/IMAGE7.jpg)">
+    <ion-card class="card" (click)="asignadas(2)" style="background-image: url(./assets/img/IMAGE7.jpg)">
         <ion-card-content class="card-body">
             <ion-card-subtitle class="card-title">Atendidas</ion-card-subtitle>
             <ion-card-title class="card-text">{{etendidas}} Órdenes de servicio Atendidas</ion-card-title>
         </ion-card-content>
     </ion-card>
 
-    <ion-card class="card" style="background-image: url(./assets/img/IMAGE7.jpg)">
+    <ion-card class="card" (click)="asignadas(3)" style="background-image: url(./assets/img/IMAGE7.jpg)">
         <ion-card-content class="card-body">
             <ion-card-subtitle class="card-title">Aprobadas</ion-card-subtitle>
             <ion-card-title class="card-text">0 Órdenes de servicio Pendientes</ion-card-title>
         </ion-card-content>
     </ion-card>
 
-    <ion-card class="card" style="background-image: url(./assets/img/DENIED.jpg)">
+    <ion-card class="card" (click)="asignadas(4)" style="background-image: url(./assets/img/DENIED.jpg)">
         <ion-card-content class="card-body">
             <ion-card-subtitle class="card-title">Rechazadas</ion-card-subtitle>
             <ion-card-title class="card-text">{{rechazadas}} Órdenes de servicio Pendientes</ion-card-title>

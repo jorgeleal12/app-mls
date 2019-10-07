@@ -75,6 +75,7 @@ export class AcordeonPage implements OnInit {
             user_type: new FormControl(),
             department_iddepartment: new FormControl(),
             city: new FormControl(),
+            id: new FormControl(),
         })
 
 
@@ -84,7 +85,6 @@ export class AcordeonPage implements OnInit {
         this.route.queryParams.subscribe(params => {
 
             if (this.router.getCurrentNavigation().extras.state) {
-
                 this.data = this.router.getCurrentNavigation().extras
                 this.div_service = false;
                 this.div_hidden = true;
@@ -117,6 +117,10 @@ export class AcordeonPage implements OnInit {
                 this.hidden = true;
                 this.type_red()
             } else {
+
+                this.data = this.router.getCurrentNavigation().extras
+
+
                 this.div_hidden = false;
                 this.div_service = true;
                 this.NewService.reset();
@@ -131,13 +135,12 @@ export class AcordeonPage implements OnInit {
     ngOnInit(): void {
         this.NewService.get('user').setValue(localStorage.getItem("idemployees"));
         this.NewService.get('user_type').setValue(localStorage.getItem("type"));
+        this.NewService.get('id').setValue(this.data.id);
     }
     edit() {
-        console.log('1');
         this.hidden = false;
         this.div_hidden = false;
         this.div_service = true;
-        console.log(this.NewService.value.service_type_idservice_type)
         this.search_address();
     }
     search_address() {
@@ -375,7 +378,9 @@ export class AcordeonPage implements OnInit {
         return this.getNameValid(sectionName) ? 'arrow-down' : 'arrow-forward';
     }
     back() {
-        this.router.navigateByUrl('menu/menu/asignadas');
+        // this.router.navigateByUrl('menu/menu/asignadas');
+        console.log(this.NewService.value.id)
+        this.router.navigate(['menu/menu/asignadas'], this.NewService.value.id);
     }
 
 
@@ -407,7 +412,7 @@ export class AcordeonPage implements OnInit {
             if (result.response == true) {
                 this.presentToast('Se Guardo el Servicio')
             } else {
-                this.presentToast('Hay Certificados sin Aprobar')
+                this.presentToast('Hay Certificados sin Aprobar o no hay')
             }
         }, error => {
 

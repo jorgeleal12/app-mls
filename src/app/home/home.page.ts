@@ -23,13 +23,14 @@ export class HomePage implements OnInit {
 
   }
   ionViewWillEnter() {
-
+    this.asignada = 0;
+    this.rechazadas = 0;
+    this.etendidas = 0;
     this.total_asignadas();
-
   }
   total_asignadas() {
     this.showLoader()
-    this.LoginServiceService.totalasignadas({ user: localStorage.getItem("id") }).pipe(
+    this.LoginServiceService.totalasignadas({ user: localStorage.getItem("id"), type: localStorage.getItem("type"), }).pipe(
       finalize(() => {
         this.loadingController.dismiss();
       })).subscribe(result => {
@@ -42,14 +43,18 @@ export class HomePage implements OnInit {
           this.asignada = result.data.total - this.rechazadas
 
         }
-        this.etendidas = result.search_etn.total
+        if (result.search_etn != null) {
+          this.etendidas = result.search_etn.total
+
+        }
+
       }, error => {
 
       })
   }
 
-  asignadas() {
-    this.router.navigateByUrl('menu/menu/asignadas');
+  asignadas(number) {
+    this.router.navigate(['menu/menu/asignadas'], number);
   }
   showLoader() {
     this.loaderToShow = this.loadingController.create({

@@ -4,7 +4,7 @@ import { LoginServiceService } from '../Services/login-service.service';
 import { ToastController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { NavParams } from '@ionic/angular';
-
+import { ViewDocumentPage } from '../view-document/view-document.page';
 
 @Component({
   selector: 'app-new-builder',
@@ -125,5 +125,54 @@ export class NewBuilderPage implements OnInit {
     }, error => {
 
     })
+  }
+
+  SicImage(sic) {
+    console.log(sic)
+    const params = {
+      builder_idbuilder: sic.idsic_builder
+    }
+    this.loginServiceService.sic_builder(params).subscribe(result => {
+      this.ModalView(result.response)
+    }, error => {
+
+
+    })
+  }
+
+
+  ComImage(competencia) {
+    console.log(competencia)
+    const params = {
+      builder_idbuilder: competencia.idsic_builder
+    }
+    this.loginServiceService.com_builder(params).subscribe(result => {
+      this.ModalView(result.response)
+    }, error => {
+
+
+    })
+  }
+
+
+  async ModalView(result) {
+    if (result == null) {
+      this.presentToast('No Hay Documentos Adjuntos')
+      return
+    }
+    const modal: HTMLIonModalElement =
+      await this.modalController.create({
+        component: ViewDocumentPage,
+        componentProps: {
+          'url': result.url,
+          'name': result.name
+        }
+      });
+
+    modal.onDidDismiss().then((detail) => {
+
+    });
+
+    await modal.present();
   }
 }

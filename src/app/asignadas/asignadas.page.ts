@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginServiceService } from "../Services/login-service.service";
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { TasksService } from '../Services/tasks-service';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
@@ -18,16 +18,25 @@ export class AsignadasPage implements OnInit {
   total
   propCount
   image
+  data;
   constant = new constant();
   constructor(
     private LoginServiceService: LoginServiceService,
+    private route: ActivatedRoute,
     private router: Router,
     public loadingController: LoadingController,
     private tasksService: TasksService,
     public transfer: FileTransfer,
     public file: File,
 
-  ) { }
+  ) {
+
+    this.route.queryParams.subscribe(params => {
+      this.data = this.router.getCurrentNavigation().extras;
+
+
+    });
+  }
 
 
   cars
@@ -42,8 +51,9 @@ export class AsignadasPage implements OnInit {
   search_asignadas() {
     this.showLoader('Cargando...')
     let params = {
-      user: localStorage.getItem("id")
-      , type: localStorage.getItem("type")
+      user: localStorage.getItem("id"),
+      type: localStorage.getItem("type"),
+      id: this.data
     }
     this.LoginServiceService.seach_asignadas(params).pipe(
       finalize(() => {
@@ -58,13 +68,15 @@ export class AsignadasPage implements OnInit {
   }
 
   servicio(car) {
+    car['id'] = this.data
 
     this.router.navigate(['menu/menu/servicio'], car);
   }
 
   servicio1() {
-
-    this.router.navigate(['menu/menu/servicio']);
+    let car = {}
+    car['id'] = this.data
+    this.router.navigate(['menu/menu/servicio'], car);
   }
 
   doRefresh(event) {

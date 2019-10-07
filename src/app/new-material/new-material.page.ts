@@ -4,6 +4,7 @@ import { LoginServiceService } from '../Services/login-service.service';
 import { ToastController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { NavParams } from '@ionic/angular';
+import { ViewDocumentPage } from '../view-document/view-document.page';
 
 @Component({
   selector: 'app-new-material',
@@ -18,6 +19,8 @@ export class NewMaterialPage implements OnInit {
   NewMaterial: FormGroup;
   idmaterial
   certificates = [];
+  public data1;
+
   constructor(private loginServiceService: LoginServiceService,
     public toastController: ToastController,
     public modalController: ModalController,
@@ -103,7 +106,37 @@ export class NewMaterialPage implements OnInit {
 
     })
   }
+  ViewCertificates(certificate) {
 
+    const params = {
+      idmaterial_certificate: certificate.idmaterial_certificate
+    }
+    this.loginServiceService.certificate_material(params).subscribe(result => {
+      this.data1 = result.response;
+      this.ModalView(result.response)
+    }, error => {
+
+
+    })
+
+  }
+
+  async ModalView(result) {
+    const modal: HTMLIonModalElement =
+      await this.modalController.create({
+        component: ViewDocumentPage,
+        componentProps: {
+          'url': result.url,
+          'name': result.name_document
+        }
+      });
+
+    modal.onDidDismiss().then((detail) => {
+
+    });
+
+    await modal.present();
+  }
   getNameValid(sectionName) {
 
     return this.step.sectionName === sectionName;

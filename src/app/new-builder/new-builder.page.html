@@ -99,7 +99,7 @@
 
         </section>
         <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded1')}">
-          <ion-item detail *ngFor="let sic of sic; let i = i; index" (click)="photos_add(sic)">
+          <ion-item detail *ngFor="let sic of sic; let i = i; index" (click)="SicImage(sic)">
             <ion-label class="ion-text-wrap">
               <ion-text>
                 <h2>{{sic.code_sic}}</h2>
@@ -124,7 +124,7 @@
 
         </section>
         <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded2')}">
-          <ion-item detail *ngFor="let competencia of competencias; let i = i; index" (click)="photos_add(competencia)">
+          <ion-item detail *ngFor="let competencia of competencias; let i = i; index" (click)="ComImage(competencia)">
             <ion-label class="ion-text-wrap">
               <ion-text>
                 <h2>{{competencia.competitions_code}}</h2>
