@@ -141,7 +141,7 @@ export class LoginServiceService {
   }
 
   com_builder(params): Observable<any> {
-    return this.http.post(`${this.api_url}movil/sic_builder`, params);
+    return this.http.post(`${this.api_url}movil/com_builder`, params);
   }
 
 }
