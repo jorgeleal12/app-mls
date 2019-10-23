@@ -76,6 +76,7 @@ export class AcordeonPage implements OnInit {
             department_iddepartment: new FormControl(),
             city: new FormControl(),
             id: new FormControl(),
+            type_gas: new FormControl(),
         })
 
 
@@ -94,6 +95,7 @@ export class AcordeonPage implements OnInit {
                 this.NewService.get('Attention').setValue(this.data.Attention);
                 this.NewService.get('name_atencion').setValue(this.data.name_atencion);
                 this.NewService.get('name_gas').setValue(this.data.name_gas);
+                this.NewService.get('type_gas').setValue(this.data.type_gas);
                 this.NewService.get('name_type').setValue(this.data.name_type);
                 this.NewService.get('name_network').setValue(this.data.name_network);
                 this.NewService.get('contract_name').setValue(this.data.contract_name);
@@ -102,7 +104,7 @@ export class AcordeonPage implements OnInit {
                 this.NewService.get('identifacation').setValue(this.data.identifacation);
                 this.NewService.get('phone').setValue(this.data.phone);
                 this.NewService.get('type_service_idtype_service').setValue(this.data.type_service_idtype_service);
-                this.NewService.get('type_network_idtype_network').setValue(this.data.type_network_idtype_network);
+
                 this.NewService.get('address').setValue(this.data.address);
                 this.NewService.get('idodi').setValue(this.data.idodi);
                 this.NewService.get('name_state').setValue(this.data.name_state);
@@ -116,6 +118,7 @@ export class AcordeonPage implements OnInit {
                 this.search_address();
                 this.hidden = true;
                 this.type_red()
+
             } else {
 
                 this.data = this.router.getCurrentNavigation().extras
@@ -142,6 +145,7 @@ export class AcordeonPage implements OnInit {
         this.div_hidden = false;
         this.div_service = true;
         this.search_address();
+        this.NewService.get('type_network_idtype_network').setValue(this.data.type_network_idtype_network);
     }
     search_address() {
         this.loginServiceService.search_address(this.NewService.value.address).subscribe(result => {

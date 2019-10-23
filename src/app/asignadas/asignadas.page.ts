@@ -33,7 +33,7 @@ export class AsignadasPage implements OnInit {
 
     this.route.queryParams.subscribe(params => {
       this.data = this.router.getCurrentNavigation().extras;
-
+      console.log(this.data)
 
     });
   }
