@@ -72,7 +72,7 @@ export class NewCertificatePage implements OnInit {
       idusers: this.idusers
     }
     this.loginServiceService.number(params).subscribe(result => {
-      this.NewCertificate.number = result.response.number_ + 1;
+      this.NewCertificate.number = result.response.number_;
       this.NewCertificate.id_user = result.response.idemployees;
       this.NewCertificate.Number_cetificate_idNumber_cetificate = result.response.Number_cetificate_idNumber_cetificate;
 
