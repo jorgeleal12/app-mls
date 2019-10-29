@@ -30,9 +30,14 @@ export class ImagesPage implements OnInit {
   }
 
   ngOnInit() {
-    this.photo_service();
-  }
 
+  }
+  ionViewWillEnter() {
+    // this.sqli();
+    this.photo_service();
+    console.log(11)
+
+  }
 
   photo_service() {
     let params = {

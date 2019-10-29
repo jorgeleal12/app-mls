@@ -176,13 +176,7 @@ export class SendimagesPage implements OnInit {
       idservice: this.idservice
     }
 
-    this.tasksService.SelectImageOne(tipe, idodi, this.idservice).then(tasks => {
-      this.row_data = tasks[0]
-      this.number = this.row_data.actual + 1;
-    })
-      .catch(error => {
-        console.error(error);
-      });
+
 
     let canvas = this.canvasRef.nativeElement;
     let context = canvas.getContext("2d");
@@ -229,13 +223,25 @@ export class SendimagesPage implements OnInit {
               this.photos[id].state_send = true;
               this.photos[id].send = false;
 
-              this.tasksService.update(tipe, idodi, this.idservice, this.number)
-                .then(response => {
-                  console.log(response)
-                })
+              this.tasksService.SelectImageOne(tipe, idodi, this.idservice).then(tasks => {
+                let row_data = tasks[0]
+                let number = row_data.actual + 1;
+                console.log(number)
+
+                this.tasksService.update(tipe, idodi, this.idservice, number)
+                  .then(response => {
+                    console.log(response)
+                  })
+                  .catch(error => {
+                    console.error(error);
+                  })
+
+              })
                 .catch(error => {
                   console.error(error);
-                })
+                });
+
+
 
 
               this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);

@@ -22,6 +22,7 @@ export class LoginPage implements OnInit {
 
   }
   ionViewCanEnter() {
+
     if (!localStorage.getItem("idusers")) {
 
     } else {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { NavParams } from '@ionic/angular';
 import { LoginServiceService } from '../Services/login-service.service';
-
+import { ZoomImagePage } from '../zoom-image/zoom-image.page';
 
 @Component({
   selector: 'app-view-image',
@@ -14,7 +14,7 @@ export class ViewImagePage implements OnInit {
 
   data
   photos
-  url = 'http://192.168.1.57/laravel-mls/public/public/';
+  url = 'http://190.145.99.254:81/laravel-mls/public/public/';
   image
   idservice
   constructor(public modalController: ModalController, private navParams: NavParams, private loginServiceService: LoginServiceService) {
@@ -39,27 +39,29 @@ export class ViewImagePage implements OnInit {
     }
     this.loginServiceService.ViewImage(params).subscribe(result => {
       this.photos = result.response;
+
+      console.log(this.url)
     }, error => { })
   }
 
-  // async  ModalImage(image) {
+  async  ModalImage(image) {
 
-  //   const modal: HTMLIonModalElement =
-  //     await this.modalController.create({
-  //       component: ZoomImagePage,
-  //       componentProps: {
-  //         'image': image,
-  //       }
+    const modal: HTMLIonModalElement =
+      await this.modalController.create({
+        component: ZoomImagePage,
+        componentProps: {
+          'image': image,
+        }
 
-  //     });
+      });
 
-  //   modal.onDidDismiss().then((detail) => {
+    modal.onDidDismiss().then((detail) => {
 
 
-  //   });
+    });
 
-  //   await modal.present();
-  // }
+    await modal.present();
+  }
 
 
 }

@@ -55,9 +55,7 @@ export class NewCertificatePage implements OnInit {
 
   ngOnInit() {
 
-
   }
-
 
 
   back() {

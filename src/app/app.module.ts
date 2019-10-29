@@ -37,6 +37,8 @@ import { NewBuilderPageModule } from './new-builder/new-builder.module';
 import { ClientServicePageModule } from './client-service/client-service.module';
 import { AcountServicePageModule } from './acount-service/acount-service.module';
 import { ViewDocumentPageModule } from './view-document/view-document.module';
+import { ZoomImagePageModule } from './zoom-image/zoom-image.module';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -62,6 +64,7 @@ import { ViewDocumentPageModule } from './view-document/view-document.module';
     ClientServicePageModule,
     AcountServicePageModule,
     ViewDocumentPageModule,
+    ZoomImagePageModule,
     NewClientPageModule],
   providers: [
     StatusBar,

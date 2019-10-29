@@ -115,6 +115,7 @@ export class AcordeonPage implements OnInit {
                 this.NewService.get('material').setValue(this.data.material);
                 this.NewService.get('construtor').setValue(this.data.construtor);
                 this.NewService.get('service_type_idservice_type').setValue(this.data.service_type_idservice_type);
+
                 this.search_address();
                 this.hidden = true;
                 this.type_red()
@@ -332,12 +333,13 @@ export class AcordeonPage implements OnInit {
             this.presentToast('Guarde Primero')
             return;
         }
+
         const modal: HTMLIonModalElement =
             await this.modalController.create({
                 component: CertificatePage,
                 componentProps: {
                     'number_service': this.NewService.value.idodi,
-                    'type_network': this.NewService.value.type_network_idtype_network,
+                    'type_network': this.data.type_network_idtype_network,
                     'data': this.NewService.value,
 
                 }
