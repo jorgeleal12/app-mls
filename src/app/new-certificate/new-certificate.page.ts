@@ -9,6 +9,8 @@ import { AlertController } from '@ionic/angular';
 import { AlertImagePage } from '../alert-image/alert-image.page';
 import { ToastController } from '@ionic/angular';
 import { ViewImagePage } from '../view-image/view-image.page';
+import { isNullOrUndefined } from 'util';
+
 @Component({
   selector: 'app-new-certificate',
   templateUrl: './new-certificate.page.html',
@@ -27,8 +29,12 @@ export class NewCertificatePage implements OnInit {
   idNumber_cetificate
   iamges = [];
   messages
-
+  type
+  type2
+  type3
   NewCertificate = new NewCertificate();
+
+
 
   constructor(
     private loginServiceService: LoginServiceService,
@@ -54,10 +60,21 @@ export class NewCertificatePage implements OnInit {
   }
 
   ngOnInit() {
+    // this.sqli();
+  }
+  ionViewWillEnter() {
+
+    this.type = localStorage.getItem("type")
+    if (this.type == 2) {
+      this.type2 = false;
+      this.type3 = true;
+    }
+    if (this.type == 3) {
+      this.type3 = false;
+      this.type2 = true;
+    }
 
   }
-
-
   back() {
     this.modalController.dismiss({
       'dismissed': true,
@@ -134,94 +151,58 @@ export class NewCertificatePage implements OnInit {
       this.presentToast('El certificado se encuentra Aprobado')
       return;
     }
-    if (this.NewCertificate.idservice_certifications == undefined) {
-
-      this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
-        if (result.response == true) {
-          this.NewCertificate.idservice_certifications = result.result
-          this.presentToast('Se guardo el Certificado')
-        }
-
-      }, error => {
-
-      })
-
-      return;
-
-    } else {
-
-      // || this.NewCertificate.state == 3
-      if (this.NewCertificate.state == 1 || this.NewCertificate.state == undefined) {
-
-        this.tasksService.SelectImage(this.data.idodi, this.NewCertificate.idservice_certifications)
-          .then(tasks => {
-            let actual = 0;
-            let totales = 0;
-            let images = [];
-            for (const prop in tasks) {
-
-              actual += tasks[prop].actual;
-              totales += tasks[prop].min;
-
-              if (tasks[prop].actual < tasks[prop].min) {
-                images.push(tasks[prop]);
-              }
-            }
-            this.messages = images;
-            if (actual < totales) {
-              this.ModalAlertImage(images)
-              return;
-            }
-            if (actual == 0 && this.NewCertificate.state == 1 || actual == 0 && this.NewCertificate.state == undefined) {
-              this.ModalImage();
-              return;
-            }
-
-            this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
-
-              this.tasksService.delete(this.data.idodi, this.NewCertificate.idservice_certifications)
-                .then(tasks => {
-                })
-                .catch(error => {
-                  console.error(error);
-                });
-
-              if (result.response == false) {
-
-                this.presentToast('Se guardo el Certificado')
-              }
-
-            }, error => {
-
-            })
-
-          })
-          .catch(error => {
-            console.error(error);
-          });
-
-      } else {
 
 
-        this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
-
-          this.tasksService.delete(this.data.idodi, this.NewCertificate.idservice_certifications)
-            .then(tasks => {
-            })
-            .catch(error => {
-              console.error(error);
-            });
-
-          if (result.response == false) {
-
-            this.presentToast('Se guardo el Certificado')
-          }
-
-        }, error => {
-
-        })
+    this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
+      if (result.response == false) {
+        this.presentToast('Se guardo el Certificado')
       }
-    }
+    }, error => {
+
+    })
+
+
+    // if (this.NewCertificate.idservice_certifications == undefined) {
+
+    //   this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
+    //     if (result.response == true) {
+    //       this.NewCertificate.idservice_certifications = result.result
+    //       this.presentToast('Se guardo el Certificado')
+    //     }
+
+    //   }, error => {
+
+    //   })
+
+    //   return;
+
+    // } else {
+
+    //   // || this.NewCertificate.state == 3
+    //   if (this.NewCertificate.state == 1 || this.NewCertificate.state == undefined) {
+
+    //   } else {
+
+
+    //     this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
+
+    //       this.tasksService.delete(this.data.idodi, this.NewCertificate.idservice_certifications)
+    //         .then(tasks => {
+    //         })
+    //         .catch(error => {
+    //           console.error(error);
+    //         });
+
+    //       if (result.response == false) {
+
+    //         this.presentToast('Se guardo el Certificado')
+    //       }
+
+    //     }, error => {
+
+    //     })
+    //   }
+    // }
   }
 
   async  ModalViewImage() {
@@ -267,6 +248,181 @@ export class NewCertificatePage implements OnInit {
       duration: 2000
     });
     toast.present();
+  }
+
+  async cancelar() {
+
+    const alert = await this.alertController.create({
+      header: 'Confirmación!',
+      message: 'Desea Cancelar El Certificado',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+
+          }
+        }, {
+          text: 'Si',
+          handler: () => {
+            let number = 6
+            this.change(number);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async suspend() {
+
+    const alert = await this.alertController.create({
+      header: 'Confirmación!',
+      message: 'Desea Suspender El Certificado',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+
+          }
+        }, {
+          text: 'Si',
+          handler: () => {
+            let number = 7
+            this.change(number);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async decline() {
+
+    const alert = await this.alertController.create({
+      header: 'Confirmación!',
+      message: 'Desea Declinar El Certificado',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+
+          }
+        }, {
+          text: 'Si',
+          handler: () => {
+            let number = 5
+            this.change(number);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  async atendido() {
+
+    const alert = await this.alertController.create({
+      header: 'Confirmación!',
+      message: 'Desea Atender El Certificado',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+
+          }
+        }, {
+          text: 'Si',
+          handler: () => {
+            let number = 2
+            this.tasksService.SelectImage(this.data.idodi, this.NewCertificate.idservice_certifications)
+              .then(tasks => {
+                let actual = 0;
+                let totales = 0;
+                let images = [];
+                for (const prop in tasks) {
+
+                  actual += tasks[prop].actual;
+                  totales += tasks[prop].min;
+
+                  if (tasks[prop].actual < tasks[prop].min) {
+                    images.push(tasks[prop]);
+                  }
+                }
+                this.messages = images;
+                if (actual < totales) {
+                  this.ModalAlertImage(images)
+                  return;
+                }
+
+                if (actual == 0) {
+                  this.ModalImage();
+                  return;
+                }
+
+                this.change_active(number);
+
+                this.tasksService.delete(this.data.idodi, this.NewCertificate.idservice_certifications)
+                  .then(tasks => {
+                    console.error(tasks);
+                  })
+                  .catch(error => {
+                    console.error(error);
+                  });
+
+              })
+              .catch(error => {
+                console.error(error);
+              });
+
+
+
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+  change_active(number) {
+    const params = {
+      idstate: number,
+      idservice: this.NewCertificate.idservice_certifications,
+      number: this.NewCertificate.number,
+      Number_cetificate_idNumber_cetificate: this.NewCertificate.Number_cetificate_idNumber_cetificate,
+    }
+    this.loginServiceService.change_active(params).subscribe(result => {
+      if (result.response == true) {
+        this.presentToast('Se Cambio el estado del Certificado')
+      }
+    }, error => {
+
+    })
+  }
+
+  change(number) {
+    const params = {
+      idstate: number,
+      idservice: this.NewCertificate.idservice_certifications,
+    }
+    this.loginServiceService.change_state(params).subscribe(result => {
+      if (result.response == true) {
+        this.presentToast('Se Cambio el estado del Certificado')
+      }
+    }, error => {
+
+    })
   }
 
 }

@@ -35,7 +35,8 @@ export class SendimagesPage implements OnInit {
   number
   suma;
   row_data: any = []
-  idservice
+  idservice;
+  user;
   constant = new constant();
   @ViewChild('layout', { static: true }) canvasRef;
   constructor(private route: ActivatedRoute, private router: Router, private imagePicker: ImagePicker,
@@ -89,6 +90,7 @@ export class SendimagesPage implements OnInit {
   }
 
   ngOnInit() {
+    this.user = localStorage.getItem("nombres")
   }
 
 
@@ -166,7 +168,29 @@ export class SendimagesPage implements OnInit {
       err => { }
     );
   }
+  hoy() {
+    let hoy: any = new Date();
+    let dd: any = hoy.getDate();
+    let mm: any = hoy.getMonth() + 1; //hoy es 0!
+    let yyyy = hoy.getFullYear();
 
+    if (dd < 10) {
+      dd = "0" + dd;
+    }
+
+    if (mm < 10) {
+      mm = "0" + mm;
+    }
+
+    hoy = yyyy + "-" + mm + "-" + dd;
+
+
+    var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+    var f = new Date();
+
+    console.log(f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear())
+    return f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear();
+  }
 
   onLoadimage(img, id, name_photo, idodi, tipe, contract_idcontract) {
     let params = {
@@ -177,7 +201,7 @@ export class SendimagesPage implements OnInit {
     }
 
 
-
+    let hoy = this.hoy()
     let canvas = this.canvasRef.nativeElement;
     let context = canvas.getContext("2d");
 
@@ -190,11 +214,21 @@ export class SendimagesPage implements OnInit {
       canvas.style.height = "300px";
       context.drawImage(source, 0, 0);
 
-      context.font = "16px impact";
+      const x = canvas.width / 2;
+      const y = canvas.height - 80;
+      context.font = "30px impact";
       context.textAlign = "right";
       context.fillStyle = "white";
-      context.fillText(name_photo, 600, 100);
-      let quality = [1.0];
+      context.fillText(name_photo, x, 30);
+      context.font = "30px impact";
+      context.textAlign = "right";
+      context.fillStyle = "white";
+      context.fillText(hoy, x, y);
+      context.font = "30px impact";
+      context.textAlign = "right";
+      context.fillStyle = "white";
+      context.fillText(this.user, x, y + 25);
+      // let quality = [1.0];
       let imagen = canvas.toDataURL("image/jpeg");
 
       const fileTransfer: FileTransferObject = this.transfer.create();

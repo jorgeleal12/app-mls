@@ -10,5 +10,6 @@ export class NewCertificate {
     public obsclient: any;
     public state: any;
     public Number_cetificate_idNumber_cetificate: any;
+
 }
 

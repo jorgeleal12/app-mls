@@ -13,6 +13,7 @@ import { FormControl, FormGroup, Validators, FormControlName } from "@angular/fo
 import { ClientServicePage } from '../client-service/client-service.page';
 import { AcountServicePage } from '../acount-service/acount-service.page';
 import { LoadingController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 @Component({
     selector: 'app-acordeon',
     templateUrl: './acordeon.page.html',
@@ -31,6 +32,8 @@ export class AcordeonPage implements OnInit {
     networks
     NewService: FormGroup;
     hidden;
+    type2
+    type3
     constructor(
         private route: ActivatedRoute,
         private router: Router,
@@ -39,7 +42,8 @@ export class AcordeonPage implements OnInit {
         private loginServiceService: LoginServiceService,
         public modalController: ModalController,
         public toastController: ToastController,
-        public loadingController: LoadingController) {
+        public loadingController: LoadingController,
+        public alertController: AlertController, ) {
 
 
         this.NewService = new FormGroup({
@@ -140,6 +144,14 @@ export class AcordeonPage implements OnInit {
         this.NewService.get('user').setValue(localStorage.getItem("idemployees"));
         this.NewService.get('user_type').setValue(localStorage.getItem("type"));
         this.NewService.get('id').setValue(this.data.id);
+
+        if (this.NewService.value.user_type == 2) {
+            this.type2 = false;
+        }
+
+        if (this.NewService.value.user_type == 3) {
+            this.type3 = false;
+        }
     }
     edit() {
         this.hidden = false;
@@ -418,7 +430,7 @@ export class AcordeonPage implements OnInit {
             if (result.response == true) {
                 this.presentToast('Se Guardo el Servicio')
             } else {
-                this.presentToast('Hay Certificados sin Aprobar o no hay')
+                this.presentToast('Se Actualizo el Servicio')
             }
         }, error => {
 
@@ -441,6 +453,45 @@ export class AcordeonPage implements OnInit {
         }
         this.loginServiceService.type_red(params).subscribe(result => {
             this.networks = result.response
+        }, error => {
+
+        })
+    }
+
+    async atendido() {
+
+        const alert = await this.alertController.create({
+            header: 'Confirmación!',
+            message: 'Desea Cambiar  El Estado a Atendido',
+            buttons: [
+                {
+                    text: 'No',
+                    role: 'cancel',
+                    cssClass: 'secondary',
+                    handler: (blah) => {
+
+                    }
+                }, {
+                    text: 'Si',
+                    handler: () => {
+                        let number = 5
+                        this.change_active();
+                    }
+                }
+            ]
+        });
+
+        await alert.present();
+    }
+
+    change_active() {
+        this.loginServiceService.change_active_service(this.NewService.value).subscribe(result => {
+
+            if (result.response == true) {
+                this.presentToast('Se Cambio el estado del Servicio')
+            } else {
+                this.presentToast('Se encuentran Certificados Activos')
+            }
         }, error => {
 
         })

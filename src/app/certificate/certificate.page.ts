@@ -89,6 +89,7 @@ export class CertificatePage implements OnInit {
       });
 
     modal.onDidDismiss().then((detail) => {
+      this.search();
     });
 
     await modal.present();

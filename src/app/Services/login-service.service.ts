@@ -144,4 +144,13 @@ export class LoginServiceService {
     return this.http.post(`${this.api_url}movil/com_builder`, params);
   }
 
+  change_state(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/change_state`, params);
+  }
+  change_active(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/change_active`, params);
+  }
+  change_active_service(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/change_active_service`, params);
+  }
 }

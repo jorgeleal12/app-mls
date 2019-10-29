@@ -44,7 +44,6 @@ export class AsignadasPage implements OnInit {
 
   }
   ionViewWillEnter() {
-    // this.sqli();
     this.search_asignadas()
 
   }

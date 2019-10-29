@@ -424,4 +424,28 @@
 
         </ion-list>
     </form>
+
+
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+
+        <ion-fab-button color="danger">
+            <ion-icon name="arrow-dropup"></ion-icon>
+        </ion-fab-button>
+
+        <ion-fab-list side="top" [hidden]="type2">
+            <ion-fab-button color="light">
+                <ion-icon name="close-circle-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="light">
+                <ion-icon name="alert"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="light">
+                <ion-icon name="alarm"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="primary" (click)="atendido()">
+                <ion-icon name="arrow-dropright-circle"></ion-icon>
+            </ion-fab-button>
+        </ion-fab-list>
+
+    </ion-fab>
 </ion-content>
