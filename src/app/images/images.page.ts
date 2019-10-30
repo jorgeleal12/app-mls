@@ -114,6 +114,8 @@ export class ImagesPage implements OnInit {
       });
 
     modal.onDidDismiss().then((detail) => {
+      this.photo_service();
+      console.log(11)
     });
 
     await modal.present();

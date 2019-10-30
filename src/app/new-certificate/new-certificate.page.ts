@@ -116,11 +116,6 @@ export class NewCertificatePage implements OnInit {
       return;
     } else {
 
-      if (this.NewCertificate.state != 1) {
-        this.presentToast('El certificado se encuentra Realizado o Aprobado')
-        return;
-      }
-
       const modal: HTMLIonModalElement =
         await this.modalController.create({
           component: ImagesPage,
@@ -156,7 +151,10 @@ export class NewCertificatePage implements OnInit {
     this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
       if (result.response == true) {
         this.NewCertificate.idservice_certifications = result.result
+
         this.presentToast('Se guardo el Certificado')
+      } if (result.response == false) {
+        this.presentToast('Se Actualizo el Certificado')
       }
     }, error => {
 
