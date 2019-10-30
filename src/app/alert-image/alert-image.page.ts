@@ -55,17 +55,18 @@ export class AlertImagePage implements OnInit {
   }
 
   search() {
+
+    let actual = 0;
+    let totales = 0;
     this.tasksService.SelectImage(this.data.idodi, this.idservice)
       .then(tasks => {
-        let actual = 0;
-        let totales = 0;
+
         let images = [];
         for (const prop in tasks) {
 
           actual += tasks[prop].actual;
           totales += tasks[prop].min;
           if (tasks[prop].actual < tasks[prop].min) {
-
             images.push(tasks[prop]);
           }
 

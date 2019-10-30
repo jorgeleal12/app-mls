@@ -154,7 +154,8 @@ export class NewCertificatePage implements OnInit {
 
 
     this.loginServiceService.save_certificate(this.NewCertificate).subscribe(result => {
-      if (result.response == false) {
+      if (result.response == true) {
+        this.NewCertificate.idservice_certifications = result.result
         this.presentToast('Se guardo el Certificado')
       }
     }, error => {
@@ -347,6 +348,7 @@ export class NewCertificatePage implements OnInit {
             let number = 2
             this.tasksService.SelectImage(this.data.idodi, this.NewCertificate.idservice_certifications)
               .then(tasks => {
+                console.log(tasks)
                 let actual = 0;
                 let totales = 0;
                 let images = [];
@@ -360,7 +362,11 @@ export class NewCertificatePage implements OnInit {
                   }
                 }
                 this.messages = images;
+
+                console.log(actual, totales)
+
                 if (actual < totales) {
+
                   this.ModalAlertImage(images)
                   return;
                 }
@@ -373,8 +379,7 @@ export class NewCertificatePage implements OnInit {
                 this.change_active(number);
 
                 this.tasksService.delete(this.data.idodi, this.NewCertificate.idservice_certifications)
-                  .then(tasks => {
-                    console.error(tasks);
+                  .then(tasks1 => {
                   })
                   .catch(error => {
                     console.error(error);

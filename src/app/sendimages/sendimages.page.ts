@@ -188,8 +188,8 @@ export class SendimagesPage implements OnInit {
     var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
     var f = new Date();
 
-    console.log(f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear())
-    return f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear();
+
+    return f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear() + ' ' + f.getHours() + ':' + f.getMinutes();
   }
 
   onLoadimage(img, id, name_photo, idodi, tipe, contract_idcontract) {
@@ -219,7 +219,7 @@ export class SendimagesPage implements OnInit {
       context.font = "30px impact";
       context.textAlign = "right";
       context.fillStyle = "white";
-      context.fillText(name_photo, x, 30);
+      context.fillText('MLS Group Colombia', x, y - 25);
       context.font = "30px impact";
       context.textAlign = "right";
       context.fillStyle = "white";
@@ -228,6 +228,10 @@ export class SendimagesPage implements OnInit {
       context.textAlign = "right";
       context.fillStyle = "white";
       context.fillText(this.user, x, y + 25);
+      context.font = "30px impact";
+      context.textAlign = "right";
+      context.fillStyle = "white";
+      context.fillText(name_photo, x, y + 50);
       // let quality = [1.0];
       let imagen = canvas.toDataURL("image/jpeg");
 
@@ -260,11 +264,11 @@ export class SendimagesPage implements OnInit {
               this.tasksService.SelectImageOne(tipe, idodi, this.idservice).then(tasks => {
                 let row_data = tasks[0]
                 let number = row_data.actual + 1;
-                console.log(number)
+
 
                 this.tasksService.update(tipe, idodi, this.idservice, number)
                   .then(response => {
-                    console.log(response)
+                    // console.log(response)
                   })
                   .catch(error => {
                     console.error(error);
