@@ -25,7 +25,7 @@ export class NewClientPage implements OnInit {
       name_cliente: new FormControl('', [Validators.required]),
       phone: new FormControl('', [Validators.required]),
       identification: new FormControl('', [Validators.required]),
-      mail: new FormControl('', [Validators.required, Validators.email]),
+      mail: new FormControl(''),
       state: new FormControl(),
       idstate: new FormControl()
     });
