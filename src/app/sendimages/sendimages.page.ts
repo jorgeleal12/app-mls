@@ -37,6 +37,9 @@ export class SendimagesPage implements OnInit {
   row_data: any = []
   idservice;
   user;
+  images
+  images2
+  marcar
   constant = new constant();
   @ViewChild('layout', { static: true }) canvasRef;
   constructor(private route: ActivatedRoute, private router: Router, private imagePicker: ImagePicker,
@@ -58,7 +61,8 @@ export class SendimagesPage implements OnInit {
     this.data = navParams.get('data');
     this.photos_service = navParams.get('photos_service');
     this.idservice = navParams.get('idservice');
-
+    this.marcar = navParams.get('marcar');
+    console.log(this.marcar)
     for (let index = 0; index < this.photos_service.quantity; index++) {
       this.photos.push({
         imagenes: '',//'http://192.168.1.126/laravel-mls/public/public/odi/images/MLS/MEDELLIN/79/VsSuRyL4USikUZE.jpg',
@@ -192,130 +196,134 @@ export class SendimagesPage implements OnInit {
     return f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear() + ' ' + f.getHours() + ':' + f.getMinutes();
   }
 
-  onLoadimage(img, id, name_photo, idodi, tipe, contract_idcontract) {
-    let params = {
-      idodi: idodi,
-      tipe: tipe,
-      contract_idcontract: contract_idcontract,
-      idservice: this.idservice
-    }
+  // onLoadimage(img, id, name_photo, idodi, tipe, contract_idcontract) {
+  //   console.log('prueba')
+  //   let params = {
+  //     idodi: idodi,
+  //     tipe: tipe,
+  //     contract_idcontract: contract_idcontract,
+  //     idservice: this.idservice
+  //   }
 
 
-    let hoy = this.hoy()
-    let canvas = this.canvasRef.nativeElement;
-    let context = canvas.getContext("2d");
+  //   let hoy = this.hoy()
+  //   let canvas = this.canvasRef.nativeElement;
+  //   let context = canvas.getContext("2d");
 
-    let source = new Image();
-    source.crossOrigin = "Anonymous";
-    source.onload = () => {
-      canvas.height = source.height;
-      canvas.width = source.width;
-      canvas.style.width = "320px";
-      canvas.style.height = "300px";
-      context.drawImage(source, 0, 0);
+  //   let source = new Image();
+  //   source.crossOrigin = "Anonymous";
+  //   source.onload = () => {
+  //     canvas.height = source.height;
+  //     canvas.width = source.width;
+  //     canvas.style.width = "320px";
+  //     canvas.style.height = "300px";
+  //     context.drawImage(source, 0, 0);
 
-      const x = canvas.width / 2;
-      const y = canvas.height - 80;
-      context.font = "30px impact";
-      context.textAlign = "right";
-      context.fillStyle = "white";
-      context.fillText('MLS Group Colombia', x, y - 25);
-      context.font = "30px impact";
-      context.textAlign = "right";
-      context.fillStyle = "white";
-      context.fillText(hoy, x, y);
-      context.font = "30px impact";
-      context.textAlign = "right";
-      context.fillStyle = "white";
-      context.fillText(this.user, x, y + 25);
-      context.font = "30px impact";
-      context.textAlign = "right";
-      context.fillStyle = "white";
-      context.fillText(name_photo, x, y + 50);
-      // let quality = [1.0];
-      let imagen = canvas.toDataURL("image/jpeg");
+  //     const x = canvas.width / 2;
+  //     const y = canvas.height - 80;
+  //     context.font = "30px impact";
+  //     context.textAlign = "right";
+  //     context.fillStyle = "white";
+  //     context.fillText('MLS Group Colombia', x, y - 25);
+  //     context.font = "30px impact";
+  //     context.textAlign = "right";
+  //     context.fillStyle = "white";
+  //     context.fillText(hoy, x, y);
+  //     context.font = "30px impact";
+  //     context.textAlign = "right";
+  //     context.fillStyle = "white";
+  //     context.fillText(this.user, x, y + 25);
+  //     context.font = "30px impact";
+  //     context.textAlign = "right";
+  //     context.fillStyle = "white";
+  //     context.fillText(name_photo, x, y + 50);
+  //     // let quality = [1.0];
+  //     let imagen = canvas.toDataURL("image/jpeg");
 
-      const fileTransfer: FileTransferObject = this.transfer.create();
-      let divisiones = img.split("cache/");
+  //     const fileTransfer: FileTransferObject = this.transfer.create();
+  //     let divisiones = img.split("cache/");
 
-      let divisiones1 = divisiones[1].split("?");
-      let divisiones2 = divisiones[0].split("_app_file_");
+  //     let divisiones1 = divisiones[1].split("?");
+  //     let divisiones2 = divisiones[0].split("_app_file_");
 
-      let options: FileUploadOptions = {
-        fileKey: "file",
-        fileName: divisiones1[0],
-        headers: {},
-        params: { params: params }
-      };
-      fileTransfer
-        .upload(
-          imagen,
-          this.constant.routeGlobal + "odi/send_image_movil",
-          options
-        )
-        .then(
-          data => {
-            var json = JSON.parse(data.response);
-            if (json.response == true) {
-              this.photos[id].state = true;
-              this.photos[id].state_send = true;
-              this.photos[id].send = false;
+  //     let options: FileUploadOptions = {
+  //       fileKey: "file",
+  //       fileName: divisiones1[0],
+  //       headers: {},
+  //       params: { params: params }
+  //     };
 
-              this.tasksService.SelectImageOne(tipe, idodi, this.idservice).then(tasks => {
-                let row_data = tasks[0]
-                let number = row_data.actual + 1;
+  //     fileTransfer
+  //       .upload(
+  //         imagen,
+  //         this.constant.routeGlobal + "odi/send_image_movil",
+  //         options
+  //       )
+  //       .then(
+  //         data => {
+  //           var json = JSON.parse(data.response);
+  //           console.log(json)
+  //           if (json.response == true) {
+
+  //             this.photos[id].state = true;
+  //             this.photos[id].state_send = true;
+  //             this.photos[id].send = false;
+
+  //             this.tasksService.SelectImageOne(tipe, idodi, this.idservice).then(tasks => {
+  //               let row_data = tasks[0]
+  //               let number = row_data.actual + 1;
+  //               console.log(number)
+  //               console.log(tipe, idodi, this.idservice, number)
+  //               this.tasksService.update(tipe, idodi, this.idservice, number)
+  //                 .then(response => {
+  //                   console.log(response)
+  //                 })
+  //                 .catch(error => {
+  //                   console.error(error);
+  //                 })
+
+  //             })
+  //               .catch(error => {
+  //                 console.error(error);
+  //               });
 
 
-                this.tasksService.update(tipe, idodi, this.idservice, number)
-                  .then(response => {
-                    // console.log(response)
-                  })
-                  .catch(error => {
-                    console.error(error);
-                  })
-
-              })
-                .catch(error => {
-                  console.error(error);
-                });
 
 
+  //             this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
 
+  //           } else {
+  //             this.photos[id].state = false;
+  //             this.photos[id].state_send = true;
+  //             this.photos[id].error = false;
+  //             // this.writeFile(imagen, "My Picture", divisiones1[0]);
+  //             this.falso = false;
+  //             this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
+  //           }
+  //         },
+  //         err => {
+  //           console.log(err.body)
+  //           this.photos[id].state = false;
+  //           this.photos[id].state_send = true;
+  //           this.photos[id].error = false;
+  //           // this.writeFile(imagen, "My Picture", divisiones1[0]);
 
-              this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
+  //           // this.tasksService.InsertICertificate(divisiones1[0], tipe, idodi, this.idservice)
+  //           //   .then(response => {
+  //           //     console.log(response)
+  //           //   })
+  //           //   .catch(error => {
+  //           //     console.error(error);
+  //           //   })
 
-            } else {
-              this.photos[id].state = false;
-              this.photos[id].state_send = true;
-              this.photos[id].error = false;
-              // this.writeFile(imagen, "My Picture", divisiones1[0]);
-              this.falso = false;
-              this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
-            }
-          },
-          err => {
-            console.log(err.body)
-            this.photos[id].state = false;
-            this.photos[id].state_send = true;
-            this.photos[id].error = false;
-            // this.writeFile(imagen, "My Picture", divisiones1[0]);
+  //           this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
+  //           this.presentToast('Error de Coneción')
+  //         }
+  //       );
+  //   };
 
-            // this.tasksService.InsertICertificate(divisiones1[0], tipe, idodi, this.idservice)
-            //   .then(response => {
-            //     console.log(response)
-            //   })
-            //   .catch(error => {
-            //     console.error(error);
-            //   })
-
-            this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
-            this.presentToast('Error de Coneción')
-          }
-        );
-    };
-
-    source.src = img;
-  }
+  //   source.src = img;
+  // }
 
   async presentToast(mesajje) {
     const toast = await this.toastController.create({
@@ -325,14 +333,199 @@ export class SendimagesPage implements OnInit {
     toast.present();
   }
 
-  send_image() {
+  addImageProcess(img, name_photo, hoy) {
+    return new Promise((resolve, reject) => {
+      let canvas = this.canvasRef.nativeElement;
+      let context = canvas.getContext("2d");
+      let source = new Image()
+      source.onload = () => {
+        canvas.height = source.height;
+        canvas.width = source.width;
+        canvas.style.width = "320px";
+        canvas.style.height = "300px";
+        context.drawImage(source, 0, 0);
+
+        const x = canvas.width / 2;
+        const y = canvas.height - 80;
+        console.log(this.marcar)
+        if (this.marcar == false) {
+          context.font = "30px impact";
+          context.textAlign = "right";
+          context.fillStyle = "white";
+          context.fillText('MLS Group Colombia', x, y - 25);
+          context.font = "30px impact";
+          context.textAlign = "right";
+          context.fillStyle = "white";
+          context.fillText(hoy, x, y);
+          context.font = "30px impact";
+          context.textAlign = "right";
+          context.fillStyle = "white";
+          context.fillText(this.user, x, y + 25);
+          context.font = "30px impact";
+          context.textAlign = "right";
+          context.fillStyle = "white";
+          context.fillText(name_photo, x, y + 50);
+          // let quality = [1.0];
+
+        }
+        let imagen = canvas.toDataURL("image/jpeg");
+        resolve(imagen)
+      }
+      source.onerror = reject
+      source.src = img
+    })
+  }
+  async send_image() {
     this.showLoader()
     for (let data of this.photos) {
       if (data.imagenes == '') {
       } else {
         if (data.state_send == false) {
-          this.onLoadimage(data.imagenes, data.id, data.name_photo, data.idodi, data.tipe, data.contract_idcontract);
+          // console.log('si')
+          // const contents = await this.onLoadimage(data.imagenes, data.id, data.name_photo, data.idodi, data.tipe, data.contract_idcontract);
+
+
+
+          let img = data.imagenes;
+          let id = data.id;
+          let name_photo = data.name_photo;
+          let idodi = data.idodi;
+          let tipe = data.tipe;
+          let contract_idcontract = data.contract_idcontract
+          let params = {
+            idodi: idodi,
+            tipe: tipe,
+            contract_idcontract: contract_idcontract,
+            idservice: this.idservice
+          }
+
+
+          let hoy = this.hoy()
+
+          // const image = this.addImageProcess(img, name_photo, hoy).then(height => {
+          //   console.log(height)
+          // })
+          const imagen: any = await this.addImageProcess(img, name_photo, hoy)
+          // console.log(this.images)
+          // console.log(this.images2)
+          // let canvas = this.canvasRef.nativeElement;
+          // let context = canvas.getContext("2d");
+
+          // let source = new Image();
+          // source.crossOrigin = "Anonymous";
+          // await source.onload = () => {
+          //   canvas.height = source.height;
+          //   canvas.width = source.width;
+          //   canvas.style.width = "320px";
+          //   canvas.style.height = "300px";
+          //   context.drawImage(source, 0, 0);
+
+          //   const x = canvas.width / 2;
+          //   const y = canvas.height - 80;
+          //   context.font = "30px impact";
+          //   context.textAlign = "right";
+          //   context.fillStyle = "white";
+          //   context.fillText('MLS Group Colombia', x, y - 25);
+          //   context.font = "30px impact";
+          //   context.textAlign = "right";
+          //   context.fillStyle = "white";
+          //   context.fillText(hoy, x, y);
+          //   context.font = "30px impact";
+          //   context.textAlign = "right";
+          //   context.fillStyle = "white";
+          //   context.fillText(this.user, x, y + 25);
+          //   context.font = "30px impact";
+          //   context.textAlign = "right";
+          //   context.fillStyle = "white";
+          //   context.fillText(name_photo, x, y + 50);
+          //   // let quality = [1.0];
+          //   this.images = canvas.toDataURL("image/jpeg");
+          // };
+
+          // source.src = img;
+
+          console.log(imagen)
+          const fileTransfer: FileTransferObject = this.transfer.create();
+          const divisiones = img.split("cache/");
+
+          let divisiones1 = divisiones[1].split("?");
+          let divisiones2 = divisiones[0].split("_app_file_");
+
+          let options: FileUploadOptions = {
+            fileKey: "file",
+            fileName: divisiones1[0],
+            headers: {},
+            params: { params: params }
+          };
+
+          await fileTransfer
+            .upload(
+              imagen,
+              this.constant.routeGlobal + "odi/send_image_movil",
+              options
+            )
+            .then(
+              data => {
+                var json = JSON.parse(data.response);
+                if (json.response == true) {
+                  this.photos[id].state = true;
+                  this.photos[id].state_send = true;
+                  this.photos[id].send = false;
+
+                  this.tasksService.SelectImageOne(tipe, idodi, this.idservice).then(tasks => {
+                    let row_data = tasks[0]
+                    let number = row_data.actual + 1;
+                    // console.log(number)
+                    // console.log(tipe, idodi, this.idservice, number)
+                    this.tasksService.update(tipe, idodi, this.idservice, number)
+                      .then(response => {
+
+                      })
+                      .catch(error => {
+                        console.error(error);
+                      })
+
+                  })
+                    .catch(error => {
+                      console.error(error);
+                    });
+
+
+
+
+                  this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
+
+                } else {
+                  this.photos[id].state = false;
+                  this.photos[id].state_send = true;
+                  this.photos[id].error = false;
+                  // this.writeFile(imagen, "My Picture", divisiones1[0]);
+                  this.falso = false;
+                  this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
+                }
+              },
+              err => {
+                console.log(err.body)
+                this.photos[id].state = false;
+                this.photos[id].state_send = true;
+                this.photos[id].error = false;
+                // this.writeFile(imagen, "My Picture", divisiones1[0]);
+
+                // this.tasksService.InsertICertificate(divisiones1[0], tipe, idodi, this.idservice)
+                //   .then(response => {
+                //     console.log(response)
+                //   })
+                //   .catch(error => {
+                //     console.error(error);
+                //   })
+
+                this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
+                this.presentToast('Error de Coneción')
+              }
+            );
+
         }
+
 
       }
 

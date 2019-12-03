@@ -23,8 +23,8 @@ export class NewClientPage implements OnInit {
     this.NewCliente = new FormGroup({
       idclient: new FormControl(''),
       name_cliente: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required]),
-      identification: new FormControl('', [Validators.required]),
+      phone: new FormControl(null),
+      identification: new FormControl(null),
       mail: new FormControl(''),
       state: new FormControl(),
       idstate: new FormControl()
@@ -32,8 +32,9 @@ export class NewClientPage implements OnInit {
 
     const data = navParams.get('data');
 
+
     if (data != null) {
-      this.NewCliente.get('idclient').setValue(data.id_client);
+      this.NewCliente.get('idclient').setValue(data.idclient);
       this.NewCliente.get('name_cliente').setValue(data.name_client);
       this.NewCliente.get('phone').setValue(data.phone);
       this.NewCliente.get('identification').setValue(data.id_client);
@@ -103,6 +104,7 @@ export class NewClientPage implements OnInit {
   }
 
   async  ModalAcount() {
+    console.log(this.NewCliente.value.idclient)
     const modal: HTMLIonModalElement =
       await this.modalController.create({
         component: ListAcountPage,

@@ -32,7 +32,7 @@ export class NewAcountPage implements OnInit {
       state: new FormControl(),
       idstate: new FormControl('', [Validators.required]),
       client_idclient: new FormControl(),
-      number_acount: new FormControl('', [Validators.required]),
+      number_acount: new FormControl(null),
       name_city: new FormControl('', [Validators.required]),
     })
 

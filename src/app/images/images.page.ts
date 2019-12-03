@@ -19,6 +19,7 @@ export class ImagesPage implements OnInit {
   PhotoServices;
   propCount
   idservice
+  marcar
   constructor(private route: ActivatedRoute,
     private router: Router,
     private LoginServiceService: LoginServiceService, public modalController: ModalController, private navParams: NavParams, private tasksService: TasksService) {
@@ -27,6 +28,7 @@ export class ImagesPage implements OnInit {
     this.type_network = navParams.get('type_network');
     this.data = navParams.get('data');
     this.idservice = navParams.get('idservice');
+    this.marcar = navParams.get('marcar');
   }
 
   ngOnInit() {
@@ -108,7 +110,8 @@ export class ImagesPage implements OnInit {
           'type_network': this.type_network,
           'data': this.data,
           'photos_service': photos_service,
-          'idservice': this.idservice
+          'idservice': this.idservice,
+          'marcar': this.marcar,
         }
 
       });

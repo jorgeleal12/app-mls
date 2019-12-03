@@ -340,7 +340,7 @@ export class AcordeonPage implements OnInit {
     }
 
     async ModalCetificate() {
-
+        console.log(this.NewService.value.idodi)
         if (this.NewService.value.idodi == null) {
             this.presentToast('Guarde Primero')
             return;
@@ -428,6 +428,7 @@ export class AcordeonPage implements OnInit {
     save() {
         this.loginServiceService.SaveService(this.NewService.value).subscribe(result => {
             if (result.response == true) {
+                this.NewService.get('idodi').setValue(result.idodi)
                 this.presentToast('Se Guardo el Servicio')
             } else {
                 this.presentToast('Se Actualizo el Servicio')

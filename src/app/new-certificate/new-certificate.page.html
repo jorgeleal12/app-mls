@@ -52,6 +52,15 @@
             <mat-form-field class="example-full-width">
               <input matInput placeholder="Observaciones para el Cliente" [(ngModel)]="NewCertificate.obsclient">
             </mat-form-field>
+
+            <ion-item>
+              <ion-label class="example-full-width">Estado</ion-label>
+              <ion-select [(ngModel)]="NewCertificate.state_g">
+                <ion-select-option [value]=1>Conforme</ion-select-option>
+                <ion-select-option [value]=2>No Conforme</ion-select-option>
+
+              </ion-select>
+            </ion-item>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -93,6 +102,12 @@
 
     </section>
   </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-label>No Rotular</ion-label>
+      <ion-toggle [(ngModel)]="marc"></ion-toggle>
+    </ion-item>
+  </ion-list>
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
 
     <ion-fab-button color="danger">
@@ -103,9 +118,9 @@
       <ion-fab-button color="light" (click)="cancelar()">
         <ion-icon name="close-circle-outline"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button color="light" (click)="decline()">
+      <!-- <ion-fab-button color="light" (click)="decline()">
         <ion-icon name="alert"></ion-icon>
-      </ion-fab-button>
+      </ion-fab-button> -->
       <ion-fab-button color="light" (click)="suspend()">
         <ion-icon name="alarm"></ion-icon>
       </ion-fab-button>

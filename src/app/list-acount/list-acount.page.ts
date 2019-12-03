@@ -21,6 +21,7 @@ export class ListAcountPage implements OnInit {
     public modalController: ModalController,
     private navParams: NavParams) {
     this.idclient = navParams.get('idclient');
+
   }
 
   ngOnInit() {

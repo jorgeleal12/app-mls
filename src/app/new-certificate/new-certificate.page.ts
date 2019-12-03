@@ -32,6 +32,7 @@ export class NewCertificatePage implements OnInit {
   type
   type2
   type3
+  marc = false;
   NewCertificate = new NewCertificate();
 
 
@@ -123,6 +124,7 @@ export class NewCertificatePage implements OnInit {
             'number_service': this.number_service,
             'type_network': this.type_network,
             'data': this.data,
+            'marcar': this.marc,
             'idservice': this.NewCertificate.idservice_certifications,
           }
 
@@ -346,7 +348,7 @@ export class NewCertificatePage implements OnInit {
             let number = 2
             this.tasksService.SelectImage(this.data.idodi, this.NewCertificate.idservice_certifications)
               .then(tasks => {
-                console.log(tasks)
+                // console.log(tasks)
                 let actual = 0;
                 let totales = 0;
                 let images = [];
@@ -361,7 +363,7 @@ export class NewCertificatePage implements OnInit {
                 }
                 this.messages = images;
 
-                console.log(actual, totales)
+                // console.log(actual, totales)
 
                 if (actual < totales) {
 

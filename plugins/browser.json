@@ -7,61 +7,67 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "io.app_mls"
-    },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "io.app_mls"
-    },
-    "cordova-plugin-device": {
-      "PACKAGE_NAME": "io.app_mls"
-    },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "io.app_mls"
-    },
-    "cordova-plugin-ionic-keyboard": {
-      "PACKAGE_NAME": "io.app_mls"
-    },
     "cordova-android-support-gradle-release": {
-      "PACKAGE_NAME": "io.app_mls"
-    },
-    "uk.co.workingedge.phonegap.plugin.launchnavigator": {
-      "PACKAGE_NAME": "io.app_mls"
-    },
-    "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "io.app_mls"
-    },
-    "cordova-plugin-file-transfer": {
-      "PACKAGE_NAME": "io.app_mls"
-    },
-    "cordova-plugin-filechooser": {
-      "PACKAGE_NAME": "io.app_mls"
-    },
-    "cordova-plugin-telerik-imagepicker": {
-      "PACKAGE_NAME": "io.app_mls"
-    },
-    "cordova-plugin-fcm-with-dependecy-updated": {
-      "PACKAGE_NAME": "io.app_mls"
-    },
-    "cordova-plugin-local-notification": {
-      "PACKAGE_NAME": "io.app_mls"
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     },
     "cordova-plugin-camera": {
-      "PACKAGE_NAME": "io.app_mls"
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-fcm-with-dependecy-updated": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-filechooser": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     },
     "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "io.app_mls"
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-telerik-imagepicker": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     },
     "cordova-sqlite-storage": {
-      "PACKAGE_NAME": "io.app_mls"
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },
   "dependent_plugins": {
-    "cordova-plugin-file": {
-      "PACKAGE_NAME": "io.app_mls"
+    "cordova-plugin-actionsheet": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     },
     "cordova-plugin-badge": {
-      "PACKAGE_NAME": "io.app_mls"
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   }
 }
