@@ -20,6 +20,7 @@ export class AsignadasPage implements OnInit {
   image
   data;
   constant = new constant();
+  btnadd;
   constructor(
     private LoginServiceService: LoginServiceService,
     private route: ActivatedRoute,
@@ -33,9 +34,15 @@ export class AsignadasPage implements OnInit {
 
     this.route.queryParams.subscribe(params => {
       this.data = this.router.getCurrentNavigation().extras;
-      console.log(this.data)
 
+      console.log(this.data)
+      if (this.data == 1) {
+        this.btnadd = false;
+      } else {
+        this.btnadd = true;
+      }
     });
+
   }
 
 

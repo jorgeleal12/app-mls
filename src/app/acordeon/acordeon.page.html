@@ -76,15 +76,15 @@
                             </ion-item>
 
                             <ion-item>
-                                <ion-label class="example-full-width">Tipo de Obra</ion-label>
+                                <ion-label class="example-full-width">Tipo de Instalación</ion-label>
                                 <ion-select formControlName="service_type_idservice_type">
-                                    <ion-select-option [value]=1>Revisión Periodica</ion-select-option>
-                                    <ion-select-option [value]=2>Nueva</ion-select-option>
+                                    <ion-select-option [value]=1>Nueva</ion-select-option>
+                                    <ion-select-option [value]=2>Revisión Periodica</ion-select-option>
                                 </ion-select>
                             </ion-item>
 
                             <ion-item>
-                                <ion-label class="example-full-width">Tipos de Servicio</ion-label>
+                                <ion-label class="example-full-width">Tipos de Uso</ion-label>
                                 <ion-select formControlName="type_service_idtype_service" (ionChange)="type_red()">
                                     <ion-select-option [value]=1>Residencial</ion-select-option>
                                     <ion-select-option [value]=2>Comercial</ion-select-option>
@@ -93,7 +93,7 @@
                             </ion-item>
 
                             <ion-item lines="none">
-                                <ion-label class="example-full-width">Tipo de Red</ion-label>
+                                <ion-label class="example-full-width">Tipo de Inspacción</ion-label>
                                 <ion-select formControlName="type_network_idtype_network">
                                     <ion-select-option *ngFor="let network of networks" [value]=network.idtype_network>
                                         {{network.name_network}}

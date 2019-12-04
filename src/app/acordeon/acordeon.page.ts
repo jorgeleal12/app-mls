@@ -429,6 +429,7 @@ export class AcordeonPage implements OnInit {
         this.loginServiceService.SaveService(this.NewService.value).subscribe(result => {
             if (result.response == true) {
                 this.NewService.get('idodi').setValue(result.idodi)
+                this.NewService.get('state').setValue(result.state)
                 this.presentToast('Se Guardo el Servicio')
             } else {
                 this.presentToast('Se Actualizo el Servicio')

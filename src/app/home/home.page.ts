@@ -54,6 +54,7 @@ export class HomePage implements OnInit {
   }
 
   asignadas(number) {
+
     this.router.navigate(['menu/menu/asignadas'], number);
   }
   showLoader() {
