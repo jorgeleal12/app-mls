@@ -62,7 +62,7 @@ export class AppComponent {
       }
 
       this.fcm.getToken().then((token: String) => console.log('este es el token' + token)).catch(error => {
-        console.log('error')
+
       });
 
 

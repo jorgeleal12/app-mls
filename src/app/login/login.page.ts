@@ -18,15 +18,19 @@ export class LoginPage implements OnInit {
     private fcm: FCM) { }
 
   ngOnInit() {
-
-
+    this.login();
   }
   ionViewCanEnter() {
 
+    this.login();
+  }
+
+  login() {
     if (!localStorage.getItem("idusers")) {
 
     } else {
       this.router.navigateByUrl('/menu');
+
     }
   }
 
