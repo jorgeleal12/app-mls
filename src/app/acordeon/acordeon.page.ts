@@ -14,6 +14,10 @@ import { ClientServicePage } from '../client-service/client-service.page';
 import { AcountServicePage } from '../acount-service/acount-service.page';
 import { LoadingController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import { SendImagePage } from '../send-image/send-image.page';
+
+
+
 @Component({
     selector: 'app-acordeon',
     templateUrl: './acordeon.page.html',
@@ -215,6 +219,8 @@ export class AcordeonPage implements OnInit {
         await modal.present();
     }
 
+
+
     async client() {
         if (this.NewService.value.client == undefined) {
             const modal: HTMLIonModalElement =
@@ -377,6 +383,18 @@ export class AcordeonPage implements OnInit {
             }
         });
 
+        await modal.present();
+    }
+
+    async ModalImage() {
+
+        const modal: HTMLIonModalElement =
+            await this.modalController.create({
+                component: SendImagePage
+            });
+        modal.onDidDismiss().then((data) => {
+
+        });
         await modal.present();
     }
 

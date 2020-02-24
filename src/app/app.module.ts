@@ -38,6 +38,8 @@ import { ClientServicePageModule } from './client-service/client-service.module'
 import { AcountServicePageModule } from './acount-service/acount-service.module';
 import { ViewDocumentPageModule } from './view-document/view-document.module';
 import { ZoomImagePageModule } from './zoom-image/zoom-image.module';
+import { SendImagePageModule } from './send-image/send-image.module';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -65,7 +67,10 @@ import { ZoomImagePageModule } from './zoom-image/zoom-image.module';
     AcountServicePageModule,
     ViewDocumentPageModule,
     ZoomImagePageModule,
-    NewClientPageModule],
+    NewClientPageModule,
+    SendImagePageModule
+
+  ],
   providers: [
     StatusBar,
     SplashScreen,

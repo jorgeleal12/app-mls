@@ -413,6 +413,44 @@
                 </div>
 
             </section>
+
+            <section class="acc-section" (click)="setStep('expanded8')">
+                <div class="img">
+                    <img src="../../assets/iconos/148717.svg" alt="">
+                </div>
+                <div class="info" (click)="ModalImage()">
+                    <p class="title">Fotografias</p>
+                    <p class="subtitle">Fotografias del servicio</p>
+
+                </div>
+                <div class="icon">
+                    <ion-icon name="{{getIconName('expanded8')}}" color="medium"></ion-icon>
+                </div>
+
+            </section>
+            <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded8')}">
+
+            </section>
+
+            <section class="acc-section" (click)="setStep('expanded7')">
+                <div class="img">
+                    <img src="../../assets/iconos/138589.svg" alt="">
+                </div>
+                <div class="info">
+                    <p class="title">Ver Fotografias</p>
+                    <p class="subtitle">Ver las Fotografias del Servicio</p>
+
+                </div>
+                <div class="icon">
+                    <ion-icon name="{{getIconName('expanded7')}}" color="medium"></ion-icon>
+                </div>
+
+            </section>
+            <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded7')}">
+
+            </section>
+
+
             <!-- <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded7')}">
                 <ion-item detail *ngFor="let photos_service of photos_services; let i = i; index"
                     (click)="photos_add(photos_service)">
