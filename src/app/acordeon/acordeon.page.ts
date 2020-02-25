@@ -390,7 +390,10 @@ export class AcordeonPage implements OnInit {
 
         const modal: HTMLIonModalElement =
             await this.modalController.create({
-                component: SendImagePage
+                component: SendImagePage,
+                componentProps: {
+                    data: this.NewService.value
+                }
             });
         modal.onDidDismiss().then((data) => {
 
