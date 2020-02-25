@@ -381,11 +381,6 @@ export class SendimagesPage implements OnInit {
       if (data.imagenes == '') {
       } else {
         if (data.state_send == false) {
-          // console.log('si')
-          // const contents = await this.onLoadimage(data.imagenes, data.id, data.name_photo, data.idodi, data.tipe, data.contract_idcontract);
-
-
-
           let img = data.imagenes;
           let id = data.id;
           let name_photo = data.name_photo;
@@ -402,49 +397,8 @@ export class SendimagesPage implements OnInit {
 
           let hoy = this.hoy()
 
-          // const image = this.addImageProcess(img, name_photo, hoy).then(height => {
-          //   console.log(height)
-          // })
           const imagen: any = await this.addImageProcess(img, name_photo, hoy)
-          // console.log(this.images)
-          // console.log(this.images2)
-          // let canvas = this.canvasRef.nativeElement;
-          // let context = canvas.getContext("2d");
 
-          // let source = new Image();
-          // source.crossOrigin = "Anonymous";
-          // await source.onload = () => {
-          //   canvas.height = source.height;
-          //   canvas.width = source.width;
-          //   canvas.style.width = "320px";
-          //   canvas.style.height = "300px";
-          //   context.drawImage(source, 0, 0);
-
-          //   const x = canvas.width / 2;
-          //   const y = canvas.height - 80;
-          //   context.font = "30px impact";
-          //   context.textAlign = "right";
-          //   context.fillStyle = "white";
-          //   context.fillText('MLS Group Colombia', x, y - 25);
-          //   context.font = "30px impact";
-          //   context.textAlign = "right";
-          //   context.fillStyle = "white";
-          //   context.fillText(hoy, x, y);
-          //   context.font = "30px impact";
-          //   context.textAlign = "right";
-          //   context.fillStyle = "white";
-          //   context.fillText(this.user, x, y + 25);
-          //   context.font = "30px impact";
-          //   context.textAlign = "right";
-          //   context.fillStyle = "white";
-          //   context.fillText(name_photo, x, y + 50);
-          //   // let quality = [1.0];
-          //   this.images = canvas.toDataURL("image/jpeg");
-          // };
-
-          // source.src = img;
-
-          console.log(imagen)
           const fileTransfer: FileTransferObject = this.transfer.create();
           const divisiones = img.split("cache/");
 
@@ -490,16 +444,12 @@ export class SendimagesPage implements OnInit {
                       console.error(error);
                     });
 
-
-
-
                   this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
 
                 } else {
                   this.photos[id].state = false;
                   this.photos[id].state_send = true;
                   this.photos[id].error = false;
-                  // this.writeFile(imagen, "My Picture", divisiones1[0]);
                   this.falso = false;
                   this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
                 }
@@ -509,15 +459,6 @@ export class SendimagesPage implements OnInit {
                 this.photos[id].state = false;
                 this.photos[id].state_send = true;
                 this.photos[id].error = false;
-                // this.writeFile(imagen, "My Picture", divisiones1[0]);
-
-                // this.tasksService.InsertICertificate(divisiones1[0], tipe, idodi, this.idservice)
-                //   .then(response => {
-                //     console.log(response)
-                //   })
-                //   .catch(error => {
-                //     console.error(error);
-                //   })
 
                 this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
                 this.presentToast('Error de Coneción')

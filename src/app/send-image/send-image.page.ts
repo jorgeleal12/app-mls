@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { ModalController, NavParams } from '@ionic/angular';
@@ -9,6 +9,7 @@ import { LoadingController } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { ToastController } from '@ionic/angular';
 import { ActionSheetController } from '@ionic/angular';
+import { constant } from '../utilitis/constant';
 
 @Component({
   selector: 'app-send-image',
@@ -23,6 +24,10 @@ export class SendImagePage implements OnInit {
   public falso = true;
   loaderToShow: any;
   private win: any = window;
+  user
+  @ViewChild('layout', { static: true }) canvasRef;
+  constant = new constant();
+
 
   constructor(private route: ActivatedRoute, private router: Router, private imagePicker: ImagePicker,
     public transfer: FileTransfer,
@@ -37,9 +42,6 @@ export class SendImagePage implements OnInit {
   ) {
     this.data = navParams.get('data');
     console.log(this.data)
-  }
-
-  ngOnInit() {
 
     this.photos.push({
       imagenes: '',//'http://192.168.1.126/laravel-mls/public/public/odi/images/MLS/MEDELLIN/79/VsSuRyL4USikUZE.jpg',
@@ -53,6 +55,33 @@ export class SendImagePage implements OnInit {
       error: true
       ,
     });
+  }
+
+  ngOnInit() {
+    this.user = localStorage.getItem("nombres")
+
+  }
+
+  hoy() {
+    let hoy: any = new Date();
+    let dd: any = hoy.getDate();
+    let mm: any = hoy.getMonth() + 1; //hoy es 0!
+    let yyyy = hoy.getFullYear();
+
+    if (dd < 10) {
+      dd = "0" + dd;
+    }
+
+    if (mm < 10) {
+      mm = "0" + mm;
+    }
+
+    hoy = yyyy + "-" + mm + "-" + dd;
+
+    var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+    var f = new Date();
+
+    return f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear() + ' ' + f.getHours() + ':' + f.getMinutes();
   }
 
 
@@ -155,6 +184,101 @@ export class SendImagePage implements OnInit {
       err => { }
     );
 
+  }
+
+  addImageProcess(img, hoy) {
+    console.log('1')
+    return new Promise((resolve, reject) => {
+      let canvas = this.canvasRef.nativeElement;
+      let context = canvas.getContext("2d");
+      let source = new Image()
+      source.onload = () => {
+        canvas.height = source.height;
+        canvas.width = source.width;
+        canvas.style.width = "320px";
+        canvas.style.height = "300px";
+        context.drawImage(source, 0, 0);
+
+        const x = canvas.width / 2;
+        const y = canvas.height - 80;
+
+
+        context.font = "30px impact";
+        context.textAlign = "right";
+        context.fillStyle = "white";
+        context.fillText('MLS Group Colombia', x, y - 25);
+        context.font = "30px impact";
+        context.textAlign = "right";
+        context.fillStyle = "white";
+        context.fillText(hoy, x, y);
+        context.font = "30px impact";
+        context.textAlign = "right";
+        context.fillStyle = "white";
+        context.fillText(this.user, x, y + 25);
+        context.font = "30px impact";
+        context.textAlign = "right";
+        context.fillStyle = "white";
+
+        // let quality = [1.0];
+
+
+        let imagen = canvas.toDataURL("image/jpeg");
+        resolve(imagen)
+      }
+      source.onerror = reject
+      source.src = img
+    })
+  }
+
+
+  async SendImage() {
+
+    for (let data of this.photos) {
+      let img = data.imagenes;
+      let id = data.id;
+      let idodi = data.idodi;
+      let contract_idcontract = data.contract_idcontract
+      let params = {
+        idodi: idodi,
+        contract_idcontract: contract_idcontract,
+      }
+
+      let hoy = this.hoy()
+
+      const imagen: any = await this.addImageProcess(img, hoy)
+      const SendIm = await this.LoadImage(imagen, params, img, id)
+    }
+  }
+
+  LoadImage(imagen, params, img, id) {
+    console.log('2')
+    const fileTransfer: FileTransferObject = this.transfer.create();
+
+    const divisiones = img.split("cache/");
+
+    let divisiones1 = divisiones[1].split("?");
+    let divisiones2 = divisiones[0].split("_app_file_");
+
+    let options: FileUploadOptions = {
+      fileKey: "file",
+      fileName: divisiones1[0],
+      headers: {},
+      params: { params: params }
+    };
+
+    fileTransfer.upload(imagen,
+      this.constant.routeGlobal + "odi/SendImageMovil",
+      options)
+      .then((data) => {
+        console.log(data)
+        this.photos[id].state = true;
+        this.photos[id].state_send = true;
+        this.photos[id].send = false;
+      }, (err) => {
+        console.log(err)
+      })
+
+    return true;
   }
 
 
