@@ -5,6 +5,7 @@ const routes: Routes = [
 
   { path: '', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },  { path: 'send-image', loadChildren: './send-image/send-image.module#SendImagePageModule' },
+  { path: 'view-image-s', loadChildren: './view-image-s/view-image-s.module#ViewImageSPageModule' },
 
   // { path: 'view-document', loadChildren: './view-document/view-document.module#ViewDocumentPageModule' },
 

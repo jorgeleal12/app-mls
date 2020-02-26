@@ -15,6 +15,7 @@ import { AcountServicePage } from '../acount-service/acount-service.page';
 import { LoadingController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { SendImagePage } from '../send-image/send-image.page';
+import { ViewImageSPage } from '../view-image-s/view-image-s.page';
 
 
 
@@ -38,6 +39,9 @@ export class AcordeonPage implements OnInit {
     hidden;
     type2
     type3
+    materials = [];
+
+
     constructor(
         private route: ActivatedRoute,
         private router: Router,
@@ -120,7 +124,7 @@ export class AcordeonPage implements OnInit {
                 this.NewService.get('name_material').setValue(this.data.name_material);
                 this.NewService.get('name_construtor').setValue(this.data.name_construtor);
                 this.NewService.get('priority').setValue(this.data.priority);
-                this.NewService.get('material').setValue(this.data.material);
+                this.NewService.get('material').setValue(this.materials);
                 this.NewService.get('construtor').setValue(this.data.construtor);
                 this.NewService.get('service_type_idservice_type').setValue(this.data.service_type_idservice_type);
 
@@ -183,26 +187,40 @@ export class AcordeonPage implements OnInit {
         toast.present();
     }
 
-    async presentModal() {
-        if (this.NewService.value.material == null) {
-            const modal: HTMLIonModalElement =
-                await this.modalController.create({
-                    component: MaterialsPage
-                });
 
-            modal.onDidDismiss().then((detail) => {
-                if (detail.data.data !== undefined) {
-                    this.NewService.get('name_material').setValue(detail.data.data.name_materials)
-                    this.NewService.get('material').setValue(detail.data.data.idmaterials)
-                    this.step.sectionName = 'expanded4';
-                }
+    //modal para los materiales
+    async presentModal() {
+
+        if (this.NewService.value.idodi) {
+            this.loginServiceService.SearchMaterial(this.NewService.value).subscribe(result => {
+
+            }, err => {
+
+            })
+        }
+
+        const modal: HTMLIonModalElement =
+            await this.modalController.create({
+                component: MaterialsPage
             });
 
-            await modal.present();
-        }
+        modal.onDidDismiss().then((detail) => {
+
+            if (detail.data.data !== undefined) {
+                this.materials.push({
+                    materials_idmaterials: detail.data.data.idmaterials,
+                    name_materials: detail.data.data.name_materials
+
+                })
+                this.step.sectionName = 'expanded4';
+            }
+        });
+
+        await modal.present();
+
     }
 
-    async  edit_material() {
+    async  edit_material(i, material) {
         const modal: HTMLIonModalElement =
             await this.modalController.create({
                 component: MaterialsPage
@@ -210,8 +228,8 @@ export class AcordeonPage implements OnInit {
 
         modal.onDidDismiss().then((detail) => {
             if (detail.data.data !== undefined) {
-                this.NewService.get('name_material').setValue(detail.data.data.name_materials)
-                this.NewService.get('material').setValue(detail.data.data.idmaterials)
+                material.name_materials = detail.data.data.name_materials
+                material.materials_idmaterials = detail.data.data.idmaterials
                 this.step.sectionName = 'expanded4';
             }
         });
@@ -346,7 +364,6 @@ export class AcordeonPage implements OnInit {
     }
 
     async ModalCetificate() {
-        console.log(this.NewService.value.idodi)
         if (this.NewService.value.idodi == null) {
             this.presentToast('Guarde Primero')
             return;
@@ -391,6 +408,21 @@ export class AcordeonPage implements OnInit {
         const modal: HTMLIonModalElement =
             await this.modalController.create({
                 component: SendImagePage,
+                componentProps: {
+                    data: this.NewService.value
+                }
+            });
+        modal.onDidDismiss().then((data) => {
+
+        });
+        await modal.present();
+    }
+
+    async ModalViewImage() {
+
+        const modal: HTMLIonModalElement =
+            await this.modalController.create({
+                component: ViewImageSPage,
                 componentProps: {
                     data: this.NewService.value
                 }
@@ -447,6 +479,8 @@ export class AcordeonPage implements OnInit {
             );
     }
     save() {
+
+        this.NewService.get('material').setValue(this.materials)
         this.loginServiceService.SaveService(this.NewService.value).subscribe(result => {
             if (result.response == true) {
                 this.NewService.get('idodi').setValue(result.idodi)
@@ -460,11 +494,26 @@ export class AcordeonPage implements OnInit {
         })
     }
 
-    DeleteMaterial() {
-        this.NewService.get('name_material').setValue('')
-        this.NewService.get('material').setValue(null)
 
+
+
+    DeleteMaterial(i: any, material: any): void {
+
+        this.materials.splice(i, 1);
+
+
+        // this.materials = this.materials.filter(d => d.i !== i);
+        // console.log(this.materials)
+        // if (data.idactivities_obr != null) {
+        //   this.ActivitiesService.delete_activities(data).subscribe(result => {
+
+        //   }, error => {
+
+        //   })
+        // }
     }
+
+
     DeleteConstructor() {
         this.NewService.get('name_construtor').setValue('')
         this.NewService.get('construtor').setValue(null)

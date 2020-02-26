@@ -39,6 +39,7 @@ import { AcountServicePageModule } from './acount-service/acount-service.module'
 import { ViewDocumentPageModule } from './view-document/view-document.module';
 import { ZoomImagePageModule } from './zoom-image/zoom-image.module';
 import { SendImagePageModule } from './send-image/send-image.module';
+import { ViewImageSPageModule } from './view-image-s/view-image-s.module';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { SendImagePageModule } from './send-image/send-image.module';
     ViewDocumentPageModule,
     ZoomImagePageModule,
     NewClientPageModule,
-    SendImagePageModule
+    SendImagePageModule,
+    ViewImageSPageModule
 
   ],
   providers: [

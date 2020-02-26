@@ -320,27 +320,26 @@
 
             <section class="acc-section" (click)="setStep('expanded4')">
                 <div class="img">
-                    <img src="../../assets/iconos/1683018.svg" alt="">
+                    <img src="../../assets/iconos/1683018.svg" alt="" (click)="presentModal()">
                 </div>
-                <div class="info" (click)="presentModal()">
-                    <p class="title">Material</p>
-                    <p class="subtitle">Información del Material</p>
-
+                <div class="info">
+                    <p class="title" (click)="presentModal()">Material</p>
+                    <p class="subtitle" (click)="presentModal()">Información del Material</p>
                 </div>
                 <div class="icon">
-                    <ion-icon name="{{getIconName('expanded4')}}" color="medium" (click)="presentModal()"></ion-icon>
+                    <ion-icon name="{{getIconName('expanded4')}}" color="medium"></ion-icon>
                 </div>
-
             </section>
             <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded4')}">
 
                 <!-- Sliding item with text options on both sides -->
-                <ion-item-sliding>
+                <ion-item-sliding *ngFor="let material of materials; let i=index">
+
                     <ion-item-options side="start">
-                        <ion-item-option (click)="edit_material()">
+                        <ion-item-option (click)="edit_material(i,material)">
                             <ion-icon src="assets/iconos/61456.svg"></ion-icon>
                         </ion-item-option>
-                        <ion-item-option color="danger" (click)="DeleteMaterial()">
+                        <ion-item-option color="danger" (click)="DeleteMaterial(i,material)">
                             <ion-icon src="assets/iconos/64022.svg"></ion-icon>
                         </ion-item-option>
                     </ion-item-options>
@@ -348,7 +347,7 @@
                     <ion-item lines="none">
                         <ion-label class="ion-text-wrap">
                             <ion-text>
-                                <h2>{{ NewService.value.name_material}}</h2>
+                                <h2>{{ material.name_materials}}</h2>
                             </ion-text>
 
                         </ion-label>
@@ -436,7 +435,7 @@
                 <div class="img">
                     <img src="../../assets/iconos/138589.svg" alt="">
                 </div>
-                <div class="info">
+                <div class="info" (click)="ModalViewImage()">
                     <p class="title">Ver Fotografias</p>
                     <p class="subtitle">Ver las Fotografias del Servicio</p>
 
@@ -449,17 +448,6 @@
             <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded7')}">
 
             </section>
-
-
-            <!-- <section class="acc-content" [ngClass]="{'expandable':getNameValid('expanded7')}">
-                <ion-item detail *ngFor="let photos_service of photos_services; let i = i; index"
-                    (click)="photos_add(photos_service)">
-                    <ion-label>
-                        {{photos_service.name_photo}}
-                    </ion-label>
-                </ion-item>
-            </section> -->
-
         </ion-list>
     </form>
 

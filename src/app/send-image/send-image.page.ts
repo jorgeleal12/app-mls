@@ -41,8 +41,6 @@ export class SendImagePage implements OnInit {
 
   ) {
     this.data = navParams.get('data');
-    console.log(this.data)
-
     this.photos.push({
       imagenes: '',//'http://192.168.1.126/laravel-mls/public/public/odi/images/MLS/MEDELLIN/79/VsSuRyL4USikUZE.jpg',
       id: 0,
@@ -187,7 +185,6 @@ export class SendImagePage implements OnInit {
   }
 
   addImageProcess(img, hoy) {
-    console.log('1')
     return new Promise((resolve, reject) => {
       let canvas = this.canvasRef.nativeElement;
       let context = canvas.getContext("2d");
@@ -219,9 +216,6 @@ export class SendImagePage implements OnInit {
         context.textAlign = "right";
         context.fillStyle = "white";
 
-        // let quality = [1.0];
-
-
         let imagen = canvas.toDataURL("image/jpeg");
         resolve(imagen)
       }
@@ -251,11 +245,9 @@ export class SendImagePage implements OnInit {
   }
 
   LoadImage(imagen, params, img, id) {
-    console.log('2')
     const fileTransfer: FileTransferObject = this.transfer.create();
 
     const divisiones = img.split("cache/");
-
     let divisiones1 = divisiones[1].split("?");
     let divisiones2 = divisiones[0].split("_app_file_");
 
@@ -270,16 +262,21 @@ export class SendImagePage implements OnInit {
       this.constant.routeGlobal + "odi/SendImageMovil",
       options)
       .then((data) => {
-        console.log(data)
         this.photos[id].state = true;
         this.photos[id].state_send = true;
         this.photos[id].send = false;
       }, (err) => {
-        console.log(err)
+        this.photos[id].state = false;
+        this.photos[id].state_send = false;
+        this.photos[id].send = false;
       })
 
     return true;
   }
-
+  back() {
+    this.modalController.dismiss({
+      'dismissed': false,
+    });
+  }
 
 }

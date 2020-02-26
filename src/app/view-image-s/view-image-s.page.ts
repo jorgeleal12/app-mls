@@ -4,13 +4,13 @@ import { NavParams } from '@ionic/angular';
 import { LoginServiceService } from '../Services/login-service.service';
 import { ZoomImagePage } from '../zoom-image/zoom-image.page';
 
-@Component({
-  selector: 'app-view-image',
-  templateUrl: './view-image.page.html',
-  styleUrls: ['./view-image.page.scss'],
-})
-export class ViewImagePage implements OnInit {
 
+@Component({
+  selector: 'app-view-image-s',
+  templateUrl: './view-image-s.page.html',
+  styleUrls: ['./view-image-s.page.scss'],
+})
+export class ViewImageSPage implements OnInit {
 
   data
   photos
@@ -23,6 +23,7 @@ export class ViewImagePage implements OnInit {
 
   }
 
+
   ngOnInit() {
     this.search();
   }
@@ -34,12 +35,12 @@ export class ViewImagePage implements OnInit {
   }
   search() {
     const params = {
-      idservice: this.idservice,
       id_odi: this.data.idodi
     }
-    this.loginServiceService.ViewImage(params).subscribe(result => {
+    this.loginServiceService.SearchImageOdi(params).subscribe(result => {
       this.photos = result.response;
 
+      console.log(this.url)
     }, error => { })
   }
 
@@ -61,6 +62,5 @@ export class ViewImagePage implements OnInit {
 
     await modal.present();
   }
-
 
 }

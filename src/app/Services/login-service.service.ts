@@ -153,4 +153,13 @@ export class LoginServiceService {
   change_active_service(params): Observable<any> {
     return this.http.post(`${this.api_url}movil/change_active_service`, params);
   }
+
+  SearchImageOdi(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/search_image_odi`, params);
+  }
+
+
+  SearchMaterial(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/search_material`, params);
+  }
 }
