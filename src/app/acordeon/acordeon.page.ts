@@ -124,7 +124,7 @@ export class AcordeonPage implements OnInit {
                 this.NewService.get('name_material').setValue(this.data.name_material);
                 this.NewService.get('name_construtor').setValue(this.data.name_construtor);
                 this.NewService.get('priority').setValue(this.data.priority);
-                this.NewService.get('material').setValue(this.materials);
+                // this.NewService.get('material').setValue(this.materials);
                 this.NewService.get('construtor').setValue(this.data.construtor);
                 this.NewService.get('service_type_idservice_type').setValue(this.data.service_type_idservice_type);
 
@@ -160,6 +160,14 @@ export class AcordeonPage implements OnInit {
         if (this.NewService.value.user_type == 3) {
             this.type3 = false;
         }
+
+        if (this.NewService.value.idodi) {
+            this.loginServiceService.SearchMaterial(this.NewService.value).subscribe(result => {
+                this.materials = result.response;
+            }, err => {
+
+            })
+        }
     }
     edit() {
         this.hidden = false;
@@ -190,14 +198,6 @@ export class AcordeonPage implements OnInit {
 
     //modal para los materiales
     async presentModal() {
-
-        if (this.NewService.value.idodi) {
-            this.loginServiceService.SearchMaterial(this.NewService.value).subscribe(result => {
-
-            }, err => {
-
-            })
-        }
 
         const modal: HTMLIonModalElement =
             await this.modalController.create({
@@ -450,7 +450,7 @@ export class AcordeonPage implements OnInit {
     }
     back() {
         // this.router.navigateByUrl('menu/menu/asignadas');
-        console.log(this.NewService.value.id)
+        // console.log(this.NewService.value.id)
         this.router.navigate(['menu/menu/asignadas'], this.NewService.value.id);
     }
 
