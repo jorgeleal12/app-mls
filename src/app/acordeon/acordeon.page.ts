@@ -487,6 +487,10 @@ export class AcordeonPage implements OnInit {
                 this.NewService.get('state').setValue(result.state)
                 this.presentToast('Se Guardo el Servicio')
             } else {
+                console.log(1)
+                this.div_hidden = true;
+                this.div_service = false;
+                this.hidden = true
                 this.presentToast('Se Actualizo el Servicio')
             }
         }, error => {
