@@ -64,7 +64,7 @@ export class AcordeonPage implements OnInit {
             name_type: new FormControl(),
             name_network: new FormControl(),
             contract_name: new FormControl(),
-            client: new FormControl(),
+            client: new FormControl(null),
             name_client: new FormControl(),
             identifacation: new FormControl(),
             phone: new FormControl(),
@@ -479,13 +479,22 @@ export class AcordeonPage implements OnInit {
             );
     }
     save() {
-
+        if (this.NewService.value.client == null) {
+            this.presentToast('Seleccione Un cliente')
+            return;
+        }
+        if (this.NewService.value.address == null) {
+            this.presentToast('Seleccione Una Dirección')
+            return;
+        }
         this.NewService.get('material').setValue(this.materials)
         this.loginServiceService.SaveService(this.NewService.value).subscribe(result => {
             if (result.response == true) {
                 this.NewService.get('idodi').setValue(result.idodi)
+                this.NewService.get('number_service').setValue(result.idodi)
                 this.NewService.get('state').setValue(result.state)
                 this.presentToast('Se Guardo el Servicio')
+                this.view(result.search)
             } else {
                 console.log(1)
                 this.div_hidden = true;
@@ -499,7 +508,34 @@ export class AcordeonPage implements OnInit {
     }
 
 
+    view(data) {
+        this.NewService.get('number_service').setValue(data.idodi);
+        this.NewService.get('name_priority').setValue(data.name_priority);
+        this.NewService.get('date_programming').setValue(data.date_programming);
+        this.NewService.get('Attention').setValue(data.Attention);
+        this.NewService.get('name_atencion').setValue(data.name_atencion);
+        this.NewService.get('name_gas').setValue(data.name_gas);
+        this.NewService.get('type_gas').setValue(data.type_gas);
+        this.NewService.get('name_type').setValue(data.name_type);
+        this.NewService.get('name_network').setValue(data.name_network);
+        this.NewService.get('contract_name').setValue(data.contract_name);
+        this.NewService.get('client').setValue(data.client);
+        this.NewService.get('name_client').setValue(data.name_client);
+        this.NewService.get('identifacation').setValue(data.identifacation);
+        this.NewService.get('phone').setValue(data.phone);
+        this.NewService.get('type_service_idtype_service').setValue(data.type_service_idtype_service);
 
+        this.NewService.get('address').setValue(data.address);
+        this.NewService.get('idodi').setValue(data.idodi);
+        this.NewService.get('name_state').setValue(data.name_state);
+        this.NewService.get('state').setValue(data.state);
+        this.NewService.get('name_material').setValue(data.name_material);
+        this.NewService.get('name_construtor').setValue(data.name_construtor);
+        this.NewService.get('priority').setValue(data.priority);
+        // this.NewService.get('material').setValue(this.materials);
+        this.NewService.get('construtor').setValue(data.construtor);
+        this.NewService.get('service_type_idservice_type').setValue(data.service_type_idservice_type);
+    }
 
     DeleteMaterial(i: any, material: any): void {
 
