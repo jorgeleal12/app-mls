@@ -49,14 +49,18 @@ export class NewCertificatePage implements OnInit {
     this.type_network = navParams.get('type_network');
     this.data = navParams.get('data');
     this.idusers = localStorage.getItem("id");
-
     this.NewCertificate = navParams.get('certificate');
+
 
     if (this.NewCertificate == undefined) {
       this.NewCertificate = new NewCertificate();
       this.NewCertificate.odi_idodi = this.data.idodi;
       this.NewCertificate.id_user = this.idusers
+
       this.NumberCertificate();
+    } else {
+      this.NewCertificate = navParams.get('certificate');
+
     }
   }
 
@@ -109,8 +113,6 @@ export class NewCertificatePage implements OnInit {
   }
 
   async ModalImage() {
-
-
 
     if (this.NewCertificate.idservice_certifications == undefined) {
       this.presentToast('Primero guarde el Certificado')

@@ -29,6 +29,7 @@ export class ImagesPage implements OnInit {
     this.data = navParams.get('data');
     this.idservice = navParams.get('idservice');
     this.marcar = navParams.get('marcar');
+
   }
 
   ngOnInit() {
@@ -37,7 +38,7 @@ export class ImagesPage implements OnInit {
   ionViewWillEnter() {
     // this.sqli();
     this.photo_service();
-    console.log(11)
+
 
   }
 
@@ -118,7 +119,6 @@ export class ImagesPage implements OnInit {
 
     modal.onDidDismiss().then((detail) => {
       this.photo_service();
-      console.log(11)
     });
 
     await modal.present();

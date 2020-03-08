@@ -226,7 +226,7 @@ export class SendImagePage implements OnInit {
 
 
   async SendImage() {
-
+    this.showLoader()
     for (let data of this.photos) {
       let img = data.imagenes;
       let id = data.id;
@@ -238,9 +238,13 @@ export class SendImagePage implements OnInit {
       }
 
       let hoy = this.hoy()
+      if (data.imagenes == '') {
 
-      const imagen: any = await this.addImageProcess(img, hoy)
-      const SendIm = await this.LoadImage(imagen, params, img, id)
+      } else {
+        const imagen: any = await this.addImageProcess(img, hoy)
+        const SendIm = await this.LoadImage(imagen, params, img, id)
+      }
+
     }
   }
 
@@ -277,6 +281,25 @@ export class SendImagePage implements OnInit {
     this.modalController.dismiss({
       'dismissed': false,
     });
+  }
+
+  showLoader() {
+    this.loaderToShow = this.loadingController.create({
+      message: 'Enviando'
+    }).then((res) => {
+      res.present();
+
+      res.onDidDismiss().then((dis) => {
+        console.log('Loading');
+      });
+    });
+    this.hideLoader();
+  }
+
+  hideLoader() {
+    setTimeout(() => {
+      this.loadingController.dismiss();
+    }, 4000);
   }
 
 }

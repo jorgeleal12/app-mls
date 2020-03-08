@@ -24,7 +24,7 @@ export class CertificatePage implements OnInit {
     this.number_service = navParams.get('number_service');
     this.type_network = navParams.get('type_network');
     this.data = navParams.get('data');
-    console.log(this.data)
+
   }
 
   ngOnInit() {

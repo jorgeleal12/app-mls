@@ -374,7 +374,7 @@ export class AcordeonPage implements OnInit {
                 component: CertificatePage,
                 componentProps: {
                     'number_service': this.NewService.value.idodi,
-                    'type_network': this.data.type_network_idtype_network,
+                    'type_network': this.NewService.value.type_network_idtype_network,
                     'data': this.NewService.value,
 
                 }
@@ -496,7 +496,7 @@ export class AcordeonPage implements OnInit {
                 this.presentToast('Se Guardo el Servicio')
                 this.view(result.search)
             } else {
-                console.log(1)
+
                 this.div_hidden = true;
                 this.div_service = false;
                 this.hidden = true
@@ -535,6 +535,7 @@ export class AcordeonPage implements OnInit {
         // this.NewService.get('material').setValue(this.materials);
         this.NewService.get('construtor').setValue(data.construtor);
         this.NewService.get('service_type_idservice_type').setValue(data.service_type_idservice_type);
+        this.NewService.get('type_network_idtype_network').setValue(data.type_network_idtype_network);
     }
 
     DeleteMaterial(i: any, material: any): void {
