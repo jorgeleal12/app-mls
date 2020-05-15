@@ -127,7 +127,7 @@ export class AcordeonPage implements OnInit {
                 // this.NewService.get('material').setValue(this.materials);
                 this.NewService.get('construtor').setValue(this.data.construtor);
                 this.NewService.get('service_type_idservice_type').setValue(this.data.service_type_idservice_type);
-
+                this.NewService.get('type_network_idtype_network').setValue(this.data.type_network_idtype_network);
                 this.search_address();
                 this.hidden = true;
                 this.type_red()

@@ -131,6 +131,23 @@
       </ion-fab-button>
     </ion-fab-list>
 
+
+    <!-- <ion-fab-list side="top" [hidden]="type2"> -->
+    <ion-fab-list side="top" [hidden]="type3">
+      <ion-fab-button color="light" (click)="cancelar()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" (click)="decline()">
+        <ion-icon name="alert"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light" (click)="suspend()">
+        <ion-icon name="alarm"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="primary" (click)="atendido()">
+        <ion-icon name="arrow-dropright-circle"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+
   </ion-fab>
 
 </ion-content>

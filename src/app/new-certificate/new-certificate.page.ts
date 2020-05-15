@@ -309,7 +309,7 @@ export class NewCertificatePage implements OnInit {
 
     const alert = await this.alertController.create({
       header: 'Confirmación!',
-      message: 'Desea Declinar El Certificado',
+      message: 'Desea Rechazar El Certificado',
       buttons: [
         {
           text: 'No',
@@ -321,7 +321,7 @@ export class NewCertificatePage implements OnInit {
         }, {
           text: 'Si',
           handler: () => {
-            let number = 5
+            let number = 3
             this.change(number);
           }
         }

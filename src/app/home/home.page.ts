@@ -13,6 +13,7 @@ export class HomePage implements OnInit {
   asignada = 0;
   rechazadas = 0;
   etendidas = 0;
+  aprobadas = 0;
   constructor(private LoginServiceService: LoginServiceService, private router: Router, public loadingController: LoadingController) {
 
 
@@ -45,6 +46,10 @@ export class HomePage implements OnInit {
         }
         if (result.search_etn != null) {
           this.etendidas = result.search_etn.total
+
+        }
+        if (result.aprobadas != null) {
+          this.aprobadas = result.aprobadas.total
 
         }
 
