@@ -41,7 +41,7 @@ export class HomePage implements OnInit {
         }
 
         if (result.data != null) {
-          this.asignada = result.data.total - this.rechazadas
+          this.asignada = result.data.total
 
         }
         if (result.search_etn != null) {
