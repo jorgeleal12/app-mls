@@ -78,8 +78,8 @@ export class LoginServiceService {
     return this.http.get(`${this.api_url}movil/AutoListClient?client=${client}`);
   }
 
-  AutoLisAddress(address,id): Observable<any> {
-    return this.http.get(`${this.api_url}movil/AutoLisAddress?address=${address}&id=${id}`);
+  AutoLisAddress(address,id,user,type): Observable<any> {
+    return this.http.get(`${this.api_url}movil/AutoLisAddress?address=${address}&id=${id}&user=${user}&type=${type}`);
   }
 
   ListAcount(params): Observable<any> {

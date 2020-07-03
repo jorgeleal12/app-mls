@@ -179,12 +179,14 @@ export class AsignadasPage implements OnInit {
 
 
   onSearch(event) {
+    let user =localStorage.getItem("id")
+    let type=localStorage.getItem("type")
     if (event.target.value == '') {
       this.page = 1
       this.search_asignadas();
     } else {
       this.textSearch = event.target.value;
-      this.LoginServiceService.AutoLisAddress(this.textSearch,this.data).subscribe(result => {
+      this.LoginServiceService.AutoLisAddress(this.textSearch,this.data,user,type).subscribe(result => {
 
         this.cars = result.response;
       }, error => {
