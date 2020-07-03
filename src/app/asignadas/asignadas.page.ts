@@ -21,6 +21,12 @@ export class AsignadasPage implements OnInit {
   data;
   constant = new constant();
   btnadd;
+
+  page = 1;
+  maximumPage;
+  isSearchbarOpened = false;
+  textSearch = '';
+
   constructor(
     private LoginServiceService: LoginServiceService,
     private route: ActivatedRoute,
@@ -35,7 +41,6 @@ export class AsignadasPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.data = this.router.getCurrentNavigation().extras;
 
-      console.log(this.data)
       if (this.data == 1) {
         this.btnadd = false;
       } else {
@@ -172,6 +177,22 @@ export class AsignadasPage implements OnInit {
       );
   };
 
+
+  onSearch(event) {
+    if (event.target.value == '') {
+      this.page = 1
+      this.search_asignadas();
+    } else {
+      this.textSearch = event.target.value;
+      this.LoginServiceService.AutoLisAddress(this.textSearch,this.data).subscribe(result => {
+
+        this.cars = result.response;
+      }, error => {
+
+      })
+    }
+
+  }
 
   showLoader(mensaje) {
     this.loaderToShow = this.loadingController.create({

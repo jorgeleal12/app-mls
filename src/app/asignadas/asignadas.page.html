@@ -6,10 +6,13 @@
 
     <ion-title text-center class="center">Servicios</ion-title>
 
-    <ion-buttons slot="end">
-      <ion-button (click)="sendimage()" [hidden]="true">
-        <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
-        <ion-badge color="danger" id="cart-badge">{{propCount}}</ion-badge>
+    <ion-searchbar *ngIf="isSearchbarOpened" showCancelButton="true" (ionChange)="onSearch($event)"
+      (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+
+     <ion-buttons slot="end">
+
+      <ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+        <ion-icon slot="icon-only" name="search"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
