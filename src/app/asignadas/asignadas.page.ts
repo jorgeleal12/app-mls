@@ -8,6 +8,10 @@ import { File } from '@ionic-native/file/ngx';
 import { finalize } from 'rxjs/operators';
 import { LoadingController } from '@ionic/angular';
 import { constant } from '../utilitis/constant';
+
+
+
+
 @Component({
   selector: 'app-asignadas',
   templateUrl: './asignadas.page.html',
@@ -35,6 +39,7 @@ export class AsignadasPage implements OnInit {
     private tasksService: TasksService,
     public transfer: FileTransfer,
     public file: File,
+
 
   ) {
 
@@ -72,6 +77,15 @@ export class AsignadasPage implements OnInit {
 
       })).subscribe(result => {
         this.cars = result.data
+          /
+          result.data.forEach(element => {
+            console.log(element)
+            this.tasksService.Insert_Odi(element.idodi, element.address1, element.barrio, element.city, element.client, element.company_idcompany, element.contract_idcontract,
+              element.contract_name, element.date_programming, element.department_iddepartment, element.identifacation, element.identification_employee, element.idinspetor,
+              element.idsupervisor, element.last_name, element.name, element.name_client, element.phone, element.phone2, element.priority, element.service_type_idservice_type,
+              element.state, element.type_gas, element.type_network_idtype_network, element.type_service_idtype_service, element.zona);
+
+          });
       }, error => {
 
       })
@@ -179,14 +193,14 @@ export class AsignadasPage implements OnInit {
 
 
   onSearch(event) {
-    let user =localStorage.getItem("id")
-    let type=localStorage.getItem("type")
+    let user = localStorage.getItem("id")
+    let type = localStorage.getItem("type")
     if (event.target.value == '') {
       this.page = 1
       this.search_asignadas();
     } else {
       this.textSearch = event.target.value;
-      this.LoginServiceService.AutoLisAddress(this.textSearch,this.data,user,type).subscribe(result => {
+      this.LoginServiceService.AutoLisAddress(this.textSearch, this.data, user, type).subscribe(result => {
 
         this.cars = result.response;
       }, error => {

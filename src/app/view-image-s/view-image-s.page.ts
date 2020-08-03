@@ -14,7 +14,7 @@ export class ViewImageSPage implements OnInit {
 
   data
   photos
-  url = 'http://190.145.99.254:81/laravel-mls/public/public/';
+  url = 'http://34.229.55.185/laravel-mls/public/public/';
   image
   idservice
   constructor(public modalController: ModalController, private navParams: NavParams, private loginServiceService: LoginServiceService) {

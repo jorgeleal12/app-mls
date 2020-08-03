@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
@@ -8,6 +9,9 @@ import { timer } from 'rxjs'
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { SQLite, } from '@ionic-native/sqlite/ngx';
 import { TasksService } from './Services/tasks-service';
+import { SqlstoreService } from './Services/sqlstore.service';
+import { LoginServiceService } from './Services/login-service.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -22,7 +26,10 @@ export class AppComponent {
     private fcm: FCM,
     private localNotifications: LocalNotifications,
     private sqlite: SQLite,
-    private tasksService: TasksService
+    private tasksService: TasksService,
+    private sqlstoreService: SqlstoreService,
+    private loginServiceService: LoginServiceService
+
 
   ) {
 
@@ -38,8 +45,30 @@ export class AppComponent {
     })
       .then((db) => {
         this.tasksService.setDatabase(db);
-        return this.tasksService.createTableImage();
-        // return this.tasksService.createTableImageCertificate();
+        this.tasksService.createTableImage();
+        this.tasksService.createTableOdi();
+
+        this.tasksService.createTabletype_service();
+
+        this.tasksService.Select_type_service().then(tasks => {
+          console.log(tasks)
+          if (tasks.length <= 0) {
+            this.loginServiceService.type_red_total().subscribe(result => {
+              // console.log(result)
+              result.response.forEach(element => {
+                // console.log(element)
+                this.tasksService.Insert_type_service(element.idtype_network, element.name_network, element.type_service_idtype_service)
+              });
+            }, error => {
+
+            })
+          }
+        })
+          .catch(error => {
+            console.error(error);
+          });
+
+
       })
       .then(() => {
 

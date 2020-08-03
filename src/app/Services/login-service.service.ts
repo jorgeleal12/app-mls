@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/internal/Observable";
 import { constant } from '../utilitis/constant';
+import { NetworkService, ConnectionStatus } from './network.service';
+import { TasksService } from './tasks-service';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +15,7 @@ export class LoginServiceService {
   constant = new constant();
   api_url = this.constant.routeGlobal;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, ) { }
 
   save_image(params): Observable<any> {
     return this.http.post(`${this.api_url}movil/image`, params);
@@ -26,6 +30,16 @@ export class LoginServiceService {
   }
 
   seach_asignadas(params): Observable<any> {
+
+
+    // if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+    //   // Return the cached data from Storage
+    //   console.log('1')
+    // } else {
+    //   // return this.http.post(`${this.api_url}movil/seach_asignadas`, params);
+    //   console.log('2')
+    // }
+
     return this.http.post(`${this.api_url}movil/seach_asignadas`, params);
   }
 
@@ -62,8 +76,11 @@ export class LoginServiceService {
   SaveService(params): Observable<any> {
     return this.http.post(`${this.api_url}movil/SaveService`, params);
   }
+
   type_red(params): Observable<any> {
+
     return this.http.post(`${this.api_url}list/list_type_network`, params);
+
   }
 
   SaveCliente(params): Observable<any> {
@@ -78,7 +95,7 @@ export class LoginServiceService {
     return this.http.get(`${this.api_url}movil/AutoListClient?client=${client}`);
   }
 
-  AutoLisAddress(address,id,user,type): Observable<any> {
+  AutoLisAddress(address, id, user, type): Observable<any> {
     return this.http.get(`${this.api_url}movil/AutoLisAddress?address=${address}&id=${id}&user=${user}&type=${type}`);
   }
 
@@ -165,5 +182,9 @@ export class LoginServiceService {
 
   SearchMaterial(params): Observable<any> {
     return this.http.post(`${this.api_url}movil/search_material`, params);
+  }
+
+  type_red_total(): Observable<any> {
+    return this.http.get(`${this.api_url}list/list_type_network_total`);
   }
 }

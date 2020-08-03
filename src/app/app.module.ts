@@ -40,7 +40,7 @@ import { ViewDocumentPageModule } from './view-document/view-document.module';
 import { ZoomImagePageModule } from './zoom-image/zoom-image.module';
 import { SendImagePageModule } from './send-image/send-image.module';
 import { ViewImageSPageModule } from './view-image-s/view-image-s.module';
-
+import { Network } from '@ionic-native/network/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -87,6 +87,7 @@ import { ViewImageSPageModule } from './view-image-s/view-image-s.module';
     Camera,
     SQLite,
     LocalNotifications,
+    Network,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

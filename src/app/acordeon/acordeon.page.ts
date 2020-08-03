@@ -17,6 +17,9 @@ import { AlertController } from '@ionic/angular';
 import { SendImagePage } from '../send-image/send-image.page';
 import { ViewImageSPage } from '../view-image-s/view-image-s.page';
 
+import { NetworkService, ConnectionStatus } from '../Services/network.service';
+import { TasksService } from '../Services/tasks-service';
+
 
 
 @Component({
@@ -40,7 +43,7 @@ export class AcordeonPage implements OnInit {
     type2
     type3
     materials = [];
-
+    contract_idcontract
 
     constructor(
         private route: ActivatedRoute,
@@ -51,7 +54,9 @@ export class AcordeonPage implements OnInit {
         public modalController: ModalController,
         public toastController: ToastController,
         public loadingController: LoadingController,
-        public alertController: AlertController, ) {
+        public alertController: AlertController,
+        private networkService: NetworkService, private tasksService: TasksService
+    ) {
 
 
         this.NewService = new FormGroup({
@@ -89,6 +94,7 @@ export class AcordeonPage implements OnInit {
             city: new FormControl(),
             id: new FormControl(),
             type_gas: new FormControl(),
+            contract_idcontract: new FormControl(),
         })
 
 
@@ -149,6 +155,7 @@ export class AcordeonPage implements OnInit {
     }
 
     ngOnInit(): void {
+        this.LocalStore();
         this.NewService.get('user').setValue(localStorage.getItem("idemployees"));
         this.NewService.get('user_type').setValue(localStorage.getItem("type"));
         this.NewService.get('id').setValue(this.data.id);
@@ -169,6 +176,13 @@ export class AcordeonPage implements OnInit {
             })
         }
     }
+
+
+    LocalStore() {
+        this.contract_idcontract = JSON.parse(localStorage.getItem('idcontract'));
+        this.NewService.get('contract_idcontract').setValue(this.contract_idcontract);
+    }
+
     edit() {
         this.hidden = false;
         this.div_hidden = false;
@@ -561,14 +575,33 @@ export class AcordeonPage implements OnInit {
     }
 
     type_red() {
-        const params = {
-            type: this.NewService.value.type_service_idtype_service
-        }
-        this.loginServiceService.type_red(params).subscribe(result => {
-            this.networks = result.response
-        }, error => {
 
-        })
+
+        if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+
+            this.tasksService.Select_type_service_one(this.NewService.value.type_service_idtype_service)
+
+                .then(tasks => {
+                    this.networks = tasks
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
+        } else {
+            const params = {
+                type: this.NewService.value.type_service_idtype_service
+            }
+
+            this.loginServiceService.type_red(params).subscribe(result => {
+
+                this.networks = result.response
+            }, error => {
+
+
+            })
+        }
+
     }
 
     async atendido() {

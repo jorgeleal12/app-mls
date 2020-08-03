@@ -305,6 +305,34 @@ export class NewCertificatePage implements OnInit {
     await alert.present();
   }
 
+
+  async Aprobado() {
+
+    const alert = await this.alertController.create({
+      header: 'Confirmación!',
+      message: 'Desea Aprobar El Certificado',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+
+          }
+        }, {
+          text: 'Si',
+          handler: () => {
+            let number = 2
+            this.change(number);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
+
   async decline() {
 
     const alert = await this.alertController.create({

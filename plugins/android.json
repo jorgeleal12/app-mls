@@ -63,6 +63,9 @@
       "GOOGLE_API_KEY_FOR_ANDROID": "",
       "OKHTTP_VERSION": "3.12.0",
       "PACKAGE_NAME": "io.app_mls"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "io.app_mls"
     }
   },
   "dependent_plugins": {
