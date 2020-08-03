@@ -77,15 +77,15 @@ export class AsignadasPage implements OnInit {
 
       })).subscribe(result => {
         this.cars = result.data
-          /
-          result.data.forEach(element => {
-            console.log(element)
-            this.tasksService.Insert_Odi(element.idodi, element.address1, element.barrio, element.city, element.client, element.company_idcompany, element.contract_idcontract,
-              element.contract_name, element.date_programming, element.department_iddepartment, element.identifacation, element.identification_employee, element.idinspetor,
-              element.idsupervisor, element.last_name, element.name, element.name_client, element.phone, element.phone2, element.priority, element.service_type_idservice_type,
-              element.state, element.type_gas, element.type_network_idtype_network, element.type_service_idtype_service, element.zona);
 
-          });
+        result.data.forEach(element => {
+          console.log(element)
+          this.tasksService.Insert_Odi(element.idodi, element.address1, element.barrio, element.city, element.client, element.company_idcompany, element.contract_idcontract,
+            element.contract_name, element.date_programming, element.department_iddepartment, element.identifacation, element.identification_employee, element.idinspetor,
+            element.idsupervisor, element.last_name, element.name, element.name_client, element.phone, element.phone2, element.priority, element.service_type_idservice_type,
+            element.state, element.type_gas, element.type_network_idtype_network, element.type_service_idtype_service, element.zona);
+
+        });
       }, error => {
 
       })
