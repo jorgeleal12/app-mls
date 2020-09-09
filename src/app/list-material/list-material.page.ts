@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { LoginServiceService } from "../Services/login-service.service";
 import { NewMaterialPage } from '../new-material/new-material.page';
 import { ModalController } from '@ionic/angular';
+import { NetworkService, ConnectionStatus } from '../Services/network.service';
+import { TasksService } from '../Services/tasks-service';
 @Component({
   selector: 'app-list-material',
   templateUrl: './list-material.page.html',
@@ -20,7 +22,7 @@ export class ListMaterialPage implements OnInit {
   constructor(
     private LoginServiceService: LoginServiceService,
     private router: Router,
-    public modalController: ModalController, ) { }
+    public modalController: ModalController, private networkService: NetworkService, private tasksService: TasksService) { }
 
 
   ngOnInit() {
@@ -28,18 +30,31 @@ export class ListMaterialPage implements OnInit {
   }
 
   ListMaterial(event?) {
-    const params = { idcompany: 1 }
-    this.LoginServiceService.ListMaterial(this.page).subscribe(result => {
-      this.Materials = this.Materials.concat(result.response.data)
-      this.maximumPage = result.response.last_page;
+
+    if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+
+      this.tasksService.SelectMaterial().then(tasks => {
+        this.Materials = tasks;
+        console.log(tasks);
+      })
+        .catch(error => {
+          console.error(error);
+        });
+    } else {
+      const params = { idcompany: 1 }
+      this.LoginServiceService.ListMaterial(this.page).subscribe(result => {
+        this.Materials = this.Materials.concat(result.response.data)
+        this.maximumPage = result.response.last_page;
 
 
-      if (event) {
-        event.target.complete();
-      }
-    }, error => {
+        if (event) {
+          event.target.complete();
+        }
+      }, error => {
 
-    })
+      })
+    }
+
   }
 
   back() {

@@ -3,6 +3,8 @@ import { LoginServiceService } from '../Services/login-service.service';
 import { ModalController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
 import { LoadingController } from '@ionic/angular';
+import { NetworkService, ConnectionStatus } from '../Services/network.service';
+import { TasksService } from '../Services/tasks-service';
 @Component({
   selector: 'app-materials',
   templateUrl: './materials.page.html',
@@ -14,7 +16,7 @@ export class MaterialsPage implements OnInit {
   isSearchbarOpened = false;
   textSearch = '';
   constructor(private LoginServiceService: LoginServiceService, public modalController: ModalController,
-    public loadingController: LoadingController) { }
+    public loadingController: LoadingController, private networkService: NetworkService, private tasksService: TasksService) { }
 
   ngOnInit() {
 
@@ -27,22 +29,43 @@ export class MaterialsPage implements OnInit {
   }
   search() {
     this.showLoader()
-    this.LoginServiceService.search_materials().pipe(
-      finalize(() => {
-        this.loadingController.dismiss();
-      })).subscribe(result => {
-        this.materials = result.response;
-      }, error => {
 
+    if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+
+      this.tasksService.SelectMaterial().then(tasks => {
+        this.materials = tasks;
+
+        this.loadingController.dismiss();
       })
+        .catch(error => {
+          console.error(error);
+        });
+    } else {
+
+      this.LoginServiceService.search_materials().pipe(
+        finalize(() => {
+          this.loadingController.dismiss();
+        })).subscribe(result => {
+          this.materials = result.response;
+        }, error => {
+
+        })
+    }
+
   }
 
   select(material) {
-    // console.log(material)
+    let materialoffline
 
+    if (!material.idmaterials) {
+      material.idmaterials = material.id
+      materialoffline = 1
+    }
+    console.log(material)
     this.modalController.dismiss({
       'dismissed': true,
-      data: material
+      data: material,
+      materialoffline: materialoffline
     });
   }
 

@@ -12,6 +12,7 @@ import { ActionSheetController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { TasksService } from '../Services/tasks-service';
 import { constant } from '../utilitis/constant';
+import { NetworkService, ConnectionStatus } from '../Services/network.service';
 
 
 
@@ -41,6 +42,8 @@ export class SendimagesPage implements OnInit {
   images2
   marcar
   constant = new constant();
+  sert_offline;
+
   @ViewChild('layout', { static: true }) canvasRef;
   constructor(private route: ActivatedRoute, private router: Router, private imagePicker: ImagePicker,
     public transfer: FileTransfer,
@@ -52,7 +55,7 @@ export class SendimagesPage implements OnInit {
     private camera: Camera,
     public actionSheetController: ActionSheetController,
     public toastController: ToastController,
-    private tasksService: TasksService
+    private tasksService: TasksService, private networkService: NetworkService
   ) {
 
 
@@ -62,7 +65,12 @@ export class SendimagesPage implements OnInit {
     this.photos_service = navParams.get('photos_service');
     this.idservice = navParams.get('idservice');
     this.marcar = navParams.get('marcar');
-    console.log(this.marcar)
+
+    this.sert_offline = navParams.get('sert_offline');
+
+    console.log(this.sert_offline)
+    console.log(this.idservice)
+    console.log(this.data)
     for (let index = 0; index < this.photos_service.quantity; index++) {
       this.photos.push({
         imagenes: '',//'http://192.168.1.126/laravel-mls/public/public/odi/images/MLS/MEDELLIN/79/VsSuRyL4USikUZE.jpg',
@@ -211,6 +219,7 @@ export class SendimagesPage implements OnInit {
       let context = canvas.getContext("2d");
       let source = new Image()
       source.onload = () => {
+
         canvas.height = source.height;
         canvas.width = source.width;
         canvas.style.width = "320px";
@@ -243,9 +252,12 @@ export class SendimagesPage implements OnInit {
         resolve(imagen)
       }
       source.onerror = reject
+      source.setAttribute('crossorigin', 'anonymous'); // works for me
       source.src = img
     })
   }
+
+
   async send_image() {
     this.showLoader()
     for (let data of this.photos) {
@@ -265,7 +277,7 @@ export class SendimagesPage implements OnInit {
             idservice: this.idservice
           }
 
-
+          console.log(this.idservice)
           let hoy = this.hoy()
 
           const imagen: any = await this.addImageProcess(img, name_photo, hoy)
@@ -275,7 +287,7 @@ export class SendimagesPage implements OnInit {
 
           let divisiones1 = divisiones[1].split("?");
           let divisiones2 = divisiones[0].split("_app_file_");
-
+          let filePath = this.file.externalRootDirectory + "MLS/";
           let options: FileUploadOptions = {
             fileKey: "file",
             fileName: divisiones1[0],
@@ -283,58 +295,103 @@ export class SendimagesPage implements OnInit {
             params: { params: params }
           };
 
-          await fileTransfer
-            .upload(
-              imagen,
-              this.constant.routeGlobal + "odi/send_image_movil",
-              options
-            )
-            .then(
-              data => {
-                var json = JSON.parse(data.response);
-                if (json.response == true) {
-                  this.photos[id].state = true;
-                  this.photos[id].state_send = true;
-                  this.photos[id].send = false;
+          if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
 
-                  this.tasksService.SelectImageOne(tipe, idodi, this.idservice).then(tasks => {
-                    let row_data = tasks[0]
-                    let number = row_data.actual + 1;
-                    // console.log(number)
-                    // console.log(tipe, idodi, this.idservice, number)
-                    this.tasksService.update(tipe, idodi, this.idservice, number)
-                      .then(response => {
+            this.photos[id].state = false;
+            this.photos[id].state_send = true;
+            this.photos[id].error = false;
+            this.falso = false;
+            this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
+            this.writeFile(imagen, "My Picture", divisiones1[0]);
 
-                      })
-                      .catch(error => {
-                        console.error(error);
-                      })
+            console.log(this.sert_offline, 'prueba de imageoflline')
+            this.tasksService.InsertImageOdi(filePath, divisiones1[0], params, this.sert_offline)
+              .then(tasks => {
+                // console.log(tasks)
 
-                  })
+                this.tasksService.SelectImageOne(tipe, idodi, this.idservice).then(tasks => {
+                  let row_data = tasks[0]
+                  let number = row_data.actual + 1;
+                  // console.log(number)
+                  // console.log(tipe, idodi, this.idservice, number)
+                  this.tasksService.update(tipe, idodi, this.idservice, number)
+                    .then(response => {
+
+                    })
                     .catch(error => {
                       console.error(error);
-                    });
+                    })
 
-                  this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
+                })
+                  .catch(error => {
+                    console.error(error);
+                  });
 
-                } else {
+              })
+              .catch(error => {
+                console.error(error);
+              });
+
+          } else {
+
+            /////////////////////////////////*********************************************************************** */
+            await fileTransfer
+              .upload(
+                imagen,
+                this.constant.routeGlobal + "odi/send_image_movil",
+                options
+              )
+              .then(
+                data => {
+                  var json = JSON.parse(data.response);
+                  if (json.response == true) {
+                    this.photos[id].state = true;
+                    this.photos[id].state_send = true;
+                    this.photos[id].send = false;
+
+                    this.tasksService.SelectImageOne(tipe, idodi, this.idservice).then(tasks => {
+                      let row_data = tasks[0]
+                      let number = row_data.actual + 1;
+                      // console.log(number)
+                      // console.log(tipe, idodi, this.idservice, number)
+                      this.tasksService.update(tipe, idodi, this.idservice, number)
+                        .then(response => {
+
+                        })
+                        .catch(error => {
+                          console.error(error);
+                        })
+
+                    })
+                      .catch(error => {
+                        console.error(error);
+                      });
+
+                    this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
+
+                  } else {
+                    this.photos[id].state = false;
+                    this.photos[id].state_send = true;
+                    this.photos[id].error = false;
+                    this.falso = false;
+                    this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
+                  }
+                },
+                err => {
+                  // console.log(err.body)
                   this.photos[id].state = false;
                   this.photos[id].state_send = true;
                   this.photos[id].error = false;
-                  this.falso = false;
-                  this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
-                }
-              },
-              err => {
-                console.log(err.body)
-                this.photos[id].state = false;
-                this.photos[id].state_send = true;
-                this.photos[id].error = false;
 
-                this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
-                this.presentToast('Error de Coneción')
-              }
-            );
+                  this.file.removeFile('file:///' + divisiones2[1] + "cache/", divisiones1[0]);
+                  this.presentToast('Error de Coneción')
+                }
+              );
+            /////////////////////////////////*********************************************************************** */
+          }
+
+
+
 
         }
 
@@ -352,7 +409,7 @@ export class SendimagesPage implements OnInit {
       res.present();
 
       res.onDidDismiss().then((dis) => {
-        console.log('Loading');
+
       });
     });
     this.hideLoader();

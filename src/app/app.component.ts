@@ -44,11 +44,24 @@ export class AppComponent {
       location: 'default' // the location field is required
     })
       .then((db) => {
+        // this.tasksService.delete_table();
         this.tasksService.setDatabase(db);
         this.tasksService.createTableImage();
         this.tasksService.createTableOdi();
 
+        this.tasksService.createTableClinte();
+        this.tasksService.createTableCuentas();
+        this.tasksService.createTableMaterials();
+        this.tasksService.createTableBuilder();
+        this.tasksService.createTableCity();
+        this.tasksService.createTableImageOffline();
         this.tasksService.createTabletype_service();
+        this.tasksService.createTableNumber();
+        this.tasksService.createTableCertificate();
+        this.tasksService.createTableImageOdi();
+        this.tasksService.createTable_inspetor();
+
+
 
         this.tasksService.Select_type_service().then(tasks => {
           console.log(tasks)

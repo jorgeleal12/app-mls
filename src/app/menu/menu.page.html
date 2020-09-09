@@ -25,6 +25,20 @@
                 </ion-menu-toggle>
 
             </ion-list>
+
+            <ion-item class="aside-item" lines="none" (click)="Download()">
+                <ion-icon name="cloud-download" color="medium" size="small" class="aside-icon"> </ion-icon>
+                <ion-label>
+                    Descargar Datos
+                </ion-label>
+            </ion-item>
+
+            <ion-item class="aside-item" lines="none" (click)="delete_table()">
+                <ion-icon name="cloud-download" color="medium" size="small" class="aside-icon"> </ion-icon>
+                <ion-label>
+                    Borrar Datos
+                </ion-label>
+            </ion-item>
             <ion-item class="aside-item" lines="none" (click)="close()">
                 <ion-icon name="md-close-circle" color="medium" size="small" class="aside-icon"> </ion-icon>
                 <ion-label>

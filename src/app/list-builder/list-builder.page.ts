@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { LoginServiceService } from "../Services/login-service.service";
 import { NewBuilderPage } from '../new-builder/new-builder.page';
 import { ModalController } from '@ionic/angular';
+import { NetworkService, ConnectionStatus } from '../Services/network.service';
+import { TasksService } from '../Services/tasks-service';
 @Component({
   selector: 'app-list-builder',
   templateUrl: './list-builder.page.html',
@@ -17,25 +19,39 @@ export class ListBuilderPage implements OnInit {
 
   constructor(private LoginServiceService: LoginServiceService,
     private router: Router,
-    public modalController: ModalController, ) { }
+    public modalController: ModalController, private networkService: NetworkService, private tasksService: TasksService) { }
 
   ngOnInit() {
     this.ListBuilder();
   }
 
   ListBuilder(event?) {
-    const params = { idcompany: 1 }
-    this.LoginServiceService.ListBuilder(this.page).subscribe(result => {
-      this.builders = this.builders.concat(result.response.data)
-      this.maximumPage = result.response.last_page;
 
 
-      if (event) {
-        event.target.complete();
-      }
-    }, error => {
+    if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+      this.tasksService.SelectBuilder().then(tasks => {
+        this.builders = tasks;
+      })
+        .catch(error => {
+          console.error(error);
+        });
+    } else {
+      const params = { idcompany: 1 }
+      this.LoginServiceService.ListBuilder(this.page).subscribe(result => {
+        this.builders = this.builders.concat(result.response.data)
+        this.maximumPage = result.response.last_page;
 
-    })
+
+        if (event) {
+          event.target.complete();
+        }
+      }, error => {
+
+      })
+    }
+
+
+
   }
   back() {
     this.router.navigateByUrl('menu/menu/home');

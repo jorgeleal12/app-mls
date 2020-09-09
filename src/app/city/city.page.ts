@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators, FormControlName } from "@angular/fo
 import { LoginServiceService } from '../Services/login-service.service';
 import { ModalController } from '@ionic/angular';
 import { NavParams } from '@ionic/angular';
+import { NetworkService, ConnectionStatus } from '../Services/network.service';
+import { TasksService } from '../Services/tasks-service';
 @Component({
   selector: 'app-city',
   templateUrl: './city.page.html',
@@ -18,10 +20,10 @@ export class CityPage implements OnInit {
 
   constructor(private loginServiceService: LoginServiceService,
     public modalController: ModalController,
-    private navParams: NavParams) { }
+    private navParams: NavParams, private networkService: NetworkService, private tasksService: TasksService) { }
 
   ngOnInit() {
-    this.ListClient()
+    this.ListCity()
   }
 
   back() {
@@ -40,42 +42,70 @@ export class CityPage implements OnInit {
   }
 
 
-  ListClient(event?) {
-    const params = { idcompany: 1 }
-    this.loginServiceService.ListCity(this.page).subscribe(result => {
-      this.citys = this.citys.concat(result.response.data)
-      this.maximumPage = result.response.last_page;
+  ListCity(event?) {
+
+    if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+
+      this.tasksService.SelectCityFinall().then(tasks => {
+        this.citys = tasks;
+        // console.log(tasks)
+      })
+        .catch(error => {
+          console.error(error);
+        });
+
+    } else {
+      //  const params = { idcompany: 1 }
+      this.loginServiceService.ListCity(this.page).subscribe(result => {
+        this.citys = this.citys.concat(result.response.data)
+        this.maximumPage = result.response.last_page;
 
 
-      if (event) {
-        event.target.complete();
-      }
-    }, error => {
+        if (event) {
+          event.target.complete();
+        }
+      }, error => {
 
-    })
+      })
+    }
+
   }
 
   loadMore(event) {
     this.page++;
-    this.ListClient(event)
+    this.ListCity(event)
     if (this.page === this.maximumPage) {
       event.target.disabled = true;
     }
   }
 
   onSearch(event) {
-    if (event.target.value == '') {
-      this.page = 1
-      this.ListClient(event);
-    } else {
-      this.textSearch = event.target.value;
-      this.loginServiceService.AutoCity(this.textSearch).subscribe(result => {
+    this.textSearch = event.target.value;
+    if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
 
-        this.citys = result.response
-      }, error => {
+      this.tasksService.SelectCity(this.textSearch).then(tasks => {
 
+        this.citys = tasks
       })
+        .catch(error => {
+          console.error(error);
+        });
+    } else {
+
+      if (event.target.value == '') {
+        this.page = 1
+        this.ListCity(event);
+      } else {
+        this.loginServiceService.AutoCity(this.textSearch).subscribe(result => {
+
+          this.citys = result.response
+        }, error => {
+
+        })
+      }
     }
+
+
 
   }
 }

@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, NavigationExtras, } from '@angular/router';
 import { NavParams } from '@ionic/angular';
 import { SendimagesPage } from '../sendimages/sendimages.page';
 import { TasksService } from '../Services/tasks-service';
+import { NetworkService, ConnectionStatus } from '../Services/network.service';
 
 @Component({
   selector: 'app-images',
@@ -20,8 +21,9 @@ export class ImagesPage implements OnInit {
   propCount
   idservice
   marcar
+  sert_offline
   constructor(private route: ActivatedRoute,
-    private router: Router,
+    private router: Router, private networkService: NetworkService,
     private LoginServiceService: LoginServiceService, public modalController: ModalController, private navParams: NavParams, private tasksService: TasksService) {
 
     this.number_service = navParams.get('number_service');
@@ -29,6 +31,7 @@ export class ImagesPage implements OnInit {
     this.data = navParams.get('data');
     this.idservice = navParams.get('idservice');
     this.marcar = navParams.get('marcar');
+    this.sert_offline = navParams.get('sert_offline');
 
   }
 
@@ -43,9 +46,11 @@ export class ImagesPage implements OnInit {
   }
 
   photo_service() {
+
     let params = {
       type_network: this.type_network
     }
+    console.log('typo de red', this.type_network)
     this.tasksService.SelectImage(this.data.idodi, this.idservice)
       .then(tasks => {
         this.PhotoServices = tasks
@@ -55,22 +60,48 @@ export class ImagesPage implements OnInit {
           this.photos_services = this.PhotoServices;
         } else {
 
-          this.LoginServiceService.photos_service(params).subscribe(result => {
-            this.photos_services = result.response
-            for (const prop in this.photos_services) {
-              this.tasksService.InsertImage(this.data.idodi, this.photos_services[prop], this.idservice)
-                .then(tasks => {
-                  console.log(tasks)
-                })
-                .catch(error => {
-                  console.error(error);
-                });
+          if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
 
-            }
+            this.tasksService.SelectImageoffline(this.type_network).then(tasks => {
 
-          }, error => {
+              this.photos_services = tasks
+              for (const prop in this.photos_services) {
+                this.tasksService.InsertImage(this.data.idodi, this.photos_services[prop], this.idservice)
+                  .then(tasks => {
+                  })
+                  .catch(error => {
+                    console.error(error);
+                  });
 
-          })
+              }
+            })
+              .catch(error => {
+                console.error(error);
+              });
+
+
+          } else {
+
+            this.LoginServiceService.photos_service(params).subscribe(result => {
+              this.photos_services = result.response
+              for (const prop in this.photos_services) {
+                this.tasksService.InsertImage(this.data.idodi, this.photos_services[prop], this.idservice)
+                  .then(tasks => {
+                    // console.log(tasks)
+                  })
+                  .catch(error => {
+                    console.error(error);
+                  });
+
+              }
+
+            }, error => {
+
+            })
+          }
+
+
+
         }
 
       })
@@ -102,6 +133,7 @@ export class ImagesPage implements OnInit {
 
 
   async ModalImage(photos_service) {
+    // console.log(this.sert_offline, 'validacion')
 
     const modal: HTMLIonModalElement =
       await this.modalController.create({
@@ -113,6 +145,7 @@ export class ImagesPage implements OnInit {
           'photos_service': photos_service,
           'idservice': this.idservice,
           'marcar': this.marcar,
+          'sert_offline': this.sert_offline
         }
 
       });

@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/internal/Observable";
 import { constant } from '../utilitis/constant';
-import { NetworkService, ConnectionStatus } from './network.service';
-import { TasksService } from './tasks-service';
+
 
 
 
@@ -15,7 +14,7 @@ export class LoginServiceService {
   constant = new constant();
   api_url = this.constant.routeGlobal;
 
-  constructor(private http: HttpClient, ) { }
+  constructor(private http: HttpClient,) { }
 
   save_image(params): Observable<any> {
     return this.http.post(`${this.api_url}movil/image`, params);
@@ -30,15 +29,6 @@ export class LoginServiceService {
   }
 
   seach_asignadas(params): Observable<any> {
-
-
-    // if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
-    //   // Return the cached data from Storage
-    //   console.log('1')
-    // } else {
-    //   // return this.http.post(`${this.api_url}movil/seach_asignadas`, params);
-    //   console.log('2')
-    // }
 
     return this.http.post(`${this.api_url}movil/seach_asignadas`, params);
   }
@@ -187,4 +177,57 @@ export class LoginServiceService {
   type_red_total(): Observable<any> {
     return this.http.get(`${this.api_url}list/list_type_network_total`);
   }
+
+  search_client(): Observable<any> {
+    return this.http.get(`${this.api_url}client/search`);
+  }
+
+  search_account(): Observable<any> {
+    return this.http.get(`${this.api_url}client/searchaccount`);
+  }
+
+  city(): Observable<any> {
+    let params;
+    return this.http.post(`${this.api_url}movil/city`, params);
+  }
+
+  imageoffline(): Observable<any> {
+    return this.http.get(`${this.api_url}movil/imageoffline`);
+  }
+
+  builderOffline(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/builderoffline`, params);
+  }
+
+  ClientOffline(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/clientoffline`, params);
+  }
+
+  AcountOffline(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/acountoffline`, params);
+  }
+
+  MaterialOffline(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/materialoffline`, params);
+  }
+
+  OdiOffline(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/odioffline`, params);
+  }
+
+  CertificateOffline(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/certificateoffline`, params);
+  }
+
+  copy_image(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/copy_image`, params);
+  }
+
+  inspectores(params): Observable<any> {
+    return this.http.post(`${this.api_url}movil/inspectores`, params);
+  }
+
+
+
+
 }

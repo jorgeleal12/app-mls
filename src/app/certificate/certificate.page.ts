@@ -3,6 +3,8 @@ import { LoginServiceService } from '../Services/login-service.service';
 import { ModalController } from '@ionic/angular';
 import { NavParams } from '@ionic/angular';
 import { NewCertificatePage } from '../new-certificate/new-certificate.page';
+import { NetworkService, ConnectionStatus } from '../Services/network.service';
+import { TasksService } from '../Services/tasks-service';
 
 
 @Component({
@@ -16,17 +18,20 @@ export class CertificatePage implements OnInit {
   type_network
   data
   certificates
-
+  odioffline
   constructor(
     private loginServiceService: LoginServiceService,
-    public modalController: ModalController, private navParams: NavParams) {
+    public modalController: ModalController, private navParams: NavParams, private networkService: NetworkService, private tasksService: TasksService) {
 
     this.number_service = navParams.get('number_service');
     this.type_network = navParams.get('type_network');
+    this.odioffline = navParams.get('odioffline');
     this.data = navParams.get('data');
+
     console.log(this.number_service)
     console.log(this.type_network)
     console.log(this.data)
+    console.log(this.odioffline)
   }
 
   ngOnInit() {
@@ -36,12 +41,26 @@ export class CertificatePage implements OnInit {
     this.search();
   }
   search() {
-    const params = {
-      idodi: this.data.idodi
+
+    if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+      this.tasksService.SelectCertificate(this.data.idodi).then(tasks => {
+
+        this.certificates = tasks;
+      })
+        .catch(error => {
+          console.error(error);
+        });
+
+    } else {
+
+      const params = {
+        idodi: this.data.idodi
+      }
+      this.loginServiceService.search_certificate(params).subscribe(result => {
+        this.certificates = result.response
+      }, error => { })
     }
-    this.loginServiceService.search_certificate(params).subscribe(result => {
-      this.certificates = result.response
-    }, error => { })
+
   }
 
 
@@ -62,6 +81,7 @@ export class CertificatePage implements OnInit {
           'number_service': this.number_service,
           'type_network': this.type_network,
           'data': this.data,
+          'odioffline': this.odioffline,
 
         }
 

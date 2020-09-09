@@ -3,6 +3,8 @@ import { LoginServiceService } from '../Services/login-service.service';
 import { ModalController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
 import { LoadingController } from '@ionic/angular';
+import { NetworkService, ConnectionStatus } from '../Services/network.service';
+import { TasksService } from '../Services/tasks-service';
 @Component({
   selector: 'app-builder',
   templateUrl: './builder.page.html',
@@ -14,7 +16,7 @@ export class BuilderPage implements OnInit {
   isSearchbarOpened = false;
   textSearch = '';
   loaderToShow
-  constructor(private LoginServiceService: LoginServiceService, public modalController: ModalController, public loadingController: LoadingController) { }
+  constructor(private LoginServiceService: LoginServiceService, public modalController: ModalController, public loadingController: LoadingController, private networkService: NetworkService, private tasksService: TasksService, ) { }
   ngOnInit() {
 
   }
@@ -23,19 +25,39 @@ export class BuilderPage implements OnInit {
   }
   search() {
     this.showLoader();
-    this.LoginServiceService.search_builder().pipe(
-      finalize(() => {
-        this.loadingController.dismiss();
-      })).subscribe(result => {
-        this.builders = result.response;
-      }, error => {
 
+    if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+      this.tasksService.SelectBuilder().then(tasks => {
+        this.builders = tasks;
       })
+        .catch(error => {
+          console.error(error);
+        });
+    } else {
+
+      this.LoginServiceService.search_builder().pipe(
+        finalize(() => {
+          this.loadingController.dismiss();
+        })).subscribe(result => {
+          this.builders = result.response;
+        }, error => {
+
+        })
+    }
+
+
   }
   select(builders) {
+
+    let builderoffline;
+    if (!builders.idbuilder) {
+      builders.idbuilder = builders.id;
+      builderoffline = 1;
+    }
     this.modalController.dismiss({
       'dismissed': true,
-      data: builders
+      data: builders,
+      builderoffline: builderoffline
     });
   }
 

@@ -5,6 +5,8 @@ import { NewClientPage } from '../new-client/new-client.page';
 import { ModalController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
 import { LoadingController } from '@ionic/angular';
+import { NetworkService, ConnectionStatus } from '../Services/network.service';
+import { TasksService } from '../Services/tasks-service';
 @Component({
   selector: 'app-client',
   templateUrl: './client.page.html',
@@ -23,7 +25,7 @@ export class ClientPage implements OnInit {
     private LoginServiceService: LoginServiceService,
     private router: Router,
     public modalController: ModalController,
-    public loadingController: LoadingController) { }
+    public loadingController: LoadingController, private networkService: NetworkService, private tasksService: TasksService) { }
 
   ngOnInit() {
 
@@ -36,7 +38,7 @@ export class ClientPage implements OnInit {
     this.router.navigateByUrl('menu/menu/home');
   }
 
-  async  ModalNewCliente(Client) {
+  async ModalNewCliente(Client) {
     const modal: HTMLIonModalElement =
       await this.modalController.create({
         component: NewClientPage,
@@ -53,7 +55,7 @@ export class ClientPage implements OnInit {
     await modal.present();
   }
 
-  async  ModalNewClient() {
+  async ModalNewClient() {
     const modal: HTMLIonModalElement =
       await this.modalController.create({
         component: NewClientPage,
@@ -64,7 +66,7 @@ export class ClientPage implements OnInit {
       });
 
     modal.onDidDismiss().then((detail) => {
-
+      this.ListClient();
     });
 
     await modal.present();
@@ -72,21 +74,33 @@ export class ClientPage implements OnInit {
 
   ListClient(event?) {
     this.showLoader();
-    const params = { idcompany: 1 }
-    this.LoginServiceService.ListClient(this.page).pipe(
-      finalize(() => {
-        this.loadingController.dismiss();
-      })).subscribe(result => {
-        this.Clients = this.Clients.concat(result.response.data)
-        this.maximumPage = result.response.last_page;
 
 
-        if (event) {
-          event.target.complete();
-        }
-      }, error => {
-
+    if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+      this.tasksService.SelectClient().then(tasks => {
+        this.Clients = tasks;
+        // console.log(tasks);
       })
+        .catch(error => {
+          console.error(error);
+        });
+    } else {
+      const params = { idcompany: 1 }
+      this.LoginServiceService.ListClient(this.page).pipe(
+        finalize(() => {
+          this.loadingController.dismiss();
+        })).subscribe(result => {
+          this.Clients = this.Clients.concat(result.response.data)
+          this.maximumPage = result.response.last_page;
+
+
+          if (event) {
+            event.target.complete();
+          }
+        }, error => {
+
+        })
+    }
   }
 
   loadMore(event) {

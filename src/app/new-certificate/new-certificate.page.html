@@ -41,6 +41,30 @@
               <input matInput placeholder="Número de Certificado" [(ngModel)]="NewCertificate.number" readonly>
             </mat-form-field>
 
+            <!-- <ion-item>
+              <ion-label class="example-full-width">Supervisor</ion-label>
+              <ion-select formControlName="priority">
+                <ion-select-option [value]=1>Alta</ion-select-option>
+                <ion-select-option [value]=2>Media</ion-select-option>
+                <ion-select-option [value]=3>Baja</ion-select-option>
+              </ion-select>
+            </ion-item> -->
+
+            <ion-item>
+              <ion-label class="example-full-width">Supervisor</ion-label>
+              <ion-select *ngIf="supervisor.length" [(ngModel)]="NewCertificate.idsupervisor">
+                <ion-select-option *ngFor="let supervisors of supervisor" [value]=supervisors.idemployees>
+                  {{supervisors.name}} {{supervisors.last_name}}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-label class="example-full-width">Fecha</ion-label>
+              <ion-datetime displayFormat="YYYY-MM-DD" [(ngModel)]="NewCertificate.date">
+              </ion-datetime>
+            </ion-item>
+
             <mat-form-field class="example-full-width">
               <input matInput placeholder="Observaciones del Inspector" [(ngModel)]="NewCertificate.obsins">
             </mat-form-field>
@@ -129,12 +153,15 @@
       <ion-fab-button color="primary" (click)="atendido()">
         <ion-icon name="arrow-dropright-circle"></ion-icon>
       </ion-fab-button>
+      <ion-fab-button color="primary" (click)="copy_image()">
+        <ion-icon name="copy-outline"></ion-icon>
+      </ion-fab-button>
     </ion-fab-list>
 
 
     <!-- <ion-fab-list side="top" [hidden]="type2"> -->
     <ion-fab-list side="top" [hidden]="type3">
-      <ion-fab-button color="light" (click)="cancelar()">
+      <ion-fab-button color="" (click)="cancelar()">
         <ion-icon name="close-circle-outline"></ion-icon>
       </ion-fab-button>
       <ion-fab-button color="light" (click)="decline()">
@@ -146,10 +173,12 @@
       <ion-fab-button color="primary" (click)="atendido()">
         <ion-icon name="arrow-dropright-circle"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button color="success" (click)="Aprobado()">
+      <ion-fab-button color="success" (click)="aprobado()">
         <ion-icon name="arrow-dropright-circle"></ion-icon>
       </ion-fab-button>
-
+      <ion-fab-button color="light" (click)="copy_image()">
+        <ion-icon name="copy"></ion-icon>
+      </ion-fab-button>
 
 
     </ion-fab-list>

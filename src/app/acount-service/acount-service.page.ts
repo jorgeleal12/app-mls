@@ -5,6 +5,8 @@ import { ModalController } from '@ionic/angular';
 import { NavParams } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
 import { LoadingController } from '@ionic/angular';
+import { NetworkService, ConnectionStatus } from '../Services/network.service';
+import { TasksService } from '../Services/tasks-service';
 
 @Component({
   selector: 'app-acount-service',
@@ -22,7 +24,7 @@ export class AcountServicePage implements OnInit {
     public toastController: ToastController,
     public modalController: ModalController,
     private navParams: NavParams,
-    public loadingController: LoadingController) {
+    public loadingController: LoadingController, private networkService: NetworkService, private tasksService: TasksService) {
     this.idclient = navParams.get('idclient');
   }
 
@@ -44,14 +46,29 @@ export class AcountServicePage implements OnInit {
     const params = {
       idclient: this.idclient
     }
-    this.loginServiceService.ListAcount(params).pipe(
-      finalize(() => {
-        this.loadingController.dismiss();
-      })).subscribe(result => {
-        this.acounts = result.response;
-      }, error => {
+
+    if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+
+      this.tasksService.SelectClient_account(this.idclient).then(tasks => {
+        this.acounts = tasks;
 
       })
+        .catch(error => {
+          console.error(error);
+        });
+
+    } else {
+      this.loginServiceService.ListAcount(params).pipe(
+        finalize(() => {
+          this.loadingController.dismiss();
+        })).subscribe(result => {
+          this.acounts = result.response;
+        }, error => {
+
+        })
+
+    }
+
   }
   onSearch(event) {
 
@@ -59,9 +76,15 @@ export class AcountServicePage implements OnInit {
   }
 
   ModalExit(acount) {
+    let acountofline;
+    if (!acount.idclient_account) {
+      acount.idclient_account = acount.id
+      acountofline = 1
+    }
     this.modalController.dismiss({
       'dismissed': false,
-      data: acount
+      data: acount,
+      acountofline: acountofline
     });
   }
 

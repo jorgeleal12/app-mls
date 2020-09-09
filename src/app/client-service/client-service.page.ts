@@ -5,6 +5,8 @@ import { NewClientPage } from '../new-client/new-client.page';
 import { ModalController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
 import { LoadingController } from '@ionic/angular';
+import { NetworkService, ConnectionStatus } from '../Services/network.service';
+import { TasksService } from '../Services/tasks-service';
 @Component({
   selector: 'app-client-service',
   templateUrl: './client-service.page.html',
@@ -22,7 +24,7 @@ export class ClientServicePage implements OnInit {
     private LoginServiceService: LoginServiceService,
     private router: Router,
     public modalController: ModalController,
-    public loadingController: LoadingController) { }
+    public loadingController: LoadingController, private networkService: NetworkService, private tasksService: TasksService, ) { }
 
   ngOnInit() {
 
@@ -33,21 +35,36 @@ export class ClientServicePage implements OnInit {
 
   ListClient(event?) {
     this.showLoader();
-    const params = { idcompany: 1 }
-    this.LoginServiceService.ListClient(this.page).pipe(
-      finalize(() => {
-        this.loadingController.dismiss();
-      })).subscribe(result => {
-        this.Clients = this.Clients.concat(result.response.data)
-        this.maximumPage = result.response.last_page;
 
-
-        if (event) {
-          event.target.complete();
-        }
-      }, error => {
-
+    if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+      this.tasksService.SelectClient().then(tasks => {
+        this.Clients = tasks;
       })
+        .catch(error => {
+          console.error(error);
+        });
+    } else {
+      const params = { idcompany: 1 }
+      this.LoginServiceService.ListClient(this.page).pipe(
+        finalize(() => {
+          this.loadingController.dismiss();
+        })).subscribe(result => {
+          this.Clients = this.Clients.concat(result.response.data)
+          this.maximumPage = result.response.last_page;
+
+
+          if (event) {
+            event.target.complete();
+          }
+        }, error => {
+
+        })
+
+    }
+
+
+
+
   }
 
   loadMore(event) {
@@ -73,6 +90,7 @@ export class ClientServicePage implements OnInit {
 
   }
   ModalExit(Client) {
+    console.log(Client)
     this.modalController.dismiss({
       'dismissed': false,
       data: Client

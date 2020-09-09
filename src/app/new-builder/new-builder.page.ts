@@ -5,6 +5,8 @@ import { ToastController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { NavParams } from '@ionic/angular';
 import { ViewDocumentPage } from '../view-document/view-document.page';
+import { NetworkService, ConnectionStatus } from '../Services/network.service';
+import { TasksService } from '../Services/tasks-service';
 
 @Component({
   selector: 'app-new-builder',
@@ -23,13 +25,14 @@ export class NewBuilderPage implements OnInit {
   constructor(private loginServiceService: LoginServiceService,
     public toastController: ToastController,
     public modalController: ModalController,
-    private navParams: NavParams) {
+    private navParams: NavParams, private networkService: NetworkService, private tasksService: TasksService) {
     this.NewBuilder = new FormGroup({
       idbuilder: new FormControl(''),
       name_builder: new FormControl('', [Validators.required]),
       identification: new FormControl('', [Validators.required]),
       state: new FormControl(''),
       idstate: new FormControl(3),
+      id: new FormControl(null),
     })
 
     const data = navParams.get('data');
@@ -37,6 +40,7 @@ export class NewBuilderPage implements OnInit {
 
     if (data != null) {
       this.NewBuilder.get('idbuilder').setValue(data.idbuilder);
+      this.NewBuilder.get('id').setValue(data.id);
       this.NewBuilder.get('name_builder').setValue(data.name_builder);
       this.NewBuilder.get('identification').setValue(data.identification);
       this.NewBuilder.get('state').setValue(data.state);
@@ -107,28 +111,84 @@ export class NewBuilderPage implements OnInit {
       identification: this.NewBuilder.value.identification,
       state: this.NewBuilder.value.idstate,
     }
-    this.loginServiceService.SevaBuilder(params).subscribe(result => {
-      if (result.response == true) {
-        this.presentToast('Se creo el Material')
-        this.NewBuilder.get('idbuilder').setValue(result.result);
-        this.NewBuilder.get('state').setValue('Por Confirmar');
-        this.hidden = true;
-        this.hidden1 = false;
+
+    if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+
+      let name_state = ''
+      if (this.NewBuilder.value.idstate == 1) {
+        name_state = 'Activo';
 
       }
-      if (result.response == false) {
-        this.presentToast('Se Actualizo el Material')
-        this.hidden = true;
-        this.hidden1 = false;
+
+
+      if (this.NewBuilder.value.idstate == 2) {
+        name_state = 'Inactivo';
 
       }
-    }, error => {
 
-    })
+
+      if (this.NewBuilder.value.idstate == 3) {
+        name_state = 'Por confirmar';
+
+      }
+
+      if (this.NewBuilder.value.id) {
+
+        this.tasksService.UpdateBuilder(this.NewBuilder.value.id, this.NewBuilder.value.name_builder, this.NewBuilder.value.identification, this.NewBuilder.value.idstate, name_state, 2)
+          .then(tasks => {
+            this.presentToast('Se Actualizo el Constructor')
+            this.hidden = true;
+            this.hidden1 = false;
+            // console.log(tasks)
+
+          })
+          .catch(error => {
+            console.error(error);
+          });
+
+      } else {
+        this.tasksService.insert_builder(null, this.NewBuilder.value.name_builder, this.NewBuilder.value.identification, this.NewBuilder.value.idstate, name_state, 2)
+          .then(tasks => {
+            this.presentToast('Se creo el Constructor')
+            this.NewBuilder.get('state').setValue('Por Confirmar');
+            this.hidden = true;
+            this.hidden1 = false;
+            // console.log(tasks)
+
+          })
+          .catch(error => {
+            console.error(error);
+          });
+
+      }
+
+
+    } else {
+      this.loginServiceService.SevaBuilder(params).subscribe(result => {
+        if (result.response == true) {
+          this.presentToast('Se creo el Constructor')
+          this.NewBuilder.get('idbuilder').setValue(result.result);
+          this.NewBuilder.get('state').setValue('Por Confirmar');
+          this.hidden = true;
+          this.hidden1 = false;
+
+        }
+        if (result.response == false) {
+          this.presentToast('Se Actualizo el Constructor')
+          this.hidden = true;
+          this.hidden1 = false;
+
+        }
+      }, error => {
+
+      })
+    }
+
+
   }
 
   SicImage(sic) {
-    console.log(sic)
+    // console.log(sic)
     const params = {
       builder_idbuilder: sic.idsic_builder
     }
@@ -142,7 +202,7 @@ export class NewBuilderPage implements OnInit {
 
 
   ComImage(competencia) {
-    console.log(competencia)
+    // console.log(competencia)
     const params = {
       builder_idbuilder: competencia.idsic_builder
     }

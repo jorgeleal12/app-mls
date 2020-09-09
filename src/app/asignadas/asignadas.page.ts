@@ -8,7 +8,7 @@ import { File } from '@ionic-native/file/ngx';
 import { finalize } from 'rxjs/operators';
 import { LoadingController } from '@ionic/angular';
 import { constant } from '../utilitis/constant';
-
+import { NetworkService, ConnectionStatus } from '../Services/network.service';
 
 
 
@@ -39,6 +39,7 @@ export class AsignadasPage implements OnInit {
     private tasksService: TasksService,
     public transfer: FileTransfer,
     public file: File,
+    private networkService: NetworkService
 
 
   ) {
@@ -65,30 +66,59 @@ export class AsignadasPage implements OnInit {
 
   }
   search_asignadas() {
+    this.cars = [];
     this.showLoader('Cargando...')
     let params = {
       user: localStorage.getItem("id"),
       type: localStorage.getItem("type"),
       id: this.data
     }
-    this.LoginServiceService.seach_asignadas(params).pipe(
-      finalize(() => {
+
+    if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+
+      let state = 2
+      this.tasksService.SelectOdi(state).then(tasks => {
+        // console.log(tasks)
+        this.cars = tasks;
         this.hideLoader();
-
-      })).subscribe(result => {
-        this.cars = result.data
-
-        result.data.forEach(element => {
-          console.log(element)
-          this.tasksService.Insert_Odi(element.idodi, element.address1, element.barrio, element.city, element.client, element.company_idcompany, element.contract_idcontract,
-            element.contract_name, element.date_programming, element.department_iddepartment, element.identifacation, element.identification_employee, element.idinspetor,
-            element.idsupervisor, element.last_name, element.name, element.name_client, element.phone, element.phone2, element.priority, element.service_type_idservice_type,
-            element.state, element.type_gas, element.type_network_idtype_network, element.type_service_idtype_service, element.zona);
-
-        });
-      }, error => {
-
       })
+        .catch(error => {
+          console.error(error);
+        });
+
+    } else {
+      this.LoginServiceService.seach_asignadas(params).pipe(
+        finalize(() => {
+
+          this.hideLoader();
+
+        })).subscribe(result => {
+          this.cars = result.data
+
+
+          this.tasksService.deleteodi(1).then(tasks => {
+            // console.log(tasks)
+          })
+            .catch(error => {
+              console.error(error);
+            });
+
+          result.data.forEach(element => {
+            this.tasksService.Insert_Odi(element.idodi, element.address1, element.barrio, element.city, element.client, element.company_idcompany, element.contract_idcontract,
+              element.contract_name, element.date_programming, element.department_iddepartment, element.identifacation, element.identification_employee, element.idinspetor,
+              element.idsupervisor, element.last_name, element.name, element.name_client, element.phone, element.phone2, element.priority, element.service_type_idservice_type,
+              element.state, element.type_gas, element.type_network_idtype_network, element.type_service_idtype_service, element.zona, element.address, element.name_priority,
+              element.name_atencion, element.name_gas, element.name_network, element.name_type, element.name_state, element.Attention, element.construtor);
+
+          });
+        }, error => {
+
+        })
+
+    }
+
+
+
 
   }
 
@@ -193,20 +223,44 @@ export class AsignadasPage implements OnInit {
 
 
   onSearch(event) {
+    this.textSearch = event.target.value;
+
     let user = localStorage.getItem("id")
     let type = localStorage.getItem("type")
-    if (event.target.value == '') {
-      this.page = 1
-      this.search_asignadas();
+
+    if (this.networkService.getCurrentNetworkStatus() == ConnectionStatus.Offline) {
+      if (event.target.value == '') {
+        this.search_asignadas();
+      } else {
+
+        this.tasksService.Select_odi_like(this.textSearch).then(tasks => {
+          // console.log(tasks)
+          this.cars = tasks;
+        })
+          .catch(error => {
+            console.error(error);
+          });
+      }
+
     } else {
-      this.textSearch = event.target.value;
-      this.LoginServiceService.AutoLisAddress(this.textSearch, this.data, user, type).subscribe(result => {
 
-        this.cars = result.response;
-      }, error => {
 
-      })
+      if (event.target.value == '') {
+        this.page = 1
+        this.search_asignadas();
+      } else {
+
+        this.LoginServiceService.AutoLisAddress(this.textSearch, this.data, user, type).subscribe(result => {
+
+          this.cars = result.response;
+        }, error => {
+
+        })
+      }
+
     }
+
+
 
   }
 

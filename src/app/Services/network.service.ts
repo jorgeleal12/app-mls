@@ -28,14 +28,14 @@ export class NetworkService {
 
     this.network.onDisconnect().subscribe(() => {
       if (this.status.getValue() === ConnectionStatus.Online) {
-        console.log('WE ARE OFFLINE');
+        console.log('ESTA MODO OFFLINE (SIN CONEXIÓN)');
         this.updateNetworkStatus(ConnectionStatus.Offline);
       }
     });
 
     this.network.onConnect().subscribe(() => {
       if (this.status.getValue() === ConnectionStatus.Offline) {
-        console.log('WE ARE ONLINE');
+        console.log('ESTA MODO ONLINE');
         this.updateNetworkStatus(ConnectionStatus.Online);
       }
     });
@@ -44,9 +44,9 @@ export class NetworkService {
   private async updateNetworkStatus(status: ConnectionStatus) {
     this.status.next(status);
 
-    let connection = status == ConnectionStatus.Offline ? 'Offline' : 'Online';
+    let connection = status == ConnectionStatus.Offline ? 'OFFLINE (SIN CONEXIÓN)' : 'ONLINE';
     let toast = this.toastController.create({
-      message: `You are now ${connection}`,
+      message: `ESTA MODO ${connection}`,
       duration: 3000,
       position: 'bottom'
     });

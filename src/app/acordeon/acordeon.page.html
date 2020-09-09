@@ -89,6 +89,7 @@
                                     <ion-select-option [value]=1>Residencial</ion-select-option>
                                     <ion-select-option [value]=2>Comercial</ion-select-option>
                                     <ion-select-option [value]=3>Industrial</ion-select-option>
+                                    <ion-select-option [value]=4>Linea Matrix</ion-select-option>
                                 </ion-select>
                             </ion-item>
 
@@ -469,6 +470,30 @@
                 <ion-icon name="alarm"></ion-icon>
             </ion-fab-button> -->
             <ion-fab-button color="primary" (click)="atendido()">
+                <ion-icon name="arrow-dropright-circle"></ion-icon>
+            </ion-fab-button>
+        </ion-fab-list>
+
+        <ion-fab-list side="top" [hidden]="type3">
+            <!-- <ion-fab-button color="light">
+                <ion-icon name="close-circle-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="light">
+                <ion-icon name="alert"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="light">
+                <ion-icon name="alarm"></ion-icon>
+            </ion-fab-button> -->
+            <ion-fab-button color="primary" (click)="atendido()">
+                <ion-icon name="arrow-dropright-circle"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="light" (click)="cancelar()">
+                <ion-icon name="close-circle-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="light" (click)="suspend()">
+                <ion-icon name="alarm"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="success" (click)="aprobado()">
                 <ion-icon name="arrow-dropright-circle"></ion-icon>
             </ion-fab-button>
         </ion-fab-list>

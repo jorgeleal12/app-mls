@@ -7,8 +7,9 @@
         <ion-title text-center class="center">Inicio</ion-title>
 
         <ion-buttons slot="end">
-            <ion-button>
+            <ion-button (click)="sendimage()">
                 <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
+                <ion-badge color="danger" id="cart-badge">{{propCount}}</ion-badge>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
@@ -33,14 +34,14 @@
     <ion-card class="card" (click)="asignadas(3)" style="background-image: url(./assets/img/IMAGE7.jpg)">
         <ion-card-content class="card-body">
             <ion-card-subtitle class="card-title">Aprobadas</ion-card-subtitle>
-            <ion-card-title class="card-text">{{aprobadas}} Órdenes de servicio Pendientes</ion-card-title>
+            <ion-card-title class="card-text">{{aprobadas}} Órdenes de servicio Aprobadas</ion-card-title>
         </ion-card-content>
     </ion-card>
 
     <ion-card class="card" (click)="asignadas(4)" style="background-image: url(./assets/img/DENIED.jpg)">
         <ion-card-content class="card-body">
             <ion-card-subtitle class="card-title">Rechazadas</ion-card-subtitle>
-            <ion-card-title class="card-text">{{rechazadas}} Órdenes de servicio Pendientes</ion-card-title>
+            <ion-card-title class="card-text">{{rechazadas}} Órdenes de servicio Rechazadas</ion-card-title>
         </ion-card-content>
     </ion-card>
 </ion-content>
